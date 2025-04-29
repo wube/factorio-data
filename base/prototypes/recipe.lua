@@ -1176,14 +1176,14 @@ data:extend
     type = "recipe",
     name = "piercing-rounds-magazine",
     enabled = false,
-    energy_required = 3,
+    energy_required = 6,
     ingredients =
     {
-      {type = "item", name = "firearm-magazine", amount = 1},
+      {type = "item", name = "firearm-magazine", amount = 2},
       {type = "item", name = "steel-plate", amount = 1},
-      {type = "item", name = "copper-plate", amount = 5}
+      {type = "item", name = "copper-plate", amount = 2}
     },
-    results = {{type="item", name="piercing-rounds-magazine", amount=1}}
+    results = {{type="item", name="piercing-rounds-magazine", amount = 2}}
   },
   {
     type = "recipe",

@@ -118,7 +118,8 @@ data:extend(
     richness = false,
     order = "z",
     category = "enemy",
-    can_be_disabled = false
+    can_be_disabled = false,
+    related_to_fight_achievements = true
   }
 }
 )

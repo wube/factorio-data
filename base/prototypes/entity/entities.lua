@@ -165,7 +165,7 @@ function accumulator_charge()
         line_length = 6,
         frame_count = 24,
         draw_as_glow = true,
-        shift = util.by_pixel(0, -22),
+        shift = util.by_pixel(1, -20),
         scale = 0.5
       }
     }
@@ -204,7 +204,7 @@ function accumulator_discharge()
         line_length = 6,
         frame_count = 24,
         draw_as_glow = true,
-        shift = util.by_pixel(-1, -23),
+        shift = util.by_pixel(-1, -21),
         scale = 0.5
       }
     }
@@ -4290,6 +4290,7 @@ data:extend(
     open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.4 },
     rotation_speed = 0.015,
+    rotation_snap_angle = 0.015,
     weight = 700,
     guns = { "vehicle-machine-gun" },
     inventory_size = 80,
@@ -6895,8 +6896,8 @@ data:extend(
             priority = "extra-high",
             frames = 2,
             width = 219,
-            height = 215,
-            shift = util.by_pixel(-0.25, 3.75),
+            height = 235,
+            shift = util.by_pixel(-0.25, -1.25),
             scale = 0.5
           },
           {
@@ -7038,7 +7039,7 @@ data:extend(
         line_length =8,
         frame_count =32,
         animation_speed = 0.5,
-        shift = util.by_pixel(8, 3.5)
+        shift = util.by_pixel(8, -0.85)
       },
       east =
       {
@@ -7846,6 +7847,7 @@ data:extend(
     open_sound = { filename = "__base__/sound/fight/tank-door-open.ogg", volume=0.48 },
     close_sound = { filename = "__base__/sound/fight/tank-door-close.ogg", volume = 0.43 },
     rotation_speed = 0.0035,
+    rotation_snap_angle = 0.01,
     tank_driving = true,
     weight = 20000,
     inventory_size = 80,
@@ -9200,10 +9202,10 @@ data:extend(
         {
           filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
           width = 217,
-          height = 347,
+          height = 374,
           frame_count = 8,
           line_length = 4,
-          shift = util.by_pixel(4.75, 6.75),
+          shift = util.by_pixel(4.75, 0.0),
           run_mode = "backward",
           scale = 0.5
         },

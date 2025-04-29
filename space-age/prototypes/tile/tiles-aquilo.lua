@@ -700,6 +700,7 @@ local function frozen_concrete(base_name, item_name, transition_merge_tile)
   data:extend({ frozen_concrete })
 end
 
+frozen_concrete("stone-path", "stone-brick", "stone-path")
 frozen_concrete("concrete", "concrete", "concrete")
 frozen_concrete("hazard-concrete-left", "hazard-concrete", "concrete")
 frozen_concrete("hazard-concrete-right", "hazard-concrete", "concrete")

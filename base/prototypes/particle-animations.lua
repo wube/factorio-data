@@ -1770,6 +1770,7 @@ particle_animations.get_blood_particle_pictures = function(options)
       height = 24,
       frame_count = 12,
       variation_count = 7,
+      tint = options.tint,
       scale = 0.5 * options.scale,
       shift = util.add_shift(util.by_pixel(0,0.5), options.shift)
     }

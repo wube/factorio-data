@@ -83,7 +83,8 @@ data:extend(
     type = "autoplace-control",
     name = "enemy-base",
     order = "c-z",
-    category = "enemy"
+    category = "enemy",
+    related_to_fight_achievements = true
   }
 }
 )

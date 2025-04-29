@@ -3144,6 +3144,17 @@ data:extend(
       bottom_margin = -4,
       top_margin = 4
     },
+    
+    control_settings_bordered_frame =
+    {
+      type = "frame_style",
+      parent = "bordered_frame",
+      left_margin = -4,
+      right_margin = -4,
+      bottom_margin = -4,
+      top_margin = 4,
+      bottom_padding = 4
+    },
 
     control_settings_section_button =
     {

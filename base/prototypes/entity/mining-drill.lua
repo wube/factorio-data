@@ -796,9 +796,9 @@ data:extend(
               filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-wet.png",
               line_length = 1,
               width = 192,
-              height = 208,
+              height = 210,
               animation_speed = electric_drill_animation_speed,
-              shift = util.by_pixel(1, -5),
+              shift = util.by_pixel(1, -5.5),
               repeat_count = 5,
               scale = 0.5
             },
@@ -1795,7 +1795,7 @@ data:extend(
       height = 12
     },
     monitor_visualization_tint = {78, 173, 255},
-    base_render_layer = "lower-object-above-shadow",
+    base_render_layer = "object",
     base_picture =
     {
       sheets =

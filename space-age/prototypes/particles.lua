@@ -277,9 +277,10 @@ local gleba_tree_grey_sap_trigger_effect = function()
       speed_from_center_deviation = 0.02,
       frame_speed = 1,
       frame_speed_deviation = 0,
-      tail_length = 4,
+      tail_length = 2,
       tail_length_deviation = 1,
       tail_width = 4,
+      only_when_visible = true
     }
   }
 end
@@ -302,9 +303,10 @@ local gleba_tree_red_sap_trigger_effect = function()
       speed_from_center_deviation = 0.02,
       frame_speed = 1,
       frame_speed_deviation = 0,
-      tail_length = 4,
+      tail_length = 2,
       tail_length_deviation = 1,
-      tail_width = 5,
+      tail_width = 4,
+      only_when_visible = true
     }
   }
 end
@@ -330,6 +332,7 @@ local gleba_tree_blue_sap_trigger_effect = function()
       tail_length = 2,
       tail_length_deviation = 0,
       tail_width = 1,
+      only_when_visible = true
     }
   }
 end
@@ -352,9 +355,10 @@ local gleba_tree_green_sap_trigger_effect = function()
       speed_from_center_deviation = 0.02,
       frame_speed = 1,
       frame_speed_deviation = 0,
-      tail_length = 4,
+      tail_length = 2,
       tail_length_deviation = 1,
-      tail_width = 5,
+      tail_width = 4,
+      only_when_visible = true
     }
   }
 end
@@ -381,6 +385,7 @@ local gleba_tree_leaf_trigger_effect = function()
       tail_length = 1,
       tail_length_deviation = 1,
       tail_width = 1,
+      only_when_visible = true
     }
   }
 end
@@ -407,6 +412,7 @@ local default_ended_in_lava_trigger_effect = function()
       tail_length = 2,
       tail_length_deviation = 1,
       tail_width = 3,
+      only_when_visible = true
     },
     {
       type = "create-particle",
@@ -435,7 +441,8 @@ local default_ended_in_lava_trigger_effect = function()
       frame_speed_deviation = 0,
       tail_length = 9,
       tail_length_deviation = 0.5,
-      tail_width = 4
+      tail_width = 4,
+      only_when_visible = true
     },
     {
       type = "play-sound",
@@ -467,7 +474,8 @@ local default_ended_in_water_trigger_effect = function()
       frame_speed_deviation = 0,
       tail_length = 2,
       tail_length_deviation = 1,
-      tail_width = 3
+      tail_width = 3,
+      only_when_visible = true
     },
     {
       type = "create-particle",
@@ -496,7 +504,8 @@ local default_ended_in_water_trigger_effect = function()
       frame_speed_deviation = 0,
       tail_length = 9,
       tail_length_deviation = 0,
-      tail_width = 1
+      tail_width = 1,
+      only_when_visible = true
     },
     {
       type = "play-sound",
@@ -512,7 +521,7 @@ local particle_ended_in_water_trigger_effect = function()
     type = "create-particle",
     repeat_count = 5,
     repeat_count_deviation = 4,
-    probability = 0.2,
+    probability = 0.05,
     affects_target = false,
     show_in_tooltip = false,
     particle_name = "tintable-water-particle",
@@ -530,7 +539,8 @@ local particle_ended_in_water_trigger_effect = function()
     frame_speed_deviation = 0,
     tail_length = 9,
     tail_length_deviation = 8,
-    tail_width = 1
+    tail_width = 1,
+    only_when_visible = true
   }
 end
 
@@ -1424,40 +1434,40 @@ local particles =
   },
 
   --GLEBA-TREE-PARTICLES-------------------------
-   
+
   --trigger-effects
   make_particle
   {
     name = "gleba-tree-sap-particle-trigger-grey",
-    life_time = 180,
-    pictures = particle_animations.get_slipstack_sap_particle_pictures({tint = {0.3686, 0.451, 0.4627, 1.0}, tint_as_overlay = true, scale = 0.6}),
-    shadows = particle_animations.get_slipstack_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.6}),
+    life_time = 60,
+    pictures = particle_animations.get_slipstack_sap_particle_pictures({tint = {0.3686, 0.451, 0.4627, 1.0}, tint_as_overlay = true, scale = 0.8}),
+    shadows = particle_animations.get_slipstack_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.8}),
     draw_shadow_when_on_ground = false,
-    ended_in_water_trigger_effect = false,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     movement_modifier_when_on_ground = 0,
     render_layer = "higher-object-under"
   },
-  
+
   make_particle
   {
     name = "gleba-tree-sap-particle-trigger-red",
-    life_time = 180,
-    pictures = particle_animations.get_gleba_tree_sap_particle_pictures({tint = {0.4196, 0.1412, 0.1216, 1.0}, tint_as_overlay = true, scale = 0.75}),
-    shadows = particle_animations.get_gleba_tree_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.75}),
+    life_time = 60,
+    pictures = particle_animations.get_gleba_tree_sap_particle_pictures({tint = {0.4196, 0.1412, 0.1216, 1.0}, tint_as_overlay = true, scale = 0.8}),
+    shadows = particle_animations.get_gleba_tree_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.8}),
     draw_shadow_when_on_ground = false,
-    ended_in_water_trigger_effect = false,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     movement_modifier_when_on_ground = 0,
     render_layer = "higher-object-under"
   },
- 
+
   make_particle
   {
     name = "gleba-tree-sap-particle-trigger-blue",
-    life_time = 180,
-    pictures = particle_animations.get_gleba_tree_sap_particle_pictures({tint = {0.2, 0.3294, 0.349, 1.0}, tint_as_overlay = true, scale = 0.6}),
-    shadows = particle_animations.get_gleba_tree_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.6}),
+    life_time = 60,
+    pictures = particle_animations.get_slipstack_sap_particle_pictures({tint = {0.2, 0.3294, 0.349, 1.0}, tint_as_overlay = true, scale = 0.8}),
+    shadows = particle_animations.get_slipstack_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.8}),
     draw_shadow_when_on_ground = false,
-    ended_in_water_trigger_effect = false,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     movement_modifier_when_on_ground = 0,
     render_layer = "higher-object-under"
   },
@@ -1465,23 +1475,23 @@ local particles =
   make_particle
   {
     name = "gleba-tree-sap-particle-trigger-green",
-    life_time = 180,
-    pictures = particle_animations.get_gleba_tree_sap_particle_pictures({tint = {0.5373, 0.5333, 0.1608, 1.0}, tint_as_overlay = true, scale = 0.6}),
-    shadows = particle_animations.get_gleba_tree_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.6}),
+    life_time = 60,
+    pictures = particle_animations.get_gleba_tree_sap_particle_pictures({tint = {0.5373, 0.5333, 0.1608, 1.0}, tint_as_overlay = true, scale = 0.8}),
+    shadows = particle_animations.get_gleba_tree_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.8}),
     draw_shadow_when_on_ground = false,
-    ended_in_water_trigger_effect = false,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     movement_modifier_when_on_ground = 0,
     render_layer = "higher-object-under"
   },
-  
+
   make_particle
   {
     name = "gleba-tree-leaf-particle-trigger",
-    life_time = 180,
+    life_time = 60,
     pictures = particle_animations.get_gleba_tree_leaf_particle_2_pictures({tint = {0.8118, 0.4392, 0.4471, 1.0}, tint_as_overlay = true, scale = 0.8}),
     shadows = particle_animations.get_gleba_tree_leaf_particle_2_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.75}),
     draw_shadow_when_on_ground = false,
-    ended_in_water_trigger_effect = false,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     movement_modifier_when_on_ground = 0,
     render_layer = "higher-object-under"
   },
@@ -1491,30 +1501,34 @@ local particles =
   make_particle
   {
     name = "yumako-leaf-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_crop_particle_pictures({tint = {0.8235, 0.3373, 0.2627, 1.0}, tint_as_overlay = true, scale = 0.7}),
     shadows = particle_animations.get_gleba_tree_crop_particle_pictures({ tint = shadowtint(),scale = 0.8, shift = util.by_pixel (1,0), scale = 0.7}),
+    regular_trigger_effect_frequency = 6,
     regular_trigger_effect = gleba_tree_red_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "yumako-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.6039, 0.4314, 0.2157, 1.0}, tint_as_overlay = true}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = gleba_tree_grey_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "yumako-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.6039, 0.4314, 0.2157, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
-    regular_trigger_effect = gleba_tree_grey_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1523,10 +1537,11 @@ local particles =
   make_particle
   {
     name = "jellystem-leaf-particle",
-    pictures = particle_animations.get_gleba_tree_sap_particle_pictures({tint = {0.6314, 0.1765, 0.2824, 1.0}, tint_as_overlay = true, scale = 0.75}),
-    shadows = particle_animations.get_gleba_tree_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.75}),
+    life_time = 120,
+    pictures = particle_animations.get_gleba_tree_sap_particle_pictures({tint = {0.6314, 0.1765, 0.2824, 1.0}, tint_as_overlay = true, scale = 0.95}),
+    shadows = particle_animations.get_gleba_tree_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.95}),
     regular_trigger_effect = nil,
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
     render_layer = "higher-object-under"
   },
@@ -1534,21 +1549,24 @@ local particles =
   make_particle
   {
     name = "jellystem-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_crop_particle_pictures({tint = {0.6275, 0.3922, 0.4706, 1.0}, tint_as_overlay = true, scale = 1.2}),
     shadows = particle_animations.get_gleba_tree_crop_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.2}),
+    regular_trigger_effect_frequency = 4,
     regular_trigger_effect = gleba_tree_red_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
     render_layer = "higher-object-above"
   },
-  
+
   make_particle
   {
     name = "jellystem-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_crop_particle_pictures({tint = {0.6275, 0.3922, 0.4706, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_crop_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
-    regular_trigger_effect = gleba_tree_grey_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1557,30 +1575,34 @@ local particles =
   make_particle
   {
     name = "cuttlepop-leaf-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_crop_particle_pictures({tint = {0.6471, 0.5412, 0.8392, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_crop_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
     regular_trigger_effect = gleba_tree_grey_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    regular_trigger_effect_frequency = 4,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "cuttlepop-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.651, 0.6118, 0.5922, 1.0}, tint_as_overlay = true, scale = 0.8}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.8}),
     regular_trigger_effect = small_dust_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "cuttlepop-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.651, 0.6118, 0.5922, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
     regular_trigger_effect = small_dust_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1589,30 +1611,34 @@ local particles =
   make_particle
   {
     name = "slipstack-leaf-particle",
+    life_time = 120,
     pictures = particle_animations.get_slipstack_sap_particle_pictures({tint = {0.2, 0.3294, 0.349, 1.0}, tint_as_overlay = true, scale = 1.5}),
     shadows = particle_animations.get_slipstack_sap_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.3}),
+    regular_trigger_effect_frequency = 6,
     regular_trigger_effect = gleba_tree_blue_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "slipstack-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_spongy_particle_pictures({tint = {0.6431, 0.498, 0.5451, 1.0}, tint_as_overlay = true, scale = 1.2}),
     shadows = particle_animations.get_gleba_tree_spongy_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.2}),
     regular_trigger_effect = gleba_tree_pink_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "slipstack-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_spongy_particle_pictures({tint = {0.6431, 0.498, 0.5451, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_spongy_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
     regular_trigger_effect = gleba_tree_pink_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1621,20 +1647,23 @@ local particles =
   make_particle
   {
     name = "funneltrunk-leaf-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_crop_particle_pictures({tint = {0.6902, 0.4627, 0.5608, 1.0}, tint_as_overlay = true, scale = 0.3}),
     shadows = particle_animations.get_gleba_tree_crop_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.3}),
     regular_trigger_effect = nil,
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "funneltrunk-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_spongy_particle_pictures({tint = {0.4549, 0.3804, 0.1451, 1.0}, tint_as_overlay = true, scale = 1.2}),
     shadows = particle_animations.get_gleba_tree_spongy_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.2}),
+    regular_trigger_effect_frequency = 4,
     regular_trigger_effect = gleba_tree_green_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
     --render_layer = "higher-object-above"
   },
@@ -1642,10 +1671,11 @@ local particles =
   make_particle
   {
     name = "funneltrunk-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_spongy_particle_pictures({tint = {0.4549, 0.3804, 0.1451, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_spongy_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
-    regular_trigger_effect = gleba_tree_green_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1654,9 +1684,11 @@ local particles =
   make_particle
   {
     name = "hairyclubnub-leaf-particle",
+    life_time = 180,
     pictures = particle_animations.get_gleba_tree_leaf_particle_pictures({tint = {0.5725, 0.6392, 0.8667, 1.0}, tint_as_overlay = true, scale = 1.2}),
     shadows = particle_animations.get_gleba_tree_leaf_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.1}),
     regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
     movement_modifier = 0.85
   },
@@ -1664,20 +1696,23 @@ local particles =
   make_particle
   {
     name = "hairyclubnub-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {1.0, 0.898, 0.6471, 1.0}}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect_frequency = 4,
     regular_trigger_effect = gleba_tree_grey_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "hairyclubnub-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {1.0, 0.898, 0.6471, 1.0}, scale = 0.7}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.7}),
-    regular_trigger_effect = gleba_tree_grey_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1686,8 +1721,10 @@ local particles =
   make_particle
   {
     name = "teflilly-leaf-particle",
+    life_time = 180,
     pictures = particle_animations.get_gleba_tree_leaf_particle_2_pictures({tint = {0.8118, 0.4392, 0.4471, 1.0}, tint_as_overlay = true, scale = 1.4}),
     shadows = particle_animations.get_gleba_tree_leaf_particle_2_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.4}),
+    regular_trigger_effect_frequency = 6,
     regular_trigger_effect = gleba_tree_leaf_trigger_effect(),
     ended_in_water_trigger_effect = nil,
     render_layer_when_on_ground = "lower-object-above-shadow",
@@ -1698,20 +1735,22 @@ local particles =
   make_particle
   {
     name = "teflilly-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.4588, 0.4078, 0.3569, 1.0}, tint_as_overlay = true, scale = 0.8}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.8}),
     regular_trigger_effect =  small_dust_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "teflilly-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.4588, 0.4078, 0.3569, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
     regular_trigger_effect =  small_dust_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1720,20 +1759,23 @@ local particles =
   make_particle
   {
     name = "lickmaw-leaf-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_crop_particle_pictures({tint = {0.7843, 0.2196, 0.2196, 1.0}, tint_as_overlay = true, scale = 0.25}),
     shadows = particle_animations.get_gleba_tree_crop_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.25}),
+    regular_trigger_effect_frequency = 3,
     regular_trigger_effect = gleba_tree_red_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "lickmaw-branch-particle",
-    pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.5961, 0.5451, 0.5647, 1.0}, tint_as_overlay = true }), 
+    life_time = 120,
+    pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.5961, 0.5451, 0.5647, 1.0}, tint_as_overlay = true }),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = gleba_tree_red_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
     --render_layer = "higher-object-above"
   },
@@ -1741,12 +1783,14 @@ local particles =
   make_particle
   {
     name = "lickmaw-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_crop_particle_pictures({tint = {0.5961, 0.5451, 0.5647, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_crop_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
+    regular_trigger_effect_frequency = 4,
     regular_trigger_effect = gleba_tree_red_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
-    
+
   },
 
   --stingfrond
@@ -1754,23 +1798,25 @@ local particles =
   make_particle
   {
     name = "stingfrond-leaf-particle",
-    pictures = particle_animations.get_gleba_tree_leaf_particle_pictures({ tint = {0.651, 1.0, 0.9804, 1.0}, tint_as_overlay = true, scale = 1.2}), 
+    life_time = 180,
+    pictures = particle_animations.get_gleba_tree_leaf_particle_pictures({ tint = {0.651, 1.0, 0.9804, 1.0}, tint_as_overlay = true, scale = 1.2}),
     shadows = particle_animations.get_gleba_tree_leaf_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.2}),
-    regular_trigger_effect = nil, --gleba_tree_sap_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
     movement_modifier = 0.95,
     render_layer = "higher-object-above"
-    
+
   },
 
   make_particle
   {
     name = "stingfrond-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.298, 0.4314, 0.4275, 1.0}, tint_as_overlay = true}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = gleba_tree_blue_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
     render_layer = "higher-object-under"
   },
@@ -1778,10 +1824,11 @@ local particles =
   make_particle
   {
     name = "stingfrond-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.298, 0.4314, 0.4275, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
     regular_trigger_effect = gleba_tree_blue_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1790,30 +1837,33 @@ local particles =
   make_particle
   {
     name = "boompuff-leaf-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_spongy_particle_pictures({tint = {0.7451, 0.3882, 0.149, 1.0}, tint_as_overlay = true, scale = 1}),
     shadows = particle_animations.get_gleba_tree_spongy_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1}),
     regular_trigger_effect = gleba_tree_orange_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "boompuff-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.6706, 0.5255, 0.3451, 1.0}, tint_as_overlay = true, scale = 1.2}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.2}),
     regular_trigger_effect = small_dust_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "boompuff-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_wooden_particle_pictures({tint = {0.6706, 0.5255, 0.3451, 1.0}, tint_as_overlay = true, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_wooden_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.5}),
     regular_trigger_effect = small_dust_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1822,30 +1872,33 @@ local particles =
   make_particle
   {
     name = "sunnycomb-leaf-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_crop_particle_pictures({tint = {1.0, 0.8471, 0.1412, 1.0}, tint_as_overlay = true, scale = 0.4}),
     shadows = particle_animations.get_gleba_tree_crop_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.4,}),
     regular_trigger_effect = nil,
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "sunnycomb-branch-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_spongy_particle_pictures({tint =  {0.451, 0.3804, 0.2118, 1.0}, tint_as_overlay = true, scale = 1.2}),
     shadows = particle_animations.get_gleba_tree_spongy_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.2,}),
     regular_trigger_effect = small_dust_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "sunnycomb-mining-particle",
+    life_time = 120,
     pictures = particle_animations.get_gleba_tree_spongy_particle_pictures({tint = {0.451, 0.3804, 0.2118, 1.0}, tint_as_overlay = tru, scale = 0.5}),
     shadows = particle_animations.get_gleba_tree_spongy_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scele = 0.5}),
     regular_trigger_effect = small_dust_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
@@ -1854,10 +1907,11 @@ local particles =
   make_particle
   {
     name = "water-cane-branch-particle",
+    life_time = 180,
     pictures = particle_animations.get_gleba_water_cane_particle_pictures({tint = {0.7843, 0.7216, 0.5333, 1.0}, tint_as_overlay = true, scale = 0.8}),
     shadows = particle_animations.get_gleba_water_cane_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.8}),
     regular_trigger_effect = nil,
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow"
   },
 }

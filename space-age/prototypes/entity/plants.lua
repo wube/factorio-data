@@ -117,43 +117,43 @@ local gleba_tree_underwater_things =
 gleba_tree_underwater_things["yumako-tree"] = gleba_tree_underwater_things["hairyclubnub"]
 --]]
 
-local gleba_tree_particle_effects = 
+local gleba_tree_particle_effects =
 {
-  ["yumako-tree"] =   { crop_2 = "yumako-leaf-particle", 
+  ["yumako-tree"] =   { crop_2 = "yumako-leaf-particle",
                         trunk_2 = "yumako-branch-particle"
                       },
-  ["jellystem"] =     { sap = "jellystem-leaf-particle", 
-                        jellystem = "jellystem-branch-particle" 
+  ["jellystem"] =     { sap = "jellystem-leaf-particle",
+                        jellystem = "jellystem-branch-particle"
                       },
-  ["cuttlepop"] =     { crop_4 = "cuttlepop-leaf-particle", 
+  ["cuttlepop"] =     { crop_4 = "cuttlepop-leaf-particle",
                         spongy = "cuttlepop-branch-particle"
                       },
-  ["slipstack"] =     { slime = "slipstack-leaf-particle", 
+  ["slipstack"] =     { slime = "slipstack-leaf-particle",
                         spongy = "slipstack-branch-particle"
                       },
-  ["funneltrunk"] =   { crop_1 = "funneltrunk-leaf-particle", 
+  ["funneltrunk"] =   { crop_1 = "funneltrunk-leaf-particle",
                         spongy = "funneltrunk-branch-particle"
                       },
-  ["hairyclubnub"] =  { leaf_3 = "hairyclubnub-leaf-particle", 
+  ["hairyclubnub"] =  { leaf_3 = "hairyclubnub-leaf-particle",
                         trunk_2 = "hairyclubnub-branch-particle"
                       },
-  ["teflilly"] =      { leaf_1 = "teflilly-leaf-particle", 
+  ["teflilly"] =      { leaf_1 = "teflilly-leaf-particle",
                         trunk_1 = "teflilly-branch-particle"
                       },
-  ["lickmaw"] =       { crop_1 = "lickmaw-leaf-particle", 
+  ["lickmaw"] =       { crop_1 = "lickmaw-leaf-particle",
                         spongy = "lickmaw-branch-particle"
                       },
   ["stingfrond"] =    { leaf_2 = "stingfrond-leaf-particle",
                         trunk_1 = "stingfrond-branch-particle"
                       },
-  ["boompuff"] =      { crop_3 = "boompuff-leaf-particle", 
+  ["boompuff"] =      { crop_3 = "boompuff-leaf-particle",
                         trunk_3 = "boompuff-branch-particle"
                       },
-  ["sunnycomb"] =     { crop_1 = "sunnycomb-leaf-particle", 
+  ["sunnycomb"] =     { crop_1 = "sunnycomb-leaf-particle",
                         spongy = "sunnycomb-branch-particle"
                       },
-  ["water-cane"] =    { water_cane_top = "water-cane-branch-particle", 
-                        water_cane = "water-cane-branch-particle" 
+  ["water-cane"] =    { water_cane_top = "water-cane-branch-particle",
+                        water_cane = "water-cane-branch-particle"
                       }
 }
 
@@ -245,7 +245,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
       underwater       = gleba_tree_underwater_things[name] and gleba_tree_underwater_things[name].underwater or nil,
       --water_reflection = gleba_tree_underwater_things[name] and gleba_tree_underwater_things[name].water_reflection or nil,
-      
+
       water_reflection = {
         pictures = {
         filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-effect-map.png",
@@ -262,11 +262,20 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
       } or nil,
 
       leaf_generation = {},
-      branch_generation = {}
+      branch_generation = {},
+
+      leaves_when_damaged = 100,
+      leaves_when_destroyed = 35,
+      leaves_when_mined_manually = 40,
+      leaves_when_mined_automatically = 16,
+      branches_when_damaged = 20,
+      branches_when_destroyed = 16,
+      branches_when_mined_manually = 15,
+      branches_when_mined_automatically = 8
     }
 
-    if sap_particle then
-      variation.leaf_generation = {  
+    if sap_particle then -- jellystem
+      variation.leaf_generation = {
         type = "create-particle",
         particle_name = sap_particle,
         offset_deviation =
@@ -282,14 +291,19 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         speed_from_center_deviation = 0.05,
         frame_speed = 1,
         frame_speed_deviation = 0.5,
-        tail_length = 46,
-        tail_length_deviation = 25,
-        tail_width = 10,
-        rotate_offsets = false
+        tail_length = 10,
+        tail_length_deviation = 5,
+        tail_width = 5,
+        rotate_offsets = false,
+        only_when_visible = true
       }
-    end 
+      variation.leaves_when_damaged = 50
+      variation.leaves_when_destroyed = 35
+      variation.leaves_when_mined_manually = 40
+      variation.leaves_when_mined_automatically = 16
+    end
 
-    if slime_particle then
+    if slime_particle then -- slipstack
       variation.leaf_generation = {
         type = "create-particle",
         particle_name = slime_particle,
@@ -306,10 +320,11 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         speed_from_center_deviation = 0.02,
         frame_speed = 1,
         frame_speed_deviation = 0,
+        only_when_visible = true
       }
-    end 
+    end
 
-    if leaf_particle_1 then
+    if leaf_particle_1 then -- teflilly
       variation.leaf_generation = {
         type = "create-particle",
         particle_name = leaf_particle_1,
@@ -320,11 +335,16 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed_deviation = 0.13,
         speed_from_center = 0.015,
         speed_from_center_deviation = 0.025,
-        frame_speed = 0.6
+        frame_speed = 0.6,
+        only_when_visible = true
       }
+      variation.leaves_when_damaged = 15
+      variation.leaves_when_destroyed = 40
+      variation.leaves_when_mined_manually = 35
+      variation.leaves_when_mined_automatically = 25
     end
 
-    if leaf_particle_2 then
+    if leaf_particle_2 then -- stingfrond
       variation.leaf_generation = {
         type = "create-particle",
         particle_name = leaf_particle_2,
@@ -335,11 +355,16 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed_deviation = 0.13,
         speed_from_center = 0.015,
         speed_from_center_deviation = 0.025,
-        frame_speed = 0.6
+        frame_speed = 0.6,
+        only_when_visible = true
       }
+      variation.leaves_when_damaged = 20
+      variation.leaves_when_destroyed = 40
+      variation.leaves_when_mined_manually = 40
+      variation.leaves_when_mined_automatically = 20
     end
 
-    if leaf_particle_3 then
+    if leaf_particle_3 then -- hairy-clubnub
       variation.leaf_generation = {
         type = "create-particle",
         particle_name = leaf_particle_3,
@@ -350,11 +375,16 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed_deviation = 0.13,
         speed_from_center = 0.005,
         speed_from_center_deviation = 0.025,
-        frame_speed = 0.6
+        frame_speed = 0.6,
+        only_when_visible = true
       }
+      variation.leaves_when_damaged = 30
+      variation.leaves_when_destroyed = 40
+      variation.leaves_when_mined_manually = 35
+      variation.leaves_when_mined_automatically = 20
     end
 
-    if crop_particle_1 then
+    if crop_particle_1 then -- funneltrunk, lickmaw, sunnycomb
       variation.leaf_generation = {
         type = "create-particle",
         particle_name = crop_particle_1,
@@ -365,11 +395,20 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed = 0.025,
         initial_vertical_speed_deviation = 0.15,
         speed_from_center = 0.02,
-        speed_from_center_deviation = 0.045
+        speed_from_center_deviation = 0.045,
+        only_when_visible = true
       }
+      if name == "funneltrunk" then
+        variation.leaves_when_damaged = 50
+      else
+        variation.leaves_when_damaged = 30
+      end
+      variation.leaves_when_destroyed = 40
+      variation.leaves_when_mined_manually = 40
+      variation.leaves_when_mined_automatically = 20
     end
 
-    if crop_particle_2 then
+    if crop_particle_2 then -- yumako
       variation.leaf_generation = {
         type = "create-particle",
         particle_name = crop_particle_2,
@@ -379,11 +418,16 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed = 0.025,
         initial_vertical_speed_deviation = 0.15,
         speed_from_center = 0.03,
-        speed_from_center_deviation = 0.045
+        speed_from_center_deviation = 0.045,
+        only_when_visible = true
       }
+      variation.leaves_when_damaged = 25
+      variation.leaves_when_destroyed = 35
+      variation.leaves_when_mined_manually = 40
+      variation.leaves_when_mined_automatically = 16
     end
 
-    if crop_particle_3 then
+    if crop_particle_3 then -- boompuff
       variation.leaf_generation = {
         type = "create-particle",
         particle_name = crop_particle_3,
@@ -393,11 +437,16 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed = 0.025,
         initial_vertical_speed_deviation = 0.15,
         speed_from_center = 0.05,
-        speed_from_center_deviation = 0.065
+        speed_from_center_deviation = 0.065,
+        only_when_visible = true
       }
+      variation.leaves_when_damaged = 18
+      variation.leaves_when_destroyed = 35
+      variation.leaves_when_mined_manually = 40
+      variation.leaves_when_mined_automatically = 16
     end
 
-    if crop_particle_4 then
+    if crop_particle_4 then -- cuttlepop
       variation.leaf_generation = {
         type = "create-particle",
         particle_name = crop_particle_4,
@@ -407,15 +456,19 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed = 0.025,
         initial_vertical_speed_deviation = 0.15,
         speed_from_center = 0.02,
-        speed_from_center_deviation = 0.045
+        speed_from_center_deviation = 0.045,
+        only_when_visible = true
       }
+      variation.leaves_when_damaged = 30
+      variation.leaves_when_destroyed = 40
+      variation.leaves_when_mined_manually = 35
+      variation.leaves_when_mined_automatically = 25
     end
-    
-    if trunk_particle_1 then
+
+    if trunk_particle_1 then -- teflilly, stingfrond
       variation.branch_generation = {
         type = "create-particle",
         particle_name = trunk_particle_1,
-        repeat_count = 40,
         offset_deviation = {{-0.4, -0.8}, {0.4, 0.8}},
         initial_height = 1.5,
         initial_height_deviation = 1.5,
@@ -423,15 +476,19 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed_deviation = 0.15,
         speed_from_center = 0.035,
         speed_from_center_deviation = 0.015,
-        frame_speed = 0.8
+        frame_speed = 0.8,
+        only_when_visible = true
       }
+      variation.branches_when_damaged = 30
+      variation.branches_when_destroyed = 40
+      variation.branches_when_mined_manually = 35
+      variation.branches_when_mined_automatically = 8
     end
 
-    if trunk_particle_2 then
+    if trunk_particle_2 then -- yumako, hairyclubnub
       variation.branch_generation = {
         type = "create-particle",
         particle_name = trunk_particle_2,
-        repeat_count = 50,
         offset_deviation = {{-0.8, -1.4}, {0.8, 1.4}},
         initial_height = 1.7,
         initial_height_deviation = 1.5,
@@ -439,14 +496,18 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed_deviation = 0.15,
         speed_from_center = 0.035,
         speed_from_center_deviation = 0.02,
+        only_when_visible = true
       }
+      variation.branches_when_damaged = 40
+      variation.branches_when_destroyed = 50
+      variation.branches_when_mined_manually = 40
+      variation.branches_when_mined_automatically = 20
     end
 
-    if trunk_particle_3 then
+    if trunk_particle_3 then -- boompuff
       variation.branch_generation = {
         type = "create-particle",
         particle_name = trunk_particle_3,
-        repeat_count = 30,
         offset_deviation = {{-0.8, -0.8}, {0.8, 0.8}},
         initial_height = 1.3,
         initial_height_deviation = 2,
@@ -454,14 +515,18 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed_deviation = 0.15,
         speed_from_center = 0.045,
         speed_from_center_deviation = 0.02,
+        only_when_visible = true
       }
+      variation.branches_when_damaged = 30
+      variation.branches_when_destroyed = 30
+      variation.branches_when_mined_manually = 30
+      variation.branches_when_mined_automatically = 15
     end
 
-    if jellystem_particle then
+    if jellystem_particle then -- jellystem
       variation.branch_generation = {
         type = "create-particle",
         particle_name = jellystem_particle,
-        repeat_count = 40,
         offset_deviation = {{-0.65, -1}, {0.65, 1}},
         initial_height = 1.7,
         initial_height_deviation = 0.8,
@@ -469,15 +534,19 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed_deviation = 0.15,
         speed_from_center = 0.035,
         speed_from_center_deviation = 0.02,
-        frame_speed = 0.8
+        frame_speed = 0.8,
+        only_when_visible = true
       }
+      variation.branches_when_damaged = 30
+      variation.branches_when_destroyed = 40
+      variation.branches_when_mined_manually = 35
+      variation.branches_when_mined_automatically = 8
     end
 
-    if spongy_particle then
+    if spongy_particle then -- cuttlepop, slipstack, funneltrunk, lickmaw, sunnycomb
       variation.branch_generation = {
         type = "create-particle",
         particle_name = spongy_particle,
-        repeat_count = 40,
         offset_deviation = {{-0.8, -1.5}, {0.8, 1.5}},
         initial_height = 1.7,
         initial_height_deviation = 0.6,
@@ -485,11 +554,21 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed_deviation = 0.15,
         speed_from_center = 0.03,
         speed_from_center_deviation = 0.04,
-        frame_speed = 0.8
+        frame_speed = 0.8,
+        only_when_visible = true
       }
+      if name == "funneltrunk" then
+        variation.branches_when_damaged = 60
+        variation.branches_when_mined_automatically = 25
+      else
+        variation.branches_when_damaged = 40
+        variation.branches_when_mined_automatically = 16
+      end
+      variation.branches_when_destroyed = 40
+      variation.branches_when_mined_manually = 35
     end
 
-    if water_cane_top_particle then
+    if water_cane_top_particle then -- water-cane
       variation.leaf_generation = {
         type = "create-particle",
         particle_name = water_cane_top_particle,
@@ -502,16 +581,26 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         initial_vertical_speed_deviation = 0.055,
         speed_from_center = 0.025,
         speed_from_center_deviation = 0.05,
-        frame_speed = 0.8
+        frame_speed = 0.8,
+        only_when_visible = true
       }
+      variation.leaves_when_damaged = 4
+      variation.leaves_when_destroyed = 2
+      variation.leaves_when_mined_manually = 2
+      variation.leaves_when_mined_automatically = 1
     end
 
-    if water_cane_particle then
+    if water_cane_particle then -- water-cane
       variation.branch_generation = {
         type = "create-particle",
         particle_name = water_cane_particle,
         initial_height = 0.6,
+        only_when_visible = true
       }
+      variation.branches_when_damaged = 2
+      variation.branches_when_destroyed = 1
+      variation.branches_when_mined_manually = 1
+      variation.branches_when_mined_automatically = 1
     end
 
     if(name == "stingfrond") then

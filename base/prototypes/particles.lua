@@ -200,10 +200,6 @@ local make_particle = function(params)
 
 end
 
-function bloodtint()
-return {r = 113/2, g = 52 * 0, b = 124/2}
-end
-
 function shadowtint()
 return {r = 0, g = 0, b = 0}
 end
@@ -6537,7 +6533,7 @@ make_particle
   {
     name = "blood-particle",
     life_time = 180,
-    pictures = particle_animations.get_blood_particle_pictures({ tint = bloodtint(), scale = 0.75}),
+    pictures = particle_animations.get_blood_particle_pictures({scale = 0.75}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.75}),
     draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = false,
@@ -6549,7 +6545,7 @@ make_particle
   {
     name = "blood-particle-lower-layer",
     life_time = 180,
-    pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint(), scale = 0.75}),
+    pictures = particle_animations.get_blood_particle_pictures({scale = 0.75}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.75}),
     draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = false,
@@ -6561,7 +6557,7 @@ make_particle
   {
     name = "blood-particle-carpet",
     life_time = 180,
-    pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint(), scale = 0.75}),
+    pictures = particle_animations.get_blood_particle_pictures({scale = 0.75}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.75}),
     draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = false,
@@ -6573,7 +6569,7 @@ make_particle
   {
     name = "blood-particle-small",
     life_time = 180,
-    pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint(), scale = 0.5}),
+    pictures = particle_animations.get_blood_particle_pictures({scale = 0.5}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.75}),
     draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = false,
@@ -6585,7 +6581,7 @@ make_particle
   {
     name = "blood-particle-lower-layer-small",
     life_time = 180,
-    pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint(), scale = 0.5}),
+    pictures = particle_animations.get_blood_particle_pictures({scale = 0.5}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.75}),
     draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = false,
@@ -6597,7 +6593,7 @@ make_particle
   {
     name = "blood-particle-carpet-small",
     life_time = 180,
-    pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint(), scale = 0.5}),
+    pictures = particle_animations.get_blood_particle_pictures({scale = 0.5}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.75}),
     draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = false,

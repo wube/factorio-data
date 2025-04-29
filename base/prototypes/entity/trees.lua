@@ -4802,7 +4802,15 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
         speed_from_center_deviation = 0.01,
         frame_speed = 0.4,
         repeat_count = 15
-      }
+      },
+      leaves_when_damaged = 200,
+      leaves_when_destroyed = 35,
+      leaves_when_mined_manually = 40,
+      leaves_when_mined_automatically = 19,
+      branches_when_damaged = 0,
+      branches_when_destroyed = 16,
+      branches_when_mined_manually = 15,
+      branches_when_mined_automatically = 8
     }
     if variation.normal then
       newTree.normal =

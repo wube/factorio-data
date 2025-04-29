@@ -639,14 +639,7 @@ simulations.entity_transfers =
     resting_position = {0, -1}
 
     fast_entity_transfer = function()
-      game.simulation.control_press{control = "fast-entity-transfer", notify = false}
-      player.create_local_flying_text
-      {
-        position = {game.simulation.camera_player_cursor_position.x, game.simulation.camera_player_cursor_position.y + 0.25},
-        time_to_live = 150,
-        speed = 60,
-        text = {"tips-and-tricks-item-description.entity-transfer-text"}
-      }
+      game.simulation.control_press{control = "fast-entity-transfer", notify = true}
     end
 
     local story_table =

@@ -440,8 +440,8 @@ data:extend({
     {
       base_visualisation =
       {
-        render_layer = "lower-object-above-shadow",
-        secondary_draw_order = 1,
+        render_layer = "object",
+        secondary_draw_order = 0,
         animation =
         {
           north =
@@ -489,8 +489,8 @@ data:extend({
                 filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-east.png",
                 line_length = 1,
                 width = 216,
-                height = 146,
-                shift = util.by_pixel(-6, 3),
+                height = 169,
+                shift = util.by_pixel(-6, -2.75),
                 scale = 0.5
               },
               -- mask
@@ -562,8 +562,8 @@ data:extend({
                 filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-west.png",
                 line_length = 1,
                 width = 208,
-                height = 144,
-                shift = util.by_pixel(7, -1),
+                height = 160,
+                shift = util.by_pixel(7, -5),
                 scale = 0.5
               },
               -- mask

@@ -1,6 +1,112 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.46
+Version: 2.0.47
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.46
+Date: 29. 04. 2025
+  Minor Features:
+    - Added Space Age expansion filter to the mod portal explore pane.
+    - Added "planets" and "character" tags to the mod portal explore pane.
+    - Mod portal search results and mod info will show whether they require the Space Age expansion.
+    - Added heading car driving option for keyboard input method. Pressing in a direction will make vehicles automatically turn and accelerate to that side of the screen.
+    - Cars and tanks will automatically snap to one of the 8 major directions if within a few degrees.
+  Balancing:
+    - Changed piercing ammo recipe to be cheaper.
+  Changes:
+    - Renamed controller vehicle driving modes from "relative" to "heading" and from "absolute" to "steering".
+    - Creating a rich text tag will move the text cursor to the end of the tag, not the beginning.
+    - New achievement limitations won't affect saves started before the version 2.0.45.
+    - Added a confirm dialog informing about which achievements will be disabled with the current map settings when starting a new game.
+    - Some achievements are also disabled when Gleba enemies are set to be lower.
+  Graphics:
+    - Improved visibility and looks of Fulgora cliffs.
+    - Added graphics for frozen stone path.
+    - Changed the north edge of all pipe graphics to include an arch to prevent tiling issues in specific cases.
+  Bugfixes:
+    - Fixed that space platform schedule wasn't properly affected by during blueprint parametrisation. (https://forums.factorio.com/124305)
+    - Fixed that space platform name wasn't parametrisable by blueprint.
+    - Fixed a sound instance leak when closing machine GUIs with playing sound accents. (https://forums.factorio.com/127889)
+    - Fixed burner spidertron would keep moving indefinitely after running out of fuel. (https://forums.factorio.com/128126)
+    - Fixed that modifying the group schedule of trains would cause other trains in the group to switch to automatic mode. (https://forums.factorio.com/128173)
+    - Fixed that rearranging infinity filters could cause buttons to edit the wrong filters. (https://forums.factorio.com/128189)
+    - Fixed accumulator charge/discharge emission sprite being misaligned. (https://forums.factorio.com/128113)
+    - Fixed a crash when clicking on a new tip popup while being dead. (https://forums.factorio.com/127440)
+    - Fixed blood particle tint being ignored in Lua. (https://forums.factorio.com/127585)
+    - Fixed Controller settings section in the Controls settings window not behaving correctly during search.
+    - Fixed deconstruction planner with tile filter would not mark for deconstruction hidden tiles matching filter if there is a non-matching tile marked for deconstruction covering them. (https://forums.factorio.com/127727)
+    - When (super)force-building tiles, only foundation tiles will be autofilled and only for building cover tiles. (https://forums.factorio.com/128068)
+    - Fixed that a decal covered by a tile would still play its walking sound. (https://forums.factorio.com/127536)
+    - Fixed Undo after overbuilding existing entities with blueprint parametrised blueprint. (https://forums.factorio.com/124612)
+    - Fixed a crash when preparing undo/redo camera for tiles which are on a deleted chunk. (https://forums.factorio.com/127876)
+    - Fixed that quality tooltips showed the wrong value in crafting machines in modded cases. (https://forums.factorio.com/125513)
+    - Fixed clicking a station label in the train GUI would not open map at the expected train stop. (https://forums.factorio.com/107757)
+    - Fixed black lines on some entities when "alt-mode" is enabled when using Metal graphics backend.
+    - Fixed crash that could randomly occur when using Metal graphics backend.
+    - Fixed crash that could occur when using the Metal graphics backend with texture streaming enabled.
+    - Fixed missing achievement mentions for the new restrictions in map gen settings.
+    - Fixed that lower pollution absorption disabled some achievements (instead of the higher one).
+    - Fixed that Bioflux and Yumako would heal vehicles. (https://forums.factorio.com/126875)
+    - Fixed a crash when fast-replacing a train stop ghost with mods listening to 'on_entity_color_changed' event. (https://forums.factorio.com/127869)
+    - Fixed that creating a rich text tag by deleting a character would not move the text cursor from the middle of the tag. (https://forums.factorio.com/102851)
+    - Fixed that drag building an underneathie would show a flying text whenever the cursor went over an obstacle.
+    - Fixed a crash when reordering empty filters in asteroid collector. (https://forums.factorio.com/128286)
+    - Fixed a consistency crash when disconnecting rolling stock and modifying the train in the same tick through Lua. (https://forums.factorio.com/127506)
+    - Fixed that undo when in the Map Editor and having instant-blueprint-building enabled didn't always work with elevated rails. (https://forums.factorio.com/128280)
+    - Fixed that the missing-equipment message when copying spidertron equipment overlapped. (https://forums.factorio.com/128306)
+    - Fixed that signal pipette did not work for fluids, and some other GUI elements. (https://forums.factorio.com/120416)
+    - Fixed that the space platform hub full alert didn't persist in some situations. (https://forums.factorio.com/127058)
+    - Fixed that reading orbital requests would generate negative signals in some cases. (https://forums.factorio.com/121003)
+    - Fixed that modifying logistic requests in groups on planets would reset import-from. (https://forums.factorio.com/119455)
+    - Fixed that linked belt fast-replace didn't change the direction. (https://forums.factorio.com/121508)
+    - Fixed that changing the requested item in space platform hubs would only visually update the max amount. (https://forums.factorio.com/122834)
+    - Fixed that the map view train shortcut info was shown when zoomed in even though it didn't apply when zoomed in. (https://forums.factorio.com/123075)
+    - Fixed that changing quality in some select-GUIs would reset the count. (https://forums.factorio.com/123929)
+    - Fixed that the recipe productivity locale was in space age instead of core. (https://forums.factorio.com/127938)
+    - Fixed that deleting items through the map editor didn't clear request proxies. (https://forums.factorio.com/127164)
+    - Fixed that instant tooltips could block the game-over screen. (https://forums.factorio.com/128122)
+    - Fixed wrong position of inventory limit button for some inventory sizes. (https://forums.factorio.com/103991)
+    - Fixed recipe tooltips not showing intermediate ingredients as craftable (orange) when those intermediate recipes create extra products. (https://forums.factorio.com/105658)
+    - Fixed that recipes using result_is_always_fresh would start spoiling at the tick crafting started instead of the tick crafting finished. (https://forums.factorio.com/128341)
+    - Fixed that pipette while in the train fuel tab would put a ghost item in the cursor. (https://forums.factorio.com/125090)
+    - Fixed particles being updated twice when they moved to a new chunk. (https://forums.factorio.com/127063)
+    - Fixed rich text chat tooltips not disappearing when opening the menu. (https://forums.factorio.com/108191)
+    - Fixed rich text chat tooltips showing when hovering below the chat with chat messages with multiple lines.
+    - Fixed that trying to move the upper limit on double-slider GUI elements could sometimes change the lower limit even when nothing actually changed. (https://forums.factorio.com/119015)
+    - Fixed that remote view could not interact with blueprint books in the character inventory. (https://forums.factorio.com/117944)
+    - Fixed that you could order upgrade some entities through remote view that could never be upgraded. (https://forums.factorio.com/128239)
+    - Fixed that the build preview and rolling stock final position did not match in some cases. (https://forums.factorio.com/126883)
+    - Fixed that changing the minimum value of a logistic request through moving the maximum slider did not work correctly. (https://forums.factorio.com/124659)
+    - Fixed that building trains would remove train ghosts on other rail elevations. (https://forums.factorio.com/128025)
+    - Fixed that arriving platforms sent the wrong old state to on_space_platform_changed_state event. (https://forums.factorio.com/128352)
+    - Fixed that indestructible entities on the space platform could consume asteroid damage before other entities on the same tile.
+    - Fixed asteroids sometimes getting destroyed when platform speed was negative.
+    - Fixed a crash when rendering a modded pipe that has multiple connections facing the same direction. (https://forums.factorio.com/128399)
+    - Fixed a crash when robot orders are invalidated while finishing another order. (https://forums.factorio.com/128387)
+    - Fixed a crash when some tile sprites end up with zero size due to scaling. (https://forums.factorio.com/128344)
+    - Fixed a crash when a space platform in orbit is teleported to a distant connection by a script.
+    - Fixed a custom GUI layout issue. (https://forums.factorio.com/128385)
+    - Fixed "<user> has paused the game" box sometimes appearing outside the screen when pausing the game.
+    - Fixed "<user> has paused the game" box moving outside the screen when opening the menu. (https://forums.factorio.com/114143)
+    - Fixed shotgun damage tooltip not showing parenthesis. (https://forums.factorio.com/114190)
+    - Fixed pinned achievement cards stretching when multiplayer infoboxes are present. (https://forums.factorio.com/126269)
+    - Fixed achievement GUI progress not being updated after an achievement was completed. (https://forums.factorio.com/122821)
+    - Fixed not being able to mute sound category by clicking its label. (https://forums.factorio.com/127332)
+    - Fixed that robot upgrade jobs weren't evenly distributed. (https://forums.factorio.com/125704)
+    - Fixed that deconstruction jobs didn't properly distribute tasks to closer robots. (https://forums.factorio.com/116875)
+    - Fixed that locale pluralization did not work with SI-prefixed numbers.
+  Modding:
+    - Added CarPrototype::rotation_snap_angle
+    - Instead of "enemy-bases" autoplace control being hardcoded to be the one to affect achievements, achievements are now affected by
+      any autoplace controls with the new property related_to_fight_achievements.
+    - Fluid boxes with diagonal connections now throw a prototype error.
+  Scripting:
+    - Added LuaEntity::item_request_proxy read as the recommended way to check for the presence of one.
+    - Added optional amount to LuaItemStack::transfer_stack().
+    - Added base_damage_modifiers and bonus_damage_modifiers when creating projectile types through LuaSurface::create_entity().
+    - Added LuaEntity::base_damage_modifiers and bonus_damage_modifiers read/write.
+    - Made LuaPlayer::zoom readable
+    - Added LuaPlayer::zoom_limits
+    - Added LuaTransportLine::total_segment_length.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.45
 Date: 14. 04. 2025
@@ -48,7 +154,7 @@ Date: 14. 04. 2025
     - Fixed that the invalidation of the achievement "Keeping your hands clean" wasn't properly saved on a headless server. (https://forums.factorio.com/118168)
     - Fixed issue with merging fluid/recipe where there are more result products. (https://forums.factorio.com/128120)
     - Fixed fluid box compound was not respecting max pipeline extent value of the original fluid boxes. (https://forums.factorio.com/128123)
-    - Fixed that selecting rocket part during blueprint parametrisation created incompatibile station name. (https://forums.factorio.com/121079)
+    - Fixed that selecting rocket part during blueprint parametrisation created incompatible station name. (https://forums.factorio.com/121079)
     - Fixed that it was possible to start another blueprint build while parametrisation was in progress. (https://forums.factorio.com/120531)
     - Fixed generator equipment item tooltip ignoring fuel consumption efficiency. (https://forums.factorio.com/127280)
     - Fixed constant combinators were clamping total values from logistic sections when they should wrap around. (https://forums.factorio.com/128129)
@@ -102,7 +208,7 @@ Date: 07. 04. 2025
     - Fixed that blueprint parameter item which was named but not configured to be parametrised became parametrised after export/import through blueprint string. (https://forums.factorio.com/121238)
     - Fixed that self-recycling recipes were generated for parameters.
     - Fixed that pipetting parameter in cheat mode generated parameter item.
-    - Allowed setting blueprint parametetrisation ingredient of by pepetted parameter. (https://forums.factorio.com/121422)
+    - Allowed setting blueprint parametrisation ingredient of by pipetted parameter. (https://forums.factorio.com/121422)
     - Fixed that confirming icon selection in the save game dialog name editing confirmed the save dialog instead of the icon selection. (https://forums.factorio.com/122917)
     - Added info about not being able to set recipe based on surface condition when parametrising blueprint. (https://forums.factorio.com/123512)
     - Fixed assembler insertion margins were not correctly accounting for max inserter hand in some cases. (https://forums.factorio.com/127884)

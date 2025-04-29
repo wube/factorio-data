@@ -800,8 +800,8 @@ particle_animations.get_gleba_tree_wooden_particle_pictures = function(options)
     {
       filename =  "__space-age__/graphics/particle/gleba-tree-particle/gleba-wooden-particle.png",
       priority = "extra-high",
-      width = 52,
-      height = 62,
+      width = 54,
+      height = 64,
       frame_count = 16,
       animation_speed = 0.5,
       variation_count = 10,
