@@ -2500,6 +2500,45 @@ data:extend
     stack_size = 10
   },
   {
+    type = "item",
+    name = "one-way-valve",
+    icon = "__base__/graphics/entity/one-way-valve/one-way-valve-east.png",
+    hidden = true,
+    subgroup = "other",
+    order = "b[items]-o[one-way-valve]",
+    inventory_move_sound = item_sounds.metal_small_inventory_move,
+    pick_sound = item_sounds.metal_small_inventory_pickup,
+    drop_sound = item_sounds.metal_small_inventory_move,
+    place_result = "one-way-valve",
+    stack_size = 10
+  },
+  {
+    type = "item",
+    name = "overflow-valve",
+    icon = "__base__/graphics/entity/overflow-valve/overflow-valve-east.png",
+    hidden = true,
+    subgroup = "other",
+    order = "b[items]-o[overflow-valve]",
+    inventory_move_sound = item_sounds.metal_small_inventory_move,
+    pick_sound = item_sounds.metal_small_inventory_pickup,
+    drop_sound = item_sounds.metal_small_inventory_move,
+    place_result = "overflow-valve",
+    stack_size = 10
+  },
+  {
+    type = "item",
+    name = "top-up-valve",
+    icon = "__base__/graphics/entity/top-up-valve/top-up-valve-east.png",
+    hidden = true,
+    subgroup = "other",
+    order = "b[items]-o[top-up-valve]",
+    inventory_move_sound = item_sounds.metal_small_inventory_move,
+    pick_sound = item_sounds.metal_small_inventory_pickup,
+    drop_sound = item_sounds.metal_small_inventory_move,
+    place_result = "top-up-valve",
+    stack_size = 10
+  },
+  {
     type = "module",
     name = "speed-module",
     localised_description = {"item-description.speed-module"},

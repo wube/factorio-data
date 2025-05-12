@@ -1,13 +1,107 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.48
+Version: 2.0.49
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.48
+Date: 12. 05. 2025
+  Minor Features:
+    - Show existing turrets' radius when holding a turret to be built. (https://forums.factorio.com/116572)
+    - Smart underground belt building now considers splitter to be an obstacle if there was something connected to the lane already.
+  Bugfixes:
+    - Fixed a crash when trying to render screenshots of entities marked for upgrade in multiplayer latency. (https://forums.factorio.com/128431)
+    - Fixed that negative quality effects did not show correctly in tootips. (https://forums.factorio.com/128464)
+    - Fixed a crash opening the train GUI in spectator controller. (https://forums.factorio.com/117928)
+    - Fixed that changing recipes in ghost assembling machines didn't remove invalid item requests. (https://forums.factorio.com/127958)
+    - Fixed that construction robots dispatch for item requests was too slow in networks with many unfulfillable requests. (https://forums.factorio.com/127543)
+    - Fixed the browse arrows in the remote view changing position when opening the train GUI. (https://forums.factorio.com/119525)
+    - Fixed listbox items with remarks would have their text cut off unnecessarily. (https://forums.factorio.com/118954)
+    - Fixed renaming the last train stop on a surface would rename all global uses of the name in interrupts. (https://forums.factorio.com/123641)
+    - Fixed extra padding above the ghost cursor selection GUI. (https://forums.factorio.com/126818)
+    - Killed landmines now explode. (https://forums.factorio.com/121065)
+    - Fixed that manually launched rockets could be sent to platforms mid-flight in some cases. (https://forums.factorio.com/128393)
+    - Fixed that ghost upgrading entities in remote view would play a failure sound if the entity supported rotation but was not currently rotatable. (https://forums.factorio.com/122205)
+    - Fixed that multiplayer networking would fail if there were too many mods in the mods directory on Linux. (https://forums.factorio.com/128429)
+    - Fixed that renaming all stops would change the color of all stops with that name. (https://forums.factorio.com/128440)
+    - Fixed that a long 'Enable train limit' translation would make the train stop GUI expand. (https://forums.factorio.com/127386)
+    - Fixed textbox overlap in logistic network GUI. (https://forums.factorio.com/118078)
+    - Fixed a recursive table in data would cause a crash. (https://forums.factorio.com/128510)
+    - Fixed a crash when script requested printing a localised string that has recursion loop. (https://forums.factorio.com/113273)
+    - Fixed inserter rotation and extension speed would ignore quality level of normal quality. (https://forums.factorio.com/128506)
+    - Fixed belt gap traversing bug related to overbuilding ghost undergrounds with real ones. (https://forums.factorio.com/128283)
+    - Fixed missing train stop limit and priority blueprint parametrisation context captions translations. (https://forums.factorio.com/128318)
+    - Fixed a crash when clicking on "Show only essential technologies" in technology GUI while a hidden technology is selected. (https://forums.factorio.com/128534)
+    - Fixed high memory usage of asteroid collectors because they didn't remove invalid asteroid chunks from tracking when they were disabled. (https://forums.factorio.com/128564)
+    - Fixed getting an extra warning message of missing underground even when its not needed. (https://forums.factorio.com/124209)
+    - Fixed possible memory management error when initializing GPU device counters with Metal. (https://forums.factorio.com/128505)
+    - Fixed texture initialization on low-memory Macs with the Metal graphics backend. (https://forums.factorio.com/128458)
+    - Fixed that the default graphics settings for some Macs with Apple GPUs were too high. (https://forums.factorio.com/128458, https://forums.factorio.com/128653)
+    - Fixed that transport belt ghost upgrading could generate unexpected undergrounds. (https://forums.factorio.com/128232)
+    - Fixed that the blueprint parametrisation formula UI error handling didn't properly fill the variables resulting in false positive errors. (https://forums.factorio.com/128195)
+    - Fixed that some map generator GUI headers didn't show. (https://forums.factorio.com/128566)
+    - Fixed that it was not possible for scripts to set the player's zoom level at or below 1/32. (https://forums.factorio.com/128530)
+    - Fixed that the Constant Combinator GUI had inconsistent default values. (https://forums.factorio.com/128502)
+    - Fixed upgrade planner upgrading incorrect module slots when the entity was marked for downgrade. (https://forums.factorio.com/121495)
+    - Added missing notification of "too far to connect" for smart belt dragging when the obstacle is exceeding the limit of the related undergrounds.
+    - Fixed that items in provider chests did not count as available when reading logistic network requests. (https://forums.factorio.com/128584)
+    - Fixed a crash when setting active=false on logistic/construction robots. (https://forums.factorio.com/128560)
+    - Changed pipette of fluid recipes to work the same as pipette of item recipes. (https://forums.factorio.com/128512)
+    - Fixed solar panels on a script created surfaces were not affected by surface properties.
+    - Fixed an issue when changing constant combinator values in multiplayer. (https://forums.factorio.com/128613)
+    - Fixed that locomotive fuel request couldn't be canceled outside of remote view. (https://forums.factorio.com/128552)
+    - Fixed that building while in the trains GUI when entered from remote view would build physical items. (https://forums.factorio.com/128591)
+    - Fixed that the fulgoran lightning attractor didn't show what items it would produce when mined. (https://forums.factorio.com/128612)
+    - Fixed a crash when trying to parameterize infinity pipe filters. (https://forums.factorio.com/128626)
+    - Fixed inserters could get stuck trying to insert into lab with some modded technologies active. (https://forums.factorio.com/128625)
+    - Fixed smart belt building over a curve in reversed direction. (https://forums.factorio.com/126645)
+    - Fixed various problems of smart belt building with no undergrounds in inventory over perpendicular belts. (https://forums.factorio.com/122935)
+    - Fixed that offshore pump ghosts kept their fluid filters in cases where they weren't meant to. (https://forums.factorio.com/128542)
+    - Fixed ghosts were not showing wire connection areas properly for combinators and power switches when connecting wires.
+    - Fixed LuaRadarControlBehavior was missing LuaControlBehavior fields.
+    - Fixed a crash when interacting with temporary stops in moving trains. (https://forums.factorio.com/127258)
+    - Fixed a crash when defining a local noise expression as empty string and using it. (https://forums.factorio.com/128654)
+    - Fixed a crash when migrating rolling stocks. (https://forums.factorio.com/128667)
+    - Fixed wire shadow rendering ignoring surface shadow opacity. (https://forums.factorio.com/128633)
+    - Fixed an issue with scrollable tooltips and label sizes. (https://forums.factorio.com/128655)
+    - Fixed modded furnaces would not work with item and fluid recipes based on ingredients order.
+    - Fixed LuaForce::platforms read not being mapped by platform index as documented.
+    - Fixed a crash when ghost of train stop with custom color is upgraded.
+    - Fixed agricultural tower having insufficient electric buffer size when crane_energy_usage was larger than energy_usage.
+    - Fixed that a black line could appear between chunks at some zoom levels. (https://forums.factorio.com/128367)
+  Modding:
+    - Added the "valve" entity type.
+    - Added SolarPanelPrototype::performance_at_day, performance_at_night and solar_coefficient_property.
+    - Added LightningProperties::lightning_multiplier_at_day, lightning_multiplier_at_night, multiplier_surface_property and lightning_warning_icon.
+    - Added AgriculturalTowerPrototype::accepted_seeds.
+  Scripting:
+    - Added LuaSpacePlatform::ejected_items read.
+    - Added LuaSpacePlatform::eject_item().
+    - Added LuaSpacePlatform::clear_ejected_items().
+    - Added LuaEntity::valve_threshold_override read/write.
+    - Added LuaEntityPrototype::valve_mode read, LuaEntityPrototype::valve_threshold read, and LuaEntityPrototype::get_valve_flow_rate(quality).
+    - Added drop_full_stack parameter to LuaSurface::spill_item_stack.
+    - Added character parameter to LuaEntity::launch_rocket.
+    - Added LuaSurface::set_pollution.
+    - Added defines.inventory.agricultural_tower_input and defines.inventory.agricultural_tower_output.
+    - Added defines.inventory.linked_container_main, asteroid_collector_output, crafter_input, crafter_output, crafter_modules, crafter_trash, lab_trash.
+    - Added LuaControl::get_inventory_name.
+    - Added LuaInventory::name read.
+    - Added LuaGuiElement::quality read/write for "sprite-button" type.
+    - Added LuaEntity::cargo_bay_connection_owner read.
+    - Added LuaEntity::use_transitional_requests read/write.
+    - Added LuaEntityPrototype::fluid_source_offset.
+    - Added LuaEntity::get_fluid_source_tile() and get_fluid_source_fluid().
+    - Added LuaSurface::pollution_statistics read.
+    - Added LuaSurface::global_electric_network_statistics read.
+    - Added LuaSurface::daytime_parameters read/write.
+    - Added LuaEntityPrototype::agricultural_tower_radius, crane_energy_usage and growth_area_radius read.
+    - Changed on_space_platform_changed_state event to run after all starter pack actions are done when applying it and LuaSpacePlatform::hub is set.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.47
 Date: 29. 04. 2025
   Bugfixes:
     - Fixed alert icons could persist after changing surfaces. (https://forums.factorio.com/121200)
     - Fixed upgrade planner slot tooltips not showing with the correct quality. (https://forums.factorio.com/117051)
-    - Fixed that manually filed rocket silos wouldn't launch correctly when multiple platforms requested the same item. (https://forums.factorio.com/128447)
+    - Fixed that manually filled rocket silos wouldn't launch correctly when multiple platforms requested the same item. (https://forums.factorio.com/128447)
     - Fixed logistic group multiplier was not visible with long group names. (https://forums.factorio.com/124233)
     - Fixed asteroids not getting destroyed when they collided with the platform and had zero relative velocity while the platform was moving.
 ---------------------------------------------------------------------------------------------------

@@ -129,6 +129,9 @@ data.raw["ammo-turret"]["gun-turret"].heating_energy = "50kW"
 data.raw["electric-turret"]["laser-turret"].heating_energy = "50kW"
 data.raw["artillery-turret"]["artillery-turret"].heating_energy = "200kW"
 data.raw["furnace"]["recycler"].heating_energy = "100kW"
+data.raw["valve"]["one-way-valve"].heating_energy = "20kW"
+data.raw["valve"]["overflow-valve"].heating_energy = "20kW"
+data.raw["valve"]["top-up-valve"].heating_energy = "20kW"
 
 data.raw["rocket-silo"]["rocket-silo"].surface_conditions =
 {

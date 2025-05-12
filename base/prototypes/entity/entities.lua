@@ -7166,6 +7166,110 @@ data:extend(
     circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
+    type = "valve",
+    name = "one-way-valve",
+    icon = "__base__/graphics/entity/one-way-valve/one-way-valve-east.png",
+    flags = {"placeable-neutral", "player-creation"},
+    hidden = true,
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    minable = {mining_time = 0.1, result = "one-way-valve"},
+    fast_replaceable_group = "pipe",
+    mode = "one-way",
+    flow_rate = 20,
+    fluid_box =
+    {
+      volume = 100,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        {direction = defines.direction.north, position = {0, 0}, flow_direction = "output"},
+        {direction = defines.direction.south, position = {0, 0}, flow_direction = "input-output"},
+      },
+    },
+    max_health = 100,
+    corpse = "pipe-remnants",
+    dying_explosion = "pipe-explosion",
+    icon_draw_specification = {scale = 0.5},
+    animations =
+    {
+      north = {filename = "__base__/graphics/entity/one-way-valve/one-way-valve-north.png", size = 64, scale = 0.5},
+      east = {filename = "__base__/graphics/entity/one-way-valve/one-way-valve-east.png", size = 64, scale = 0.5},
+      south = {filename = "__base__/graphics/entity/one-way-valve/one-way-valve-south.png", size = 64, scale = 0.5},
+      west = {filename = "__base__/graphics/entity/one-way-valve/one-way-valve-west.png", size = 64, scale = 0.5},
+    },
+  },
+  {
+    type = "valve",
+    name = "overflow-valve",
+    icon = "__base__/graphics/entity/overflow-valve/overflow-valve-east.png",
+    flags = {"placeable-neutral", "player-creation"},
+    hidden = true,
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    minable = {mining_time = 0.1, result = "overflow-valve"},
+    fast_replaceable_group = "pipe",
+    mode = "overflow",
+    threshold = 0.8,
+    flow_rate = 20,
+    fluid_box =
+    {
+      volume = 100,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        {direction = defines.direction.north, position = {0, 0}, flow_direction = "output"},
+        {direction = defines.direction.south, position = {0, 0}, flow_direction = "input-output"},
+      },
+    },
+    max_health = 100,
+    corpse = "pipe-remnants",
+    dying_explosion = "pipe-explosion",
+    icon_draw_specification = {scale = 0.5},
+    animations =
+    {
+      north = {filename = "__base__/graphics/entity/overflow-valve/overflow-valve-north.png", size = 64, scale = 0.5},
+      east = {filename = "__base__/graphics/entity/overflow-valve/overflow-valve-east.png", size = 64, scale = 0.5},
+      south = {filename = "__base__/graphics/entity/overflow-valve/overflow-valve-south.png", size = 64, scale = 0.5},
+      west = {filename = "__base__/graphics/entity/overflow-valve/overflow-valve-west.png", size = 64, scale = 0.5},
+    },
+  },
+  {
+    type = "valve",
+    name = "top-up-valve",
+    icon = "__base__/graphics/entity/top-up-valve/top-up-valve-east.png",
+    flags = {"placeable-neutral", "player-creation"},
+    hidden = true,
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    minable = {mining_time = 0.1, result = "top-up-valve"},
+    fast_replaceable_group = "pipe",
+    mode = "top-up",
+    threshold = 0.5,
+    flow_rate = 20,
+    fluid_box =
+    {
+      volume = 100,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        {direction = defines.direction.north, position = {0, 0}, flow_direction = "output"},
+        {direction = defines.direction.south, position = {0, 0}, flow_direction = "input-output"},
+      },
+    },
+    max_health = 100,
+    corpse = "pipe-remnants",
+    dying_explosion = "pipe-explosion",
+    icon_draw_specification = {scale = 0.5},
+    animations =
+    {
+      north = {filename = "__base__/graphics/entity/top-up-valve/top-up-valve-north.png", size = 64, scale = 0.5},
+      east = {filename = "__base__/graphics/entity/top-up-valve/top-up-valve-east.png", size = 64, scale = 0.5},
+      south = {filename = "__base__/graphics/entity/top-up-valve/top-up-valve-south.png", size = 64, scale = 0.5},
+      west = {filename = "__base__/graphics/entity/top-up-valve/top-up-valve-west.png", size = 64, scale = 0.5},
+    },
+  },
+  {
     type = "market",
     name = "market",
     icon = "__base__/graphics/icons/market.png",

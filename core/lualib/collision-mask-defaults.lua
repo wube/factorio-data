@@ -65,6 +65,7 @@ return
   ["tree"] = building(),
   ["turret"] = building(),
   ["unit-spawner"] = building(),
+  ["valve"] = building(),
   ["wall"] = building(),
   ["display-panel"] = building(),
 

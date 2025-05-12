@@ -375,6 +375,7 @@ data:extend
     selection_box = {{-0.5, -1}, {0.5, 1}},
     damaged_trigger_effect = hit_effects.entity(),
     animation_speed_coefficient = 32,
+    icon_draw_specification = {scale = 0.7},
     belt_animation_set = tungsten_belt_animation_set,
     fast_replaceable_group = "loader",
     speed = 0.125,

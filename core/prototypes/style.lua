@@ -2078,7 +2078,7 @@ data:extend(
       level_band = {position = {381, 136}, corner_size = 8},
       hovered_level_band = {position = {381, 136}, corner_size = 8},
       level_offset_x = 12,
-      level_offset_y = -2.5,
+      level_offset_y = -2,
       level_band_width = 28,
       level_band_height = 12,
       level_font = "technology-slot-level-font",
@@ -2090,7 +2090,7 @@ data:extend(
       level_range_band = {position = {397, 136}, corner_size = 8},
       hovered_level_range_band = {position = {397, 136}, corner_size = 8},
       level_range_offset_x = -4,
-      level_range_offset_y = -2.5,
+      level_range_offset_y = -2,
       level_range_font = "technology-slot-level-font",
       level_range_font_color = {1, 1, 1},
       hovered_level_range_font_color = {1, 1, 1},
@@ -3144,7 +3144,7 @@ data:extend(
       bottom_margin = -4,
       top_margin = 4
     },
-    
+
     control_settings_bordered_frame =
     {
       type = "frame_style",
@@ -4867,6 +4867,13 @@ data:extend(
       type =  "textbox_style",
       parent = "slider_value_textfield",
       width = 100
+    },
+
+    short_slider_value_textfield =
+    {
+      type = "textbox_style",
+      parent = "slider_value_textfield",
+      width = 40
     },
 
     stretchable_textfield =
