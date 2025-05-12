@@ -1,6 +1,22 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.49
+Version: 2.0.50
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.49
+Date: 12. 05. 2025
+  Bugfixes:
+    - Fixed a crash when calling LuaEntity::launch_rocket() with no character.
+    - Fixed a crash related to logistic filters that should not have import from configured but kept having one due to missing migration. (https://forums.factorio.com/128719)
+    - Fixed it was possible to set "solar" usage priority for electric energy source of entities that are not a solar panel.
+    - Fixed multioctave noise allowing negative and infinite octaves which caused the game to freeze in map generation on ARM systems. (https://forums.factorio.com/128358)
+    - Fixed "Any request zero" wait condition triggering when building last item on a space platform. (https://forums.factorio.com/127644)
+    - Fixed super forced building acrosss undergound belts not working for some directions. (https://forums.factorio.com/127335)
+  Modding:
+    - Added AgriculturalTowerPrototype::randomize_planting_tile.
+    - Added RecipePrototype::additional_categories.
+  Scripting:
+    - Added LuaEntity::owned_plants read.
+    - Added LuaEntityPrototype::launch_to_space_platforms read.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.48
 Date: 12. 05. 2025

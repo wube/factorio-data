@@ -395,8 +395,8 @@ data.raw.recipe["rocket-part"].ingredients =
   {type = "item", name = "low-density-structure", amount = 1},
   {type = "item", name = "rocket-fuel", amount = 1}
 }
-data.raw.recipe["rocket-part"].subgroup = "space-interactors"
-data.raw.recipe["rocket-part"].order = "b[rocket-part]"
+data.raw.item["rocket-part"].subgroup = "space-interactors"
+data.raw.item["rocket-part"].order = "b[rocket-part]"
 
 data.raw["rocket-silo"]["rocket-silo"].cargo_station_parameters.prefer_packed_cargo_units = true
 
