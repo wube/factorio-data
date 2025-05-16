@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.50
+Version: 2.0.51
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.50
+Date: 16. 05. 2025
+  Bugfixes:
+    - Fixed super forced building across underground belts not working for some directions. (https://forums.factorio.com/127335)
+    - Fixed that landing at modded planets could cause the game to get stuck waiting for a landing position. (https://forums.factorio.com/128194)
+    - Fixed that instant upgrading modules was not instant. (https://forums.factorio.com/128649)
+    - Fixed that inserters could get stuck when captured spawners would revert and be re-captured. (https://forums.factorio.com/128751)
+    - Fixed that when parametrising something without quality (fluid for example), confirming with shortcut didn't allow to keep the parameter. (https://forums.factorio.com/127940)
+    - Fixed that demolishers would fall asleep while mostly outside of their territory and would not respond to taking damage. (https://forums.factorio.com/128104)
+    - Fixed a rare, failing demolisher-related consistency check. (https://forums.factorio.com/128720)
+    - Fixed that deleting all achievements in a modded game also deleted Steam achievements. (https://forums.factorio.com/128753)
+    - Fixed a crash when a vehicle with roboport equipment was marked for deconstruction. (https://forums.factorio.com/128664)
+    - Fixed entity ghost colliding colliding with other force's entity marked for deconstruction sometimes causing a crash (https://forums.factorio.com/127660)
+    - Fixed a crash when attempting to run RCON commands in single player before the first tick has run. (https://forums.factorio.com/128760)
+    - Fixed that fast-replacing furnaces did not put result items into the correct slots. (https://forums.factorio.com/128756)
+    - Fixed that you could un-toggle all of the time buttons in the production statistics GUI. (https://forums.factorio.com/128694)
+    - Fixed that finishing a map drag and closing remote view on the same frame would cause remote view to become "stuck" at an offset. (https://forums.factorio.com/128746)
+    - Fixed that toggling rocket silo space platform requests did not set the last user. (https://forums.factorio.com/128785)
+    - Fixed that some space-age recipes using spoiling could be paused indefinitely. (https://forums.factorio.com/128716)
+    - Fixed that text field rendering did not work correctly when when changing the text value in some cases. (https://forums.factorio.com/126400)
+    - Fixed that belt dragging over belt undergound gap changed direction in the process, effectively making one part of the drag in the opposite direction.
+    - Fixed a crash in map generation when offset_x/y was infinite by adding stronger noise expression argument validation.
+    - Fixed that disabling a text field widget didn't disable the rich text icon selector. (https://forums.factorio.com/125560)
+  Balancing:
+    - Fuel acceleration bonus and equipment speed bonuses now apply quarter of compound bonus rate to turning rate of tank-driving cars (e.g. tank)
+  Scripting:
+    - Added LuaEntity::set_inventory_size_override/get_inventory_size_override methods with support for container and cargo-wagon.
+    - Added LuaEntity::crane_end_position_3d read for getting current ending position of agricultural crane. (https://forums.factorio.com/128752)
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.49
 Date: 12. 05. 2025
@@ -10,7 +39,6 @@ Date: 12. 05. 2025
     - Fixed it was possible to set "solar" usage priority for electric energy source of entities that are not a solar panel.
     - Fixed multioctave noise allowing negative and infinite octaves which caused the game to freeze in map generation on ARM systems. (https://forums.factorio.com/128358)
     - Fixed "Any request zero" wait condition triggering when building last item on a space platform. (https://forums.factorio.com/127644)
-    - Fixed super forced building acrosss undergound belts not working for some directions. (https://forums.factorio.com/127335)
   Modding:
     - Added AgriculturalTowerPrototype::randomize_planting_tile.
     - Added RecipePrototype::additional_categories.

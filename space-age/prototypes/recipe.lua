@@ -129,7 +129,7 @@ data:extend(
     order = "e[bacteria]-b[cultivation]-b[copper]",
     enabled = false,
     allow_productivity = true,
-    result_is_always_fresh = true,
+    reset_freshness_on_craft = true,
     energy_required = 4,
     ingredients =
     {
@@ -200,7 +200,7 @@ data:extend(
     order = "e[bacteria]-b[cultivation]-a[iron]",
     enabled = false,
     allow_productivity = true,
-    result_is_always_fresh = true,
+    reset_freshness_on_craft = true,
     energy_required = 4,
     ingredients =
     {
@@ -393,7 +393,7 @@ data:extend(
     auto_recycle = false,
     enabled = false,
     allow_productivity = true,
-    result_is_always_fresh = true,
+    reset_freshness_on_craft = true,
     hide_from_signal_gui = true,
     energy_required = 15,
     ingredients =
@@ -1987,7 +1987,7 @@ data:extend(
     category = "cryogenics",
     energy_required = 10,
     enabled = false,
-    result_is_always_fresh = true,
+    reset_freshness_on_craft = true,
     ingredients =
     {
       {type = "item", name = "biter-egg", amount = 10},
@@ -2021,7 +2021,7 @@ data:extend(
     category = "organic-or-chemistry",
     subgroup = "nauvis-agriculture",
     order = "b[nauvis-agriculture]-b[fish-breeding]",
-    result_is_always_fresh = true,
+    reset_freshness_on_craft = true,
     auto_recycle = false,
     energy_required = 6,
     enabled = false,
