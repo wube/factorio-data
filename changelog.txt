@@ -1,6 +1,17 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.51
+Version: 2.0.52
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.51
+Date: 19. 05. 2025
+  Minor Features:
+    - Spidertron remote tooltips show a camera view of the selected spiders.
+  Bugfixes:
+    - Fixed spidertron remote not showing the color of the selected spiders. (https://forums.factorio.com/120405)
+    - Fixed a crash when player uses editor and views surface through remote view and presses shift+right click. (https://forums.factorio.com/128840)
+    - Fixed that inactive crafting machines were not clearing animation state when freezing.
+  Scripting:
+    - Added LuaSurface::spill_inventory.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.50
 Date: 16. 05. 2025

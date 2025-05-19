@@ -2143,6 +2143,7 @@ data:extend
     type = "spidertron-remote",
     name = "spidertron-remote",
     icon = "__base__/graphics/icons/spidertron-remote.png",
+    icon_color_indicator_mask = "__base__/graphics/icons/spidertron-remote-mask.png",
     flags = {"not-stackable", "only-in-cursor", "spawnable"},
     auto_recycle = false,
     subgroup = "spawnables",
