@@ -219,7 +219,7 @@ data:extend({
     flags = {"placeable-neutral"},
     category = "basic-fluid",
     subgroup = "mineable-fluids",
-    order="a-b-a",
+    order="a",
     infinite = true,
     highlight = true,
     minimum = 60000,

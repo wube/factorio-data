@@ -11,7 +11,7 @@ local function fulgora_ruin(args)
   ruin.flags = {"placeable-neutral", "placeable-off-grid"}
   ruin.icon = "__space-age__/graphics/icons/"..args.name..".png"
   ruin.subgroup = "grass"
-  ruin.order = "b[decorative]-l[rock]-j[ruin]-" .. (args.order or "a")
+  ruin.order = "b[decorative]-l[rock]-d[fulgora]-e[ruin]-" .. (args.order or "a")
   ruin.collision_box = args.collision_box or {{-1,-1}, {1,1}}
   ruin.selection_box = args.selection_box or {{ruin.collision_box[1][1]-0.2, ruin.collision_box[1][2]-0.2}, {ruin.collision_box[2][1]+0.2, ruin.collision_box[2][2]+0.2}}
   ruin.damaged_trigger_effect = hit_effects.rock()
@@ -74,7 +74,7 @@ data:extend(
   },
   fulgora_ruin({
     name = "fulgoran-ruin-small",
-    order = "b[decorative]-l[rock]-j[ruin]-b[small]",
+    order = "b[decorative]-l[rock]-d[fulgora]-e[ruin]-b[small]",
     collision_box = {{-0.77, -0.68}, {0.77, 0.68}},
     map_color = {110, 110, 110, 128},
     pictures = {
@@ -90,7 +90,7 @@ data:extend(
   }),
   fulgora_ruin({
     name = "fulgoran-ruin-medium",
-    order = "b[decorative]-l[rock]-j[ruin]-c[medium]",
+    order = "b[decorative]-l[rock]-d[fulgora]-e[ruin]-c[medium]",
     collision_box = {{-1.21, -0.86}, {1.21, 0.86}},
     map_color = {115, 115, 115, 128},
     pictures = {
@@ -106,7 +106,7 @@ data:extend(
   }),
   fulgora_ruin({
     name = "fulgoran-ruin-stonehenge",
-    order = "b[decorative]-l[rock]-j[ruin]-d[stonehenge]",
+    order = "b[decorative]-l[rock]-d[fulgora]-e[ruin]-d[stonehenge]",
     collision_box = {{-1.56, -1.32}, {1.56, 1.32}},
     map_color = {120, 120, 120, 128},
     frame_count = 8,
@@ -117,7 +117,7 @@ data:extend(
   }),
   fulgora_ruin({
     name = "fulgoran-ruin-big",
-    order = "b[decorative]-l[rock]-j[ruin]-e[big]",
+    order = "b[decorative]-l[rock]-d[fulgora]-e[ruin]-e[big]",
     collision_box = {{-1.77, -1.49}, {1.77, 1.49}},
     map_color = {120, 120, 120, 128},
     frame_count = 7,
@@ -128,7 +128,7 @@ data:extend(
   }),
   fulgora_ruin({
     name = "fulgoran-ruin-huge",
-    order = "b[decorative]-l[rock]-j[ruin]-f[huge]",
+    order = "b[decorative]-l[rock]-d[fulgora]-e[ruin]-f[huge]",
     collision_box = {{-2.78, -2.33}, {2.78, 2.33}},
     map_color = {125, 125, 125, 128},
     pictures = {
@@ -143,7 +143,7 @@ data:extend(
   }),
   fulgora_ruin({
     name = "fulgoran-ruin-colossal",
-    order = "b[decorative]-l[rock]-j[ruin]-f[colossal]",
+    order = "b[decorative]-l[rock]-d[fulgora]-e[ruin]-f[colossal]",
     frame_count = 3,
     dice_y = 2,
     collision_box = {{-3.47, -2.66}, {3.47, 2.66}},
@@ -155,7 +155,7 @@ data:extend(
   }),
   fulgora_ruin({
     name = "fulgoran-ruin-vault",
-    order = "b[decorative]-l[rock]-j[ruin]-g[vault]",
+    order = "b[decorative]-l[rock]-d[fulgora]-e[ruin]-g[vault]",
     frame_count = 1,
     dice_y = 2,
     collision_box = {{-6.88, -4}, {6.88, 4}},
@@ -186,7 +186,7 @@ data:extend(
       transfer_entity_health_to_products = false
     },
     subgroup = "grass",
-    order = "b[decorative]-l[rock]-j[ruin]-h[attractor]",
+    order = "b[decorative]-l[rock]-d[fulgora]-d[fulgoran-ruin-attractor]",
     factoriopedia_simulation = simulations.factoriopedia_fulgoran_ruin_attractor,
     autoplace = {
       order = "a[ruin]-b[attractor]",
@@ -287,7 +287,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = "__space-age__/graphics/icons/fulgurite-small.png",
     subgroup = "grass",
-    order = "b[decorative]-l[rock]-i[fulgurite]",
+    order = "b[decorative]-l[rock]-d[fulgora]-b[fulgurite-small]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     drawing_box_vertical_extension = 1,
@@ -326,7 +326,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = "__space-age__/graphics/icons/fulgurite.png",
     subgroup = "grass",
-    order = "b[decorative]-l[rock]-i[fulgurite]",
+    order = "b[decorative]-l[rock]-d[fulgora]-c[fulgurite]",
     collision_box = {{-1.0, -0.9}, {1.0, 0.9}},
     selection_box = {{-1.2, -1.1}, {1.2, 1.1}},
     drawing_box_vertical_extension = 1,
@@ -457,7 +457,7 @@ for name, original in pairs(rocks) do
   local rock = table.deepcopy(original)
   rock.name = name
   if name == "big-fulgora-rock" then
-    rock.order = "b[decorative]-l[rock]-j[ruin]-a[" .. name .. "]"
+    rock.order = "b[decorative]-l[rock]-d[fulgora]-a[" .. name .. "]"
     rock.icon = "__space-age__/graphics/icons/" .. name .. ".png"
   end
   for j, picture in pairs(rock.pictures) do

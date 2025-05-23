@@ -532,7 +532,7 @@ local robots =
       }
     },
     subgroup="capsule",
-    order="e-a-a",
+    order = "d[defender]-a[robot]",
     max_health = 60,
     alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
@@ -728,7 +728,7 @@ local robots =
       }
     },
     subgroup = "capsule",
-    order = "e-a-b",
+    order = "e[distractor]-a[robot]",
     factoriopedia_simulation = simulations.factoriopedia_distractor,
     max_health = 180,
     alert_when_damaged = false,
@@ -807,7 +807,7 @@ local robots =
       }
     },
     subgroup="capsule",
-    order="e-a-c",
+    order = "f[destroyer]-a[robot]",
     max_health = 60,
     alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},

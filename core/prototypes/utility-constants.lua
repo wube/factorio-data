@@ -600,8 +600,11 @@ data:extend(
 
     time_to_show_full_health_bar = 5,
 
-    capture_water_mask_at_layer = 200 -- need to capture water close to layer in which decals that need to be masked are rendered,
+    capture_water_mask_at_layer = 200, -- need to capture water close to layer in which decals that need to be masked are rendered,
                                       -- otherwise we risk that some tiles that are supposed to be under the decals and not mask them
                                       -- would not be rendered yet and therefore would have value 0 in water mask
+
+    logistic_robots_use_busy_robots_queue = true,
+    construction_robots_use_busy_robots_queue = true
   }
 })

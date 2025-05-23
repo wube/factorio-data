@@ -410,7 +410,7 @@ data:extend{
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = "__space-age__/graphics/icons/lithium-iceberg-big.png",
     subgroup = "grass",
-    order = "b[decorative]-l[rock]-k[lithium-iceberg]-d[big]",
+    order = "b[decorative]-l[rock]-e[aquilo]-b[lithium-iceberg-huge]",
     collision_mask =
     {
       layers=
@@ -516,7 +516,7 @@ data:extend{
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = "__space-age__/graphics/icons/lithium-iceberg-big.png",
     subgroup = "grass",
-    order = "b[decorative]-l[rock]-k[lithium-iceberg]-d[big]",
+    order = "b[decorative]-l[rock]-e[aquilo]-a[lithium-iceberg-big]",
     collision_mask =
     {
       layers=

@@ -1,6 +1,42 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.52
+Version: 2.0.53
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.52
+Date: 23. 05. 2025
+  Minor Features:
+    - Added --run-replay command line option.
+  Bugfixes:
+    - Fixed that character armor animations did not play correctly. (https://forums.factorio.com/128631)
+    - Fixed that beacons would not respect the allowed module categories of the affected machine. (https://forums.factorio.com/116042)
+    - Fixed a crash when using --dump-prototype-locale with some mods. (https://forums.factorio.com/128838)
+    - Fixed that eggs could spoil while traveling over open space and result in stuck biters. (https://forums.factorio.com/128902)
+    - Fixed that red wire shadows on selector combinators did not render correctly in the east orientation. (https://forums.factorio.com/128890)
+    - Fixed that asteroids would block placing blueprints. (https://forums.factorio.com/128859)
+    - Fixed that the galaxy of fame button would not show when in multiplayer. (https://forums.factorio.com/128259)
+    - Fixed ghost rotated overbuild over real entity would not generate events. (https://forums.factorio.com/128717)
+    - Fixed super-forcing gates and walls would sometimes cause deconstruction of adjacent curved rails (https://forums.factorio.com/122374 and https://forums.factorio.com/116779)
+    - Fixed other forces' ghosts with tile buildability rules colliding with a tile ghost on platform being removed on tile ghost build. not revive.
+    - Fixed blueprints not building cover tiles when foundation tile build failed on the same position (https://forums.factorio.com/128637)
+    - Fixed that rocket silos disabled by script would still try to fulfil space platform requests. (https://forums.factorio.com/128819)
+    - Fixed a broken menu simulation. (https://forums.factorio.com/128891)
+    - Fixed that destroying a character entity while it was in a space platform would crash the game. (https://forums.factorio.com/128935)
+    - Fixed a crash when trying to render corpses without graphics defined. (https://forums.factorio.com/128926)
+    - Fixed an issue with choose-elem-button highlighting when disabling/enabling widgets. (https://forums.factorio.com/128938)
+    - Fixed a rendering issue with tables when removing all child widgets at once. (https://forums.factorio.com/128820)
+    - Fixed that changing recipes in ghost assemblers would always clear requested modules. (https://forums.factorio.com/128942)
+    - Fixed researched and disabled technologies being shown in the technology tree and considered as "not researched" for prerequisites checks. (https://forums.factorio.com/128875)
+    - Fixed that railguns didn't show the maximum energy consumption correctly. (https://forums.factorio.com/128858)
+    - Fixed that valves would play a working sound when no fluid is flowing.
+    - Fixed that LuaEntity::launch_rocket() did not work with some parameter combinations. (https://forums.factorio.com/128724)
+    - Fixed consistency issue with locomotive's fuel inventory if it has non fuel items in it.
+    - Fixed several issues of factoriopedia entries being in the wrong order. (https://forums.factorio.com/128417)
+    - Fixed that the blueprint GUI could think there were pending changes when there weren't. (https://forums.factorio.com/128937)
+  Modding:
+    - Added ItemPrototype::moved_to_hub_when_building.
+  Scripting:
+    - Added LuaSchedule::get_inside_interrupt()/set_inside_interrupt().
+    - Added `quality` to on_script_trigger_effect event when item spoils to script trigger.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.51
 Date: 19. 05. 2025

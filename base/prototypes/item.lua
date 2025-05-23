@@ -1259,7 +1259,7 @@ data:extend
       }
     },
     subgroup = "capsule",
-    order = "d[defender-capsule]",
+    order = "d[defender]-b[capsule]",
     inventory_move_sound = item_sounds.robotic_inventory_move,
     pick_sound = item_sounds.robotic_inventory_pickup,
     drop_sound = item_sounds.robotic_inventory_move,
@@ -3929,7 +3929,7 @@ data:extend
       }
     },
     subgroup = "capsule",
-    order = "e[defender-capsule]",
+    order = "e[distractor]-b[capsule]",
     inventory_move_sound = item_sounds.robotic_inventory_move,
     pick_sound = item_sounds.robotic_inventory_pickup,
     drop_sound = item_sounds.robotic_inventory_move,
@@ -3984,7 +3984,7 @@ data:extend
       }
     },
     subgroup = "capsule",
-    order = "f[destroyer-capsule]",
+    order = "f[destroyer]-b[capsule]",
     inventory_move_sound = item_sounds.robotic_inventory_move,
     pick_sound = item_sounds.robotic_inventory_pickup,
     drop_sound = item_sounds.robotic_inventory_move,

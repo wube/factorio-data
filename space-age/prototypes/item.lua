@@ -698,7 +698,7 @@ data:extend(
       { size = 64, filename = "__space-age__/graphics/icons/copper-bacteria-3.png", scale = 0.5, mipmap_count = 4 },
     },
     subgroup = "agriculture-processes",
-    order = "b[agriculture]-d[copper-bacteria]",
+    order = "b[agriculture]-d[bacteria]-c[copper-bacteria]",
     inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
     pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
@@ -720,7 +720,7 @@ data:extend(
       { size = 64, filename = "__space-age__/graphics/icons/iron-bacteria-3.png", scale = 0.5, mipmap_count = 4 },
     },
     subgroup = "agriculture-processes",
-    order = "b[agriculture]-c[iron-bacteria]",
+    order = "b[agriculture]-d[bacteria]-a[iron-bacteria]",
     inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
     pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
@@ -1115,6 +1115,7 @@ data:extend(
               show_in_tooltip = true,
               as_enemy = true,
               find_non_colliding_position = true,
+              abort_if_over_space = true,
               offset_deviation = {{-1, -1}, {1, 1}},
               non_colliding_fail_result =
               {
@@ -1181,6 +1182,7 @@ data:extend(
               show_in_tooltip = true,
               as_enemy = true,
               find_non_colliding_position = true,
+              abort_if_over_space = true,
               offset_deviation = {{-5, -5}, {5, 5}},
               non_colliding_fail_result =
               {
@@ -1681,8 +1683,8 @@ data:extend(
       { size = 64, filename = "__space-age__/graphics/icons/tree-seed-3.png", scale = 0.5, mipmap_count = 4 },
       { size = 64, filename = "__space-age__/graphics/icons/tree-seed-4.png", scale = 0.5, mipmap_count = 4 },
     },
-    subgroup = "agriculture-processes",
-    order = "a[seeds]-c[tree-seed]",
+    subgroup = "nauvis-agriculture",
+    order = "a[seeds]-b[tree-seed]",
     plant_result = "tree-plant",
     place_result = "tree-plant",
     inventory_move_sound = item_sounds.wood_inventory_move,
