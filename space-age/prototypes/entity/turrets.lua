@@ -376,7 +376,7 @@ data:extend(
       type = "projectile",
       ammo_category = "railgun",
       health_penalty = -1,
-      cooldown = 120,
+      cooldown = 170,
       projectile_creation_distance = 3.6,
       projectile_center = {0, 0},
       apply_projection_to_projectile_creation_position = false,

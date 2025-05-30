@@ -237,7 +237,7 @@ data:extend(
         ammo_category = "railgun",
         icon = "__space-age__/graphics/icons/railgun-ammo.png",
         icon_size = 64,
-        modifier = 0.2
+        modifier = 0.15
       },
     },
     prerequisites = {"railgun"},
