@@ -3090,6 +3090,7 @@ simulations.copy_paste_filters =
     }
     splitter1 = game.surfaces[1].find_entities_filtered{name = "splitter"}[1]
     splitter2 = game.surfaces[1].find_entities_filtered{name = "splitter"}[2]
+    splitter1.splitter_filter = {name = "electronic-circuit", quality = "normal", comparator = "="} -- https://forums.factorio.com/129042
 
     local story_table =
     {

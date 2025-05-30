@@ -4759,6 +4759,7 @@ data:extend{
       {icon = "__base__/graphics/icons/explosion.png"},
       {icon = "__base__/graphics/icons/atomic-bomb.png"}
     },
+    localised_name = {"entity-name.nuke-explosion"},
     order = "a-d-a-b",
     subgroup = "explosions",
     height = 0,
@@ -4803,6 +4804,7 @@ data:extend{
       {icon = "__base__/graphics/icons/explosion.png"},
       {icon = "__base__/graphics/icons/atomic-bomb.png"}
     },
+    localised_name = {"entity-name.nuke-explosion"},
     order = "a-d-a-b",
     subgroup = "explosions",
     height = 0,
@@ -4851,6 +4853,7 @@ data:extend{
       {icon = "__base__/graphics/icons/explosion.png"},
       {icon = "__base__/graphics/icons/atomic-bomb.png"}
     },
+    localised_name = {"entity-name.nuke-explosion"},
     order = "a-d-a-b",
     subgroup = "explosions",
     height = 0,

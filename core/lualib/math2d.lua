@@ -12,7 +12,7 @@ math2d.vector.from_orientation = function(orientation, length)
 end
 
 math2d.vector.to_orientation = function(vec)
-  return math.atan2(vec.x, -vec.y) * 0.5 / math.pi
+  return math.atan2(vec.x, -vec.y) * 0.5 / math.pi % 1
 end
 
 math2d.vector.length = function(vec)

@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.53
+Version: 2.0.54
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.53
+Date: 30. 05. 2025
+  Bugfixes:
+    - Improved collection of asteroid chunks on space platforms with fluctuating speed. (https://forums.factorio.com/124493)
+    - Fixed that you couldn't immediately clear the cursor if the inventory "hand" was on a filtered slot and you held a different item. Hand will now move to a new slot when swapping it. (https://forums.factorio.com/114621)
+    - Fixed that ghost-building upgrading of an entity with module requests would clear the module requests. (https://forums.factorio.com/128998)
+    - Fixed that did on_player_driving_changed_state not run when cargo pods landed. (https://forums.factorio.com/117557)
+    - Fixed that recipe with quality tooltip didn't work for modded GUIs. (https://forums.factorio.com/128958)
+    - Fixed math2d.vector.to_orientation() not enforcing range [0, 1) for the return value. (https://forums.factorio.com/128085)
+    - Fixed spoilable category not showing in Factoriopedia when the item spoiled into nothing. (https://forums.factorio.com/129011)
+    - Fixed a crash when reading LuaStyle::horizontal_spacing and vertical_spacing of a table which didn't have these values set. (https://forums.factorio.com/129013)
+    - Fixed LuaEntityPrototype::get_inventory_size() returning nil for rocket_silo_rocket and rocket_silo_trash inventories. (https://forums.factorio.com/129009)
+    - Fixed that AnimationSheet::repeat_count wasn't handled correctly and could crash the game. (https://forums.factorio.com/128804)
+    - Fixed that internal console textfield scrollbar moved to the beginning and back after every key press if the message was too long.
+    - Fixed LuaGameScript::take_technology_screenshot was not processing selected_technology. (https://forums.factorio.com/129086)
+    - Fixed that item insertion requests didn't work well with spidertron's sorted inventory. (https://forums.factorio.com/120830)
+    - Fixed storage tank was not showing fluid content through window when frozen. (https://forums.factorio.com/129084)
+    - Fixed wait condition "any planet import zero" was ignoring negative filters when deciding which items would be requested. (https://forums.factorio.com/128821)
+    - Fixed any filter was showing in copy-paste filters tip. (https://forums.factorio.com/129042)
+    - Fixed a crash when replacing a buffered fluidbox with an unbuffered fluidbox. (https://forums.factorio.com/128933)
+    - Fixed missing localisation for nuclear explosion effects. (https://forums.factorio.com/129104)
+  Modding:
+    - Added utility constants logistic_slots_per_row, crafting_queue_slots_per_row, blueprint_big_slots_per_row, blueprint_small_slots_per_row, and trash_inventory_width.
+    - Added LandMinePrototype::trigger_interval.
+    - Added SolarPanelEquipmentPrototype::performance_at_day, performance_at_night and solar_coefficient_property.
+  Scripting:
+    - Changed LuaEntity::set_passenger() to work with cargo pods.
+    - Changed LuaLogisticSection::set_slot() to return the existing conflicting slot (if one exists) instead of erroring.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.52
 Date: 23. 05. 2025

@@ -485,8 +485,13 @@ data:extend(
 
     select_group_row_count = 6,
     select_slot_row_count = 10,
+    logistic_slots_per_row = 10,
+    crafting_queue_slots_per_row = 10,
+    blueprint_big_slots_per_row = 6,
+    blueprint_small_slots_per_row = 10,
     inventory_width = 10,
     module_inventory_width = 10,
+    trash_inventory_width = 10,
     tooltip_monitor_edge_border = 10,
     flying_text_ttl = 80,
 
@@ -521,6 +526,8 @@ data:extend(
     space_platform_max_size = {{-1000000, -200}, {1000000, 1000000}},
     space_platform_dump_cooldown = 30 * second,
     space_platform_manual_dump_cooldown = 2 * second,
+    space_platform_max_relative_speed_deviation_for_asteroid_chunks_update = 1/second,
+    space_platform_asteroid_chunk_trajectory_updates_per_tick = 1,
 
     default_item_weight = 100,
     rocket_lift_weight = 1000000, -- 1 000 kg
