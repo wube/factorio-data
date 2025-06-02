@@ -1,6 +1,21 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.55
+Version: 2.0.56
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.55
+Date: 02. 06. 2025
+  Bugfixes:
+    - Fixed a crash when game was saved in complete mode (for desync, benchmark or heavy mode) that could happen after a save file was loaded from an older version requiring transport line groups to be reconstructed while there were also blueprints with transport belts present in the save.
+    - Fixed vehicle ammo refill was not working. (https://forums.factorio.com/129137)
+    - Fixed splitter gui was not updated in some cases. (https://forums.factorio.com/129161)
+    - Fixed heat pipe connections did not flip. (https://forums.factorio.com/129176)
+    - Fixed blueprint tile building sometimes not allowing partial builds (https://forums.factorio.com/122966)
+    - Fixed some issues around setting driving for a vehicle on different surface via scripts (https://forums.factorio.com/127651)
+  Modding:
+    - Added `helpers` to settings and prototype stages.
+  Scripting:
+    - Added LuaHelpers::game_version read.
+    - Added LuaHelpers::compare_versions().
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.54
 Date: 30. 05. 2025
