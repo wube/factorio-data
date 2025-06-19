@@ -550,6 +550,8 @@ data:extend(
     landing_area_clear_zone_radius = 8,
     landing_area_max_radius = 16,
 
+    landing_squash_immunity = 5 * second,
+
     ejected_item_lifetime = 25 * second,
     ejected_item_speed = 0.005,
     ejected_item_direction_variation = 0.05,
@@ -612,6 +614,7 @@ data:extend(
                                       -- would not be rendered yet and therefore would have value 0 in water mask
 
     logistic_robots_use_busy_robots_queue = true,
-    construction_robots_use_busy_robots_queue = true
+    construction_robots_use_busy_robots_queue = true,
+    quality_selector_dropdown_threshold = 6,
   }
 })

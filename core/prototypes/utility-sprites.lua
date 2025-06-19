@@ -2529,6 +2529,16 @@ data:extend(
       flags = {"gui-icon"}
     },
 
+    collapse_dark =
+    {
+      filename = "__core__/graphics/icons/mip/collapse-dark.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+
     any_quality =
     {
       filename = "__core__/graphics/icons/any-quality.png",

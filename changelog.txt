@@ -1,6 +1,93 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.56
+Version: 2.0.57
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.56
+Date: 19. 06. 2025
+  Minor Features:
+    - Added ability to undo rotating or flipping an entity. (https://forums.factorio.com/116605)
+  Changes:
+    - Changed how captive spawners work to always allow spoilage into the trash slots. (https://forums.factorio.com/124219)
+  Bugfixes:
+    - Fixed that modded choose-elem-buttons didn't respect filters. (https://forums.factorio.com/129145)
+    - Changed the sync mods with GUI "Sync startup settings" and "Load save after sync" so their value is always used. (https://forums.factorio.com/129227)
+    - Fixed a crash when saving the game while using the spectator controller while a GUI is open. (https://forums.factorio.com/129198)
+    - Fixed that remote controllers could still open GUIs of entity ghosts that had operable set to false. (https://forums.factorio.com/129168)
+    - Agricultural tower planting now respects plant's tile buildability rules. (https://forums.factorio.com/123248)
+    - Fix buffer chests having their contents counted twice for 'missing requests' circuit read. (https://forums.factorio.com/128924)
+    - Fixed ghost overbuilding vehicle ghost would not set inventory filters. (https://forums.factorio.com/119772)
+    - Fixed using selection tools would sometimes incorrectly ignore tile ghosts. (https://forums.factorio.com/127696)
+    - Fixed cancelling deconstruction of a tile would not remove a tile ghost of the same tile on the same position. (https://forums.factorio.com/128391)
+    - Fixed that modded crafting machines with large amounts of fluidboxes could freeze the game. (https://forums.factorio.com/129187)
+    - Fixed shooter was doing ammo refill every shot causing reload time on modded ammo to not work. (https://forums.factorio.com/129276)
+    - Fixed that some widgets would click-through when trying to open Factoriopedia. (https://forums.factorio.com/129295)
+    - Fixed car crashing into a rock at the beginning of campaign level 5.
+    - Fixed that integration_patch for characters did not render for the local player. (https://forums.factorio.com/129260)
+    - Fixed a crash when migrating cargo bays in some cases. (https://forums.factorio.com/129004)
+    - Fixed that repair orders would not queue robots correctly. (https://forums.factorio.com/118916)
+    - Fixed that changing the link ID on a linked container wouldn't alarm sleeping inserters. (https://forums.factorio.com/129345)
+    - Fixed that loaders were unable to drop full belt stacks if that required merging items from multiple inventory slots. (https://forums.factorio.com/129343)
+    - Fixed editor not instantly reviving tile ghosts from blueprints when overbuilt over preexisting tile ghosts. (https://forums.factorio.com/128861)
+    - Fixed rectangular crafting machine sometimes rising rotate event even when it wasn't successfully rotated. (https://forums.factorio.com/129252)
+    - Fixed force building entities over required foundation marked for deconstruction would result in both decon. proxy and tileghost.
+    - Fixed tiles being thawed or frozen would cause cancelling of deconstruction. (https://forums.factorio.com/129201)
+    - Fixed controls GUI in controller input method not updating the icons for the controls when the icons dropdown is changed. (https://forums.factorio.com/129101)
+    - Fixed that the amount of VRAM on the Steam Deck was not being detected correctly, leading to the erroneous activation of VRAM-saving measures. (https://forums.factorio.com/129164)
+    - Fixed a crash when fast replacing furnaces when old furnace had empty item product stack and new furnace has fluid output. (https://forums.factorio.com/129385)
+    - Fixed LuaItemStack::transfer_stack was incorrectly reporting success when performing unlimited transfers. (https://forums.factorio.com/129406)
+    - Fixed a crash when trying to custom launch rockets to space platforms. (https://forums.factorio.com/129415)
+    - Fixed a crash when copying vehicle equipment grids from blueprints. (https://forums.factorio.com/129396)
+    - Fixed a desync related to circuit network and removing entities. (https://forums.factorio.com/129428)
+    - Fixed that regular mining drills weren't able to output full belts when belt stack size was researched. (https://forums.factorio.com/129365)
+    - Improved the expand/collapse icon for the crafting queue. (https://forums.factorio.com/105538)
+    - Fixed that opening rich text Factoriopedia shortcuts while in remote view did not work. (https://forums.factorio.com/129425)
+    - Fixed that Vulcanus chimneys were grouped with Nauvis big rocks in the deconstruction planner. (https://forums.factorio.com/129453)
+    - Fixed that base quality did not show in crafting machines. (https://forums.factorio.com/128167)
+    - Fixed that players landing on the same planet at the same time would squash each other. (https://forums.factorio.com/120809)
+    - Fixed a malformed icon. (https://forums.factorio.com/129444)
+    - Fixed that buffered fluidboxes would not flow fluid through their directional connections. (https://forums.factorio.com/129441)
+    - Fixed that fluidboxes in the vicinity of a removed fluidbox could disconnect from otherwise valid neighbors in some situations. (https://forums.factorio.com/128954)
+    - Fixed that roboport antenna was rotating while in preview. (https://forums.factorio.com/129470)
+    - Fixed promethium science pack was missing a description. (https://forums.factorio.com/129469)
+  Modding:
+    - Added `with_filters`, `with_weight_limit` and `with_custom_stack_size` options to ContainerPrototype::inventory_type and LinkedContainerPrototype::inventory_type.
+    - Added LoaderPrototype::wait_for_full_stack.
+    - Added QualityPrototype::default_multiplier, inserter_speed_multiplier, fluid_wagon_capacity_multiplier, inventory_size_multiplier, lab_research_speed_multiplier, crafting_machine_speed_multiplier, crafting_machine_energy_usage_multiplier, logistic_cell_charging_energy_multiplier, tool_durability_multiplier, accumulator_capacity_multiplier, flying_robot_max_energy_multiplier, range_multiplier, asteroid_collector_collection_radius_bonus, equipment_grid_width_bonus, equipment_grid_height_bonus, electric_pole_wire_reach_bonus, electric_pole_supply_area_distance_bonus, beacon_supply_area_distance_bonus, logistic_cell_charging_station_count_bonus, beacon_module_slots_bonus, crafting_machine_module_slots_bonus, mining_drill_module_slots_bonus, mining_drill_mining_radius_bonus and lab_module_slots_bonus.
+    - Added `quality_selector_dropdown_threshold` utility constant.
+    - Added CraftingMachinePrototype::quality_affects_energy_usage.
+    - Added MiningDrillPrototype::quality_affects_mining_radius.
+    - Added BeaconPrototype::quality_affects_supply_area_distance.
+    - Added CraftingMachinePrototype::quality_affects_module_slots, LabPrototype::quality_affects_module_slots, MiningDrillPrototype::quality_affects_module_slots and BeaconPrototype::quality_affects_module_slots.
+    - Added CharacterPrototype::crafting_speed.
+  Scripting:
+    - Added LuaAsteroidChunkPrototype::dying_trigger_effect read.
+    - Added LuaItemPrototype::send_to_orbit_mode read.
+    - Added LuaEntityPrototype::captured_spawner_entity read.
+    - Added LuaEntityPrototype::min_performance read.
+    - Added LuaEntityPrototype::max_performance read.
+    - Added target_filter to ammo type read.
+    - Added LuaInventory::weight and max_weight read.
+    - Added LuaEntity::pickup_from_left_lane and pickup_from_right_lane read/write for inserters.
+    - Added ghost_mode to LuaGuiElement::anchor.
+    - Added LuaPlayer::exit_remote_view().
+    - Added "blink_interval" and "render_mode" parameters to LuaRendering functions.
+    - Added LuaRenderObject::blink_interval and render_mode read/write.
+    - Added several LuaEntityPrototype reads for asteroid collector prototypes and entity with health prototypes.
+    - Added several LuaItemPrototype reads for starter pack prototypes.
+    - Added LuaForce::get_logistic_groups(), get_logistic_group(), create_logistic_group(), and delete_logistic_group().
+    - Added on_research_queued.
+    - Added player to on_research_moved and on on_research_cancelled.
+    - Added fusion reactor properties to LuaEntityPrototype.
+    - Added LuaSurface get_default_cover_tile() and set_default_cover_tile().
+    - Added CustomInputEvent::element to get the LuaGuiElement under the cursor when the custom input was activated.
+    - Changed LuaInventory::set_bar to allow passing nil as well.
+    - Added LuaPrototypes::utility_constants read.
+    - Added LuaEntityPrototype::get_fluid_capacity().
+    - Added force to LuaEntityDiedEventFilter.
+    - Added LuaSpacePlatform::hidden read/write.
+    - LuaGuiElement::locked can be set during add().
+    - Added LuaEntity::inventory_supports_bar(), get_inventory_bar(), set_inventory_bar(), inventory_supports_filters(), is_inventory_filtered(),
+      can_set_inventory_filter(), get_inventory_filter(), and set_inventory_filter().
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.55
 Date: 02. 06. 2025
@@ -562,6 +649,7 @@ Date: 26. 03. 2025
     - Fixed manually changing upgrade target of entity was not covered by undo. (https://forums.factorio.com/126895)
     - Fixed freeplay description was changing to space age freeplay even if space-age mod was not enabled. (https://forums.factorio.com/127215)
     - Fixed some icons were not collected for galaxy of fame uploads. (https://forums.factorio.com/125306)
+    - Fixed blueprints including spidertron not being rotatable. (https://forums.factorio.com/127682)
   Modding:
     - Added AirbornePollutantPrototype::damages_trees.
 ---------------------------------------------------------------------------------------------------

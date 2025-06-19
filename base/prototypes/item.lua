@@ -2489,6 +2489,19 @@ data:extend
   },
   {
     type = "item",
+    name = "bottomless-chest",
+    icons = {{icon = "__base__/graphics/icons/steel-chest.png", tint = {0.4, 0.4, 0.4}}},
+    hidden = true,
+    subgroup = "other",
+    order = "a[items]-c[bottomless-chest]",
+    inventory_move_sound = item_sounds.metal_chest_inventory_move,
+    pick_sound = item_sounds.metal_chest_inventory_pickup,
+    drop_sound = item_sounds.metal_chest_inventory_move,
+    place_result = "bottomless-chest",
+    stack_size = 10
+  },
+  {
+    type = "item",
     name = "linked-belt",
     icon = "__base__/graphics/icons/linked-belt.png",
     hidden = true,

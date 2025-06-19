@@ -130,7 +130,7 @@ data:extend(
   {
     type = "tool",
     name = "promethium-science-pack",
-    --localised_description = {"item-description.science-pack"},
+    localised_description = {"item-description.science-pack"},
     icon = "__space-age__/graphics/icons/promethium-science-pack.png",
     subgroup = "science-pack",
     color_hint = { text = "I" },
