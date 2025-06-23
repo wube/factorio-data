@@ -1,6 +1,27 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.58
+Version: 2.0.59
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.58
+Date: 23. 06. 2025
+  Bugfixes:
+    - Fixed LuaForce::get_logistic_group was not working with constant combinators. (https://forums.factorio.com/129484)
+    - Fixed a crash when item spoils in furnace source inventory while recipe was not yet selected.
+    - Fixed music not playing on surfaces without a planet associated with them. (https://forums.factorio.com/129408)
+    - Fixed that enabling user mods would not auto enable built in required mods. (https://forums.factorio.com/129362)
+    - Fixed that inventory migrations could cause chests to send wrong item counts. (https://forums.factorio.com/129515)
+    - Fixed logistic filter merging during parametrisation would incorrectly sum values. (https://forums.factorio.com/129527)
+    - Fixed a crash when loading a save file when asteroid collector arms count and asteroid collector arms capacity were changed at the same time.
+    - Fixed cursor transfer could insert items beyond inventory weight limit. (https://forums.factorio.com/129544)
+    - Fixed set constant gui would was not focusing upon opening. (https://forums.factorio.com/129495)
+    - Fixed that some items that did not require recycling recipe had a recycling recipe. (https://forums.factorio.com/129535)
+    - Fixed a crash when querying members of logistic group while one of them is a detached character. (https://forums.factorio.com/129549)
+    - Fixed a crash when entering huge numbers into electric energy interface. (https://forums.factorio.com/129518)
+  Modding:
+    - Added the "mod-data" prototype type.
+    - Added CraftingMachinePrototype::crafting_speed_quality_multiplier, module_slots_quality_bonus and energy_usage_quality_multiplier.
+  Scripting:
+    - Added LuaEntityPrototype::neighbour_connectable read.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.57
 Date: 19. 06. 2025
