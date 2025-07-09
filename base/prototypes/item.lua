@@ -1216,7 +1216,7 @@ data:extend
   {
     type = "capsule",
     name = "defender-capsule",
-    icon = "__base__/graphics/icons/defender.png",
+    icon = "__base__/graphics/icons/defender-capsule.png",
     capsule_action =
     {
       type = "throw",
@@ -3899,7 +3899,7 @@ data:extend
   {
     type = "capsule",
     name = "distractor-capsule",
-    icon = "__base__/graphics/icons/distractor.png",
+    icon = "__base__/graphics/icons/distractor-capsule.png",
     capsule_action =
     {
       type = "throw",
@@ -3954,7 +3954,7 @@ data:extend
   {
     type = "capsule",
     name = "destroyer-capsule",
-    icon = "__base__/graphics/icons/destroyer.png",
+    icon = "__base__/graphics/icons/destroyer-capsule.png",
     capsule_action =
     {
       type = "throw",

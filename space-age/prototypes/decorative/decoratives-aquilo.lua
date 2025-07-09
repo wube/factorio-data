@@ -408,7 +408,7 @@ data:extend{
     name = "lithium-iceberg-huge",
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid"},
-    icon = "__space-age__/graphics/icons/lithium-iceberg-big.png",
+    icon = "__space-age__/graphics/icons/lithium-iceberg-huge.png",
     subgroup = "grass",
     order = "b[decorative]-l[rock]-e[aquilo]-b[lithium-iceberg-huge]",
     collision_mask =

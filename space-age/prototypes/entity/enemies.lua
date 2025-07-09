@@ -1300,7 +1300,7 @@ function make_demolisher_corpse(base_name, order, scale, damage_multiplier, heal
       localised_name = {"entity-name.demolisher-corpse", {"entity-name."..base_name}},
       type = "simple-entity",
       flags = {"placeable-neutral", "placeable-off-grid"},
-      icon = "__space-age__/graphics/icons/huge-volcanic-rock.png",
+      icon = "__space-age__/graphics/icons/"..base_name.."-remains.png",
       subgroup = "grass",
       order="b[decorative]-l[rock]-a[vulcanus]-g[demolisher-corpse]-"..order,
       collision_box = {{-3 * scale, -3 * scale}, {3 * scale, 3 * scale}},
@@ -5662,7 +5662,7 @@ function make_wriggler(prefix, scale, health, damage, tints, factoriopedia_simul
   local wriggler = {
     type = "unit",
     name = prefix .. "wriggler-pentapod-premature",
-    icon = "__space-age__/graphics/icons/".. prefix .."wriggler.png",
+    icon = "__space-age__/graphics/icons/".. prefix .."wriggler-premature.png",
     subgroup = "enemies",
     order = "gleba-a-wriggler-"..tostring(scale),
     factoriopedia_simulation = factoriopedia_simulation_premature,
@@ -5726,6 +5726,7 @@ function make_wriggler(prefix, scale, health, damage, tints, factoriopedia_simul
 
   local wriggler_stable = table.deepcopy(wriggler)
   wriggler_stable.name = prefix .. "wriggler-pentapod"
+  wriggler_stable.icon = "__space-age__/graphics/icons/".. prefix .."wriggler.png"
   wriggler_stable.factoriopedia_simulation = factoriopedia_simulation
   wriggler_stable.healing_per_tick = health/500/60
   wriggler_stable.absorptions_to_join_attack = { spores = 2 }

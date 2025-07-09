@@ -2671,7 +2671,7 @@ data:extend({
     render_layer = "above-tiles",
     hidden_in_factoriopedia = true,
     collision_mask = {layers={}} ,
-    collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    collision_box = {{-2.49, -2.49}, {2.49, 2.49}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     picture = {
       filename = "__space-age__/graphics/entity/wube-logo-space-platform/wube-logo-space-platform.png",

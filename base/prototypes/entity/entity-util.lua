@@ -304,7 +304,7 @@ function scaled_cliff(args, create_data_specification_func)
     -- generic collision box is intentionally small so you can place trees nearby in map editor
     -- cliffs are auto-placed with centers at (0, 0.5) offset from the grid;
     -- using a collision box with even width and odd height makes them place properly in the editor.
-    collision_box = scale_bounding_box({{-1.0, -0.5}, {1.0, 0.5}}, scale),
+    collision_box = scale_bounding_box({{-0.99, -0.49}, {0.99, 0.49}}, scale),
     selection_box = scale_bounding_box({{-1.5, -1.5}, {1.5, 1.5}}, scale),
     collision_mask = collision_mask,
     order = "b[decorative]-l[rock]-b[big]",

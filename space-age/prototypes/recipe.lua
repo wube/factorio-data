@@ -2767,7 +2767,7 @@ data:extend(
   {
     type = "recipe",
     name = "wood-processing",
-    icon = "__base__/graphics/icons/tree-08.png",
+    icon = "__base__/graphics/icons/wood-processing.png",
     category = "organic-or-assembling",
     subgroup = "nauvis-agriculture",
     order = "a[seeds]-a[wood-processing]",

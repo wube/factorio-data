@@ -1,6 +1,56 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.59
+Version: 2.0.60
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.59
+Date: 09. 07. 2025
+  Changes:
+    - [space-age] Remastered and remixed music.
+    - [space-age] More icons in factoriopedia made unique.
+  Optimizations:
+    - Improved performance when holding blueprints.
+  Graphics:
+    - Improved frame rate stability of Metal graphics backend
+    - Improved rendering performance of busy scenes of Metal graphics backend
+  Bugfixes:
+    - Fixed that teleporting a car to another surface would invalidate lua references to non-player characters in it. (https://forums.factorio.com/129468)
+    - Fixed that LuaSurface::create_entity() using the 'item' parameter did not work for vehicle equipment grids. (https://forums.factorio.com/129479)
+    - Fixed that choose-elem-button with id-with-quality didn't respect prototype filters. (https://forums.factorio.com/129481)
+    - Fixed that LuaFlowStatistics::[input, output, storage]_counts read didn't merge qualities. (https://forums.factorio.com/129568)
+    - Fixed that some entities would collide with nearby tiles when they shouldn't. (https://forums.factorio.com/128602)
+    - Fixed that mod-defined fonts did not apply correctly when first starting the game. (https://forums.factorio.com/129571)
+    - Fixed a crash when using LuaItemStack::deconstruct_area() in some cases. (https://forums.factorio.com/129573)
+    - Fixed electric mining drills were able to stack items when at high mining productivity. (https://forums.factorio.com/129590)
+    - Fixed a disconnect when viewing tips and tricks in multiplayer. (https://forums.factorio.com/129596)
+    - Fixed quickbar selection getting stuck when trying to pick a blueprint book from the blueprint library that didn't finish downloading. (https://forums.factorio.com/118438)
+    - Fixed blueprint book download progress drawing sometimes being broken.
+    - Fixed that large values given for LuaSurface::find_entities_filtered(radius) would crash the game. (https://forums.factorio.com/129618)
+    - Fixed that equipment ghosts couldn't be added to armor when not worn. (https://forums.factorio.com/129673)
+    - Fixed that you could place or take blueprint items from chests in remote view. (https://forums.factorio.com/129237)
+    - Fixed that you couldn't open reactors with a void energy source. (https://forums.factorio.com/129711)
+    - Fixed that the sync mods confirmation did not have the draggable texture. (https://forums.factorio.com/129685)
+    - Fixed that LuaSurface::create_entity() did not work correctly with quality. (https://forums.factorio.com/129736)
+    - Fixed that remote fast transfer of modules could downgrade modules with higher quality. (https://forums.factorio.com/128747)
+    - Fixed that remote driving didn't raise on_player_driving_changed_state event when entering a vehicle. (https://forums.factorio.com/118769)
+    - Fixed beacons with supply area distance of 0 not showing radius visualisation. (https://forums.factorio.com/129771)
+    - Fixed Game Mode not enabling on macOS 26
+    - Fixed that space location wouldn't read starmap_icons if starmap_icon didn't exist. (https://forums.factorio.com/129742)
+    - Fixed mipmaps for fulgoran ruin vault icon. (https://forums.factorio.com/129796)
+    - Fixed that flush-fluid would not flush fluid from fluid energy sources. (https://forums.factorio.com/129756)
+    - Fixed collected asteroid chunks were not showing in item production statistics. (https://forums.factorio.com/129520)
+    - Fixed a crash when navigating planets while Factoriopedia was open. (https://forums.factorio.com/129766)
+    - Fixed that asteroid collectors didn't draw radius visualisation for ghosts when holding it in cursor. (https://forums.factorio.com/119353)
+  Modding:
+    - Added InserterPrototype::uses_inserter_stack_size_bonus.
+    - Added Prototype::custom_tooltip_fields.
+  Scripting:
+    - Added LuaPlayer::pipette. LuaPlayer::pipette_entity is deprecated and should not be used.
+    - Added ConfigurationChangedData::migrations.
+    - Added "item-open", "item-close", "item-pick", "item-drop" and "item-move" SoundPath types. (https://forums.factorio.com/129710)
+    - Removed LuaTilePrototype::placeable_by. Use LuaTilePrototype::items_to_place_this instead.
+    - Added LuaEquipmentGrid::itemstack_owner read.
+    - Added LuaEntity::display_panel_text, display_panel_icon, display_panel_always_show and display_panel_show_in_chart read/write.
+    - Added LuaHelpers::send_udp and recv_udp. Added on_udp_packet_received.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.58
 Date: 23. 06. 2025
@@ -20,6 +70,7 @@ Date: 23. 06. 2025
   Modding:
     - Added the "mod-data" prototype type.
     - Added CraftingMachinePrototype::crafting_speed_quality_multiplier, module_slots_quality_bonus and energy_usage_quality_multiplier.
+    - Renamed "aquilo-4-hero" ambient-sound to "aquilo-3-hero", corresponding audio file was renamed as well.
   Scripting:
     - Added LuaEntityPrototype::neighbour_connectable read.
 ---------------------------------------------------------------------------------------------------

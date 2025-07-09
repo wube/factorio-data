@@ -3323,7 +3323,7 @@ data:extend(
     icon = "__core__/graphics/icons/mip/ghost-tile.png",
     factoriopedia_simulation = simulations.factoriopedia_tile_ghost,
     minable = {mining_time = 0, results={}},
-    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    collision_box = {{-0.49, -0.49}, {0.49, 0.49}},
     build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-tile.ogg", volume = 0.9},
     mined_sound = {category = "gui-effect", filename = "__core__/sound/deconstruct-ghost-tile.ogg", volume = 0.7},
     selection_priority = 30
