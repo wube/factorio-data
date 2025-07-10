@@ -482,6 +482,10 @@ data:extend(
     open_sound = sounds.turret_open,
     close_sound = sounds.turret_close,
     icon_draw_specification = {scale = 0.7},
+    icons_positioning =
+    {
+      {inventory_index = defines.inventory.turret_ammo, shift = {0, -0.25}}
+    },
     folded_animation =
     {
       layers =

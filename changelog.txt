@@ -1,6 +1,17 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.60
+Version: 2.0.61
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.60
+Date: 10. 07. 2025
+  Changes:
+    - Don't change gamepad selection center when the character starts flying in mech armor. (https://forums.factorio.com/120769)
+    - Moved the ammo turret request-slot closer to the turret center visually. (https://forums.factorio.com/129548)
+  Bugfixes:
+    - Fixed a crash when removing transport belts or walls with wires in blueprints.
+    - Fixed that the show-train-signals debug option didn't render correctly for elevated signals. (https://forums.factorio.com/129804)
+    - Fixed that changing a trains group would not always refresh interrupt names in the GUI. (https://forums.factorio.com/129755)
+    - Fixed minimap bobbing up and down when the character is in mech armor.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.59
 Date: 09. 07. 2025
@@ -43,6 +54,7 @@ Date: 09. 07. 2025
   Modding:
     - Added InserterPrototype::uses_inserter_stack_size_bonus.
     - Added Prototype::custom_tooltip_fields.
+    - Renamed "aquilo-4-hero" ambient-sound to "aquilo-3-hero", corresponding audio file was renamed as well.
   Scripting:
     - Added LuaPlayer::pipette. LuaPlayer::pipette_entity is deprecated and should not be used.
     - Added ConfigurationChangedData::migrations.
@@ -70,7 +82,6 @@ Date: 23. 06. 2025
   Modding:
     - Added the "mod-data" prototype type.
     - Added CraftingMachinePrototype::crafting_speed_quality_multiplier, module_slots_quality_bonus and energy_usage_quality_multiplier.
-    - Renamed "aquilo-4-hero" ambient-sound to "aquilo-3-hero", corresponding audio file was renamed as well.
   Scripting:
     - Added LuaEntityPrototype::neighbour_connectable read.
 ---------------------------------------------------------------------------------------------------
