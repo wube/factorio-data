@@ -1,17 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.61
-Date: ????
----------------------------------------------------------------------------------------------------
 Version: 2.0.60
 Date: 10. 07. 2025
   Changes:
-    - Don't change gamepad selection center when the character starts flying in mech armor. (https://forums.factorio.com/120769)
     - Moved the ammo turret request-slot closer to the turret center visually. (https://forums.factorio.com/129548)
   Bugfixes:
     - Fixed a crash when removing transport belts or walls with wires in blueprints.
     - Fixed that the show-train-signals debug option didn't render correctly for elevated signals. (https://forums.factorio.com/129804)
     - Fixed that changing a trains group would not always refresh interrupt names in the GUI. (https://forums.factorio.com/129755)
-    - Fixed minimap bobbing up and down when the character is in mech armor.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.59
 Date: 09. 07. 2025
