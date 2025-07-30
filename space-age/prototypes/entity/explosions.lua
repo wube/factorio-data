@@ -2431,7 +2431,8 @@ data:extend
             initial_vertical_speed = 0.05,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.04,
-            speed_from_center_deviation = 0.05
+            speed_from_center_deviation = 0.05,
+            only_when_visible = true
           },
           {
             type = "create-particle",
@@ -2443,7 +2444,8 @@ data:extend
             initial_vertical_speed = 0.036,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.02,
-            speed_from_center_deviation = 0.046
+            speed_from_center_deviation = 0.046,
+            only_when_visible = true
           },
         }
       }
@@ -2923,7 +2925,8 @@ data:extend
             initial_vertical_speed = 0.05,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.04,
-            speed_from_center_deviation = 0.05
+            speed_from_center_deviation = 0.05,
+            only_when_visible = true
           },
           {
             type = "create-particle",
@@ -2935,7 +2938,8 @@ data:extend
             initial_vertical_speed = 0.036,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.02,
-            speed_from_center_deviation = 0.046
+            speed_from_center_deviation = 0.046,
+            only_when_visible = true
           },
         }
       }
@@ -3415,7 +3419,8 @@ data:extend
             initial_vertical_speed = 0.05,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.04,
-            speed_from_center_deviation = 0.05
+            speed_from_center_deviation = 0.05,
+            only_when_visible = true
           },
           {
             type = "create-particle",
@@ -3427,7 +3432,8 @@ data:extend
             initial_vertical_speed = 0.036,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.02,
-            speed_from_center_deviation = 0.046
+            speed_from_center_deviation = 0.046,
+            only_when_visible = true
           },
         }
       }
@@ -3911,7 +3917,8 @@ data:extend
             initial_vertical_speed = 0.05,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.04,
-            speed_from_center_deviation = 0.05
+            speed_from_center_deviation = 0.05,
+            only_when_visible = true
           },
           {
             type = "create-particle",
@@ -3923,7 +3930,8 @@ data:extend
             initial_vertical_speed = 0.036,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.02,
-            speed_from_center_deviation = 0.046
+            speed_from_center_deviation = 0.046,
+            only_when_visible = true
           },
         }
       }

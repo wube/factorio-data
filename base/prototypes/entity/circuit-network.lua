@@ -1041,7 +1041,7 @@ data:extend
     circuit_wire_max_distance = default_circuit_wire_max_distance,
     max_text_width = 400,
     text_shift = util.by_pixel(0, -24),
-    icon_draw_specification = {shift = util.by_pixel(0, -8), scale = 0.5},
+    icon_draw_specification = {shift = util.by_pixel(0.5, -8), scale = 0.5},
     text_color = {1.0, 1.0, 1.0, 1.0},
     background_color = {0.0, 0.0, 0.0, 0.25}
   },

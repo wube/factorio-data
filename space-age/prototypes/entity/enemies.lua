@@ -3220,37 +3220,8 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
     icon = "__space-age__/graphics/icons/" .. prefix .. "stomper.png",
     body =
     {
-      base_animation =
-      {
-        layers =
-        {
-          {
-            filename = "__space-age__/graphics/entity/stomper/torso/stomper-body-bottom.png",
-            width = 126,
-            height = 106,
-            line_length = 1,
-            direction_count = 1,
-            scale = 0.0 * stomper_scale,
-            shift = util.by_pixel(0 * stomper_scale, 0 * stomper_scale),
-            tint = tint_body,
-            surface = "gleba",
-            usage = "enemy"
-          }
-        }
-      },
-      shadow_base_animation =
-      {
-        filename = "__space-age__/graphics/entity/stomper/torso/stomper-body-bottom-shadow.png",
-        width = 144,
-        height = 96,
-        line_length = 1,
-        direction_count = 1,
-        scale = 0.0 * stomper_scale,
-        draw_as_shadow = true,
-        shift = util.by_pixel(-1 * stomper_scale, -1 * stomper_scale),
-        surface = "gleba",
-        usage = "enemy"
-      },
+      base_animation = nil, -- intentionally undefined so that stomper orientations are based on animation's orientations
+      shadow_base_animation = nil,
       animation =
       {
         layers =

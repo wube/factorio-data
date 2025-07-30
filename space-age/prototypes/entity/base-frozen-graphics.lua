@@ -314,6 +314,7 @@ for _, inserter in pairs(data.raw.inserter) do
   end
 end
 
+data.raw["mining-drill"]["pumpjack"].graphics_set.reset_animation_when_frozen = true
 data.raw["mining-drill"]["pumpjack"].graphics_set.frozen_patch =
 {
   sheet =

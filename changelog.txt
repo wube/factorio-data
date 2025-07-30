@@ -1,4 +1,60 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.61
+Date: 30. 07. 2025
+  Changes:
+    - When dragging belts, going forward and back will remove the extra belts built.
+    - When using smart belt building to make a turn, the player can decide to change the direction after the turn by dragging in the opposite direction.
+    - Don't change gamepad selection center when the character starts flying in mech armor. (https://forums.factorio.com/120769)
+    - Improved the GUI responsiveness in the display panel. (https://forums.factorio.com/126117)
+  Graphics:
+    - Fixed that playing in fullscreen with the Metal graphics backend could look blurry if "Render in native screen resolution" was off.
+    - Changed "Render in native screen resolution" graphics setting to no longer require a game restart.
+  Bugfixes:
+    - Fixed minimap bobbing up and down when the character is in mech armor.
+    - Fixed that spidertrons built from script did not default to request-from-buffers. (https://forums.factorio.com/129835)
+    - Fixed that overlapping tile ghosts would not draw on the map. (https://forums.factorio.com/129854)
+    - Fixed that the game would attempt to load Mac specific filesystem files. (https://forums.factorio.com/116201)
+    - Fixed a crash related to underground belts when super force building. (https://forums.factorio.com/129388)
+    - Fixed pentapod leg mount positions  when the body is rotated.
+    - Fixed pentapod orientations getting incorrectly warped.
+    - Fixed that cloning rockets with attached cargo pods did not work correctly. (https://forums.factorio.com/129945)
+    - Fixed that removing territory noise expressions made saves which used them not loadable.
+    - Fixed research completed sound playing for all forces.
+    - Fixed that furnaces could keep using a recipe they should not be able to use after a migration.
+    - Fixed that furnaces were not considering recipe with no ingredients as not craftable.
+    - Fixed a crash when inserter tries to insert item into a furnace which is currently crafting a recipe with no item ingredients. (https://forums.factorio.com/129997)
+    - Fixed a crash when using send_udp fails. (https://forums.factorio.com/129992)
+    - Fixed that rail ramp ghosts would block ground rail ghost construction. (https://forums.factorio.com/129957)
+    - Fixed on-screen-keyboard opening on top of the search field in the technology GUI.
+    - Fixed graphics rendering unpausing while still minimized on macOS in some special circumstances. (https://forums.factorio.com/128397)
+    - Fixed crash if a simulation gets paused.
+    - Fixed a crash if a player using the editor equips an equipment with a burner component.
+    - Fixed that a player using the editor could not activate electric discharge equipment and other manually-activated equipment.
+    - Fixed that resetting control settings wouldn't update control tooltips. (https://forums.factorio.com/130037)
+    - Fixed that cliff bounding boxes could be defined in an invalid way. (https://forums.factorio.com/130066)
+    - Fixed that inventory filters were ignored when in the train fuel GUI. (https://forums.factorio.com/130057)
+    - Fixed loaders could get stuck when taking from asteroid collectors when one lane of a belt was blocked. (https://forums.factorio.com/130091)
+    - Fixed that inserters could get stuck inserting items into rogue spawners when picking from belts. (https://forums.factorio.com/130093)
+    - Fixed a crash when attempting to render a linked fluidbox connection.
+    - Fixed frozen pumpjack could not match frozen sprite. (https://forums.factorio.com/130107)
+  Modding:
+    - Added demolisher and territory API.
+    - Added RecipePrototype::hide_from_bonus_gui.
+    - Moved LuaPlayer::can_place_entity to LuaControl::can_place_entity so that it can be called on character entities. (https://forums.factorio.com/129225)
+    - Changed pentapods to prioritize using the torso base sprite to control rotations, or if no base sprite is defined, the head sprite is used.
+    - Added ability for SpiderVehicles to rotate their legs like pentapods when provided with a base sprite that has rotation frames. (https://forums.factorio.com/128638)
+    - Added LuaPlayer::set_zoom_limits() to set zoom limits for any controller type. (https://forums.factorio.com/128887)
+    - Added SpaceLocationPrototype::starmap_icon_orientation.
+  Scripting:
+    - Added LuaForce::get_chunk_chart(surface, position).
+    - Added LuaEntity::apply_upgrade().
+    - Added LuaEntity::pumped_last_tick read.
+    - Added LuaEntityPrototype::tile_buildability_rules read.
+    - Added agricultural tower events: on_tower_planted_seed, on_tower_pre_mined_plant, and on_tower_mined_plant.
+    - Changed LuaEntity::copy_color_from_train_stop and vehicle_automatic_targeting_parameters to work on ghosts.
+    - Added LuaEntity::register_tree().
+    - Added register_plant to LuaSurface::create_entity.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.60
 Date: 10. 07. 2025
   Changes:

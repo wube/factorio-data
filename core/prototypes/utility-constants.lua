@@ -574,6 +574,8 @@ data:extend(
     {
       not_last_box_color = {r=1, g=1, b=1}, -- white
       last_box_color = {r=1, g=1, b=0}, -- yellow
+      reverse_box_color = {r=0.7, g=0.7, b=0.7},
+      last_reverse_box_color = {r=0.7, g=0.7, b=0},
       box_width = 1.6,
       box_length = 6.0,
       joint_distance = 4.0,
