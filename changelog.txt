@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.63
+Date: 04. 08. 2025
+  Bugfixes:
+    - Fixed that --dump-icon-sprites would shift icons south-east by one pixel. (https://forums.factorio.com/130128)
+    - Fixed boilers consuming hot input fluid would not produce enough steam. (https://forums.factorio.com/130021)
+    - Fixed spider unit graphic layers with 'apply_runtime_tint' would not use the force color. (https://forums.factorio.com/130106)
+    - Fixed that drag building with smart belt building disabled would remove belts in some cases. (https://forums.factorio.com/130129)
+    - Fixed that space platform construction requests would not request more repair packs after running out. (https://forums.factorio.com/130140)
+    - Fixed a crash when rendering latency players in some cases. (https://forums.factorio.com/130150)
+---------------------------------------------------------------------------------------------------
 Version: 2.0.62
 Date: 31. 07. 2025
   Bugfixes:
