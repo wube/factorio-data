@@ -2913,7 +2913,8 @@ data:extend
           source_effects =
           {
             type = "create-entity",
-            entity_name = "explosion-hit"
+            entity_name = "explosion-hit",
+            only_when_visible = true
           }
         }
       }
@@ -2944,7 +2945,8 @@ data:extend
           source_effects =
           {
             type = "create-entity",
-            entity_name = "explosion-hit"
+            entity_name = "explosion-hit",
+            only_when_visible = true
           }
         }
       }
@@ -4065,7 +4067,8 @@ data:extend
               {
                 {
                   type = "create-explosion",
-                  entity_name = "explosion-gunshot"
+                  entity_name = "explosion-gunshot",
+                  only_when_visible = true
                 }
               },
               target_effects =
@@ -4074,7 +4077,8 @@ data:extend
                   type = "create-entity",
                   entity_name = "explosion-hit",
                   offsets = {{0, 1}},
-                  offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}}
+                  offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
+                  only_when_visible = true
                 },
                 {
                   type = "damage",
@@ -4115,7 +4119,8 @@ data:extend
           source_effects =
           {
             type = "create-explosion",
-            entity_name = "explosion-gunshot"
+            entity_name = "explosion-gunshot",
+            only_when_visible = true
           },
           target_effects =
           {
@@ -4123,7 +4128,8 @@ data:extend
               type = "create-entity",
               entity_name = "explosion-hit",
               offsets = {{0, 1}},
-              offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}}
+              offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
+              only_when_visible = true
             },
             {
               type = "damage",

@@ -2888,7 +2888,8 @@ data:extend(
       size = 32,
       scale = 0.5,
       mipmap_count = 2,
-      flags = {"gui-icon"}
+      flags = {"gui-icon"},
+      load_in_minimal_mode = true
     },
     refresh =
     {

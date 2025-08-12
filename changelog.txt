@@ -1,4 +1,31 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.64
+Date: 12. 08. 2025
+  Minor Features:
+    - Heat interface can now heat entities and tiles.
+  Changes:
+    - Changed the blueprint setup GUI description field to include the icon picker. (https://forums.factorio.com/130163)
+  Bugfixes:
+    - Fixed that belts in the blueprint GUI did not animate. (https://forums.factorio.com/130131)
+    - Fixed a crash when a beam attack trigger destroys the turret firing it. (https://forums.factorio.com/130179)
+    - Fixed a crash when pressing end, home, page up or page down key while the alerts GUI was focused. (https://forums.factorio.com/130143)
+    - Fixed a crash when loading a save file with furnaces that are crafting a recipe with custom fluidbox indexes set. (https://forums.factorio.com/129656)
+    - Fixed that the on_research events pushed the player index using the wrong name. (https://forums.factorio.com/130222)
+    - Fixed that train route highlighting didn't work when riding in non-locomotives. (https://forums.factorio.com/130165)
+    - Fixed that the remote view minimap always focused on the physical player position when in remote view. (https://forums.factorio.com/130241)
+    - Fixed a crash when cloning moving trains in some situations. (https://forums.factorio.com/129840)
+  Scripting:
+    - Added LuaItemCommon::blueprint_description read/write.
+    - Added LuaRecord::blueprint_description read/write.
+    - Added LuaControl::render_position read.
+    - Added LuaControl::flight_height read.
+    - Added LuaControl::is_flying read.
+    - Added LuaEntity::created_by_corpse read.
+    - Added heat pipe to LuaEntity::neighbours read.
+    - Added LuaEntity::heat_neighbours read.
+    - Added LuaPlanet::get_space_platforms().
+    - Added LuaEntity::priority_targets read.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.63
 Date: 04. 08. 2025
   Bugfixes:

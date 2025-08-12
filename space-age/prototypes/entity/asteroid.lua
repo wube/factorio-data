@@ -240,6 +240,7 @@ for asteroid_size, asteroid_size_name in pairs(asteroid_sizes) do
       {
         type = asteroid_size_name == "chunk" and "create-entity" or "create-explosion",
         entity_name = asteroid_type.."-asteroid-explosion-"..asteroid_size,
+        only_when_visible = true
       }
     }
 

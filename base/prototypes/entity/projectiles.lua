@@ -282,7 +282,8 @@ data:extend(
         {
           {
             type = "create-entity",
-            entity_name = "explosion"
+            entity_name = "explosion",
+            only_when_visible = true
           },
           {
             type = "damage",
@@ -334,7 +335,8 @@ data:extend(
         {
           {
             type = "create-entity",
-            entity_name = "big-explosion"
+            entity_name = "big-explosion",
+            only_when_visible = true
           },
           {
             type = "damage",
@@ -376,7 +378,8 @@ data:extend(
                   },
                   {
                     type = "create-entity",
-                    entity_name = "explosion"
+                    entity_name = "explosion",
+                    only_when_visible = true
                   }
                 }
               }

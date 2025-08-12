@@ -608,7 +608,8 @@ data:extend(
         range_effects =
         {
           type = "create-explosion",
-          entity_name = "railgun-beam"
+          entity_name = "railgun-beam",
+          only_when_visible = true
         },
         action_delivery =
         {
@@ -621,7 +622,8 @@ data:extend(
           source_effects =
           {
             type = "create-explosion",
-            entity_name = "explosion-gunshot"
+            entity_name = "explosion-gunshot",
+            only_when_visible = true
           }
         }
       }
