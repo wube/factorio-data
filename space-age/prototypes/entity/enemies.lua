@@ -3805,151 +3805,167 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
 
         }
       },
-    animation = {
-      layers = {
-        util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1",
-        {
-          frame_count = 1,
-          scale = 0.4 * stomper_scale,
-          shift = util.by_pixel(0, 0),
-          direction_count = 1,
-          surface = "gleba",
-          usage = "enemy"
-        }
-      ),
-      util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1-mask",
+      animation =
       {
-        frame_count = 1,
-        scale = 0.4 * stomper_scale,
-        shift = util.by_pixel(0, 0),
-        direction_count = 1,
-        tint = tint_mask,
-        tint_as_overlay = true,
-        surface = "gleba",
-        usage = "enemy"
-      }),
-      },
-      layers = {
-        util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2",
         {
-          frame_count = 1,
-          scale = 0.4 * stomper_scale,
-          shift = util.by_pixel(0, 0),
-          direction_count = 1,
-          surface = "gleba",
-          usage = "enemy"
-        }
-      ),
-      util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2-mask",
-      {
-        frame_count = 1,
-        scale = 0.4 * stomper_scale,
-        shift = util.by_pixel(0, 0),
-        direction_count = 1,
-        tint = tint_mask,
-        tint_as_overlay = true,
-        surface = "gleba",
-        usage = "enemy"
-      }),
-      },
-      layers = {
-        util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3",
-        {
-          frame_count = 1,
-          scale = 0.4 * stomper_scale,
-          shift = util.by_pixel(0, 0),
-          direction_count = 1,
-          surface = "gleba",
-          usage = "enemy"
-        }
-      ),
-      util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3-mask",
-      {
-        frame_count = 1,
-        scale = 0.4 * stomper_scale,
-        shift = util.by_pixel(0, 0),
-        direction_count = 1,
-        tint = tint_mask,
-        tint_as_overlay = true,
-        surface = "gleba",
-        usage = "enemy"
-      }),
-      }
-    },
-      decay_animation ={
-        layers ={
-          util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1",
+          layers =
           {
-            frame_count = 15,
-                        scale = 0.4 * stomper_scale,
-            shift = util.by_pixel(0, 0),
-            direction_count = 1,
-            flags = {"corpse-decay"},
-            surface = "gleba",
-            usage = "corpse-decay"
-          }),
-          util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1-mask",
-          {
-            frame_count = 15,
-                        scale = 0.4 * stomper_scale,
-            shift = util.by_pixel(0, 0),
-            direction_count = 1,
-            tint = tint_mask,
-            tint_as_overlay = true,
-            flags = {"corpse-decay"},
-            surface = "gleba",
-            usage = "corpse-decay"
-          }),
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1",
+            {
+              frame_count = 1,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              surface = "gleba",
+              usage = "enemy"
+            }),
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1-mask",
+            {
+              frame_count = 1,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              tint = tint_mask,
+              tint_as_overlay = true,
+              surface = "gleba",
+              usage = "enemy"
+            }),
+          },
         },
-        layers ={
-          util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2",
+        {
+          layers =
           {
-            frame_count = 15,
-                        scale = 0.4 * stomper_scale,
-            shift = util.by_pixel(0, 0),
-            direction_count = 1,
-            flags = {"corpse-decay"},
-            surface = "gleba",
-            usage = "corpse-decay"
-          }),
-          util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2-mask",
-          {
-            frame_count = 15,
-                        scale = 0.4 * stomper_scale,
-            shift = util.by_pixel(0, 0),
-            direction_count = 1,
-            tint = tint_mask,
-            tint_as_overlay = true,
-            flags = {"corpse-decay"},
-            surface = "gleba",
-            usage = "corpse-decay"
-          }),
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2",
+            {
+              frame_count = 1,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              surface = "gleba",
+              usage = "enemy"
+            }),
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2-mask",
+            {
+              frame_count = 1,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              tint = tint_mask,
+              tint_as_overlay = true,
+              surface = "gleba",
+              usage = "enemy"
+            }),
+          },
         },
-        layers ={
-          util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3",
+        {
+          layers =
           {
-            frame_count = 15,
-                        scale = 0.4 * stomper_scale,
-            shift = util.by_pixel(0, 0),
-            direction_count = 1,
-            flags = {"corpse-decay"},
-            surface = "gleba",
-            usage = "corpse-decay"
-          }),
-          util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3-mask",
-          {
-            frame_count = 15,
-                        scale = 0.4 * stomper_scale,
-            shift = util.by_pixel(0, 0),
-            direction_count = 1,
-            tint = tint_mask,
-            tint_as_overlay = true,
-            flags = {"corpse-decay"},
-            surface = "gleba",
-            usage = "corpse-decay"
-          }),
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3",
+            {
+              frame_count = 1,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              surface = "gleba",
+              usage = "enemy"
+            }),
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3-mask",
+            {
+              frame_count = 1,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              tint = tint_mask,
+              tint_as_overlay = true,
+              surface = "gleba",
+              usage = "enemy"
+            }),
+          }
         }
-
+      },
+      decay_animation =
+      {
+        {
+          layers =
+          {
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1",
+            {
+              frame_count = 15,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              flags = {"corpse-decay"},
+              surface = "gleba",
+              usage = "corpse-decay"
+            }),
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1-mask",
+            {
+              frame_count = 15,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              tint = tint_mask,
+              tint_as_overlay = true,
+              flags = {"corpse-decay"},
+              surface = "gleba",
+              usage = "corpse-decay"
+            }),
+          },
+        },
+        {
+          layers =
+          {
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2",
+            {
+              frame_count = 15,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              flags = {"corpse-decay"},
+              surface = "gleba",
+              usage = "corpse-decay"
+            }),
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2-mask",
+            {
+              frame_count = 15,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              tint = tint_mask,
+              tint_as_overlay = true,
+              flags = {"corpse-decay"},
+              surface = "gleba",
+              usage = "corpse-decay"
+            }),
+          }
+        },
+        {
+          layers =
+          {
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3",
+            {
+              frame_count = 15,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              flags = {"corpse-decay"},
+              surface = "gleba",
+              usage = "corpse-decay"
+            }),
+            util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3-mask",
+            {
+              frame_count = 15,
+              scale = 0.4 * stomper_scale,
+              shift = util.by_pixel(0, 0),
+              direction_count = 1,
+              tint = tint_mask,
+              tint_as_overlay = true,
+              flags = {"corpse-decay"},
+              surface = "gleba",
+              usage = "corpse-decay"
+            }),
+          }
+        }
       }
     },
     {

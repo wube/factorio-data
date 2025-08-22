@@ -1550,7 +1550,7 @@ function generate_selector_combinator(combinator)
     {
       shadow =
       {
-        red = util.by_pixel(-12, -2),
+        red = util.by_pixel(37, -2),
         green = util.by_pixel(37, 12)
       },
       wire =

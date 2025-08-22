@@ -52,7 +52,8 @@ local function cryogenic_plant_animation(name, frames, options)
 end
 
 return {
-  graphics_set = {
+  graphics_set =
+  {
       animation =
       {
         layers =
@@ -161,7 +162,8 @@ return {
       frozen_patch = util.sprite_load("__space-age__/graphics/entity/cryogenic-plant/cryogenic-plant-frozen", {scale = 0.5}),
       reset_animation_when_frozen = true
   },
-  pipe_picture = {
+  pipe_picture =
+  {
     north =
     {
       layers =

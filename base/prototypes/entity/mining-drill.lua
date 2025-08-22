@@ -269,7 +269,6 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     input_fluid_box =
     {
-      pipe_picture = assembler2pipepictures(),
       pipe_covers = pipecoverspictures(),
       volume = 200,
       pipe_connections =

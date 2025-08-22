@@ -1,4 +1,30 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.65
+Date: 22. 08. 2025
+  Bugfixes:
+    - Fixed that freezing and thawing underground belts would move items slightly. (https://forums.factorio.com/129977)
+    - Fixed super-forcing gates and walls would sometimes cause deconstruction of adjacent curved rail ghosts(https://forums.factorio.com/116779)
+    - Fixed that opening rich text in map view could send a click action to opened GUIs. (https://forums.factorio.com/129424)
+    - Fixed that switching between normal and remote view would close the blueprint setup GUI. (https://forums.factorio.com/130162)
+    - Fixed a crash with running replay headless when game wants to show notifications. (https://forums.factorio.com/130386)
+    - Fixed selector combinator wire connector shadow position. (https://forums.factorio.com/129934)
+    - Fixed that some entities did not draw fluid box connection pipes. (https://forums.factorio.com/130156)
+    - Fixed that the home key did not work in the manage mods GUI. (https://forums.factorio.com/130359)
+    - Fixed that the undo item was not yet in the player queue during the entity built event. (https://forums.factorio.com/130384)
+    - Fixed a crash when a mod puts item request proxies into the player undo queue. (https://forums.factorio.com/130369)
+    - Fixed that several entity types would not account for drain in their energy buffer. (https://forums.factorio.com/130391)
+    - Fixed stomper corpses graphics. (https://forums.factorio.com/130099)
+    - Fixed that cloning some entities while they contained spoilage would result in the clone getting stuck. (https://forums.factorio.com/130421)
+    - Fixed LuaEntity::display_panel_icon was not accounting for nil. (https://forums.factorio.com/130425)
+    - Fixed that migrating entities with quality would not preserve the quality. (https://forums.factorio.com/130436)
+  Modding:
+    - Heat energy sources support pollution.
+    - Omitting required_tiles in a tile_buildability_rules's item now default to "all" (instead of "none" which was making the entities unbuildable) (https://forums.factorio.com/130230)
+    - Added EntityPrototype::draw_stateless_visualisations_in_ghost.
+    - Added LoaderPrototype::respect_insert_limits.
+  Scripting:
+    - Changed LuaParticlePrototype::render_layer, render_layer_when_on_ground and LuaTrivialSmokePrototype::render_layer to be strings instead of integers.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.64
 Date: 12. 08. 2025
   Minor Features:
