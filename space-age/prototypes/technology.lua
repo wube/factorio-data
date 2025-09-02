@@ -791,7 +791,6 @@ data:extend(
     name = "metallurgic-science-pack",
     icon = "__space-age__/graphics/technology/metallurgic-science-pack.png",
     icon_size = 256,
-    icon_size = 256,
     essential = true,
     effects =
     {
@@ -1497,7 +1496,6 @@ data:extend(
     name = "electromagnetic-science-pack",
     icon = "__space-age__/graphics/technology/electromagnetic-science-pack.png",
     icon_size = 256,
-    icon_size = 256,
     essential = true,
     effects =
     {
@@ -1699,7 +1697,6 @@ data:extend(
     name = "asteroid-reprocessing",
     icon = "__space-age__/graphics/technology/asteroid-reprocessing.png",
     icon_size = 256,
-    icon_size = 256,
     effects =
     {
       {
@@ -1735,7 +1732,6 @@ data:extend(
     type = "technology",
     name = "advanced-asteroid-processing",
     icon = "__space-age__/graphics/technology/advanced-asteroid-processing.png",
-    icon_size = 256,
     icon_size = 256,
     effects =
     {
@@ -1814,7 +1810,6 @@ data:extend(
     type = "technology",
     name = "cryogenic-science-pack",
     icon = "__space-age__/graphics/technology/cryogenic-science-pack.png",
-    icon_size = 256,
     icon_size = 256,
     essential = true,
     effects =
@@ -2074,7 +2069,6 @@ data:extend(
     type = "technology",
     name = "research-productivity",
     icon = "__space-age__/graphics/technology/research-productivity.png",
-    icon_size = 256,
     icon_size = 256,
     effects =
     {

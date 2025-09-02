@@ -1,4 +1,35 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.66
+Date: 02. 09. 2025
+  Minor Features:
+    - Windows executables now undergo code signing.
+  Changes:
+    - Reverted belt building changes from 2.0.61.
+  Bugfixes:
+    - Fixed that blueprints made from ghosts would not be included in the on_player_setup_blueprint event. (https://forums.factorio.com/130470)
+    - Fixed a consistency issue when rotated entities are moved by belts. (https://forums.factorio.com/130475)
+    - Fixed modded mining drills with filters would not keep filters when upgrading. (https://forums.factorio.com/130452)
+    - Fixed that the time usage entry for "Multiplayer UPS" did not work. (https://forums.factorio.com/130516)
+    - Fixed a crash when changing research state during the configuration changed event. (https://forums.factorio.com/130433)
+    - Fixed that deconstruction planner was ignoring quality of items on ground. (https://forums.factorio.com/130563)
+    - Fixed captive biter spawners would not get damaged while not producing if friendly fire was disabled. (https://forums.factorio.com/130566)
+    - Fixed that reading roboport logistic requests in networks with buffer chests did not behave correctly. (https://forums.factorio.com/129914)
+    - Fixed remembered zoom levels when going back and forth in the browse history.
+    - Fixed a crash when saving after parametrising a blueprint that caused filters to merge in some cases. (https://forums.factorio.com/130583)
+    - Fixed train stops with priority above 90 would get priority clamped to 90 inside of a blueprint. (https://forums.factorio.com/130608)
+    - Fixed util.mul_shift not accepting struct. (https://forums.factorio.com/128854)
+  Modding:
+    - Added color mod setting "forced_value".
+    - InserterPrototype::pickup_position and insert_position are no longer checked for being too close to tile edge.
+  Scripting:
+    - Added an "overflow" inventory option to LuaEntity::revive and silent_revive.
+    - Added LuaEntityPrototype::icons_positioning and icon_draw_specification read.
+    - Added LuaRenderObject::dash_offset read/write.
+    - Added tile_condition to LuaItemPrototype::place_as_tile_result.
+    - Changed LuaAchievementPrototype::to_kill and module to returns arrays of LuaPrototypes instead of arrays of strings.
+    - Added LuaRecord::is_preview read.
+    - Added LuaGameScript::allow_debug_settings read/write.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.65
 Date: 22. 08. 2025
   Bugfixes:
@@ -106,14 +137,14 @@ Date: 30. 07. 2025
     - Fixed a crash when attempting to render a linked fluidbox connection.
     - Fixed frozen pumpjack could not match frozen sprite. (https://forums.factorio.com/130107)
   Modding:
-    - Added demolisher and territory API.
     - Added RecipePrototype::hide_from_bonus_gui.
-    - Moved LuaPlayer::can_place_entity to LuaControl::can_place_entity so that it can be called on character entities. (https://forums.factorio.com/129225)
     - Changed pentapods to prioritize using the torso base sprite to control rotations, or if no base sprite is defined, the head sprite is used.
     - Added ability for SpiderVehicles to rotate their legs like pentapods when provided with a base sprite that has rotation frames. (https://forums.factorio.com/128638)
-    - Added LuaPlayer::set_zoom_limits() to set zoom limits for any controller type. (https://forums.factorio.com/128887)
     - Added SpaceLocationPrototype::starmap_icon_orientation.
   Scripting:
+    - Added demolisher and territory API.
+    - Moved LuaPlayer::can_place_entity to LuaControl::can_place_entity so that it can be called on character entities. (https://forums.factorio.com/129225)
+    - Added LuaPlayer::set_zoom_limits() to set zoom limits for any controller type. (https://forums.factorio.com/128887)
     - Added LuaForce::get_chunk_chart(surface, position).
     - Added LuaEntity::apply_upgrade().
     - Added LuaEntity::pumped_last_tick read.

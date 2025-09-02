@@ -728,7 +728,6 @@ data:extend(
     maximum_corner_sliding_distance = 0.7,
     subgroup = "creatures",
     order="a",
-    eat = { filename = "__base__/sound/eat-5.ogg", volume = 1 },
     heartbeat = { filename = "__base__/sound/heartbeat.ogg" },
     tool_attack_result =
     {

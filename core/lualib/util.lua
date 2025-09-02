@@ -204,7 +204,9 @@ function util.mul_shift(shift, scale)
   if not (shift and scale) then
     return shift
   end
-  return {shift[1] * scale, shift[2] * scale}
+  local x = shift[1] or shift.x
+  local y = shift[2] or shift.y
+  return {x * scale, y * scale}
 end
 
 function util.format_number(amount, append_suffix)
