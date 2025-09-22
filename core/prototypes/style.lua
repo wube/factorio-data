@@ -77,6 +77,8 @@ right_menu_width = 6 * slot_size
 
 production_graph_width = 556
 
+local partially_fulfilled_gui = function(x, y) return {x+561, y+836} end
+
 function back_button_glow(glow_color)
   return
   {
@@ -4313,6 +4315,21 @@ data:extend(
         shadow = default_shadow
       }
     },
+    train_schedule_partially_fullfilled_condition_frame =
+    {
+      type = "frame_style",
+      padding = 0,
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        parent = "player_input_horizontal_flow"
+      },
+      graphical_set =
+      {
+        base = {position = partially_fulfilled_gui(0, 8), corner_size = 8},
+        shadow = default_shadow
+      }
+    },
     train_schedule_comparison_type_button =
     {
       type = "button_style",
@@ -6642,7 +6659,54 @@ data:extend(
         }
       }
     },
-
+    train_schedule_partially_fulfilled_item_select_button =
+    {
+      type = "button_style",
+      parent = "train_schedule_fulfilled_item_select_button",
+      default_graphical_set =
+      {
+        base = {border = 4, position = {2, 738}, size = 76},
+        shadow =
+        {
+          position = partially_fulfilled_gui(0,25),
+          corner_size = 16,
+          top_outer_border_shift = 4,
+          bottom_outer_border_shift = -4,
+          left_outer_border_shift = 4,
+          right_outer_border_shift = -4,
+          draw_type = "outer"
+        }
+      },
+      hovered_graphical_set =
+      {
+        base = {border = 4, position = {82, 738}, size = 76},
+        shadow =
+        {
+          position = partially_fulfilled_gui(0,25),
+          corner_size = 16,
+          top_outer_border_shift = 4,
+          bottom_outer_border_shift = -4,
+          left_outer_border_shift = 4,
+          right_outer_border_shift = -4,
+          draw_type = "outer"
+        },
+        glow = offset_by_2_rounded_corners_glow(default_glow_color)
+      },
+      clicked_graphical_set =
+      {
+        base = {border = 4, position = {162, 736}, size = 76},
+        shadow =
+        {
+          position = partially_fulfilled_gui(0,25),
+          corner_size = 16,
+          top_outer_border_shift = 4,
+          bottom_outer_border_shift = -4,
+          left_outer_border_shift = 4,
+          right_outer_border_shift = -4,
+          draw_type = "outer"
+        }
+      }
+    },
     slot_button =
     {
       type = "button_style",
@@ -8831,6 +8895,24 @@ data:extend(
         glow = default_glow(default_dirt_color_filler, 0.5)
       }
     },
+    partially_fulfilled_draggable_space_in_train_schedule =
+    {
+      type = "empty_widget_style",
+      parent = "draggable_space_in_train_schedule",
+      graphical_set =
+      {
+        base =
+        {
+          top = {position = partially_fulfilled_gui(0,0), size = {8, 7}},
+          top_tiling = true,
+          center = {position = partially_fulfilled_gui(8,0), size = {8, 8}},
+          center_tiling_horizontal = true,
+          bottom = {position = partially_fulfilled_gui(16,0), size = {8, 8}},
+          bottom_tiling = true
+        },
+        glow = default_glow(default_dirt_color_filler, 0.5)
+      }
+    },
 
     train_schedule_fulfilled_delete_button =
     {
@@ -8841,6 +8923,17 @@ data:extend(
       {
         base = {position = {412, 86}, corner_size = 8},
         shadow = {position = {429, 86}, corner_size = 8, draw_type = "outer"}
+      }
+    },
+    train_schedule_partially_fulfilled_delete_button =
+    {
+      type = "button_style",
+      parent = "train_schedule_delete_button",
+      invert_colors_of_picture_when_hovered_or_toggled = false,
+      default_graphical_set =
+      {
+        base = {position = partially_fulfilled_gui(0,8), corner_size = 8},
+        shadow = {position = partially_fulfilled_gui(17,8), corner_size = 8, draw_type = "outer"}
       }
     },
 

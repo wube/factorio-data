@@ -1425,7 +1425,7 @@ data:extend(
     prerequisites = {"tree-seeding"},
     unit =
     {
-      count_formula = "500",
+      count = 500,
       ingredients =
       {
         {"space-science-pack", 1},
@@ -1959,7 +1959,7 @@ data:extend(
     prerequisites = {"biter-egg-handling", "fusion-reactor"},
     unit =
     {
-      count_formula = "2000",
+      count = 2000,
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -1992,7 +1992,7 @@ data:extend(
     prerequisites = {"cryogenic-science-pack"},
     unit =
     {
-      count_formula = "2000",
+      count = 2000,
       ingredients =
       {
         {"automation-science-pack", 1},

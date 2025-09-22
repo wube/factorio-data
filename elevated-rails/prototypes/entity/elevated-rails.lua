@@ -305,7 +305,7 @@ data:extend(
       {{-1, -4.25}, {1, -1.25}, 0.375},  -- south-east
       {{-1, -4}, {1, -1.5}, 0.4375 - degrees(8)}, -- south-south-east
     },
-    drawing_box_vertical_extension = 0.5,
+    drawing_box_vertical_extension = 2,
     support_range = 11,
     snap_to_spots_distance = 3,
     dying_explosion = {"rail-support-explosion"},

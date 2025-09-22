@@ -486,6 +486,10 @@ data:extend(
           type = "countAsRockForFilteredDeconstruction",
           string = "true",
         },
+        {
+          type = "prototype",
+          string = "cargo-pod"
+        }
       }
     },
     surface_render_parameters =

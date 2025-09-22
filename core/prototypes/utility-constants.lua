@@ -226,6 +226,7 @@ data:extend(
       chart_deconstruct_tint = {0.75, 0.2, 0.2, 1},
       chart_deconstruct_active_color = {1, 0, 0, 1},
       chart_player_circle_size = 3,
+      recipe_icon_scale = 2.5
     },
     gui_remark_color = {34, 181, 255},
     gui_search_match_foreground_color = gui_color.caption,

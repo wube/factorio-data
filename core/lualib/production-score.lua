@@ -46,19 +46,17 @@ local function get_product_list()
       local ingredients = recipe_prototype.ingredients
       local products = recipe_prototype.products
       for k, product in pairs (products) do
-        if product.type ~= "research-progress" then
-          if not product_list[product.name] then
-            product_list[product.name] = {}
+        if not product_list[product.name] then
+          product_list[product.name] = {}
+        end
+        local recipe_ingredients = {}
+        local product_amount = util.product_amount(product)
+        if product_amount > 0 then
+          for j, ingredient in pairs (ingredients) do
+            recipe_ingredients[ingredient.name] = ((ingredient.amount)/#products) / product_amount
           end
-          local recipe_ingredients = {}
-          local product_amount = util.product_amount(product)
-          if product_amount > 0 then
-            for j, ingredient in pairs (ingredients) do
-              recipe_ingredients[ingredient.name] = ((ingredient.amount)/#products) / product_amount
-            end
-            recipe_ingredients.energy = (recipe_prototype.energy / #products) / product_amount
-            table.insert(product_list[product.name], recipe_ingredients)
-          end
+          recipe_ingredients.energy = (recipe_prototype.energy / #products) / product_amount
+          table.insert(product_list[product.name], recipe_ingredients)
         end
       end
     end
@@ -75,12 +73,10 @@ local function get_product_list()
         local required_parts = entity.rocket_parts_required
         local list = {}
         for k, product in pairs (recipe.products) do
-          if product.type ~= "research-progress" then
-            local product_amount = util.product_amount(product)
-            if product_amount > 0 then
-              product_amount = product_amount * required_parts
-              list[product.name] = product_amount
-            end
+          local product_amount = util.product_amount(product)
+          if product_amount > 0 then
+            product_amount = product_amount * required_parts
+            list[product.name] = product_amount
           end
         end
         list["energy"] = recipe.energy
@@ -205,15 +201,13 @@ local deduce_nil_prices = function(price_list, param)
         if not ingredient_value then break end
         local product_value = 0
         for k, product in pairs (recipe.products) do
-          if product.type ~= "research-progress" then
-            local amount = util.product_amount(product)
-            local product_price = price_list[product.name]
-            if product_price then
-              product_value = product_value + product_price * amount
-            else
-              product_value = nil
-              break
-            end
+          local amount = util.product_amount(product)
+          local product_price = price_list[product.name]
+          if product_price then
+            product_value = product_value + product_price * amount
+          else
+            product_value = nil
+            break
           end
         end
         if product_value then

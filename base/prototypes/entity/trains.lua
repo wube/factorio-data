@@ -1016,9 +1016,9 @@ data:extend(
         volume = 0.3,
         aggregation = {max_count = 1, remove = true, count_already_playing = true}
       }
-    }
+    },
+    icon_draw_specification = { shift = {0, -0.5}, scale = 1.5, scale_for_many = 2.5, render_layer = "entity-info-icon" },
   },
-
   {
     type = "fluid-wagon",
     name = "fluid-wagon",

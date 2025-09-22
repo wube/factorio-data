@@ -735,7 +735,13 @@ data:extend
         shift = util.by_pixel(6, -18),
         scale = 0.5
       }
-    }
+    },
+    circuit_wire_max_distance = splitter_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["splitter"],
+    default_input_left_condition = { first = {type="virtual", name="signal-I"}, comparator="<", second=0},
+    default_input_right_condition = { first = {type="virtual", name="signal-I"}, comparator=">", second=0},
+    default_output_left_condition = { first = {type="virtual", name="signal-O"}, comparator="<", second=0},
+    default_output_right_condition = { first = {type="virtual", name="signal-O"}, comparator=">", second=0},
   },
   {
     type = "splitter",
@@ -841,7 +847,13 @@ data:extend
         shift = util.by_pixel(6, -18),
         scale = 0.5
       }
-    }
+    },
+    circuit_wire_max_distance = splitter_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["splitter"],
+    default_input_left_condition = { first = {type="virtual", name="signal-I"}, comparator="<", second=0},
+    default_input_right_condition = { first = {type="virtual", name="signal-I"}, comparator=">", second=0},
+    default_output_left_condition = { first = {type="virtual", name="signal-O"}, comparator="<", second=0},
+    default_output_right_condition = { first = {type="virtual", name="signal-O"}, comparator=">", second=0},
   },
   {
     type = "splitter",
@@ -946,7 +958,13 @@ data:extend
         shift = util.by_pixel(5, -18),
         scale = 0.5
       }
-    }
+    },
+    circuit_wire_max_distance = splitter_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["splitter"],
+    default_input_left_condition = { first = {type="virtual", name="signal-I"}, comparator="<", second=0},
+    default_input_right_condition = { first = {type="virtual", name="signal-I"}, comparator=">", second=0},
+    default_output_left_condition = { first = {type="virtual", name="signal-O"}, comparator="<", second=0},
+    default_output_right_condition = { first = {type="virtual", name="signal-O"}, comparator=">", second=0},
   },
   {
     type = "loader",

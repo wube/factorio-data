@@ -120,7 +120,12 @@ function add_recipe_values(structure, input, result)
       table.insert(structure.results, {type = "item", name = final_name, amount = final_amount, extra_count_fraction = final_extra_fraction})
 
     elseif ingredient.type == "fluid" then
-      local flow_color = data.raw.fluid[ingredient.name].flow_color
+      local fluid = data.raw.fluid[ingredient.name]
+      if not fluid then
+        error("Recipe "..input.name.." has malformed ingredients: ingredient fluid '"..ingredient.name.."' does not exist")
+      end
+
+      local flow_color = fluid.flow_color
       local normalized_flow_color = {(flow_color[1] or flow_color.r or 0), (flow_color[2] or flow_color.g or 0), (flow_color[3] or flow_color.b or 0)}
       if normalized_flow_color[1] > 1 or normalized_flow_color[2] > 1 or normalized_flow_color[3] > 1 then
         normalized_flow_color[1] = normalized_flow_color[1] / 255
@@ -133,7 +138,7 @@ function add_recipe_values(structure, input, result)
         normalized_flow_color[2] + ((1 - normalized_flow_color[2])*0.5),
         normalized_flow_color[3] + ((1 - normalized_flow_color[3])*0.5)
       }
-      result_crafting_tint.quaternary = data.raw.fluid[ingredient.name].base_color
+      result_crafting_tint.quaternary = fluid.base_color
     end
   end
 

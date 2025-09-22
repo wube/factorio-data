@@ -29,6 +29,7 @@ meld.append = function(data)
   return { marker = meld.control_marker, op = "append", data = data }
 end
 meld.control_handlers.append = function(target, k, v)
+  target[k] = target[k] or {}
   for _, to_append in pairs(v.data) do
     table.insert(target[k], util.copy(to_append))
   end

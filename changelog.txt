@@ -1,4 +1,115 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.67
+Date: 22. 09. 2025
+  Minor Features:
+    - Partially fulfilled wait conditions use different background color to indicate progress.
+    - Splitters can be connected to circuit network.
+  Changes:
+    - Added absorbed pollutant name to tile description in Factoriopedia.
+    - Changed manual mining when the inventory is full to not drop the mined result on the ground.
+    - Improved the mod API search to find union literals, define leaf nodes, and more.
+  Graphics:
+    - Fixed Metal graphics backend throttling the FPS when the display refresh rate isn't a multiple of 60 Hz. (https://forums.factorio.com/129946)
+  Bugfixes:
+    - Fixed LuaSegmentedUnit::acceleration calculations in some situations. (https://forums.factorio.com/130515)
+    - Fixed combinator's red and green wires would overlap when built vertically. (https://forums.factorio.com/130464)
+    - Fixed a crash when tile-effect texture filename is invalid. (https://forums.factorio.com/130678)
+    - Fixed that hiding an autoplace control did not remove it from the map generator GUI.
+    - Fixed multisample noise operation not working properly for LuaSurface.calculate_tile_properties(). (https://forums.factorio.com/130575)
+    - Fixed technology slots drawing ingredients when research trigger is also specified. (https://forums.factorio.com/130499)
+    - Fixed rail support drawing box in GUI widgets.
+    - Fixed a consistency issue when copying settings between loaders in some cases. (https://forums.factorio.com/130707)
+    - Fixed demolisher kills being counted twice in the kill statistics. (https://forums.factorio.com/130721)
+    - Fixed a crash when writing LuaStyle::clicked_font_color on labels. (https://forums.factorio.com/130727)
+    - Fixed UI scaling and alignment issues when the window content scale is changed during loading. (https://forums.factorio.com/130689)
+    - Fixed a crash when migrating agricultural towers. (https://forums.factorio.com/130746)
+    - Fixed a crash when showing modded technology effects. (https://forums.factorio.com/130741)
+    - Fixed that fluid could pass through frozen machines. (https://forums.factorio.com/129185)
+    - Fixed copying train stop settings would send trains to a train stop in some cases. (https://forums.factorio.com/130751)
+    - Fixed a charting issue with pentapods. (https://forums.factorio.com/130543)
+    - Fixed thruster tooltip was not showing quality indicator on the thrust line. (https://forums.factorio.com/130572)
+    - Fixed a desync when a car or spidertron with toolbelt equipment is destroyed. (https://forums.factorio.com/130665)
+    - Fixed that fast replacing a train stop could fail to preserve train stop limit. (https://forums.factorio.com/129801)
+    - Fixed heat flow between heat pipes that have different default temperature. (https://forums.factorio.com/129438)
+    - Fixed that the too-many-trees achievement check was backwards. (https://forums.factorio.com/130658)
+    - Fixed that resource entities were not protected from tile removal even if set that they should be. (https://forums.factorio.com/130609)
+    - Fixed a crash when minimap GUI elements would try to view deleted surfaces. (https://forums.factorio.com/130606)
+    - Fixed biters could be distracted when told not to be distracted in some cases. (https://forums.factorio.com/130801)
+    - Fixed selector combinator's update interval was not covered by blueprint parametrisation. (https://forums.factorio.com/128999)
+    - Fixed some alert icons were using wrong colors. (https://forums.factorio.com/130118)
+    - Fixed that blueprint parametrisation could cause splitter filter to be cleared causing mode of operation to change. (https://forums.factorio.com/130826)
+    - Fixed a crash when selecting an underground belt without an underground_sprite.
+    - Fixed issue with selector combinator random interval and formulas is gui. (https://forums.factorio.com/130492)
+    - Fixed that LuaPlayer::can_build_from_cursor() did not check build distance. (https://forums.factorio.com/130805)
+    - Fixed a style issue with labels in buttons when changing the enabled state of the button. (https://forums.factorio.com/130818)
+    - Fixed a crash when editing decider combinator constants in some cases. (https://forums.factorio.com/130798)
+    - Fixed a crash when editing interrupts on space platforms. (https://forums.factorio.com/130600)
+    - Fixed a crash when migrating linked containers. (https://forums.factorio.com/130815)
+    - Fixed a crash when teleporting or changing the direction of asteroid collectors. (https://forums.factorio.com/128604)
+    - Fixed entities with tile_buildability_rules crashing the game when rotated to non-cardinal direction.
+    - Fixed sound of a machine with its GUI opened not fading out on game pause. (https://forums.factorio.com/130780)
+    - Fixed that custom inputs would not fire if there were game GUI controls with the same key bindings. (https://forums.factorio.com/130789)
+    - Fixed that disabled trigger technologies were still researchable. (https://forums.factorio.com/130832)
+    - Fixed a crash and the back button in map generator GUI when map width or height were out of range. (https://forums.factorio.com/130880)
+    - Fixed that remote view dragging wasn't cancelled when the game was paused. (https://forums.factorio.com/130076)
+    - Fixed that rail signals did not rotate automatically to a valid direction in forced and super-forced build modes when they collided with tiles. (https://forums.factorio.com/127962)
+    - Fixed that tips and tricks simulations could show the "game finished" screen when mods didn't rewind them to the beginning. (https://forums.factorio.com/129357)
+    - Robots with construction task of elevated entity will not queue more tasks - fixes some cases of some jobs never getting done. (https://forums.factorio.com/130710)
+    - Fixed cancelling deconstruction of entity colliding with both an entity ghost and a tile ghost supporting said entity ghost sometimes crashing. (https://forums.factorio.com/130859)
+    - Fixed undoing after manually mining tile that had cover ghost tile on it would not restored said cover tile ghost. (https://forums.factorio.com/130612)
+    - Fixed the surfaces list in remote view not scrolling when using the "Select next/previous surface" hotkeys. (https://forums.factorio.com/127402)
+    - Fixed that blueprint book LuaRecords in a preview state could not be read. (https://forums.factorio.com/130790)
+    - Fixed that players could enter vehicles marked for deconstruction. (https://forums.factorio.com/130879)
+    - Fixed selection tool could select tile ghosts when it was not configured for selecting tiles. (https://forums.factorio.com/118072)
+    - Fixed that car light animation with apply_runtime_tint enabled was always black. (https://forums.factorio.com/130810)
+    - Fixed personal laser equipment was not showing under ammo category in facotriopedia. (https://forums.factorio.com/130959)
+  Modding:
+    - Removed "research-progress" product type from RecipePrototype.
+    - Added RobotWithLogisticInterfacePrototype::max_payload_size_after_bonus.
+    - Added FusionGeneratorPrototype::burns_fluid.
+    - Added FusionGeneratorPrototype::effectivity.
+    - Changed Generator and FusionGenenerator tooltips to not show temperatures when in burns_fluid mode.
+    - Added support for heating_energy to FusionGeneratorPrototype and ThrusterPrototype.
+    - Added recipe_icon_scale chart utility constant.
+    - Added LightningPrototype::attractor_hit_effect.
+    - Added RoboportPrototype::render_recharge_icon.
+    - Changed CargoWagonPrototype to use EntityPrototype::icon_draw_specification when drawing cargo wagon content.
+    - Changed DisplayPanelPrototype to use render_layer from icon_draw_specification when drawing icon.
+    - Added __TECHNOLOGY__ and __RECIPE__ built-in locale parameters.
+  Scripting:
+    - Added LuaPlayer::get_recipe_notifications().
+    - Added LuaPlayer::swap_characters().
+    - Added flip_horizontal and flip_vertical parameters to LuaPlayer::build_from_cursor().
+    - Added skip_fog_of_war to LuaPlayer::can_build_from_cursor().
+    - Added LuaCustomChartTag::position and surface write.
+    - Added LuaFluidBox::get_fluid_segment_extent_bounding_box().
+    - Added LuaItemPrototype::get_module_effects().
+    - Added LuaInventory::get_item_count_filtered().
+    - Added LuaInventory::get_item_quality_counts().
+    - Added LuaLogisticNetwork::custom_name read/write.
+    - Added LuaRecord::export_record().
+    - Added LuaRecord::get_selected_record().
+    - Added LuaEntity::transitional_request_target read.
+    - Added LuaEntity::rail_length read.
+    - Added LuaEntity::get_movement() and set_movement().
+    - Added LuaHelpers::multilingual_to_lower().
+    - Added LuaEntityPrototype::get_attraction_range_elongation() and get_energy_distribution_efficiency().
+    - Added LuaEntityPrototype::fluid_buffer_size, activation_buffer_ratio and fluid_buffer_input_flow read.
+    - Added LuaEntityPrototype::spider_engine read.
+    - Added LuaEntityPrototype::range_from_player, combat_robot_friction, destroy_action and follows_player read.
+    - Added LuaEntityPrototype::strike_effect, attractor_hit_effect, damage and energy read.
+    - Added LuaEntityPrototype::support_range read.
+    - Added LuaGuiElement::icon_selector read.
+    - Added LuaItemCommon::entity_logistic_sections and entity_request_from_buffers read/write.
+    - Added custom_tooltip_fields reads to all LuaPrototypes that support it.
+    - Added on_cargo_pod_started_ascending event.
+    - Added previous_target and previous_quality to on_marked_for_upgrade event.
+    - Added in_gui to custom input events.
+    - Added LuaSplitterControlBehavior.
+    - Added surface_index to all UndoRedoActions.
+    - Changed LuaSpacePlatform::destroy_asteroid_chunks() to return the number of destroyed chunks.
+    - Changed LuaEntity::color read/write to also work for character corpses.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.66
 Date: 02. 09. 2025
   Minor Features:

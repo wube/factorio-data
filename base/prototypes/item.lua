@@ -488,6 +488,19 @@ data:extend
     stack_size = 1
   },
   {
+    type = "item",
+    name = "no-item",
+    icon = "__core__/graphics/icons/mip/no-item.png",
+    flags = {"not-stackable"},
+    hidden = true,
+    auto_recycle = false,
+    subgroup = "other",
+    inventory_move_sound = item_sounds.wire_inventory_move,
+    pick_sound = item_sounds.wire_inventory_pickup,
+    drop_sound = item_sounds.wire_inventory_move,
+    stack_size = 1
+  },
+  {
     type = "capsule",
     name = "raw-fish",
     icon = "__base__/graphics/icons/fish.png",

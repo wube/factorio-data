@@ -493,8 +493,8 @@ function generate_arithmetic_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(-8.5, 14),
-        green = util.by_pixel(10, 14)
+        red = util.by_pixel(-8.0, 14),
+        green = util.by_pixel(11, 14)
       }
     },
     {
@@ -505,8 +505,8 @@ function generate_arithmetic_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(-25.5, -15),
-        green = util.by_pixel(-25.5, -1.5)
+        red = util.by_pixel(-23.0, -15),
+        green = util.by_pixel(-26, -1.5)
       }
     },
     {
@@ -529,8 +529,8 @@ function generate_arithmetic_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(26, -1),
-        green = util.by_pixel(26, -14.5)
+        red = util.by_pixel(23.5, -1),
+        green = util.by_pixel(26.5, -14.5)
       }
     }
   }
@@ -544,7 +544,7 @@ function generate_arithmetic_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(-9, -22),
+        red = util.by_pixel(-8, -22),
         green = util.by_pixel(10, -22)
       }
     },
@@ -556,8 +556,8 @@ function generate_arithmetic_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(23, -13),
-        green = util.by_pixel(23, 1)
+        red = util.by_pixel(21.5, -13),
+        green = util.by_pixel(24, 1)
       }
     },
     {
@@ -580,8 +580,8 @@ function generate_arithmetic_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(-22.5, 1),
-        green = util.by_pixel(-22.5, -12)
+        red = util.by_pixel(-21.0, 1),
+        green = util.by_pixel(-24.5, -12)
       }
     }
   }
@@ -924,8 +924,8 @@ function generate_decider_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(-24.5, -18.5),
-        green = util.by_pixel(-24, -4)
+        red = util.by_pixel(-22.5, -18.5),
+        green = util.by_pixel(-25, -4)
       }
     },
     {
@@ -936,8 +936,8 @@ function generate_decider_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(9.5, -19.5),
-        green = util.by_pixel(-8, -19.5)
+        red = util.by_pixel(8.5, -19.5),
+        green = util.by_pixel(-9.5, -19.5)
       }
     },
     {
@@ -948,8 +948,8 @@ function generate_decider_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(25.5, -4),
-        green = util.by_pixel(25, -19)
+        red = util.by_pixel(23.5, -4),
+        green = util.by_pixel(26, -19)
       }
     }
   }
@@ -975,8 +975,8 @@ function generate_decider_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(22, -17),
-        green = util.by_pixel(22, -3.5)
+        red = util.by_pixel(19.5, -17),
+        green = util.by_pixel(23, -3.5)
       }
     },
     {
@@ -999,8 +999,8 @@ function generate_decider_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(-21.5, -4),
-        green = util.by_pixel(-21.5, -17)
+        red = util.by_pixel(-19.0, -4),
+        green = util.by_pixel(-22.5, -17)
       }
     }
   }
@@ -1085,8 +1085,8 @@ function generate_constant_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(16, -16.5),
-        green = util.by_pixel(16, -3.5)
+        red = util.by_pixel(14.5, -16.5),
+        green = util.by_pixel(17.5, -3.5)
       }
     },
     {
@@ -1109,8 +1109,8 @@ function generate_constant_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(-15, -0.5),
-        green = util.by_pixel(-15, -13.5)
+        red = util.by_pixel(-13.5, -0.5),
+        green = util.by_pixel(-16.5, -13.5)
       }
     }
   }
@@ -1500,8 +1500,8 @@ function generate_selector_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(-24, -11),
-        green = util.by_pixel(-23, 3)
+        red = util.by_pixel(-21.5, -11),
+        green = util.by_pixel(-24, 3)
       }
     },
     -- South
@@ -1526,8 +1526,8 @@ function generate_selector_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(23, 4),
-        green = util.by_pixel(23, -11)
+        red = util.by_pixel(21.5, 4),
+        green = util.by_pixel(24.5, -11)
       }
     },
   }
@@ -1555,8 +1555,8 @@ function generate_selector_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(24, -12),
-        green = util.by_pixel(24, 1)
+        red = util.by_pixel(22.5, -12),
+        green = util.by_pixel(25.5, 1)
       }
     },
     -- South
@@ -1581,8 +1581,8 @@ function generate_selector_combinator(combinator)
       },
       wire =
       {
-        red = util.by_pixel(-24, 1),
-        green = util.by_pixel(-24, -12)
+        red = util.by_pixel(-22.5, 1),
+        green = util.by_pixel(-25.5, -12)
       }
     },
   }

@@ -198,3 +198,4 @@ assembling_machine_circuit_wire_max_distance = 9
 furnace_circuit_wire_max_distance = 9
 reactor_circuit_wire_max_distance = 9
 combinator_circuit_wire_max_distance = 9
+splitter_circuit_wire_max_distance = 9

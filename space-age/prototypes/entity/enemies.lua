@@ -3890,7 +3890,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
           {
             util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1",
             {
-              frame_count = 15,
+              frame_count = 16,
               scale = 0.4 * stomper_scale,
               shift = util.by_pixel(0, 0),
               direction_count = 1,
@@ -3900,7 +3900,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
             }),
             util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1-mask",
             {
-              frame_count = 15,
+              frame_count = 16,
               scale = 0.4 * stomper_scale,
               shift = util.by_pixel(0, 0),
               direction_count = 1,
@@ -3917,7 +3917,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
           {
             util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2",
             {
-              frame_count = 15,
+              frame_count = 16,
               scale = 0.4 * stomper_scale,
               shift = util.by_pixel(0, 0),
               direction_count = 1,
@@ -3927,7 +3927,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
             }),
             util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2-mask",
             {
-              frame_count = 15,
+              frame_count = 16,
               scale = 0.4 * stomper_scale,
               shift = util.by_pixel(0, 0),
               direction_count = 1,
@@ -3944,7 +3944,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
           {
             util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3",
             {
-              frame_count = 15,
+              frame_count = 16,
               scale = 0.4 * stomper_scale,
               shift = util.by_pixel(0, 0),
               direction_count = 1,
@@ -3954,7 +3954,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
             }),
             util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3-mask",
             {
-              frame_count = 15,
+              frame_count = 16,
               scale = 0.4 * stomper_scale,
               shift = util.by_pixel(0, 0),
               direction_count = 1,

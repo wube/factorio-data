@@ -6478,6 +6478,15 @@ data:extend(
     selection_box = {{0, 0}, {0, 0}}
   },
   {
+    type = "rocket-silo-rocket-shadow",
+    name = "cargo-pod-shadow",
+    flags = {"not-on-map"},
+    hidden = true,
+    collision_mask = {layers={}, not_colliding_with_itself=true},
+    collision_box = {{0, 0}, {0, 0}},
+    selection_box = {{0, 0}, {0, 0}}
+  },
+  {
     type = "cargo-landing-pad",
     name = "cargo-landing-pad",
     icon = "__base__/graphics/icons/cargo-landing-pad.png",
@@ -10198,7 +10207,7 @@ data:extend({
     },
     icon_draw_specification = {render_layer = "air-entity-info-icon", scale = 1.0},
     spawned_container = "cargo-pod-container",
-    shadow_slave_entity = "rocket-silo-rocket-shadow",
+    shadow_slave_entity = "cargo-pod-shadow",
     default_graphic = { type = "pod-catalogue", catalogue_id = procession_graphic_catalogue_types.pod_base },
     default_shadow_graphic = { type = "pod-catalogue", catalogue_id = procession_graphic_catalogue_types.pod_shadow },
     procession_graphic_catalogue = cargo_pod_procession_catalogue,

@@ -7,7 +7,10 @@ function tip_story_init(story_table)
     storage.story = story_init()
     script.on_event(defines.events.on_tick, function(event)
       if not game.tick_paused then
-        story_update(storage.story, event)
+        story_update(storage.story, event, nil, function()
+          script.on_event(defines.events.on_tick, nil)
+          return true
+        end)
       end
     end)
 end
@@ -116,10 +119,7 @@ function story_update(story, event, next_level, onwin)
     story.story_position = story.story_position + 1
     story.current_story_started_at = event.tick
     if story.story_position > #branches then
-      if onwin ~= nil then
-        onwin()
-      end
-      if not game.finished then
+      if (onwin == nil or not onwin()) and not game.finished then
         if next_level then
           game.set_game_state{game_finished=true, player_won=true, next_level=next_level}
         else

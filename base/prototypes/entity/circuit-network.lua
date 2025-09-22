@@ -140,109 +140,6 @@ data:extend
     input_connection_bounding_box = {{-0.5, 0}, {0.5, 1}},
     output_connection_bounding_box = {{-0.5, -1}, {0.5, 0}},
 
-    input_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {0.328125, 0.703125},
-          green = {0.859375, 0.703125}
-        },
-        wire =
-        {
-          red = {-0.28125, 0.34375},
-          green = {0.25, 0.34375}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.265625, -0.171875},
-          green = {-0.296875, 0.296875}
-        },
-        wire =
-        {
-          red = {-0.75, -0.5},
-          green = {-0.75, -0.0625}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.828125, -0.359375},
-          green = {0.234375, -0.359375}
-        },
-        wire =
-        {
-          red = {0.25, -0.71875},
-          green = {-0.28125, -0.71875}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {1.29688, 0.328125},
-          green = {1.29688, -0.140625}
-        },
-        wire =
-        {
-          red = {0.75, -0.0625},
-          green = {0.75, -0.53125}
-        }
-      }
-    },
-
-    output_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {0.234375, -0.453125},
-          green = {0.828125, -0.453125}
-        },
-        wire =
-        {
-          red = {-0.3125, -0.78125},
-          green = {0.28125, -0.78125}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {1.17188, -0.109375},
-          green = {1.17188, 0.296875}
-        },
-        wire =
-        {
-          red = {0.65625, -0.4375},
-          green = {0.65625, -0.03125}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.828125, 0.765625},
-          green = {0.234375, 0.765625}
-        },
-        wire =
-        {
-          red = {0.28125, 0.40625},
-          green = {-0.3125, 0.40625}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.140625, 0.328125},
-          green = {-0.140625, -0.078125}
-        },
-        wire =
-        {
-          red = {-0.6875, -0.03125},
-          green = {-0.6875, -0.4375}
-        }
-      }
-    },
     circuit_wire_max_distance = combinator_circuit_wire_max_distance
   },
 
@@ -1002,8 +899,8 @@ data:extend
           },
           wire =
           {
-            red = util.by_pixel(15.5, -14),
-            green = util.by_pixel(16.6, -0.5)
+            red = util.by_pixel(15, -13.5),
+            green = util.by_pixel(18.0, -0.5)
           }
         }
       },
@@ -1032,8 +929,8 @@ data:extend
           },
           wire =
           {
-            red = util.by_pixel(-16.5, -0.5),
-            green = util.by_pixel(-16.5, -14)
+            red = util.by_pixel(-14.5, -0.5),
+            green = util.by_pixel(-17.5, -14)
           }
         }
       }

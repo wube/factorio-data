@@ -14,18 +14,23 @@ function data.extend(self, otherdata)
   if self ~= data and otherdata == nil then
     otherdata = self
   end
-  if type(otherdata) ~= table_string or #otherdata == 0 then
-    error("Invalid prototype array " .. serpent.block(otherdata, {maxlevel= 1}))
+  if type(otherdata) ~= table_string then
+    error("Invalid array of prototypes:\n\n" .. serpent.block(otherdata, {maxlevel= 1}))
+  elseif #otherdata == 0  then
+    if otherdata.type or otherdata.name then
+      error("Expected array of prototypes, but got a single prototype:\n\n" .. serpent.block(otherdata, {maxlevel= 1}))
+    end
+    error("Invalid array of prototypes:\n\n" .. serpent.block(otherdata, {maxlevel= 1}))
   end
 
   for _, e in ipairs(otherdata) do
 
     if not e.type then
-      error("Missing type in the following prototype definition " .. serpent.block(e))
+      error("Missing type in the following prototype definition:\n" .. serpent.block(e))
     end
 
     if not e.name then
-      error("Missing name in the following prototype definition " .. serpent.block(e))
+      error("Missing name in the following prototype definition:\n" .. serpent.block(e))
     end
 
     local t = data.raw[e.type]

@@ -941,3 +941,13 @@ circuit_connector_definitions["recycler-flipped"] = circuit_connector_definition
     { variation = 30, main_offset = util.by_pixel(0, 20), shadow_offset = util.by_pixel(2, 24), show_shadow = true },
   }
 )
+circuit_connector_definitions["splitter"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 0, main_offset = util.by_pixel(21, -10), shadow_offset = util.by_pixel(21+12, -10+10), show_shadow = true },
+    { variation = 6, main_offset = util.by_pixel(7, 9), shadow_offset = util.by_pixel(7+12, 9+10), show_shadow = false },
+    { variation = 4, main_offset = util.by_pixel(-21, 0), shadow_offset = util.by_pixel(-21+12, 0+10), show_shadow = true },
+    { variation = 2, main_offset = util.by_pixel(-7, -29), shadow_offset = util.by_pixel(-7+12, -29+10), show_shadow = true },
+  }
+)
