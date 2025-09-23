@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.68
+Date: 23. 09. 2025
+  Graphics:
+    - Made Metal the default graphics rendering API for Macs.
+    - Deprecated OpenGL support on Macs. It will still exist for older versions of macOS, but may not receive future updates.
+    - Removed Graphics backend user setting.
+  Bugfixes:
+    - Fixed a crash with some menu simulations and mods. (https://forums.factorio.com/130910)
+    - Fixed a crash when entities are removed while their GUI is being interacted with. (https://forums.factorio.com/130852)
+    - Fixed a crash after migrating a frozen assembling machine fluidbox that has fluid contents. (https://forums.factorio.com/130973)
+    - Fixed undo actions for removed entities would not keep underground belt type. (https://forums.factorio.com/130977)
+    - Fixed LuaSplitterControlBehavior was missing fields from LuaControlBehavior. (https://forums.factorio.com/130978)
+---------------------------------------------------------------------------------------------------
 Version: 2.0.67
 Date: 22. 09. 2025
   Minor Features:
