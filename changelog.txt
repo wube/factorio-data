@@ -1,4 +1,31 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.69
+Date: 29. 09. 2025
+  Bugfixes:
+    - Fixed some combinations of surface properties would cause robots to consume NaN amount of energy. (https://forums.factorio.com/130989)
+    - Fixed upgrading underground belts in a blueprint would not preserve underground belt type. (https://forums.factorio.com/130994)
+    - Fixed that upgrading fuel in blueprints could result in invalid fuel requests. (https://forums.factorio.com/130958)
+    - Fixed that super-force-building would not generate a player-rotated event. (https://forums.factorio.com/128978)
+    - Fixed a crash when script checks if a space platform can leave when it was not yet built. (https://forums.factorio.com/131015)
+    - Fixed a crash when a modded character entity without a character corpse defined dies. (https://forums.factorio.com/131022)
+    - Fixed custom tooltip fields were not showing for modded recipes. (https://forums.factorio.com/131044)
+    - Fixed some gui widgets were not selectable when inside of a long table that is scrolled to only show last row. (https://forums.factorio.com/130970)
+    - Fixed proxy container interaction with agricultural tower. (https://forums.factorio.com/131057)
+    - Fixed spoil products of recipe products were not listed as possible recipe trash. (https://forums.factorio.com/131072)
+    - Fixed LuaRendering rich text in game render mode being drawn above fog of war. (https://forums.factorio.com/131066)
+    - Fixed (super)forcing entity requiring tile would sometimes not trigger deconstruction of an obstacle despite said obstacle blocking revival of autofilled tileghost. (https://forums.factorio.com/130907)
+  Modding:
+    - Added MiningDrillPrototype::resource_searching_offset.
+    - Added "scripted" technology trigger.
+    - Added FluidWagonPrototype::connection_category.
+  Scripting:
+    - Added on_player_dropped_item_into_entity event.
+    - Added LuaItemCommon::entity_logistics_enabled and entity_enable_logistics_while_moving read/write.
+    - Added LuaItemCommon::entity_driver_is_gunner, entity_auto_target_without_gunner and entity_auto_target_with_gunner read/write.
+    - Added maximum_quality_jump utility constant.
+    - Added LuaEntity::mining_area read.
+    - Added LuaForce::script_trigger_research().
+---------------------------------------------------------------------------------------------------
 Version: 2.0.68
 Date: 23. 09. 2025
   Graphics:

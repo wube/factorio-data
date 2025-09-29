@@ -619,5 +619,6 @@ data:extend(
     logistic_robots_use_busy_robots_queue = true,
     construction_robots_use_busy_robots_queue = true,
     quality_selector_dropdown_threshold = 6,
+    maximum_quality_jump = 255
   }
 })
