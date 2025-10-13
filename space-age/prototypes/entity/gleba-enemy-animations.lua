@@ -173,6 +173,10 @@ function get_leg_hit_the_ground_when_attacking_trigger(stomp_radius, stomp_damag
       speed_from_center_deviation = 0.000,
     },
     {
+      type = "play-sound",
+      sound = sound,
+    },
+    {
       type = "nested-result",
       action =
       {
@@ -188,10 +192,6 @@ function get_leg_hit_the_ground_when_attacking_trigger(stomp_radius, stomp_damag
               type = "damage",
               damage = { amount = 25 * stomp_damage_modifier, type = "impact"}
             },
-            {
-              type = "play-sound",
-              sound = sound,-- only on hit
-            }
           }
         }
       }

@@ -5995,6 +5995,8 @@ data:extend(
     rocket_quick_relaunch_start_offset = -0.625,
     cargo_station_parameters =
     {
+      is_input_station = false,
+      is_output_station = true,
       hatch_definitions = { silo_cargo_hatch({0, 0}) },
     },
     crafting_speed = 1,
@@ -6651,6 +6653,8 @@ data:extend(
     robot_animation_sound = sounds.logistics_chest_open,
     cargo_station_parameters =
     {
+      is_input_station = true,
+      is_output_station = false,
       hatch_definitions =
       {
         planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
@@ -10215,35 +10219,68 @@ data:extend({
     {
       {
         index = procession_audio_catalogue_types.pod_reentry_flames,
-        sound = { filename = "__base__/sound/procession/cargo-pod-reentry-flame.ogg", volume = 1 }
+        sound =
+        {
+          filename = "__base__/sound/procession/cargo-pod-reentry-flame.ogg",
+          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+        }
       },
       {
         index = procession_audio_catalogue_types.pod_thruster_burst_1,
-        sound = { filename = "__base__/sound/procession/cargo-pod-thruster-burst-1.ogg", volume = 1 }
+        sound =
+        {
+          filename = "__base__/sound/procession/cargo-pod-thruster-burst-1.ogg",
+          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+        }
       },
       {
         index = procession_audio_catalogue_types.pod_thruster_burst_2,
-        sound = { filename = "__base__/sound/procession/cargo-pod-thruster-burst-2.ogg", volume = 1 }
+        sound =
+        {
+          filename = "__base__/sound/procession/cargo-pod-thruster-burst-2.ogg",
+          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+        }
       },
       {
         index = procession_audio_catalogue_types.pod_thruster_burst_3,
-        sound = { filename = "__base__/sound/procession/cargo-pod-thruster-burst-3.ogg", volume = 1 }
+        sound =
+        {
+          filename = "__base__/sound/procession/cargo-pod-thruster-burst-3.ogg",
+          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+        }
       },
       {
         index = procession_audio_catalogue_types.pod_thruster_burst_4,
-        sound = { filename = "__base__/sound/procession/cargo-pod-thruster-burst-4.ogg", volume = 1 }
+        sound =
+        {
+          filename = "__base__/sound/procession/cargo-pod-thruster-burst-4.ogg",
+          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+        }
       },
       {
         index = procession_audio_catalogue_types.pod_wings,
-        sound = { filename = "__base__/sound/procession/cargo-pod-wings.ogg", volume = 1 }
+        sound =
+        {
+          filename = "__base__/sound/procession/cargo-pod-wings.ogg",
+          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+        }
       },
       {
         index = procession_audio_catalogue_types.rocket_claws_open,
-        sound = { filename = "__base__/sound/procession/cargo-pod-rocket-claws-open.ogg", volume = 1 }
+        sound =
+        {
+          filename = "__base__/sound/procession/cargo-pod-rocket-claws-open.ogg",
+          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+        }
       },
       {
         index = procession_audio_catalogue_types.pod_ground_land,
-        sound = { filename = "__base__/sound/car-stone-impact-2.ogg", volume = 0.8 }
+        sound =
+        {
+          filename = "__base__/sound/car-stone-impact-2.ogg",
+          volume = 0.8,
+          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+        }
       }
     }
   },

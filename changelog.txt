@@ -1,4 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.70
+Date: 13. 10. 2025
+  Bugfixes:
+    - Fixed scripted technology trigger was unable to load layered icons. (https://forums.factorio.com/131107)
+    - Fixed tips and tricks item was unable to load layered icons.
+    - Fixed stomper stomp sound playing way too many times when dying by stomping in a mine field. (https://forums.factorio.com/131100)
+    - Fixed electric turret was suggesting it is possible to read ammo. (https://forums.factorio.com/131119)
+    - Fixed a crash when artillery turret didn't have rotating_sound defined even though it's optional. (https://forums.factorio.com/131140)
+    - Fixed startup crashes on some Intel Macbook Pros. (https://forums.factorio.com/131153)
+    - Fixed that changing player's character could cause equipment related events to not fire. (https://forums.factorio.com/131165)
+    - Fixed upgrading programmable speaker would clear settings. (https://forums.factorio.com/131191)
+    - Fixed that LuaPlayer::can_build_from_cursor would play the not-allowed sound when out of reach. (https://forums.factorio.com/131201)
+    - Fixed that on_chart_tag_modified was not called when name/icon was modified by script. (https://forums.factorio.com/131176)
+    - Fixed a crash when a surface is deleted while viewing a ping tooltip for that surface. (https://forums.factorio.com/131146)
+    - Fixed some OpenGL lighting issues when light occlusion was enabled.
+    - Fixed color saturation problems on some Intel Macs. (https://forums.factorio.com/128726)
+    - Fixed crashes on Intel Macs with AMD GPUs by disabling GPU timings for those cards.
+    - Fixed a crash when robots try to charge at a roboport that only supports charging when using quality. (https://forums.factorio.com/131253)
+  Modding:
+    - Added CargoStationParameters::is_input_station and ::is_output_station to mainly clarify tooltips. (https://forums.factorio.com/126749)
+---------------------------------------------------------------------------------------------------
 Version: 2.0.69
 Date: 29. 09. 2025
   Bugfixes:

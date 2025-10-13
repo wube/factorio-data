@@ -365,6 +365,8 @@ data:extend({
     },
     cargo_station_parameters =
     {
+      is_input_station = true,
+      is_output_station = true,
       hatch_definitions =
       {
         platform_upper_hatch({0.5, -3.5} , 2.25, 3, -0.5, procession_graphic_catalogue_types.hatch_emission_in_1),

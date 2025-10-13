@@ -604,8 +604,9 @@ sounds.small_explosion =
 {
   aggregation =
   {
-    max_count = 1,
-    remove = true
+    max_count = 3,
+    remove = true,
+    count_already_playing = true
   },
   variations = sound_variations_with_volume_variations("__base__/sound/small-explosion", 5, 0.25, 0.5, volume_multiplier("main-menu", 1.2))
 }
@@ -614,8 +615,9 @@ sounds.medium_explosion =
 {
   aggregation =
   {
-    max_count = 1,
-    remove = true
+    max_count = 3,
+    remove = true,
+    count_already_playing = true
   },
   switch_vibration_data =
   {
@@ -630,8 +632,9 @@ sounds.robot_explosion =
 {
   aggregation =
   {
-    max_count = 1,
-    remove = true
+    max_count = 3,
+    remove = true,
+    count_already_playing = true
   },
   variations = sound_variations_with_volume_variations("__base__/sound/fight/robot-explosion", 5, 0.3, 0.5)
 }
@@ -671,8 +674,9 @@ sounds.large_explosion = function(min_volume, max_volume)
   {
     aggregation =
     {
-      max_count = 1,
-      remove = true
+      max_count = 3,
+      remove = true,
+      count_already_playing = true
     },
     audible_distance_modifier = 3.8,
     switch_vibration_data =
@@ -697,8 +701,9 @@ sounds.nuclear_explosion = function(volume)
     category = "explosion",
     aggregation =
     {
-      max_count = 1,
-      remove = true
+      max_count = 3,
+      remove = true,
+      count_already_playing = true
     },
     switch_vibration_data =
     {
