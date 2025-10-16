@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.71
+Date: 16. 10. 2025
+  Bugfixes:
+    - Fixed asteroid collector navmesh would in rare cases be stuck computing forever. (https://forums.factorio.com/130063)
+    - Fixed crash on Intel Macs with Intel Iris Plus Graphics by disabling GPU timings for those cards.
+    - Fixed freeze with unknown cause when placing rails. (https://forums.factorio.com/131330)
+---------------------------------------------------------------------------------------------------
 Version: 2.0.70
 Date: 13. 10. 2025
   Bugfixes:
