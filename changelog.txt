@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.72
+Date: 22. 10. 2025
+  Changes:
+    - Decider combinator, arithmetic combinator and selector combinator are now primary energy consumers and have buffer size increased to make them more reliable in case of low power.
+    - Reduced selector combinator energy usage from 5kW to 1kW.
+    - When using "Entity tooltip delay", the timer is also reset when moving the camera or the character. Fixes blinking entity tooltip when moving.
+  Bugfixes:
+    - Fixed "Entity tooltip delay" causing entity tooltips to never show in controller input method.
+    - Fixed turrets would clear "read ammo" when migrating a save file. (https://forums.factorio.com/131362)
+    - Fixed that diagonal connected resources did not group in the map total-patch tooltip logic. (https://forums.factorio.com/131405)
+    - Fixed a crash when cloning trees/rocks marked for deconstruction.
+    - Fixed a crash when using roboport requests with spoilable robots. (https://forums.factorio.com/131326)
+    - Fixed electric poles would connect when checking pole buildability by script. (https://forums.factorio.com/131450)
+    - Fixed double space in fuel pollution tooltip lines. (https://forums.factorio.com/131453)
+---------------------------------------------------------------------------------------------------
 Version: 2.0.71
 Date: 16. 10. 2025
   Bugfixes:

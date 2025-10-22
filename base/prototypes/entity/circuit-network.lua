@@ -24,7 +24,7 @@ data:extend
     energy_source =
     {
       type = "electric",
-      usage_priority = "secondary-input"
+      usage_priority = "primary-input"
     },
     active_energy_usage = "1kW",
 
@@ -93,7 +93,7 @@ data:extend
     energy_source =
     {
       type = "electric",
-      usage_priority = "secondary-input"
+      usage_priority = "primary-input"
     },
     active_energy_usage = "1kW",
 
@@ -961,9 +961,9 @@ data:extend
     energy_source =
     {
       type = "electric",
-      usage_priority = "secondary-input"
+      usage_priority = "primary-input"
     },
-    active_energy_usage = "5kW",
+    active_energy_usage = "1kW",
 
     working_sound =
     {
