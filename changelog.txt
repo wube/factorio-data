@@ -1,4 +1,32 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.73
+Date: 13. 01. 2026
+  Gui:
+    - Mods GUI will show an error instead of restarting the game when trying to confirm it while mod dependencies are not met.
+  Bugfixes:
+    - Fixed rocket silo could launch satellites even when cargo landing pad will not be able to hold launch products. (https://forums.factorio.com/131495)
+    - Fixed fluid boxes with underground pipe connection and non default flow direction could cause unrelated fluid boxes to disconnect. (https://forums.factorio.com/131520)
+    - Fixed a crash when reading LuaPlayer::blueprints in a simulation.
+    - Fixed a crash related to give-item modifier not rejecting count of 0. (https://forums.factorio.com/131713)
+    - Fixed that the default config.ini file would not be written on first startup. (https://forums.factorio.com/131694)
+    - Fixed that mod dependency links in the mod updates GUI did not work correctly when not default sorted. (https://forums.factorio.com/127927)
+    - Fixed that LuaPlayer::build_from_cursor() checked reach in forced and super-forced build modes. (https://forums.factorio.com/131816)
+    - Fixed that pipe connections of different connection categories could cause entity to flip incorrectly. (https://forums.factorio.com/131811)
+    - Fixed a crash with PlaySoundTriggerEffectItem with distance limits when destroyed due to previous dying trigger effect. (https://forums.factorio.com/131795)
+    - Fixed inserter would incorrectly consider some assemblers as full when a recipe was changed while assembler had fluid product overload. (https://forums.factorio.com/131831)
+    - Fixed that trains with a temporary station in their schedule showed in "Trains with this stop" list of an unnamed train stop ghost. (https://forums.factorio.com/131274)
+    - Fixed inserter control behavior not updating stack size when selecting different signal. (https://forums.factorio.com/131843)
+    - Fixed that environment sounds could get stuck at lower volume when switching to remote view while travelling to/from a space platform. (https://forums.factorio.com/131872)
+    - Fixed a crash when ammo spoils in cars or spider vehicles. (https://forums.factorio.com/131885)
+    - Fixed a crash when mods would create surfaces during built events on space platforms. (https://forums.factorio.com/131858)
+    - Fixed technologies with craft fluid trigger would queue themselves while dependencies are not met and fluid is produced. (https://forums.factorio.com/131958)
+    - Fixed a crash when migrations remove a lighting attractor. (https://forums.factorio.com/131884)
+    - Fixed a crash when mods error during ghost revival. (https://forums.factorio.com/132072)
+    - Fixed transparent tile sprites on aquilo.
+    - Added missing Lua defines for cargo landing pad logistic points. (https://forums.factorio.com/131341)
+  Scripting:
+    - Added LuaEntity::send_to_orbit_automatically read/write.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.72
 Date: 22. 10. 2025
   Changes:
