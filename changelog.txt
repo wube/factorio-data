@@ -1,4 +1,26 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.74
+Date: 10. 02. 2026
+  Bugfixes:
+    - Fixed that blueprint built locomotive ghosts with fuel requests would not switch to automatic mode when the fuel was delivered. (https://forums.factorio.com/132428)
+    - Fixed a crash with agricultural towers and some graphics definitions. (https://forums.factorio.com/132450)
+    - Fixed that cloning resource entities would remove some trees at the destination. (https://forums.factorio.com/132405)
+    - Fixed flying text spam when a multiplayer peer was obstructed from building an underground belt. (https://forums.factorio.com/132373)
+    - Fixed that items with rocket launch products didn't give any products in modded Space Age when the rocket was launched manually. (https://forums.factorio.com/132527)
+    - Fixed that you could put items into ghost rocket silos. (https://forums.factorio.com/132552)
+    - Fixed Mods gui showing a dependency warning even for mods to be deleted.
+    - Fixed cargo wagon door sound stuck playing on deconstruction order. (https://forums.factorio.com/132623)
+    - Fixed that LuaItemCommon::get/set_blueprint_entities() did not include rolling stock connections. (https://forums.factorio.com/132626)
+    - Fixed that creating blueprints from rolling stock ghosts would not preserve rolling stock ghost connections. (https://forums.factorio.com/132626)
+    - Fixed that fast-replacing inserters with held items could result in the items being removed. (https://forums.factorio.com/132635)
+    - Fixed a crash when loading a save file where electric pole removal due to missing mods causes circuit wires rewiring between assemblers that are also being removed. (https://forums.factorio.com/132605)
+    - Fixed that changing the quality in the cheat crafting GUI would scroll the view to the top. (https://forums.factorio.com/132607)
+  Modding:
+    - space-age, quality and elevated-rails mod versions were not bumped for this update as nothing has changed.
+  Scripting:
+    - Added LuaEntityPrototype::inserter_max_belt_stack_size read.
+    - Changed LuaEntityPrototype::automated_ammo_count read to also work for artillery wagons.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.73
 Date: 13. 01. 2026
   Gui:
