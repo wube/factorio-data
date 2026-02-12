@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.75
+Date: 12. 02. 2026
+  Bugfixes:
+    - Fixed a consistency issue with cargo pods and variable result rocket-launch-products. (https://forums.factorio.com/132687)
+    - Fixed an ordering issue with ghost trains being built. (https://forums.factorio.com/132730)
+  Modding:
+    - space-age, quality and elevated-rails mod versions were not bumped for this update as nothing has changed.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.74
 Date: 10. 02. 2026
   Bugfixes:
