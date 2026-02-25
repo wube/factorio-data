@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.76
+Date: 25. 02. 2026
+  Bugfixes:
+    - Fixed that items with no rocket launch products couldn't be launched manually to orbit. (https://forums.factorio.com/132739)
+    - Fixed that asteroid collectors could get stuck computing. (https://forums.factorio.com/132625)
+    - Fixed another case of cargo wagon door sound stuck playing on deconstruction order.(https://forums.factorio.com/132752)
+    - Fixed that platform auto construction requests could request 1 too many items. (https://forums.factorio.com/132787)
+    - Fixed Space Map sometimes not using free cursor in controller input method.
+    - Fixed a crash when modded furnaces are configured with fluid output and no result inventory.
+  Scripting:
+    - Added LuaEntityPrototype::reversing_power_modifier read.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.75
 Date: 12. 02. 2026
   Bugfixes:

@@ -181,6 +181,7 @@ add_utility_sound("build_blueprint_huge", "__core__/sound/build-blueprint-large.
 add_utility_sound("build_ghost_upgrade", "__core__/sound/build-ghost-upgrade.ogg", 0.7, 64)
 add_utility_sound("build_ghost_upgrade_cancel", "__core__/sound/build-ghost-upgrade-cancel.ogg", 0.7, 64)
 add_utility_sound("gui_click", "__core__/sound/gui-click.ogg")
+add_utility_sound("gui_switch", "__core__/sound/gui-switch.ogg", 0.7)
 add_utility_sound("list_box_click", "__core__/sound/list-box-click.ogg")
 add_utility_sound("cannot_build", "__core__/sound/cannot-build.ogg")
 add_utility_sound_with_vibration("deconstruct_small", "__core__/sound/deconstruct-small.ogg", 1.0, 64, nil, "__core__/sound/deconstruct-small.bnvib", 0.25)
