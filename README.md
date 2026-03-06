@@ -17,7 +17,7 @@ eg: https://github.com/wube/factorio-data/compare/0.18.43...1.1.57
 
 This repo debuted in [FFF-240](https://www.factorio.com/blog/post/fff-240).
 
-## Pull Requests Will Be Rejected
-The contents of this repository are automatically generated.  It is pointless to make a pull request as it will not be merged.  GitHub doesn't allow for deactivating the Pull requests feature.
+## Reporting Issues
+The contents of this repository are automatically generated.
 
 If you wish to report a bug, please do so [on our forums](https://forums.factorio.com/viewforum.php?f=7).  Thank you!
