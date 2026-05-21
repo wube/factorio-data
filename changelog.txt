@@ -1,4 +1,27 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.77
+Date: 21. 05. 2026
+  Bugfixes:
+    - Fixed a clipping issue on cargo pods attached to rockets (https://forums.factorio.com/131012)
+    - Fixed that inserters would deadlock if ammo spoiled while mid-swing towards a turret. (https://forums.factorio.com/133060)
+    - Fixed that rocket silos could deadlock due to mod changes. (https://forums.factorio.com/132886)
+    - Fixed a crash when specific entities are killed without a source. (https://forums.factorio.com/133062)
+    - Fixed that time passed wait condition wasn't reset when manually pressing go-to button to the shattered planet while being stopped at a space location. (https://forums.factorio.com/133073)
+    - Fixed that scrolling personal library blueprint books in multiplayer latency did not work correctly. (https://forums.factorio.com/117199)
+    - Fixed a desync related to custom input events and in_gui flag. (https://forums.factorio.com/133274)
+    - Fixed an issue with script-disabling logistic points connected to orbital logistics. (https://forums.factorio.com/133283)
+    - Fixed a crash when creating a loader with stack size override. (https://forums.factorio.com/133285)
+    - Fixed [sprite] rich text tag being accessible through user input. (https://forums.factorio.com/133343)
+    - Fixed a crash when loading space-age save files with space-age prototypes removed but space-age flags enabled. (https://forums.factorio.com/133552)
+  Scripting:
+    - Added LuaEntityPrototype::quality_affects_supply_area_distance, LuaEntityPrototype::quality_affects_inventory_size, LuaEntityPrototype::quality_affects_capacity, LuaEntityPrototype::quality_affects_energy_usage reads.
+    - Added LuaEntityPrototype::crafting_speed_quality_multiplier, LuaEntityPrototype::energy_usage_quality_multiplier, LuaEntityPrototype::module_slots_quality_bonus reads.
+    - Added LuaEntityPrototype::drops_full_belt_stacks read.
+    - Added additional reads to LuaSpaceLocationPrototype.
+    - Added LuaEntityPrototype::uses_quality_drain_modifier read.
+    - Added LuaFluidPrototype::visualization_color read.
+    - API documentation website now has fulltext search (online version only).
+---------------------------------------------------------------------------------------------------
 Version: 2.0.76
 Date: 25. 02. 2026
   Bugfixes:
@@ -3031,7 +3054,6 @@ Date: 20. 10. 2024
     - Removed Filter and Stack filter inserter, instead all inserters can use filters now.
     - Character corpses no longer despawn.
     - Merged zoom controls and removed functionality to zoom in without leaving chart view.
-    - Kovarex enrichment process is now unlocked by automation, logistic and chemical science pack only.
     - Power armor equipment grid resized from 7x7 to 6x8 to be a bit more practical.
     - Power switch and Programmable speaker stack size reduced from 50 to 10.
     - Big and huge rock doesn't drop stone items when destroyed anymore.
