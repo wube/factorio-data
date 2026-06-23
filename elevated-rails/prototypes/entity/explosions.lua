@@ -158,7 +158,7 @@ local explosions =
     smoke = "smoke-fast",
     smoke_count = 1,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion,
+    sound = sounds.large_metal_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -188,7 +188,7 @@ local explosions =
     smoke = "smoke-fast",
     smoke_count = 1,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion,
+    sound = sounds.large_concrete_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -221,7 +221,7 @@ local explosions =
     smoke = "smoke-fast",
     smoke_count = 1,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion,
+    sound = sounds.large_explosion(),
     created_effect =
     {
       type = "direct",
@@ -289,7 +289,7 @@ local explosions =
     smoke = "smoke-fast",
     smoke_count = 1,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion,
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",

@@ -1055,41 +1055,53 @@ particle_animations.get_explosion_remnants_shadow_pictures = function(options)
 end
 
 particle_animations.get_shell_particle_pictures = function(options)
+  local options = options or {}
   return
   {
     {
       filename = "__base__/graphics/particle/shell-particle/shell-particle-1.png",
       priority = "extra-high",
-      width = 6,
-      height = 6,
-      frame_count = 5
+      width = 10,
+      height = 10,
+      frame_count = 5,
+      shift = util.add_shift(util.by_pixel(0, 0), options.shift),
+      scale = 0.5
     },
     {
       filename = "__base__/graphics/particle/shell-particle/shell-particle-2.png",
       priority = "extra-high",
-      width = 5,
-      height = 7,
-      frame_count = 5
+      width = 10,
+      height = 10,
+      frame_count = 5,
+      shift = util.add_shift(util.by_pixel(0, 0), options.shift),
+      scale = 0.5
     }
   }
 end
 
-particle_animations.get_shell_particle_shadow_pictures = function(options)
+particle_animations.get_shotgun_shell_particle_pictures = function(options)
+  local options = options or {}
   return
   {
     {
-      filename = "__base__/graphics/particle/shell-particle/shell-particle-shadow-1.png",
+      filename = "__base__/graphics/particle/shell-particle/shotgun-shell-particle-1.png",
       priority = "extra-high",
-      width = 9,
-      height = 7,
-      frame_count = 5
+      width = 16,
+      height = 14,
+      frame_count = 5,
+      tint = options and options.tint or nil,
+      shift = util.add_shift(util.by_pixel(0.5, 0.0), options.shift),
+      scale = 0.5
     },
     {
-      filename = "__base__/graphics/particle/shell-particle/shell-particle-shadow-2.png",
+      filename = "__base__/graphics/particle/shell-particle/shotgun-shell-particle-2.png",
       priority = "extra-high",
-      width = 7,
-      height = 8,
-      frame_count = 5
+      width = 16,
+      height = 14,
+      frame_count = 5,
+      tint = options and options.tint or nil,
+      shift = util.add_shift(util.by_pixel(0, 0), options.shift),
+      scale = 0.5
     }
   }
 end
@@ -1335,7 +1347,7 @@ particle_animations.get_metal_particle_medium_long_pictures = function(options)
       animation_speed = 0.5,
       variation_count = 10,
       shift = util.add_shift(util.by_pixel(3.75,0.25), options.shift),
-      scale = 0.5
+      scale = options.scale or 0.5
     }
   }
 end

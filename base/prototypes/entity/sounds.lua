@@ -15,6 +15,15 @@ return
 end
 
 sounds.tree_leaves = sound_variations("__base__/sound/particles/tree-leaves", 5, 0.35)
+sounds.mining_stone =
+{
+  switch_vibration_data =
+  {
+    filename = "__core__/sound/axe-mining-stone.bnvib"
+  },
+  variations = sound_variations("__core__/sound/axe-mining-stone", 7, 0.4),
+  priority = 64
+}
 sounds.mine_fish = sound_variations("__core__/sound/mine-fish", 5, 0.8)
 sounds.eat_fish = sound_variations("__base__/sound/eat", 5, 0.6)
 sounds.deconstruct_bricks = function(volume)
@@ -358,7 +367,7 @@ sounds.roboport_door_open =
       volume = 0.3,
       min_speed = 1,
       max_speed = 1.5,
-      aggregation = {max_count = 1, remove = true},
+      aggregation = {max_count = 3, remove = true, count_already_playing = true},
     }
   }
 }
@@ -374,7 +383,7 @@ sounds.roboport_door_close =
       volume = 0.2,
       min_speed = 1,
       max_speed = 1.5,
-      aggregation = {max_count = 1, remove = true},
+      aggregation = {max_count = 3, remove = true, count_already_playing = true},
     }
   }
 }
@@ -384,20 +393,20 @@ sounds.flying_robot = function(volume)
   {
     sound =
     {
-      { filename = "__base__/sound/construction-robot-11.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-12.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-13.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-14.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-15.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-16.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-17.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-18.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-19.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-1.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-2.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-3.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-4.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
+      {filename = "__base__/sound/construction-robot-11.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-12.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-13.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-14.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-15.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-16.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-17.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-18.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-19.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-1.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-2.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-3.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-4.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
     },
     max_sounds_per_prototype = 20,
     fade_in_ticks = 8,
@@ -411,20 +420,20 @@ sounds.construction_robot = function(volume)
   {
     sound =
     {
-      { filename = "__base__/sound/construction-robot-1.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-2.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-3.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-4.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-5.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-6.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-7.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-8.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/construction-robot-9.ogg", volume = volume, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-1.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-2.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-3.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-4.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
-      { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
+      {filename = "__base__/sound/construction-robot-1.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-2.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-3.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-4.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-5.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-6.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-7.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-8.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/construction-robot-9.ogg", volume = volume, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-1.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-2.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-3.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-4.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
+      {filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43, modifiers = {volume_multiplier("main-menu", 1.3), volume_multiplier("tall-entities-hidden", 0.2)}},
     },
     max_sounds_per_prototype = 20,
     fade_in_ticks = 8,
@@ -437,7 +446,7 @@ sounds.robot_charging =
 {
   sound =
   {
-    variations = sound_variations("__base__/sound/robot-charging", 7, 1.0),
+    variations = sound_variations("__base__/sound/robot-charging", 7, 1.0, volume_multiplier("tall-entities-hidden", 0.2)),
     aggregation = {max_count = 3, remove = true, count_already_playing = true}
   }
 }
@@ -695,6 +704,30 @@ sounds.large_explosion = function(min_volume, max_volume)
   }
 end
 
+sounds.large_metal_explosion = function(min_volume, max_volume)
+  return
+  {
+    variations = sound_variations_with_volume_variations("__base__/sound/explosions/large-metal-explosion", 5, min_volume, max_volume or min_volume),
+    aggregation = {max_count = 2, remove = true, count_already_playing = true},
+    advanced_volume_control =
+    {
+      fades = {fade_in = {curve_type = "S-curve", from = {control = 0.5, volume_percentage = 20}, to = {1, 100.0}}},
+    }
+  }
+end
+
+sounds.large_concrete_explosion = function(min_volume, max_volume)
+  return
+  {
+    variations = sound_variations_with_volume_variations("__base__/sound/explosions/large-concrete-explosion", 3, min_volume, max_volume or min_volume),
+    aggregation = {max_count = 2, remove = true, count_already_playing = true},
+    advanced_volume_control =
+    {
+      fades = {fade_in = {curve_type = "S-curve", from = {control = 0.5, volume_percentage = 15}, to = {1, 100.0}}},
+    }
+  }
+end
+
 sounds.nuclear_explosion = function(volume)
   return
   {
@@ -796,7 +829,7 @@ if not bullet_impacts_loaded then
       name = "bullet-stone",
       deliver_category = "bullet",
       impact_category = "stone",
-      trigger_effect_item = sound_trigger("__base__/sound/bullets/bullet-impact-stone", 5, 0.5, "weapon")
+      trigger_effect_item = sound_trigger("__base__/sound/bullets/bullet-impact-stone", 5, 0.4, "weapon")
     },
     {
       type = "deliver-impact-combination",
@@ -1198,6 +1231,7 @@ sounds.spitter_calls_big = function(min_volume, max_volume)
 end
 
 sounds.spitter_roars = function(volume)
+  -- these sounds are not used in vanilla but are kept here in case they are used by mods
   return
   {
     layers =

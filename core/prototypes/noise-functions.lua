@@ -204,32 +204,34 @@ data:extend{
                 basis_noise{x = x, y = y, seed0 = map_seed, seed1 = seed1, input_scale = 1/24, output_scale = 1}",
       double_density_distance = 1300, -- Distance at which patches have twice as much stuff in them.
       regular_patch_fade_in_distance = 300,
-      starting_resource_placement_radius = 120, -- The starting area size option should not affect regular ore placement, so it is hard-coded.
+      starting_resource_placement_radius = 150, -- The starting area size option should not affect regular ore placement, so it is hard-coded.
       starting_patches_split = 0.5, -- Lower numbers decrease the likelihood that the starting patches get split.
 
       -- Starting patches
+      -- Note: starting_resources_lake_mask is by default an expression powered by the planet's elevation, but a planet can override it.
       starting_patches = "spot_noise{x = x,\z
                                      y = y,\z
                                      density_expression = starting_amount / (pi * starting_resource_placement_radius * starting_resource_placement_radius) * \z
                                                           starting_modulation,\z
                                      spot_quantity_expression = starting_area_spot_quantity,\z
                                      spot_radius_expression = starting_rq_factor * starting_area_spot_quantity ^ (1/3),\z
-                                     spot_favorability_expression = clamp((elevation_lakes - 1) / 10, 0, 1) * starting_modulation * 2 - \z
-                                                                    distance / starting_resource_placement_radius + random_penalty_at(0.5, 1),\z
+                                     spot_favorability_expression = starting_resources_lake_mask * starting_modulation * origin_excluder * 2 - \z
+                                                                    min(1, distance / starting_resource_placement_radius),\z
                                      seed0 = map_seed,\z
                                      seed1 = seed1 + 1,\z
                                      skip_span = starting_patch_set_count,\z
                                      skip_offset = starting_patch_set_index,\z
-                                     region_size = starting_resource_placement_radius * 2,\z
+                                     region_size = starting_resource_placement_radius * 3,\z
                                      candidate_spot_count = 32,\z
-                                     suggested_minimum_candidate_point_spacing = 32,\z
+                                     suggested_minimum_candidate_point_spacing = 48,\z
                                      hard_region_target_quantity = 1,\z
                                      basement_value = basement_value,\z
-                                     maximum_spot_basement_radius = 128} + \z
+                                     maximum_spot_basement_radius = 2 * starting_rq_factor * starting_area_spot_quantity ^ (1/3)} + \z
                           (blobs0 - 0.25) * starting_blob_amplitude",
       starting_amount = "20000 * base_density * (frequency_multiplier + 1) * size_multiplier",
       starting_area_spot_quantity = "starting_amount / starting_patches_split / frequency_multiplier",
       starting_blob_amplitude = "starting_blob_amplitude_multiplier / (pi/3 * starting_rq_factor ^ 2) * starting_area_spot_quantity ^ (1/3)",
+      origin_excluder = "distance > 40", -- avoid crash site and landing spots
       starting_modulation = "starting_resource_placement_radius > distance",
 
       -- Regular patches

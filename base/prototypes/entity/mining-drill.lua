@@ -252,6 +252,215 @@ local electric_mining_drill_secondary_light =
     light = {intensity = 0.2, size = 2, color={1, 1, 1}, minimum_darkness = 0.1}
   })
 
+local function pumpjack_animation()
+  return
+  {
+    north =
+    {
+      layers =
+      {
+        {
+          priority = "high",
+          filename = "__base__/graphics/entity/pumpjack/pumpjack-horsehead.png",
+          animation_speed = 0.5,
+          scale = 0.5,
+          line_length = 8,
+          width = 206,
+          height = 172,
+          frame_count = 40,
+          shift = util.by_pixel(-4.5, -29)
+        },
+        {
+          priority = "high",
+          filename = "__base__/graphics/entity/pumpjack/pumpjack-horsehead-shadow.png",
+          animation_speed = 0.5,
+          draw_as_shadow = true,
+          line_length = 8,
+          width = 292,
+          height = 78,
+          frame_count = 40,
+          scale = 0.5,
+          shift = util.by_pixel(17.75, 14.5)
+        }
+      }
+    }
+  }
+end
+
+local function pumpjack_visualisations(flipped)
+  local base_sheets =
+  {
+    {
+      filename = "__base__/graphics/entity/pumpjack/pumpjack-base" .. (flipped and "-flipped" or "") .. ".png",
+      priority = "extra-high",
+      width = 261,
+      height = 273,
+      shift = util.by_pixel(-2.25, -4.75),
+      scale = 0.5
+    },
+    {
+      filename = "__base__/graphics/entity/pumpjack/pumpjack-base" .. (flipped and "-flipped" or "") .. "-shadow.png",
+      width = 261,
+      height = 273,
+      scale = 0.5,
+      draw_as_shadow = true,
+      shift = util.by_pixel(-2, -5)
+    }
+  }
+
+  local base_visualisation = {always_draw = true, secondary_draw_order = -1}
+  for i, name in pairs{"north_animation", "east_animation", "south_animation", "west_animation"} do
+    local layers = {}
+    for _, sheet in pairs(base_sheets) do
+      sheet = table.deepcopy(sheet)
+      sheet.x = sheet.width * (i - 1)
+      table.insert(layers, sheet)
+    end
+    base_visualisation[name] = {layers = layers}
+  end
+  return {base_visualisation}
+end
+
+local function burnerdrill_animation(flipped)
+  local suffix = flipped and "-flipped" or ""
+  
+  return
+  {
+    north =
+    {
+      layers =
+      {
+        {
+          priority = "high",
+          width = flipped and 176 or 174,
+          height = flipped and 190 or 188,
+          line_length = 4,
+          shift = util.by_pixel(flipped and 0.5 or 2.75, flipped and 0.0 or 0.5),
+          filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-N" .. suffix .. ".png",
+          frame_count = 32,
+          animation_speed = 0.5,
+          run_mode = "forward-then-backward",
+          scale = 0.5,
+          allow_reducing_frames = true
+        },
+        {
+          priority = "high",
+          width = flipped and 174 or 217,
+          height = flipped and 148 or 150,
+          line_length = 4,
+          shift = util.by_pixel(flipped and 11.5 or 23.75, flipped and -1.0 or -1),
+          filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-N" .. suffix .. "-shadow.png",
+          frame_count = 32,
+          animation_speed = 0.5,
+          run_mode = "forward-then-backward",
+          draw_as_shadow = true,
+          scale = 0.5,
+          allow_reducing_frames = true
+        }
+      }
+    },
+    east =
+    {
+      layers =
+      {
+        {
+          priority = "high",
+          width = flipped and 178 or 186,
+          height = flipped and 172 or 168,
+          line_length = 4,
+          shift = util.by_pixel(flipped and 3.5 or 2.75, flipped and -1.0 or 1),
+          filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-E" .. suffix .. ".png",
+          frame_count = 32,
+          animation_speed = 0.5,
+          run_mode = "forward-then-backward",
+          scale = 0.5,
+          allow_reducing_frames = true
+        },
+        {
+          priority = "high",
+          width = flipped and 184 or 185,
+          height = flipped and 126 or 128,
+          line_length = 4,
+          shift = util.by_pixel(flipped and 14.0 or 13.75, flipped and 1.0 or 0.5),
+          filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-E" .. suffix .. "-shadow.png",
+          frame_count = 32,
+          animation_speed = 0.5,
+          run_mode = "forward-then-backward",
+          draw_as_shadow = true,
+          scale = 0.5,
+          allow_reducing_frames = true
+        }
+      }
+    },
+    south =
+    {
+      layers =
+      {
+        {
+          priority = "high",
+          width = flipped and 170 or 174,
+          height = flipped and 180 or 174,
+          line_length = 4,
+          shift = util.by_pixel(flipped and 3.0 or 0.5, flipped and 1.0 or -0.5),
+          filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-S" .. suffix .. ".png",
+          frame_count = 32,
+          animation_speed = 0.5,
+          run_mode = "forward-then-backward",
+          scale = 0.5,
+          allow_reducing_frames = true
+        },
+        {
+          priority = "high",
+          width = flipped and 200 or 174,
+          height = flipped and 136 or 137,
+          line_length = 4,
+          shift = util.by_pixel(flipped and 20.0 or 11, flipped and 3.0 or 2.75),
+          filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-S" .. suffix .. "-shadow.png",
+          frame_count = 32,
+          animation_speed = 0.5,
+          run_mode = "forward-then-backward",
+          draw_as_shadow = true,
+          scale = 0.5,
+          allow_reducing_frames = true
+        }
+      }
+    },
+    west =
+    {
+      layers =
+      {
+        {
+          priority = "high",
+          width = flipped and 176 or 180,
+          height = flipped and 174 or 176,
+          line_length = 4,
+          shift = util.by_pixel(flipped and -1.5 or -1.5, flipped and 0.5 or 0),
+          filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-W" .. suffix .. ".png",
+          frame_count = 32,
+          animation_speed = 0.5,
+          run_mode = "forward-then-backward",
+          scale = 0.5,
+          allow_reducing_frames = true
+        },
+        {
+          priority = "high",
+          width = flipped and 200 or 176,
+          height = flipped and 128 or 130,
+          line_length = 4,
+          shift = util.by_pixel(flipped and 13.5 or 7.5, flipped and 1.0 or 1),
+          filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-W" .. suffix .. "-shadow.png",
+          frame_count = 32,
+          animation_speed = 0.5,
+          run_mode = "forward-then-backward",
+          draw_as_shadow = true,
+          scale = 0.5,
+          allow_reducing_frames = true
+        }
+      }
+    }
+  }
+end
+
 data:extend(
 {
   {
@@ -288,6 +497,7 @@ data:extend(
     open_sound = sounds.drill_open,
     close_sound = sounds.drill_close,
 
+    use_mirroring = true, -- mirrored drills resolve drop onto belt ties opposite way. No flipped graphics needed
     graphics_set =
     {
       drilling_vertical_movement_duration = 10 / electric_drill_animation_speed,
@@ -1563,7 +1773,22 @@ data:extend(
     fast_replaceable_group = "mining-drill",
 
     circuit_connector = circuit_connector_definitions["electric-mining-drill"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-reflection.png",
+        priority = "extra-high",
+        width = 28,
+        height = 36,
+        shift = util.by_pixel(5, 60),
+        variation_count = 4,
+        scale = 5
+      },
+      rotate = false,
+      orientation_to_variation = true
+    }
   },
   {
     type = "mining-drill",
@@ -1606,139 +1831,33 @@ data:extend(
       }
     },
     energy_usage = "150kW",
+    use_mirroring = true,
     graphics_set =
     {
-      animation =
+      animation = burnerdrill_animation(false),
+      water_reflection =
       {
-        north =
+        pictures =
         {
-          layers =
-          {
-            {
-              priority = "high",
-              width = 173,
-              height = 188,
-              line_length = 4,
-              shift = util.by_pixel(2.75, 0.5),
-              filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-N.png",
-              frame_count = 32,
-              animation_speed = 0.5,
-              run_mode = "forward-then-backward",
-              scale = 0.5
-            },
-            {
-              priority = "high",
-              width = 217,
-              height = 150,
-              line_length = 4,
-              shift = util.by_pixel(23.75, -1),
-              filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-N-shadow.png",
-              frame_count = 32,
-              animation_speed = 0.5,
-              run_mode = "forward-then-backward",
-              draw_as_shadow = true,
-              scale = 0.5
-            }
-          }
+          filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-reflection.png",
+          priority = "extra-high",
+          width = 20,
+          height = 24,
+          shift = util.by_pixel(0, 45),
+          variation_count = 1,
+          scale = 5
         },
-        east =
-        {
-          layers =
-          {
-            {
-              priority = "high",
-              width = 185,
-              height = 168,
-              line_length = 4,
-              shift = util.by_pixel(2.75, 1),
-              filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-E.png",
-              frame_count = 32,
-              animation_speed = 0.5,
-              run_mode = "forward-then-backward",
-              scale = 0.5
-            },
-            {
-              priority = "high",
-              width = 185,
-              height = 128,
-              line_length = 4,
-              shift = util.by_pixel(13.75, 0.5),
-              filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-E-shadow.png",
-              frame_count = 32,
-              animation_speed = 0.5,
-              run_mode = "forward-then-backward",
-              draw_as_shadow = true,
-              scale = 0.5
-            }
-          }
-        },
-        south =
-        {
-          layers =
-          {
-            {
-              priority = "high",
-              width = 174,
-              height = 174,
-              line_length = 4,
-              shift = util.by_pixel(0.5, -0.5),
-              filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-S.png",
-              frame_count = 32,
-              animation_speed = 0.5,
-              run_mode = "forward-then-backward",
-              scale = 0.5
-            },
-            {
-              priority = "high",
-              width = 174,
-              height = 137,
-              line_length = 4,
-              shift = util.by_pixel(11, 2.75),
-              filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-S-shadow.png",
-              frame_count = 32,
-              animation_speed = 0.5,
-              run_mode = "forward-then-backward",
-              draw_as_shadow = true,
-              scale = 0.5
-            }
-          }
-        },
-        west =
-        {
-          layers =
-          {
-            {
-              priority = "high",
-              width = 180,
-              height = 176,
-              line_length = 4,
-              shift = util.by_pixel(-1.5, 0),
-              filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-W.png",
-              frame_count = 32,
-              animation_speed = 0.5,
-              run_mode = "forward-then-backward",
-              scale = 0.5
-            },
-            {
-              priority = "high",
-              width = 176,
-              height = 130,
-              line_length = 4,
-              shift = util.by_pixel(7.5, 1),
-              filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-W-shadow.png",
-              frame_count = 32,
-              animation_speed = 0.5,
-              run_mode = "forward-then-backward",
-              draw_as_shadow = true,
-              scale = 0.5
-            }
-          }
-        }
+        rotate = false,
+        orientation_to_variation = false
       }
+    },
+    graphics_set_flipped =
+    {
+      animation = burnerdrill_animation(true)
     },
     monitor_visualization_tint = {78, 173, 255},
     resource_searching_radius = 0.99,
-    vector_to_place_result = {-0.5, -1.3},
+    vector_to_place_result = {-0.35, -1.3},
     fast_replaceable_group = "mining-drill",
 
     circuit_connector = circuit_connector_definitions["burner-mining-drill"],
@@ -1777,7 +1896,7 @@ data:extend(
       {
         {
           direction = defines.direction.north,
-          positions = {{1, -1}, {1, -1}, {-1, 1}, {-1, 1}},
+          positions = {{1, -1}, {1, 1}, {-1, 1}, {-1, -1}},
           flow_direction = "output"
         }
       }
@@ -1794,63 +1913,17 @@ data:extend(
       height = 12
     },
     monitor_visualization_tint = {78, 173, 255},
-    base_render_layer = "object",
-    base_picture =
-    {
-      sheets =
-      {
-        {
-          filename = "__base__/graphics/entity/pumpjack/pumpjack-base.png",
-          priority = "extra-high",
-          width = 261,
-          height = 273,
-          shift = util.by_pixel(-2.25, -4.75),
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/pumpjack/pumpjack-base-shadow.png",
-          width = 220,
-          height = 220,
-          scale = 0.5,
-          draw_as_shadow = true,
-          shift = util.by_pixel(6, 0.5)
-        }
-      }
-    },
+    migrate_horizontal_mirroring = true,
+    use_mirroring = true,
     graphics_set =
     {
-      animation =
-      {
-        north =
-        {
-          layers =
-          {
-            {
-              priority = "high",
-              filename = "__base__/graphics/entity/pumpjack/pumpjack-horsehead.png",
-              animation_speed = 0.5,
-              scale = 0.5,
-              line_length = 8,
-              width = 206,
-              height = 202,
-              frame_count = 40,
-              shift = util.by_pixel(-4, -24)
-            },
-            {
-              priority = "high",
-              filename = "__base__/graphics/entity/pumpjack/pumpjack-horsehead-shadow.png",
-              animation_speed = 0.5,
-              draw_as_shadow = true,
-              line_length = 8,
-              width = 309,
-              height = 82,
-              frame_count = 40,
-              scale = 0.5,
-              shift = util.by_pixel(17.75, 14.5)
-            }
-          }
-        }
-      }
+      animation = pumpjack_animation(),
+      working_visualisations = pumpjack_visualisations(false)
+    },
+    graphics_set_flipped =
+    {
+      animation = pumpjack_animation(),
+      working_visualisations = pumpjack_visualisations(true)
     },
     open_sound = {filename = "__base__/sound/open-close/pumpjack-open.ogg", volume = 0.5},
     close_sound = {filename = "__base__/sound/open-close/pumpjack-close.ogg", volume = 0.5},

@@ -1,16 +1,16 @@
 {
   "name": "space-age",
-  "version": "2.0.77",
+  "version": "2.1.7",
   "title": "Space Age",
   "author": "Wube Software",
   "contact": "dev@factorio.com",
   "homepage": "https://www.factorio.com",
-  "dependencies": ["base >= 2.0.0", "elevated-rails >= 2.0.0", "quality >= 2.0.0"],
-  "quality_required": true,
+  "dependencies": ["base >= 2.1.0", "elevated-rails >= 2.1.0", "+ quality >= 2.1.0", "recycler >= 2.1.0"],
+  "expansion_required": true,
   "space_travel_required": true,
   "spoiling_required": true,
   "freezing_required": true,
   "segmented_units_required": true,
   "expansion_shaders_required": true,
-  "factorio_version": "2.0"
+  "factorio_version": "2.1"
 }

@@ -108,6 +108,24 @@ local explosions =
 
   {
     type = "explosion",
+    name = "small-explosion-hit",
+    localised_name = {"entity-name.small-explosion-hit"},
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/shotgun.png"}
+    },
+    order = "a-a-d",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "explosions",
+    animations = explosion_animations.hit_explosion_small(),
+    scale_deviation = 0.25,
+    height = 0
+  },
+
+  {
+    type = "explosion",
     name = "big-explosion",
     localised_name = {"entity-name.big-explosion"},
     icons =
@@ -3575,7 +3593,7 @@ local explosions =
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_metal_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -3650,7 +3668,7 @@ local explosions =
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_metal_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -5296,7 +5314,7 @@ local explosions =
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_metal_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -5371,7 +5389,7 @@ local explosions =
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_metal_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -6151,7 +6169,7 @@ local explosions =
         {
           {
             type = "create-particle",
-            repeat_count = 37,
+            repeat_count = 25,
             particle_name = "heat-exchanger-metal-particle-medium",
             offset_deviation = { { -0.8867, -0.3867 }, { 0.8867, 0.3867 } },
             initial_height = 0.3,
@@ -6163,7 +6181,7 @@ local explosions =
           },
           {
             type = "create-particle",
-            repeat_count = 34,
+            repeat_count = 23,
             particle_name = "heat-exchanger-metal-particle-small",
             offset_deviation = { { -0.3906, -0.5977 }, { 0.3906, 0.5977 } },
             initial_height = 0.3,
@@ -6175,8 +6193,57 @@ local explosions =
           },
           {
             type = "create-particle",
-            repeat_count = 16,
+            repeat_count = 12,
             particle_name = "heat-exchanger-metal-particle-big",
+            offset_deviation = { { -0.582, -0.5859 }, { 0.582, 0.5859 } },
+            initial_height = 0.3,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.07,
+            initial_vertical_speed_deviation = 0.049,
+            speed_from_center = 0.04,
+            speed_from_center_deviation = 0.05
+          },
+
+          {
+            type = "create-particle",
+            repeat_count = 20,
+            particle_name = "heat-exchanger-copper-particle-medium",
+            offset_deviation = { { -0.8867, -0.3867 }, { 0.8867, 0.3867 } },
+            initial_height = 0.3,
+            initial_height_deviation = 0.44,
+            initial_vertical_speed = 0.07,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 10,
+            particle_name = "heat-exchanger-copper-particle-small",
+            offset_deviation = { { -0.3906, -0.5977 }, { 0.3906, 0.5977 } },
+            initial_height = 0.3,
+            initial_height_deviation = 0.44,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 6,
+            particle_name = "heat-exchanger-copper-particle-big",
+            offset_deviation = { { -0.582, -0.5859 }, { 0.582, 0.5859 } },
+            initial_height = 0.3,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.07,
+            initial_vertical_speed_deviation = 0.049,
+            speed_from_center = 0.04,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 8,
+            particle_name = "heat-exchanger-copper-particle-long",
             offset_deviation = { { -0.582, -0.5859 }, { 0.582, 0.5859 } },
             initial_height = 0.3,
             initial_height_deviation = 0.5,
@@ -7771,8 +7838,8 @@ local explosions =
     smoke_slow_down_factor = 1,
     sound =
     {
-      filename = "__base__/sound/car-metal-impact-6.ogg",
-      volume = 0.6
+      variations = sound_variations("__base__/sound/procession/cargo-pod-ground-land", 3, 0.6),
+      aggregation = {max_count = 3, remove = true, count_already_playing = true}
     },
     created_effect =
     {

@@ -213,8 +213,8 @@ data:extend(
       },
       audio_events =
       {
-        playSound(100 * scl, procession_audio_catalogue.pod_thruster_burst_2),
-        playSound(230 * scl, procession_audio_catalogue.pod_thruster_burst_3),
+        playSound(100 * scl, procession_audio_catalogue.pod_thruster_burst),
+        playSound(230 * scl, procession_audio_catalogue.pod_thruster_burst),
       }
     },
     ground_timeline =
@@ -296,8 +296,8 @@ data:extend(
       },
       audio_events =
       {
-        playSound(100 * scl, procession_audio_catalogue.pod_thruster_burst_2),
-        playSound(230 * scl, procession_audio_catalogue.pod_thruster_burst_3),
+        playSound(100 * scl, procession_audio_catalogue.pod_thruster_burst),
+        playSound(230 * scl, procession_audio_catalogue.pod_thruster_burst),
         --playSound(399, procession_audio_catalogue.pod_ground_land),
       }
     }

@@ -319,8 +319,8 @@ sounds.electromagnetic_plant =
   },
   max_sounds_per_prototype = 2
 }
-sounds.railgun_gunshot = sound_variations("__space-age__/sound/entity/railgun/railgun-gunshot", 5, 0.8, volume_multiplier("main-menu", 0.9))
 
+sounds.railgun_gunshot = sound_variations("__space-age__/sound/entity/railgun/railgun-gunshot", 5, 0.8, volume_multiplier("main-menu", 0.9))
 sounds.railgun_turret_gunshot = sound_variations("__space-age__/sound/entity/railgun-turret/railgun-turret-gunshot", 5, 0.55, volume_multiplier("main-menu", 0.9))
 sounds.railgun_turret_activate =
 {
@@ -355,6 +355,7 @@ sounds.railgun_turret_rotate =
   stopped_sound = {filename = "__space-age__/sound/entity/railgun-turret/railgun-turret-rotation-stop.ogg", volume = 0.5},
   minimal_sound_duration_for_stopped_sound = 5
 }
+
 sounds.tesla_turret_rotate =
 {
   sound =
@@ -397,14 +398,55 @@ sounds.tesla_turret_beam_deflect =
     fades = {fade_in = {curve_type = "S-curve", from = {control = 0.5, volume_percentage = 0.5}, to = {1, 100.0}}},
   }
 }
+sounds.tesla_turret_beam =
+{
+  start =
+  {
+    sound = {category = "weapon", filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-beam.ogg", volume = 1.0},
+    max_sounds_per_prototype = 4
+  },
+  chain =
+  {
+    sound = {category = "weapon", filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-chain-beam.ogg", volume = 0.8},
+    max_sounds_per_prototype = 4
+  }
+}
+
+sounds.tesla_gun_beam =
+{
+  start =
+  {
+    sound = {category = "weapon", filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-beam.ogg", volume = 0.5},
+    max_sounds_per_prototype = 2
+  },
+  chain =
+  {
+    sound = {category = "weapon", filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-chain-beam.ogg", volume = 0.4},
+    max_sounds_per_prototype = 2
+  }
+}
+
 sounds.fissure_explosion =
 {
   aggregation =
   {
     max_count = 2,
-    remove = true
+    remove = true, 
+    count_already_playing = true, 
+    priority = "newest"
   },
-  variations = sound_variations("__space-age__/sound/explosions/fissure-explosion", 5, 0.4)
+  variations = sound_variations("__space-age__/sound/explosions/fissure-explosion", 5, 0.4, volume_multiplier("main-menu", 3.0))
+}
+sounds.fissure_damage =
+{
+  aggregation =
+  {
+    max_count = 1,
+    remove = true, 
+    count_already_playing = true, 
+    priority = "newest"
+  },
+  variations = sound_variations("__space-age__/sound/explosions/fissure-damage", 3, 0.4, volume_multiplier("main-menu", 2.0))
 }
 sounds.ash_cloud_explosion =
 {
@@ -453,7 +495,7 @@ sounds.demolisher =
         volume = 0.25,
         advanced_volume_control = {attenuation = "exponential"},
       },
-      max_sounds_per_prototype = 4,
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -483,7 +525,7 @@ sounds.demolisher =
     roar =
     {
       category = "enemy",
-      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-roar", 10, 0.8),
+      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-roar-medium", 7, 0.8),
       advanced_volume_control =
       {
         attenuation = "exponential",
@@ -494,11 +536,11 @@ sounds.demolisher =
     roar_probability = 1 / (12 * 60), -- average pause between roars is 12 seconds
     hurt_roar =
     {
-      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-hurt-roar", 5, 1.0),
+      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-hurt-roar-medium", 5, 1.0),
       advanced_volume_control =
       {
         attenuation = "exponential",
-        fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 50.0}, to = {2.0, 100.0 }}},
+        fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 50.0}, to = {1.5, 100.0 }}},
       },
       audible_distance_modifier = 6.25,
     },
@@ -513,7 +555,7 @@ sounds.demolisher =
         volume = 0.4,
         advanced_volume_control = {attenuation = "exponential"},
       },
-      max_sounds_per_prototype = 4,
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -523,7 +565,7 @@ sounds.demolisher =
       sound =
       {
         category = "enemy",
-        filename = "__space-age__/sound/enemies/demolisher/demolisher-tail-rumble.ogg", volume = 0.3,
+        filename = "__space-age__/sound/enemies/demolisher/demolisher-tail-rumble.ogg", volume = 0.5,
         advanced_volume_control =
         {
           attenuation = "exponential",
@@ -543,7 +585,7 @@ sounds.demolisher =
     roar =
     {
       category = "enemy",
-      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-roar", 10, 0.8),
+      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-roar-big", 6, 1.0),
       advanced_volume_control =
       {
         attenuation = "exponential",
@@ -554,11 +596,11 @@ sounds.demolisher =
     roar_probability = 1 / (12 * 60), -- average pause between roars is 12 seconds
     hurt_roar =
     {
-      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-hurt-roar", 5, 1.0),
+      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-hurt-roar-big", 5, 1.0),
       advanced_volume_control =
       {
         attenuation = "exponential",
-        fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 60.0}, to = {2.0, 100.0 }}},
+        fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 60.0}, to = {1.0, 100.0 }}},
       },
       audible_distance_modifier = 6.25,
     },
@@ -573,7 +615,7 @@ sounds.demolisher =
         volume = 0.5,
         advanced_volume_control = {attenuation = "exponential"},
       },
-      max_sounds_per_prototype = 4,
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -583,7 +625,7 @@ sounds.demolisher =
       sound =
       {
         category = "enemy",
-        filename = "__space-age__/sound/enemies/demolisher/demolisher-tail-rumble.ogg", volume = 0.3,
+        filename = "__space-age__/sound/enemies/demolisher/demolisher-tail-rumble.ogg", volume = 0.6,
         advanced_volume_control =
         {
           attenuation = "exponential",
@@ -598,7 +640,16 @@ sounds.demolisher =
     dying_sound_volume_modifier = 1.0,
   }
 }
-
+sounds.demolisher_explosion =
+{
+  variations = sound_variations("__space-age__/sound/explosions/demolisher-explosion", 2, 1.0, volume_multiplier("main-menu", 0.5)),
+  aggregation = {max_count = 1, remove = true, count_already_playing = true, priority = "oldest"},
+  advanced_volume_control =
+  {
+    attenuation = "exponential",
+    fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 50.0}, to = {1.0, 100.0 }}},
+  },
+}
 sounds.strafer_projectile =
 {
   variations = sound_variations("__space-age__/sound/enemies/strafer/fly-projectile-shoot", 5, 0.45),
@@ -697,7 +748,7 @@ sounds.stomper_pentapod =
     },
     walking_sound_volume_modifier = 2.0,
     walking_sound_speed_modifier = 0.4,
-    dying_sound = sound_variations("__space-age__/sound/enemies/stomper/stomper-death", 10, 0.7, volume_multiplier("main-menu", 1.21)),
+    dying_sound = sound_variations("__space-age__/sound/enemies/stomper/stomper-death", 10, 0.7, volume_multiplier("main-menu", 5)),
     warcry =
     {
       variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/stomper/stomper-warcry", 7, 0.4, 0.7, volume_multiplier("main-menu", 2.9)),
@@ -733,7 +784,7 @@ sounds.stomper_pentapod =
     },
   },
 }
-
+-- wrigglers
 sounds.wriggler_pentapod =
 {
   small =
@@ -800,7 +851,7 @@ sounds.wriggler_pentapod =
   {
     working_sound =
     {
-      sound = {category = "enemy", variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 1.0))},
+      sound = {category = "enemy", variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle-big", 9, 0.6, volume_multiplier("main-menu", 1))},
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
       max_sounds_per_prototype = 2
     },
@@ -811,17 +862,17 @@ sounds.wriggler_pentapod =
     },
     dying_sound =
     {
-      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-death", 8, 1.0, volume_multiplier("main-menu", 1.5)),
+      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-death-big", 8, 1.0, volume_multiplier("main-menu", 1.5)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
     warcry =
     {
-      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-warcry", 6, 0.6, 0.8, volume_multiplier("main-menu", 0.5)),
+      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-warcry-big", 6, 0.6, 1.0, volume_multiplier("main-menu", 0.5)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
     attack_sound =
     {
-      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-attack", 9, 0.25, 0.7, volume_multiplier("main-menu", 0.7)),
+      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-attack-big", 9, 0.25, 0.7, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
   },

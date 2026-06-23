@@ -56,20 +56,27 @@ local function get_recipes_for_barrel(name)
 end
 
 local function generate_barrel_icons(fluid, base_icon, side_mask, top_mask)
+  local base_icon_size = defines.constant.default_icon_size
+  local base_icon_filename = base_icon
+  if type(base_icon) == "table" then -- base_icon is derived from the item prototype
+    base_icon_size = base_icon.icon_size
+    base_icon_filename = base_icon.icon
+  end
+
   return
   {
     {
-      icon = base_icon.icon or base_icon,
-      icon_size = base_icon.icon_size or defines.default_icon_size,
+      icon = base_icon_filename,
+      icon_size = base_icon_size,
     },
     {
       icon = side_mask,
-      icon_size = defines.default_icon_size, -- these need to be explicit, because of "global" icon_size might be different
+      icon_size = defines.constant.default_icon_size, -- these need to be explicit, because "global" icon_size might be different
       tint = util.get_color_with_alpha(fluid.base_color, side_alpha, true)
     },
     {
       icon = top_mask,
-      icon_size = defines.default_icon_size, -- these need to be explicit, because of "global" icon_size might be different
+      icon_size = defines.constant.default_icon_size, -- these need to be explicit, because "global" icon_size might be different
       tint = util.get_color_with_alpha(fluid.flow_color, top_hoop_alpha, true)
     }
   }
@@ -84,7 +91,7 @@ local function create_barrel_item(name, fluid, empty_barrel_item)
     name = name,
     localised_name = {"item-name.filled-barrel", fluid.localised_name or {"fluid-name." .. fluid.name}},
     icons = generate_barrel_icons(fluid, empty_barrel_item, barrel_side_mask, barrel_hoop_top_mask),
-    icon_size = empty_barrel_item.icon_size or defines.default_icon_size,
+    icon_size = empty_barrel_item.icon_size or defines.constant.default_icon_size,
     subgroup = "barrel",
     order = fluid.order,
     weight = 10*kg,
@@ -118,8 +125,8 @@ local function generate_barrel_recipe_icons(fluid, base_icon, side_mask, top_mas
     table.insert(icons,
     {
       icon = fluid.icon,
-      icon_size = (fluid.icon_size or defines.default_icon_size),
-      scale = 16.0 / (fluid.icon_size or defines.default_icon_size), -- scale = 0.5 * 32 / icon_size simplified
+      icon_size = (fluid.icon_size or defines.constant.default_icon_size),
+      scale = 16.0 / (fluid.icon_size or defines.constant.default_icon_size), -- scale = 0.5 * 32 / icon_size simplified
       shift = fluid_icon_shift
     }
     )
@@ -138,7 +145,7 @@ local function create_fill_barrel_recipe(item, fluid)
     type = "recipe",
     name = recipe_name,
     localised_name = {"recipe-name.fill-barrel", fluid.localised_name or {"fluid-name." .. fluid.name}},
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     energy_required = energy_per_fill,
     subgroup = "fill-barrel",
     order = fluid.order,
@@ -172,9 +179,10 @@ local function create_empty_barrel_recipe(item, fluid)
     type = "recipe",
     name = recipe_name,
     localised_name = {"recipe-name.empty-filled-barrel", fluid.localised_name or {"fluid-name." .. fluid.name}},
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     energy_required = energy_per_empty,
     subgroup = "empty-barrel",
+    auto_recycle = false,
     order = fluid.order,
     enabled = false,
     icons = generate_barrel_recipe_icons(fluid, barrel_empty_icon, barrel_empty_side_mask, barrel_empty_top_mask, {7, 8}),

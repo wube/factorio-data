@@ -94,6 +94,7 @@ data:extend({
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
     effect_receiver = { base_effect = { productivity = 0.5 }},
 
+    use_mirroring = true,
     graphics_set = require("__space-age__.prototypes.entity.biochamber-pictures").graphics_set,
     impact_category = "metal-large",
     open_sound = {filename = "__base__/sound/open-close/fluid-open.ogg", volume = 0.55},
@@ -118,7 +119,7 @@ data:extend({
     },
     energy_usage = "500kW",
     heating_energy = "100kW",
-    crafting_categories = {"organic", "organic-or-hand-crafting", "organic-or-assembling", "organic-or-chemistry"},
+    crafting_categories = {"organic"},
     fluid_boxes_off_when_no_fluid_recipe = true,
     fluid_boxes =
     {
@@ -195,16 +196,16 @@ data:extend({
     {
       pictures =
       {
-        filename = "__base__/graphics/entity/chemical-plant/chemical-plant-reflection.png",
+        filename = "__space-age__/graphics/entity/biochamber/biochamber-reflection.png",
         priority = "extra-high",
-        width = 28,
-        height = 36,
+        width = 24,
+        height = 24,
         shift = util.by_pixel(5, 60),
-        variation_count = 4,
+        variation_count = 1,
         scale = 5
       },
       rotate = false,
-      orientation_to_variation = true
+      orientation_to_variation = false
     },
     production_health_effect = nil
   },
@@ -218,10 +219,9 @@ data:extend({
     order = "b[space-platform-hub]",
     collision_box = {{-3.9, -3.9}, {3.9, 3.9}},
     selection_box = {{-4, -4}, {4, 4}},
-    max_health = 1000,
+    max_health = 5000,
     weight = 40000,
     inventory_size = 59,
-    dump_container = "crash-site-chest-1",
     circuit_wire_max_distance = default_circuit_wire_max_distance,
     circuit_connector = circuit_connector_definitions["space-platform-hub"],
     default_speed_signal = {type = "virtual", name = "signal-V"},
@@ -236,6 +236,13 @@ data:extend({
         min = 0,
         max = 0
       }
+    },
+    resistances =
+    {
+      {
+        type = "impact",
+        percent = 50
+      },
     },
     graphics_set =
     {
@@ -393,50 +400,6 @@ data:extend({
         from = { control = 0.35, volume_percentage = 0.0 },
         to = { control = 2, volume_percentage = 100.0 }
       }
-    },
-    surface_render_parameters =
-    {
-      shadow_opacity = 0.5,
-      space_dust_background =
-      {
-        animation_speed = 1,
-        noise_texture =
-        {
-          filename = "__space-age__/graphics/space/dustTrailSpeckDust.png",
-          size = 4096,
-          premul_alpha = false
-        },
-        asteroid_texture =
-        {
-          filename = "__space-age__/graphics/space/asteroidTexture.png",
-          size = 1024
-        },
-        asteroid_normal_texture =
-        {
-          filename = "__space-age__/graphics/space/asteroidNormalTexture.png",
-          size = 1024
-        },
-      },
-      space_dust_foreground =
-      {
-        animation_speed = 1,
-        noise_texture =
-        {
-          filename = "__space-age__/graphics/space/dustTrailSpeckDust.png",
-          size = 4096,
-          premul_alpha = false
-        },
-        asteroid_texture =
-        {
-          filename = "__space-age__/graphics/space/asteroidTexture.png",
-          size = 1024
-        },
-        asteroid_normal_texture =
-        {
-          filename = "__space-age__/graphics/space/asteroidNormalTexture.png",
-          size = 1024
-        },
-      },
     }
   },
   {
@@ -572,6 +535,132 @@ data:extend({
               scale = 0.5,
               shift = {0, -1}
             }),
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "cargo-bay",
+    name = "landing-pad-unloading-bay",
+    flags = {"placeable-player", "player-creation"},
+    icon = "__space-age__/graphics/icons/cargo-unloading-bay.png",
+    corpse = "cargo-bay-remnants",
+    dying_explosion = "electric-furnace-explosion",
+    collision_box = {{-1.9, -2.9}, {1.9, 1.9}},
+    selection_box = {{-2, -3}, {2, 2}},
+    connectable_box = {{-1.9, -1.9}, {1.9, 1.9}},
+    tile_width = 4,
+    tile_height = 4,
+    max_health = 1000,
+    minable = {mining_time = 1, result = "landing-pad-unloading-bay"},
+    inventory_size_bonus = 20,
+    allow_unloading = true,
+    has_direction = true,
+    use_unloading_distance_limit = true,
+    surface_conditions =
+    {
+      {
+        property = "gravity",
+        min = 1
+      }
+    },
+    graphics_set =
+    {
+      water_reflection =
+      {
+        pictures =
+        {
+          filename = "__space-age__/graphics/entity/cargo-hubs/bays/planet-bay-reflections.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          shift = util.by_pixel(0, 100),
+          variation_count = 1,
+          scale = 4
+        },
+        rotate = false,
+        orientation_to_variation = false
+      },
+      connections = require("__base__.graphics.entity.cargo-hubs.connections.planet-connections"),
+      picture =
+      {
+        north =
+        {
+          {
+            render_layer = "lower-object-above-shadow",
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-n-1",{scale=0.5})
+            }
+          },
+          {
+            render_layer = "object",
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-n-4",{scale=0.5}),
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-n-shadow",{scale = 0.5, shift = util.by_pixel(32, 0), draw_as_shadow = true})
+            }
+          }
+        },
+        east =
+        {
+          {
+            render_layer = "object-under",
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-e-3",{scale=0.5})
+            }
+          },
+          {
+            render_layer = "object",
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-e-4",{scale=0.5}),
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-e-shadow",{scale = 0.5, shift = util.by_pixel(32, 0), draw_as_shadow = true})
+            }
+          }
+        },
+        south =
+        {
+          {
+            render_layer = "object-under",
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-s-3",{scale=0.5})
+            }
+          },
+          {
+            render_layer = "object",
+            layers =
+            {
+            util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-s-shadow",{scale = 0.5, shift = util.by_pixel(32, 0), draw_as_shadow = true})
+            },
+          },
+          {
+            render_layer = "cargo-hatch", -- boosted to draw above S walls
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-s-4",{scale=0.5})
+            }
+          }
+        },
+        west =
+        {
+          {
+            render_layer = "object-under",
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-w-3",{scale=0.5})
+            }
+          },
+          {
+            render_layer = "object",
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-w-4",{scale=0.5}),
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-w-shadow",{scale = 0.5, shift = util.by_pixel(32, 0), draw_as_shadow = true})
+            }
           }
         }
       }
@@ -719,6 +808,7 @@ data:extend({
     name = "crusher",
     icon = "__space-age__/graphics/icons/crusher.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    factoriopedia_simulation = simulations.factoriopedia_crusher,
     minable = {mining_time = 0.2, result = "crusher"},
     fast_replaceable_group = "crusher",
     max_health = 350,
@@ -747,7 +837,7 @@ data:extend({
     module_slots = 2,
     icons_positioning =
     {
-      {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.3}}
+      {inventory_index = defines.inventory.crafter_modules, shift = {0, 0.3}}
     },
     icon_draw_specification = {shift = {0, -0.45}},
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
@@ -797,6 +887,7 @@ data:extend({
     name = "thruster",
     flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
     icon = "__space-age__/graphics/icons/thruster.png",
+    factoriopedia_simulation = simulations.factoriopedia_thruster,
     collision_box = {{-1.7, -2.2}, {1.7, 2.2}},
     collision_mask = {layers={item=true, object=true, train=true, is_lower_object = true, is_object = true}},
     selection_box = {{-2, -2.5}, {2, 5.5}},
@@ -944,6 +1035,7 @@ data:extend({
       flame_effect =
       {
         filename = "__space-age__/graphics/entity/thruster/thruster-flame.png",
+        color_channels = 3,
         width = 384,
         height = 832
       },
@@ -1147,10 +1239,10 @@ data:extend({
     icon_draw_specification = {scale = 2, shift = {0, -0.3}},
     icons_positioning =
     {
-      {inventory_index = defines.inventory.assembling_machine_modules, shift = {0, 1.25}}
+      {inventory_index = defines.inventory.crafter_modules, shift = {0, 1.25}}
     },
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
-    crafting_categories = {"metallurgy", "pressing", "crafting-with-fluid-or-metallurgy", "metallurgy-or-assembling"},
+    crafting_categories = {"metallurgy"},
     crafting_speed = 4,
     energy_source =
     {
@@ -1160,6 +1252,7 @@ data:extend({
     },
     energy_usage = "2500kW",
     perceived_performance = {minimum = 0.25, maximum = 20},
+    use_mirroring = true,
     graphics_set = require("__space-age__.prototypes.entity.foundry-pictures").graphics_set,
     open_sound = sounds.steam_open,
     close_sound = sounds.steam_close,
@@ -1363,6 +1456,13 @@ data:extend({
           util.sprite_load("__space-age__/graphics/entity/agricultural-tower/agricultural-tower-base",
           {
             priority = "high",
+            frame_count = 1,
+            repeat_count = 64,
+            scale = 0.5
+          }),
+          util.sprite_load("__space-age__/graphics/entity/agricultural-tower/agricultural-tower-anim",
+          {
+            priority = "high",
             animation_speed = 0.25,
             frame_count = 64,
             scale = 0.5
@@ -1451,7 +1551,7 @@ data:extend({
     name = "captive-biter-spawner",
     icon = "__space-age__/graphics/icons/captive-biter-spawner.png",
     subgroup = "agriculture",
-    flags = {"placeable-neutral", "placeable-player", "player-creation", "not-repairable", "not-deconstructable"},
+    flags = {"placeable-neutral", "placeable-player", "player-creation", "not-repairable", "not-deconstructable", "no-logistic-connection"},
     collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     create_ghost_on_death = false,
@@ -1569,8 +1669,7 @@ data:extend({
     },
     energy_usage = "100kW",
     module_slots = 0,
-    allowed_effects = {},
-    enable_logistic_control_behavior = false
+    allowed_effects = {}
   },
   {
     type = "lab",
@@ -1684,7 +1783,21 @@ data:extend({
     {
       {inventory_index = defines.inventory.lab_modules, shift = {0, 1.6}},
       {inventory_index = defines.inventory.lab_input, shift = {0, 0.4}, max_icons_per_row = 6, separation_multiplier = 1/1.1}
-    }
+    },
+    water_reflection =
+    {
+      pictures =
+      {
+          filename = "__space-age__/graphics/entity/biolab/biolab-reflection.png",
+          width = 60,
+          height = 60,
+          scale = 5,
+      },
+      rotate = false,
+    },
+    circuit_wire_max_distance = lab_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["bio-lab"],
+    default_technology_level_signal = {type = "virtual", name = "signal-L"}
   },
 
   {
@@ -1753,14 +1866,14 @@ data:extend({
       }
     },
     fluid_boxes_off_when_no_fluid_recipe = true,
-    forced_symmetry = "horizontal",
     perceived_performance = {minimum = 0.25, maximum = 10},
+    use_mirroring = true,
     graphics_set = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").graphics_set,
     open_sound = sounds.electric_large_open,
     close_sound = sounds.electric_large_close,
     working_sound = space_age_sounds.electromagnetic_plant,
     crafting_speed = 2,
-    crafting_categories = {"electromagnetics", "electronics", "electronics-with-fluid", "electronics-or-assembling"},
+    crafting_categories = {"electromagnetics"},
     energy_source =
     {
       type = "electric",
@@ -1771,7 +1884,7 @@ data:extend({
     module_slots = 5,
     icons_positioning =
     {
-      {inventory_index = defines.inventory.furnace_modules, shift = {0, 1}}
+      {inventory_index = defines.inventory.crafter_modules, shift = {0, 1}}
     },
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
     water_reflection = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").water_reflection,
@@ -1964,11 +2077,11 @@ data:extend({
     module_slots = 8,
     icons_positioning =
     {
-      {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.95}, max_icons_per_row = 4}
+      {inventory_index = defines.inventory.crafter_modules, shift = {0, 0.95}, max_icons_per_row = 4}
     },
     icon_draw_specification = {scale = 2, shift = {0, -0.3}},
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
-    crafting_categories = {"cryogenics", "chemistry-or-cryogenics", "cryogenics-or-assembling"},
+    crafting_categories = {"cryogenics"},
     crafting_speed = 2,
     energy_source =
     {
@@ -1977,6 +2090,8 @@ data:extend({
       emissions_per_minute = { pollution = 6 }
     },
     energy_usage = "1500kW",
+    perceived_performance = {minimum = 0.25, maximum = 10},
+    use_mirroring = true,
     graphics_set = require("__space-age__.prototypes.entity.cryogenic-plant-pictures").graphics_set,
     open_sound = sounds.metal_large_open,
     close_sound = sounds.metal_large_close,
@@ -2055,11 +2170,13 @@ data:extend({
     fluid_boxes_off_when_no_fluid_recipe = true,
     water_reflection =
     {
-      pictures = util.sprite_load("__space-age__/graphics/entity/foundry/foundry-reflection",
+      pictures =
       {
+          filename = "__space-age__/graphics/entity/cryogenic-plant/cryogenic-plant-reflection.png",
+          width = 74,
+          height = 74,
           scale = 5,
-          shift = {0,2}
-      }),
+      },
       rotate = false,
     }
   },
@@ -2081,6 +2198,7 @@ data:extend({
     },
     consumption = "40MW",
     neighbour_bonus = 0,
+    -- neighbour_connectable = "not provided since there is no bonus",
     energy_source =
     {
       type = "burner",
@@ -2100,7 +2218,7 @@ data:extend({
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 1,
-
+    temperature_to_suppress_energy_icons = 800,
     picture =
     {
       layers =
@@ -2214,7 +2332,18 @@ data:extend({
 
     default_temperature_signal = {type = "virtual", name = "signal-T"},
     circuit_wire_max_distance = reactor_circuit_wire_max_distance,
-    circuit_connector = circuit_connector_definitions["heating-tower"]
+    circuit_connector = circuit_connector_definitions["heating-tower"],
+    water_reflection =
+    {
+      pictures =
+      {
+          filename = "__space-age__/graphics/entity/heating-tower/heating-tower-reflection.png",
+          width = 60,
+          height = 60,
+          scale = 5,
+      },
+      rotate = false,
+    }
   },
 
   scaled_cliff(
@@ -2390,13 +2519,13 @@ data:extend({
       volume_reservation_fraction = 0.5,
       pipe_connections =
       {
-        { flow_direction="input",  direction = defines.direction.south, position = {-1,  2}, connection_category = {"fusion-plasma"} },
-        { flow_direction="input",  direction = defines.direction.south, position = { 1,  2}, connection_category = {"fusion-plasma"} },
-        { flow_direction="output", direction = defines.direction.north, position = { 0, -2}, connection_category = {"fusion-plasma"} },
-        { flow_direction="output", direction = defines.direction.west,  position = {-1,  0}, connection_category = {"fusion-plasma"} },
-        { flow_direction="output", direction = defines.direction.east,  position = { 1,  0}, connection_category = {"fusion-plasma"} },
-        { flow_direction="output", direction = defines.direction.west,  position = {-1, -1}, connection_category = {"fusion-plasma"} },
-        { flow_direction="output", direction = defines.direction.east,  position = { 1, -1}, connection_category = {"fusion-plasma"} },
+        { flow_direction="input",  direction = defines.direction.south, position = {-1,  2}, connection_category = {"fusion-reactor", "fusion-generator"} },
+        { flow_direction="input",  direction = defines.direction.south, position = { 1,  2}, connection_category = {"fusion-reactor", "fusion-generator"} },
+        { flow_direction="output", direction = defines.direction.north, position = { 0, -2}, connection_category = {"fusion-generator"} },
+        { flow_direction="output", direction = defines.direction.west,  position = {-1,  0}, connection_category = {"fusion-generator"} },
+        { flow_direction="output", direction = defines.direction.east,  position = { 1,  0}, connection_category = {"fusion-generator"} },
+        { flow_direction="output", direction = defines.direction.west,  position = {-1, -1}, connection_category = {"fusion-generator"} },
+        { flow_direction="output", direction = defines.direction.east,  position = { 1, -1}, connection_category = {"fusion-generator"} },
       },
     },
     output_fluid_box =
@@ -2509,11 +2638,22 @@ data:extend({
       filter = "fusion-plasma",
       pipe_connections =
       {
-        { flow_direction = "input-output", direction = defines.direction.south, position = {-1.5,  2.5}, connection_category = {"fusion-plasma"} },
-        { flow_direction = "input-output", direction = defines.direction.south, position = { 1.5,  2.5}, connection_category = {"fusion-plasma"} },
-        { flow_direction = "input-output", direction = defines.direction.north, position = {-1.5, -2.5}, connection_category = {"fusion-plasma"} },
-        { flow_direction = "input-output", direction = defines.direction.north, position = { 1.5, -2.5}, connection_category = {"fusion-plasma"} },
+        { flow_direction = "input-output", direction = defines.direction.south, position = {-1.5,  2.5}, connection_category = {"fusion-reactor"} },
+        { flow_direction = "input-output", direction = defines.direction.south, position = { 1.5,  2.5}, connection_category = {"fusion-reactor"} },
+        { flow_direction = "input-output", direction = defines.direction.north, position = {-1.5, -2.5}, connection_category = {"fusion-reactor"} },
+        { flow_direction = "input-output", direction = defines.direction.north, position = { 1.5, -2.5}, connection_category = {"fusion-reactor"} },
       }
+    },
+    water_reflection =
+    {
+      pictures =
+      {
+          filename = "__space-age__/graphics/entity/fusion-reactor/fusion-reactor-reflection.png",
+          width = 74,
+          height = 74,
+          scale = 5,
+      },
+      rotate = false,
     }
   }
 })

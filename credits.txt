@@ -41,7 +41,7 @@ Petr Kratochvíl - Programmer
 Robert Asaftei / Twinsen - Programmer
 Robert Eding / Rseding91 - Programmer
 Roman Dubrovka / c4rt - Programmer
-Sanqui - Operations Developer
+Sanqui Owl - Operations Developer
 Scott Woodhouse / Klonan - Press, Community & Support manager
 Shane Kilduff - 3D artist
 Sławomir Fraś / boskid - QA tester

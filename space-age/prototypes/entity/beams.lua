@@ -293,11 +293,7 @@ function make_tesla_beam(name, sound, damage, token)
                                                        randomize_animation_per_segment = true
                                                      }),
 
-    working_sound =
-    sound and {
-      sound = {category = "weapon", filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-beam.ogg", volume = 1.0},
-      max_sounds_per_prototype = 4
-    } or nil,
+    working_sound = sound
   }
 end
 
@@ -346,21 +342,17 @@ function make_tesla_beam_chain(name, sound, damage, token)
                                                        randomize_animation_per_segment = true
                                                      }),
 
-    working_sound =
-    sound and {
-      sound = {category = "weapon", filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-chain-beam.ogg", volume = 0.8},
-      max_sounds_per_prototype = 4
-    } or nil,
+    working_sound = sound
   }
 end
 
-local function make_chain_tesla_beams(start_name, bounce_name, sound, damage)
+local function make_chain_tesla_beams(start_name, bounce_name, sounds, damage)
   data:extend(
   {
-    make_tesla_beam(start_name, sound, damage),
-    make_tesla_beam_chain(bounce_name, sound, damage)
+    make_tesla_beam(start_name, sounds.start, damage),
+    make_tesla_beam_chain(bounce_name, sounds.chain, damage)
   })
 end
 
-make_chain_tesla_beams("chain-tesla-turret-beam-start", "chain-tesla-turret-beam-bounce", true, 120)
-make_chain_tesla_beams("chain-tesla-gun-beam-start", "chain-tesla-gun-beam-bounce", true, 30)
+make_chain_tesla_beams("chain-tesla-turret-beam-start", "chain-tesla-turret-beam-bounce", space_age_sounds.tesla_turret_beam, 120)
+make_chain_tesla_beams("chain-tesla-gun-beam-start", "chain-tesla-gun-beam-bounce", space_age_sounds.tesla_gun_beam, 30)

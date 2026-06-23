@@ -30,6 +30,9 @@ procession_graphic_catalogue_types.thruster_flames_start =          201
 procession_graphic_catalogue_types.reentry_flames =                 202
 procession_graphic_catalogue_types.thruster_flames =                999 -- OLD
 
+procession_graphic_catalogue_types.vct_single =                      210
+procession_graphic_catalogue_types.vct_small =                      211
+
 -- HATCH EMISSIONS
 
 procession_graphic_catalogue_types.hatch_emission_out_1 =           500
@@ -82,6 +85,12 @@ procession_graphic_catalogue_types.planet_cloudscape_lvl2 =         406
 procession_graphic_catalogue_types.planet_cloudscape_lvl2_mask =    407
 procession_graphic_catalogue_types.planet_cloudscape_lvl3 =         408
 procession_graphic_catalogue_types.planet_cloudscape_lvl3_mask =    409
+
+procession_graphic_catalogue_types.planet_cloudscape_lightning =         420
+procession_graphic_catalogue_types.planet_cloudscape_lvl0_lightning =    421
+procession_graphic_catalogue_types.planet_cloudscape_lvl1_lightning =    422
+procession_graphic_catalogue_types.planet_cloudscape_lvl2_lightning =    423
+procession_graphic_catalogue_types.planet_cloudscape_lvl3_lightning =    424
 
 procession_graphic_catalogue_types.planet_tint       =              450
 procession_graphic_catalogue_types.planet_tint_space =              451

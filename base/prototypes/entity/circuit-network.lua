@@ -3,6 +3,25 @@ local hit_effects = require("prototypes.entity.hit-effects")
 local sounds = require("prototypes.entity.sounds")
 local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
+function combinator_water_reflection()
+  return
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/combinator/combinators-reflection.png",
+        priority = "extra-high",
+        width = 16,
+        height = 16,
+        shift = util.by_pixel(0, 25),
+        variation_count = 2,
+        repeat_count = 2,
+        scale = 5
+      },
+      rotate = false,
+      orientation_to_variation = true
+    }
+end
+
 data:extend
 {
   generate_arithmetic_combinator
@@ -71,7 +90,8 @@ data:extend
     input_connection_bounding_box = {{-0.5, 0}, {0.5, 1}},
     output_connection_bounding_box = {{-0.5, -1}, {0.5, 0}},
 
-    circuit_wire_max_distance = combinator_circuit_wire_max_distance
+    circuit_wire_max_distance = combinator_circuit_wire_max_distance,
+    water_reflection = combinator_water_reflection()
   },
 
   generate_decider_combinator
@@ -140,7 +160,8 @@ data:extend
     input_connection_bounding_box = {{-0.5, 0}, {0.5, 1}},
     output_connection_bounding_box = {{-0.5, -1}, {0.5, 0}},
 
-    circuit_wire_max_distance = combinator_circuit_wire_max_distance
+    circuit_wire_max_distance = combinator_circuit_wire_max_distance,
+    water_reflection = combinator_water_reflection()
   },
 
   generate_constant_combinator
@@ -175,7 +196,8 @@ data:extend
       {-0.21875, -0.46875}
     },
 
-    circuit_wire_max_distance = combinator_circuit_wire_max_distance
+    circuit_wire_max_distance = combinator_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
 
   {
@@ -837,7 +859,22 @@ data:extend
       }
     },
 
-    wire_max_distance = 10
+    wire_max_distance = 10,
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/power-switch/power-switch-reflection.png",
+        priority = "extra-high",
+        width = 24,
+        height = 24,
+        shift = util.by_pixel(5, 40),
+        variation_count = 1,
+        scale = 5
+      },
+      rotate = false,
+      orientation_to_variation = false
+    }
   },
   {
     type = "display-panel",
@@ -940,7 +977,8 @@ data:extend
     text_shift = util.by_pixel(0, -24),
     icon_draw_specification = {shift = util.by_pixel(0.5, -8), scale = 0.5},
     text_color = {1.0, 1.0, 1.0, 1.0},
-    background_color = {0.0, 0.0, 0.0, 0.25}
+    background_color = {0.0, 0.0, 0.0, 0.25},
+    water_reflection = chest_reflection()
   },
   generate_selector_combinator
   {
@@ -957,6 +995,9 @@ data:extend
     selection_box = {{-0.5, -1}, {0.5, 1}},
     damaged_trigger_effect = hit_effects.entity(),
     icon_draw_specification = {scale = 0.5},
+    default_game_tick_output_signal = {type = "virtual", name = "signal-T"},
+    default_day_tick_output_signal = {type = "virtual", name = "signal-D"},
+    default_day_length_output_signal = {type = "virtual", name = "signal-L"},
 
     energy_source =
     {
@@ -1008,6 +1049,7 @@ data:extend
     input_connection_bounding_box = {{-0.5, 0}, {0.5, 1}},
     output_connection_bounding_box = {{-0.5, -1}, {0.5, 0}},
 
-    circuit_wire_max_distance = combinator_circuit_wire_max_distance
+    circuit_wire_max_distance = combinator_circuit_wire_max_distance,
+    water_reflection = combinator_water_reflection()
   }
 }

@@ -64,7 +64,7 @@ function default_tile_sounds_advanced_volume_control()
       {
         curve_type = "cosine",
         from = {control = 0.3, volume_percentage = 0.0},
-        to = {control = 0.6, volume_percentage = 100.0},
+        to = {control = 1.0, volume_percentage = 100.0},
       }
     }
   }

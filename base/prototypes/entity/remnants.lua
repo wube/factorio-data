@@ -2442,16 +2442,7 @@ local remnants =
     expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet(1,
-    {
-      filename = "__base__/graphics/entity/oil-refinery/remnants/refinery-remnants.png",
-      line_length = 1,
-      width = 467,
-      height = 415,
-      direction_count = 1,
-      shift = util.by_pixel(-0.25, -0.25), --moved from -8.5 to -4.5
-      scale = 0.5
-    })
+    animation = util.sprite_load("__base__/graphics/entity/oil-refinery/oil-refinery-remnants", {scale = 0.5})
   },
 
   {
@@ -2849,10 +2840,10 @@ local remnants =
     {
       filename = "__base__/graphics/entity/heat-exchanger/remnants/heat-exchanger-remnants.png",
       line_length = 1,
-      width = 272,
-      height = 262,
+      width = 280,
+      height = 256,
       direction_count = 4,
-      shift = util.by_pixel(0.5, 8),
+      shift = util.by_pixel(-0.5, 4.5),
       scale = 0.5
     }
   },

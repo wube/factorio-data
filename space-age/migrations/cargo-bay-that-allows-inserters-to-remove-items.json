@@ -1,0 +1,19 @@
+{
+  "item":
+  [
+    ["cargo-bay-extractor", "landing-pad-unloading-bay"]
+  ],
+  "recipe":
+  [
+    ["cargo-bay-extractor", "landing-pad-unloading-bay"],
+    ["cargo-bay-extractor-recycling", "landing-pad-unloading-bay-recycling"]
+  ],
+  "entity":
+  [
+    ["cargo-bay-extractor", "landing-pad-unloading-bay"]
+  ],
+  "technology":
+  [
+    ["cargo-bay-extractor", "landing-pad-unloading-bay"]
+  ]
+}

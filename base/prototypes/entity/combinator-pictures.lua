@@ -1475,6 +1475,49 @@ function generate_selector_combinator(combinator)
         shift = util.by_pixel(0, -10.5)
       }
   }
+  combinator.time_symbol_sprites =
+  {
+    north = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 90,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    east = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 90,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      },
+    south = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 90,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    west = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 90,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      }
+  }
 
   combinator.input_connection_points =
   {

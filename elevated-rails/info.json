@@ -1,11 +1,12 @@
 {
   "name": "elevated-rails",
-  "version": "2.0.77",
+  "version": "2.1.7",
   "title": "Elevated Rails",
   "author": "Wube Software",
   "contact": "dev@factorio.com",
   "homepage": "https://www.factorio.com",
-  "dependencies": ["base >= 2.0.0"],
+  "dependencies": ["base >= 2.1.0"],
+  "expansion_required": true,
   "rail_bridges_required": true,
-  "factorio_version": "2.0"
+  "factorio_version": "2.1"
 }

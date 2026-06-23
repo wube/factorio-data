@@ -5,14 +5,61 @@ local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local base_sounds = require("__base__/prototypes/entity/sounds")
 local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
 local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
-
+local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 local tile_lightening = 28
 
 gleba_tile_offset = 65
 gleba_lowland_tile_offset = 32
 
-local lava_to_out_of_map_transition = space_age_tiles_util.lava_to_out_of_map_transition
-local lava_stone_transitions_between_transitions = space_age_tiles_util.lava_stone_transitions_between_transitions
+
+local function gleba_land_out_of_map_transition(suffix)
+  return
+  {
+    to_tiles = out_of_map_tile_type_names,
+    transition_group = out_of_map_transition_group_id,
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/gleba-out-of-map-transition" .. suffix .. ".png",
+    layout = tile_spritesheet_layout.transition_4_4_8_1_1,
+    overlay_enabled = false
+  }
+end
+
+local function gleba_land_transitions_to_transitions(suffix)
+  return
+  {
+    {
+      transition_group1 = default_transition_group_id,
+      transition_group2 = out_of_map_transition_group_id,
+
+      background_layer_offset = 1,
+      background_layer_group = "zero",
+      offset_background_layer_by_tile_layer = true,
+
+      spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/gleba-out-of-map-transition-b" .. suffix .. ".png",
+      layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+      overlay_enabled = false
+    },
+    {
+      transition_group1 = water_transition_group_id,
+      transition_group2 = out_of_map_transition_group_id,
+
+      background_layer_offset = 1,
+      background_layer_group = "zero",
+      offset_background_layer_by_tile_layer = true,
+      overlay_enabled = false,
+
+      spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/gleba-shore-out-of-map-transition" .. suffix .. ".png",
+      layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+      effect_map_layout =
+      {
+        spritesheet = "__base__/graphics/terrain/effect-maps/water-grass-to-out-of-map-mask.png",
+        o_transition_count = 0
+      },
+    }
+  }
+end
 
 local function lowland_tile_variations_template_with_transitions_and_puddle_transitions(high_res_picture, options)
   local result = tile_variations_template_with_transitions(high_res_picture, options)
@@ -75,8 +122,6 @@ data:extend({
     layer = gleba_tile_offset + 22,
     searchable = true,
 
-    transitions = data.raw["tile"]["landfill"].transitions,
-    transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     sprite_usage_surface = "gleba",
@@ -110,8 +155,6 @@ data:extend({
     layer = gleba_tile_offset + 24,
     searchable = true,
 
-    transitions = data.raw["tile"]["landfill"].transitions,
-    transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     sprite_usage_surface = "gleba",
@@ -145,8 +188,7 @@ data:extend({
     layer = gleba_tile_offset + 23,
     searchable = true,
 
-    transitions = data.raw["tile"]["landfill"].transitions,
-    transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
+
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     sprite_usage_surface = "gleba",
@@ -179,8 +221,6 @@ data:extend({
     layer = gleba_tile_offset + 25,
     searchable = true,
 
-    transitions = data.raw["tile"]["landfill"].transitions,
-    transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     sprite_usage_surface = "gleba",
@@ -212,8 +252,6 @@ data:extend({
     layer = gleba_tile_offset + 20,
     searchable = true,
 
-    transitions = lava_stone_transitions,
-    transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     sprite_usage_surface = "gleba",
@@ -245,8 +283,6 @@ data:extend({
     layer = gleba_tile_offset + 21,
     searchable = true,
 
-    transitions = lava_stone_transitions,
-    transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     --[[variants =
@@ -309,8 +345,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.4, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0.3, 0.8, 0.005, 0, 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
@@ -344,8 +378,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.2, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0, 0.4, 0.005, 0, 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
@@ -379,8 +411,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.4, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0.8, 1, 0.005, 0, 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
@@ -414,8 +444,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.4, 0.005, 0, 1) + 0.1 * (gleba_plants_noise_b - 0.8)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
@@ -449,8 +477,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.2, 0.4, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0, 0.3, 0.005, 0, 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
@@ -485,8 +511,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = {lava_to_out_of_map_transition},
-        transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={95, 93, 88},
@@ -520,8 +544,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={95, 93, 88},
@@ -555,8 +577,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={95, 93, 88},
@@ -590,8 +610,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={95, 93, 88},
@@ -625,8 +643,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={95, 83, 78},
@@ -661,8 +677,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.75, 1, 0.005, 0, 1) + 0.1 * (gleba_plants_noise_b - 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={115, 53, 66},
@@ -696,8 +710,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.45, 0.75, 0.005, 0, 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={115, 53, 66},
@@ -730,8 +742,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.25, 0.45, 0.005, 0, 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
@@ -763,8 +773,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.75, 1, 0.005, 0, 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
@@ -797,8 +805,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.6, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0, 0.25, 0.005, 0, 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={115, 53, 66},
@@ -831,8 +837,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.05, 0, 1) + 0.1 * (gleba_plants_noise - 1)"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.semi_wet,
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
@@ -863,8 +867,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={81, 77, 44},
@@ -894,8 +896,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={71, 67, 40},
@@ -925,8 +925,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={61, 57, 30},
@@ -956,8 +954,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0.05, 0.4, 0.2, 0, 1) - 0.2 * gleba_temperature_normalised"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={46, 68, 48},
@@ -986,8 +982,6 @@ data:extend({
           }
         ),
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0, 0.35, 0.2, 0, 1) + 0.2 * gleba_temperature_normalised"},
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={46, 68, 48},
@@ -1018,8 +1012,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.dry_rock,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={114, 86, 40},
@@ -1049,8 +1041,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.dry_rock,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={114, 86, 40},
@@ -1080,8 +1070,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.dry_rock,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={114, 86, 40},
@@ -1111,8 +1099,6 @@ data:extend({
             --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
-        transitions = lava_stone_transitions,
-        transitions_between_transitions = lava_stone_transitions_between_transitions,
         walking_sound = tile_sounds.walking.dry_rock,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={114, 86, 40},
@@ -1145,8 +1131,6 @@ data:extend({
         }
       ),
       autoplace = {probability_expression = "gleba_highland * max(0, 1.05 + 0.1 * (1 - gleba_aux) + 0.2 * gleba_temperature_normalised)"},
-      transitions = lava_stone_transitions,
-      transitions_between_transitions = lava_stone_transitions_between_transitions,
       walking_sound = tile_sounds.walking.dry_rock,
       landing_steps_sound = tile_sounds.landing.rock,
       map_color={52, 55, 48},
@@ -1175,8 +1159,6 @@ data:extend({
         }
       ),
       autoplace = {probability_expression = "gleba_highland * max(0, 1.13 + 0.1 * (min(gleba_aux + 0.1, 1-gleba_aux)))"},
-      transitions = lava_stone_transitions,
-      transitions_between_transitions = lava_stone_transitions_between_transitions,
       walking_sound = tile_sounds.walking.dry_rock,
       landing_steps_sound = tile_sounds.landing.rock,
       map_color={52, 55, 48},
@@ -1205,8 +1187,6 @@ data:extend({
         }
       ),
       autoplace = {probability_expression = "gleba_highland * max(0, 1 + 0.1 * gleba_aux - 0.2 * gleba_temperature_normalised)"},
-      transitions = lava_stone_transitions,
-      transitions_between_transitions = lava_stone_transitions_between_transitions,
       walking_sound = tile_sounds.walking.dry_rock,
       landing_steps_sound = tile_sounds.landing.rock,
       map_color={52, 55, 48},
@@ -1238,8 +1218,6 @@ data:extend({
       {
         probability_expression = "2 * gleba_rockpools_pitrock"
       },
-      transitions = lava_stone_transitions,
-      transitions_between_transitions = lava_stone_transitions_between_transitions,
       walking_sound = tile_sounds.walking.dry_rock,
       landing_steps_sound = tile_sounds.landing.rock,
       map_color = {r = tile_lightening+22, g = tile_lightening+22, b = tile_lightening+30},
@@ -1294,7 +1272,7 @@ data:extend({
       },
       transition = tile_graphics.generic_masked_tile_transitions1
     },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     map_color={132, 119, 7},
     absorptions_per_second = tile_pollution.gleba_water,
@@ -1341,7 +1319,7 @@ data:extend({
       },
       transition = tile_graphics.generic_masked_tile_transitions1
     },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     map_color={132, 7, 119},
     absorptions_per_second = tile_pollution.gleba_water,
@@ -1391,7 +1369,7 @@ data:extend({
       },
       transition = tile_graphics.generic_masked_tile_transitions1
     },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.wet,
@@ -1437,7 +1415,7 @@ data:extend({
       },
       transition = tile_graphics.generic_masked_tile_transitions1
     },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.semi_wet,
@@ -1485,7 +1463,7 @@ data:extend({
       },
       transition = tile_graphics.generic_masked_tile_transitions1
     },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = tile_sounds.walking.slime,
     landing_steps_sound = tile_sounds.landing.semi_wet,
@@ -1531,7 +1509,7 @@ data:extend({
       },
       transition = tile_graphics.generic_masked_tile_transitions1
     },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = tile_sounds.walking.slime,
     landing_steps_sound = tile_sounds.landing.semi_wet,
@@ -1577,7 +1555,7 @@ data:extend({
       },
       transition = tile_graphics.generic_masked_tile_transitions1
     },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.wet,
@@ -1619,7 +1597,7 @@ data:extend({
       },
       transition = tile_graphics.generic_masked_tile_transitions1
     },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.wet,
@@ -1660,7 +1638,7 @@ data:extend({
       },
       empty_transitions=true,
     },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = sound_variations("__base__/sound/walking/shallow-water", 7, 1),
     landing_steps_sound = tile_sounds.landing.wet,
@@ -1706,7 +1684,8 @@ data:extend({
       },
       empty_transitions=true,
    },
-    transitions = {lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
+
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = sound_variations("__base__/sound/walking/shallow-water", 7, 1),
     landing_steps_sound = tile_sounds.landing.wet,
@@ -1737,14 +1716,10 @@ data:extend({
       textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
-          width = 512,
-          height = 512
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
         },
         {
-          filename = "__space-age__/graphics/terrain/gleba/wetland-dead-skin-shader.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/gleba/wetland-dead-skin-shader.png"
         }
       },
       texture_variations_columns = 1,
@@ -1780,14 +1755,10 @@ data:extend({
       textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
-          width = 512,
-          height = 512
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
         },
         {
-          filename = "__space-age__/graphics/terrain/gleba/wetland-green-slime-shader.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/gleba/wetland-green-slime-shader.png"
         }
       },
       texture_variations_columns = 1,
@@ -1823,14 +1794,10 @@ data:extend({
       textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
-          width = 512,
-          height = 512
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
         },
         {
-          filename = "__space-age__/graphics/terrain/gleba/wetland-pink-tentacle-shader.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/gleba/wetland-pink-tentacle-shader.png"
         }
       },
       texture_variations_columns = 1,
@@ -1866,14 +1833,10 @@ data:extend({
       textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
-          width = 512,
-          height = 512
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
         },
         {
-          filename = "__space-age__/graphics/terrain/gleba/wetland-purple-tentacle-shader.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/gleba/wetland-purple-tentacle-shader.png"
         }
       },
       texture_variations_columns = 1,
@@ -1909,14 +1872,10 @@ data:extend({
       textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
-          width = 512,
-          height = 512
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
         },
         {
-          filename = "__space-age__/graphics/terrain/gleba/wetland-dead-skin-shader.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/gleba/wetland-dead-skin-shader.png"
         }
       },
       texture_variations_columns = 1,
@@ -1950,6 +1909,7 @@ data:extend({
       puddle_noise_texture =
       {
         filename = "__space-age__/graphics/terrain/gleba/puddle-noise.png",
+        color_channels = 3,
         size = 512
       },
       water_effect = "wetland-green"
@@ -1964,6 +1924,7 @@ data:extend({
       puddle_noise_texture =
       {
         filename = "__space-age__/graphics/terrain/gleba/puddle-noise.png",
+        color_channels = 3,
         size = 512
       },
       water_effect = "wetland-purple"
@@ -1978,9 +1939,42 @@ data:extend({
       puddle_noise_texture =
       {
         filename = "__space-age__/graphics/terrain/gleba/puddle-noise.png",
+        color_channels = 3,
         size = 512
       },
       water_effect = "wetland-grey"
     }
   },
 })
+
+local gleba_land_tiles =
+{
+  "pit-rock",
+  "artificial-yumako-soil",  "overgrowth-yumako-soil",  "artificial-jellynut-soil",  "overgrowth-jellynut-soil",
+  "natural-yumako-soil",  "natural-jellynut-soil",
+  "lowland-olive-blubber",  "lowland-olive-blubber-2",  "lowland-olive-blubber-3",  "lowland-brown-blubber",
+  "lowland-pale-green",  "lowland-cream-cauliflower-2",  "lowland-cream-cauliflower",
+  "lowland-dead-skin",  "lowland-dead-skin-2",
+  "lowland-cream-red",
+  "lowland-red-vein-2",  "lowland-red-vein",  "lowland-red-vein-3",  "lowland-red-vein-4",  "lowland-red-vein-dead",  "lowland-red-infection",
+  "midland-cracked-lichen",  "midland-cracked-lichen-dull",  "midland-cracked-lichen-dark",
+  "midland-turquoise-bark-2",  "midland-turquoise-bark",
+  "midland-yellow-crust-3",  "midland-yellow-crust-2",  "midland-yellow-crust",  "midland-yellow-crust-4",
+  "highland-dark-rock",  "highland-dark-rock-2",  "highland-yellow-rock",
+}
+
+for _, value in pairs(gleba_land_tiles) do
+  local suffix = ""
+  if (string.find(value, "red") or string.find(value, "jellynut")) then suffix = "-red" end
+  if (string.find(value, "lichen")  or string.find(value, "crust")) then suffix = "-yellow" end
+  local transitions =
+  {
+    gleba_land_out_of_map_transition(suffix),
+    table.deepcopy(data.raw.tile[value].variants.transition),
+  }
+  transitions[2].to_tiles = water_tile_type_names
+  transitions[2].transition_group = water_transition_group_id
+
+  data.raw.tile[value].transitions = transitions
+  data.raw.tile[value].transitions_between_transitions = gleba_land_transitions_to_transitions(suffix)
+end

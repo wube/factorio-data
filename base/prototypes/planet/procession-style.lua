@@ -7,4 +7,5 @@ procession_style.rocket_right = 4
 procession_style.platform_to_debug = 42
 procession_style.pod_left_generic = 10
 procession_style.pod_right_generic = 11
+procession_style.pod_right_platform_to_platform = 12
 return procession_style

@@ -51,7 +51,7 @@ function hub_cargo_hatch_in(hatch_offset)
     hatch_graphics = placeholder_shared_bay_hatch_animation(),
     offset = hatch_offset,
     pod_shadow_offset = hub_pod_shadow_offset();
-    cargo_unit_entity_to_spawn = "",
+    cargo_unit_entity_to_spawn = nil,
     receiving_cargo_units = {"cargo-pod"}
   }
 end
@@ -77,7 +77,7 @@ function planet_upper_hatch(hatch_offset, slice_offset, travel_offset, sky_slice
     travel_height = travel_offset or 1,
     pod_shadow_offset = hub_pod_shadow_offset();
     illumination_graphic_index = hatch_illumination_index,
-    cargo_unit_entity_to_spawn = "",
+    cargo_unit_entity_to_spawn = nil,
     receiving_cargo_units = {"cargo-pod"}
   }
 end
@@ -88,7 +88,7 @@ function silo_cargo_hatch(hatch_offset)
     hatch_graphics = nil,
     offset = hatch_offset,
     pod_shadow_offset = {0, 0}; --flush with ground
-    cargo_unit_entity_to_spawn = "", --silo defines the lift pod
+    cargo_unit_entity_to_spawn = nil, --silo defines the lift pod
     receiving_cargo_units = {}
   }
 end

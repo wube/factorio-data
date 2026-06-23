@@ -111,6 +111,8 @@ planet_map_gen.vulcanus = function()
       {
         settings =
         {
+          ["big-volcanic-rock-hot"] = {},
+          ["huge-volcanic-rock-hot"] = {},
           ["coal"] = {},
           ["calcite"] = {},
           ["sulfuric-acid-geyser"] = {},
@@ -368,8 +370,10 @@ planet_map_gen.fulgora = function()
       {
         settings =
         {
+          ["oil-ocean-shallow-2"] = {},
           ["oil-ocean-shallow"] = {},
           ["oil-ocean-deep"] = {},
+          ["oil-ocean-deep-2"] = {},
           ["fulgoran-rock"] = {},
           ["fulgoran-dust"] = {},
           ["fulgoran-sand"] = {},
@@ -384,8 +388,12 @@ planet_map_gen.fulgora = function()
       {
         settings =
         {
+          ["fulgora-sunk-ruin-big-decal"] = {},
+          ["fulgora-sunk-ruin-medium"] = {},
+          ["fulgora-sunk-ruin-small"] = {},
           ["fulgoran-ruin-tiny"] = {},
-          ["fulgoran-gravewort"] = {},
+          ["small-fulgoran-gravewort"] = {},
+          ["medium-fulgoran-gravewort"] = {},
           ["urchin-cactus"] = {},
           ["medium-fulgora-rock"] = {},
           ["small-fulgora-rock"] = {},
@@ -397,6 +405,8 @@ planet_map_gen.fulgora = function()
         settings =
         {
           ["scrap"] = {},
+          ["fulgora-sunk-ruin-big"] = {},
+          ["fulgora-sunk-ruin-medium-tall"] = {},
           ["fulgoran-ruin-vault"] = {},
           ["fulgoran-ruin-attractor"] = {},
           ["fulgoran-ruin-colossal"] = {},

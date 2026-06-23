@@ -52,6 +52,36 @@ data:extend(
     prerequisites = {"rocket-silo"},
     research_trigger = {type = "create-space-platform"}
   },
+  {
+    type = "technology",
+    name = "landing-pad-unloading-bay",
+    icon = "__space-age__/graphics/technology/cargo-unloading-bay.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "landing-pad-unloading-bay"
+      },
+      {
+        type = "max-cargo-bay-unloading-distance",
+        modifier = 59
+      }
+    },
+    prerequisites = {"space-science-pack"},
+    unit =
+    {
+      count = 750,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"space-science-pack", 1}
+      },
+      time = 60
+    }
+  },
 
   {
     type = "technology",
@@ -344,6 +374,10 @@ data:extend(
         type = "unlock-space-location",
         space_location = "vulcanus",
         use_icon_overlay_constant = true
+      },
+      {
+        type = "unlock-travel-to-space-platforms",
+        modifier = true
       }
     },
     prerequisites = {"space-platform-thruster"},
@@ -373,6 +407,10 @@ data:extend(
         space_location = "gleba",
         use_icon_overlay_constant = true
       },
+      {
+        type = "unlock-travel-to-space-platforms",
+        modifier = true
+      }
     },
     prerequisites = {"space-platform-thruster", "landfill"},
     unit =
@@ -402,9 +440,13 @@ data:extend(
         use_icon_overlay_constant = true
       },
       {
+        type = "unlock-travel-to-space-platforms",
+        modifier = true
+      },
+      {
         type = "unlock-recipe",
         recipe = "lightning-rod",
-      },
+      }
     },
     prerequisites = {"space-platform-thruster", "electric-energy-accumulators"},
     unit =
@@ -539,10 +581,6 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "rocket-turret"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "coal-synthesis"
       }
     },
     prerequisites = {"rocketry", "carbon-fiber", "stronger-explosives-2"},
@@ -611,7 +649,7 @@ data:extend(
     research_trigger =
     {
       type = "mine-entity",
-      entity = "calcite"
+      entities = {"calcite"}
     }
   },
   {
@@ -634,7 +672,16 @@ data:extend(
     research_trigger =
     {
       type = "mine-entity",
-      entity = "big-volcanic-rock"
+      entities =
+      {
+        "big-volcanic-rock",
+        "big-volcanic-rock-hot",
+        "huge-volcanic-rock",
+        "huge-volcanic-rock-hot",
+        "small-demolisher-corpse",
+        "medium-demolisher-corpse",
+        "big-demolisher-corpse",
+      }
     }
   },
   {
@@ -685,11 +732,11 @@ data:extend(
       },
       {
         type = "unlock-recipe",
-        recipe = "molten-iron"
+        recipe = "iron-ore-melting"
       },
       {
         type = "unlock-recipe",
-        recipe = "molten-copper"
+        recipe = "copper-ore-melting"
       },
       {
         type = "unlock-recipe",
@@ -897,7 +944,7 @@ data:extend(
     research_trigger =
     {
       type = "mine-entity",
-      entity = "iron-stromatolite"
+      entities = {"iron-stromatolite"}
     }
   },
 
@@ -921,7 +968,7 @@ data:extend(
     research_trigger =
     {
       type = "mine-entity",
-      entity = "yumako-tree"
+      entities = {"yumako-tree"}
     }
   },
 
@@ -978,7 +1025,7 @@ data:extend(
     research_trigger =
     {
       type = "mine-entity",
-      entity = "jellystem"
+      entities = {"jellystem"}
     }
   },
 
@@ -1077,6 +1124,10 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "biolubricant"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "coal-synthesis"
       }
     },
     prerequisites = {"bioflux"},
@@ -1120,7 +1171,7 @@ data:extend(
     {
       {
         type = "unlock-recipe",
-        recipe = "wood-processing"
+        recipe = "tree-seed"
       }
     },
     prerequisites = {"agricultural-science-pack"},
@@ -1250,14 +1301,6 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "capture-robot-rocket"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "biter-egg"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "nutrients-from-biter-egg"
       }
     },
     prerequisites = {"agricultural-science-pack", "military-3", "rocketry"},
@@ -1319,6 +1362,17 @@ data:extend(
     research_trigger =
     {
       type = "capture-spawner"
+    },
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "biter-egg"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "nutrients-from-biter-egg"
+      }
     }
   },
 
@@ -1398,8 +1452,11 @@ data:extend(
       count_formula = "2^L*50",
       ingredients =
       {
-        {"military-science-pack", 1},
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
         {"utility-science-pack", 1},
+        {"space-science-pack", 1},
         {"agricultural-science-pack", 1}
       },
       time = 60
@@ -1428,6 +1485,9 @@ data:extend(
       count = 500,
       ingredients =
       {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
         {"space-science-pack", 1},
         {"agricultural-science-pack", 1}
       },
@@ -1636,7 +1696,7 @@ data:extend(
     research_trigger =
     {
       type = "mine-entity",
-      entity = "copper-stromatolite"
+      entities = {"copper-stromatolite"}
     }
   },
   {
@@ -1659,7 +1719,11 @@ data:extend(
     research_trigger =
     {
       type = "mine-entity",
-      entity = "lithium-iceberg-big"
+      entities =
+      {
+        "lithium-iceberg-big",
+        "lithium-iceberg-huge",
+      }
     }
   },
 
@@ -1934,6 +1998,40 @@ data:extend(
       time = 60
     }
   },
+  {
+    type = "technology",
+    name = "stellar-discovery-solar-system-edge",
+    icons = util.technology_icon_constant_planet("__space-age__/graphics/technology/solar-system-edge.png"),
+    icon_size = 256,
+    essential = true,
+    effects =
+    {
+      {
+        type = "unlock-space-location",
+        space_location = "solar-system-edge",
+        use_icon_overlay_constant = true
+      },
+    },
+    prerequisites = {"fusion-reactor", "railgun"},
+    unit =
+    {
+      count = 1000,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"production-science-pack", 1},
+        {"utility-science-pack", 1},
+        {"space-science-pack", 1},
+        {"metallurgic-science-pack", 1},
+        {"agricultural-science-pack", 1},
+        {"electromagnetic-science-pack", 1},
+        {"cryogenic-science-pack", 1}
+      },
+      time = 60
+    }
+  },
 
   {
     type = "technology",
@@ -1945,10 +2043,6 @@ data:extend(
     {
       {
         type = "unlock-space-location",
-        space_location = "solar-system-edge"
-      },
-      {
-        type = "unlock-space-location",
         space_location = "shattered-planet"
       },
       {
@@ -1956,10 +2050,10 @@ data:extend(
         recipe = "promethium-science-pack",
       },
     },
-    prerequisites = {"biter-egg-handling", "fusion-reactor"},
+    prerequisites = {"biter-egg-handling", "stellar-discovery-solar-system-edge"},
     unit =
     {
-      count = 2000,
+      count = 1000,
       ingredients =
       {
         {"automation-science-pack", 1},

@@ -1,9 +1,10 @@
+-- After planet launch, from entry into space to capture by the space platform
 local procession_style = require("__base__/prototypes/planet/procession-style")
 local procession_graphic_catalogue = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
 
 local pfunctions = require("__space-age__/prototypes/planet/general/general-functions")
 
-local jets = pfunctions.conc2(
+local jets = pfunctions.concN(
   pfunctions.jet_burst(110, 60, procession_graphic_catalogue.thruster_flames_start, procession_graphic_catalogue.thruster_flames_loop),
   pfunctions.jet_burst(215, 140, procession_graphic_catalogue.thruster_flames_start, procession_graphic_catalogue.thruster_flames_loop)
   )
@@ -24,7 +25,18 @@ local jets_emission =
   }),
 }
 
-local pod_layers = pfunctions.conc3(
+local vct = procession_graphic_catalogue.vct_single
+
+local vectoring_single = pfunctions.concN(
+  -- vct1, layering, puff_start, reps, rot, dir
+  pfunctions.vectoring_single(vct, -1, 0, 2, 0.0, 'R'),
+  pfunctions.vectoring_single(vct, -1, 40, 3, 0.0, 'L'),
+  pfunctions.vectoring_single(vct, -1, 120, 3, 0.0, 'L'),
+  pfunctions.vectoring_single(vct, -1, 160, 2, 0.0, 'L'),
+  pfunctions.vectoring_single(vct, -1, 220, 3, 0.0, 'R')
+)
+
+local pod_layers = pfunctions.concN(
 {
   {
     type = "pod-movement",
@@ -32,15 +44,11 @@ local pod_layers = pfunctions.conc3(
     distance_traveled_contribution = -1.0,
     frames =
     {
-      { timestamp=0, offset = {-70, 0}, offset_t = {40, -40} },
+      { timestamp=100, offset = {-60, -10}, offset_t = {26, -27} },
       { timestamp=200, offset = {-10, -43}, offset_t = {10, 7} },
       { timestamp=350, offset = {0, 0}, offset_t = {0, 20} },
   --[[ offset:
       [
-{ "timestamp": 0, "offset": { "x":-44.999, "y":-40 }, "offset_t" : { "x":9.999, "y":-11.999 }},
-{ "timestamp": 200, "offset": { "x":-10, "y":-43 }, "offset_t" : { "x":10, "y":7.001 }},
-{ "timestamp": 350, "offset": { "x":0, "y":0.001 }, "offset_t" : { "x":0, "y":19.999 }}
-
   { "timestamp": 0, "offset": { "x":-69.999, "y":0 }, "offset_t" : { "x":39.999, "y":-40.001 }},
   { "timestamp": 200, "offset": { "x":-10, "y":-43 }, "offset_t" : { "x":10, "y":7 }},
   { "timestamp": 350, "offset": { "x":0, "y":0 }, "offset_t" : { "x":0, "y":20 }}
@@ -49,24 +57,28 @@ local pod_layers = pfunctions.conc3(
       { timestamp=0,   offset_rate = 0, offset_rate_t = 0 },
       { timestamp=116, offset_rate = 1, offset_rate_t = -0.34 },
       { timestamp=350, offset_rate = 1, offset_rate_t = 0 },
-      --[[       tilt:
-            [
-              { "timestamp": 0, "tilt": { "x":125.004 }, "tilt_t" : { "x":0.998 }},
-              { "timestamp": 58, "tilt": { "x":89.89 }, "tilt_t" : { "x":-47.06 }},
-              { "timestamp": 111, "tilt": { "x":-121.61 }, "tilt_t" : { "x":61.02 }},
-              { "timestamp": 169, "tilt": { "x":-124.997 }, "tilt_t" : { "x":0 }},
-              { "timestamp": 215, "tilt": { "x":-133.13 }, "tilt_t" : { "x":38.8 }},
-              { "timestamp": 253, "tilt": { "x":2.97 }, "tilt_t" : { "x":-30.42 }},
-              { "timestamp": 279, "tilt": { "x":0.001 }, "tilt_t" : { "x":0 }}
-            ] ]]
 
-      { timestamp=0, tilt = 0.125 , tilt_t = 0},
-      { timestamp=58, tilt = 0.089 , tilt_t = -0.047  },
-      { timestamp=111, tilt = -0.121 , tilt_t = 0.061  },
-      { timestamp=169, tilt = -0.124  },
-      { timestamp=215, tilt = -0.133 , tilt_t = 0.038  },
-      { timestamp=253, tilt = 0.002 , tilt_t = -0.030  },
-      { timestamp=279, tilt = 0  }
+      --[[       tilt:
+
+  [
+  { "timestamp": 0, "tilt": { "x":125 }, "tilt_t" : { "x":1 }},
+  { "timestamp": 62, "tilt": { "x":90.22 }, "tilt_t" : { "x":-69.08 }},
+  { "timestamp": 93, "tilt": { "x":-120.29 }, "tilt_t" : { "x":78.32 }},
+  { "timestamp": 164, "tilt": { "x":-125.23 }, "tilt_t" : { "x":-0.59 }},
+  { "timestamp": 211, "tilt": { "x":-131.15 }, "tilt_t" : { "x":41.03 }},
+  { "timestamp": 243, "tilt": { "x":1.37 }, "tilt_t" : { "x":-40 }},
+  { "timestamp": 289, "tilt": { "x":0 }, "tilt_t" : { "x":0 }}
+  ]
+
+      ]]
+
+      { timestamp=0, tilt = 0.125, tilt_t = 0},
+      { timestamp=62, tilt = 0.090, tilt_t = -0.07  },
+      { timestamp=93, tilt = -0.120, tilt_t = 0.078  },
+      { timestamp=164, tilt = -0.125, tilt_t = 0},
+      { timestamp=211, tilt = -0.131, tilt_t = 0.041  },
+      { timestamp=243, tilt = 0, tilt_t = -0.04  },
+      { timestamp=289, tilt = 0  }
     }
   },
   {
@@ -99,6 +111,6 @@ local pod_layers = pfunctions.conc3(
       { timestamp = 350, opacity = 0.0 }
     }
   }
-}, jets, jets_emission)
+}, jets, jets_emission, vectoring_single)
 
 return pod_layers

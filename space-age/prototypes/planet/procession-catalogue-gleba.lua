@@ -6,11 +6,11 @@ return
     index = procession_graphic_catalogue.planet_cloudscape,
     type = "sprite",
     sprite = {
-      filename = "__space-age__/graphics/procession/clouds/fulgora-cloudscape.png",
+      filename = "__space-age__/graphics/procession/clouds/gleba-cloudscape.png",
       width = 960,
       height = 960,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -20,8 +20,8 @@ return
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape.png",
       width = 960,
       height = 960,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -29,11 +29,11 @@ return
     index = procession_graphic_catalogue.planet_cloudscape_lvl0,
     type = "sprite",
     sprite = {
-      filename = "__space-age__/graphics/procession/clouds/fulgora-cloudscape-layered-0.png",
+      filename = "__space-age__/graphics/procession/clouds/gleba-cloudscape-layered-0.png",
       width = 2000,
       height = 1500,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -43,8 +43,8 @@ return
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape-layered-0.png",
       width = 2000,
       height = 1500,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -52,11 +52,11 @@ return
     index = procession_graphic_catalogue.planet_cloudscape_lvl1,
     type = "sprite",
     sprite = {
-      filename = "__space-age__/graphics/procession/clouds/fulgora-cloudscape-layered-1.png",
+      filename = "__space-age__/graphics/procession/clouds/gleba-cloudscape-layered-1.png",
       width = 1600,
       height = 1200,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -66,8 +66,8 @@ return
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape-layered-1.png",
       width = 1600,
       height = 1200,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -76,11 +76,11 @@ return
     index = procession_graphic_catalogue.planet_cloudscape_lvl2,
     type = "sprite",
     sprite = {
-      filename = "__space-age__/graphics/procession/clouds/fulgora-cloudscape-layered-2.png",
+      filename = "__space-age__/graphics/procession/clouds/gleba-cloudscape-layered-2.png",
       width = 1400,
       height = 1050,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -90,8 +90,8 @@ return
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape-layered-2.png",
       width = 1400,
       height = 1050,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -99,11 +99,11 @@ return
     index = procession_graphic_catalogue.planet_cloudscape_lvl3,
     type = "sprite",
     sprite = {
-      filename = "__space-age__/graphics/procession/clouds/fulgora-cloudscape-layered-3.png",
+      filename = "__space-age__/graphics/procession/clouds/gleba-cloudscape-layered-3.png",
       width = 1200,
       height = 900,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -113,8 +113,8 @@ return
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape-layered-3.png",
       width = 1200,
       height = 900,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -126,8 +126,8 @@ return
       filename = "__space-age__/graphics/procession/space-rear-star.png",
       width = 1024,
       height = 1024,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -137,8 +137,8 @@ return
       filename = "__space-age__/graphics/procession/clouds/gleba-sky-tint.png",
       width = 16,
       height = 16,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 

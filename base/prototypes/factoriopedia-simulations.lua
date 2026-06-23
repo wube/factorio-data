@@ -192,6 +192,16 @@ simulations.factoriopedia_display_panel =
   ]]
 }
 
+simulations.factoriopedia_cargo_pod =
+{
+  init =
+  [[
+    game.simulation.camera_position = {0, 0}
+    rendering.draw_sprite{sprite = "cargo-pod-factoriopedia", target = {0, 0}, surface = game.surfaces[1]}
+  ]]
+}
+
+
 -----------////////////////////////////////////////////////////////////// INTERMEDIATE PRODUCTS
 
 simulations.factoriopedia_coal = { init = make_resource("coal") }

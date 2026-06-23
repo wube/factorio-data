@@ -299,13 +299,13 @@ data:extend(
     minable = {mining_time = 0.5, result = "railgun-turret"},
     max_health = 4000,
     corpse = "railgun-turret-remnants",
-    dying_explosion = "gun-turret-explosion",
+    dying_explosion = "railgun-turret-explosion",
     collision_box = {{-1.41, -1.9 }, {1.41, 2.1}},
     selection_box = {{-1.5, -2.5 }, {1.5, 2.5}},
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "10MJ",
+      buffer_capacity = "11MJ",
       input_flow_limit = "10MW",
       usage_priority = "primary-input"
     },
@@ -329,6 +329,7 @@ data:extend(
     ending_attack_speed = 0.05,
     alert_when_attacking = true,
     can_retarget_while_starting_attack = true,
+    leave_attacking_if_shoot_fails = false,
     circuit_connector = circuit_connector_definitions["railgun-turret"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
     open_sound = sounds.turret_open,
@@ -375,7 +376,6 @@ data:extend(
     {
       type = "projectile",
       ammo_category = "railgun",
-      health_penalty = -1,
       cooldown = 170,
       projectile_creation_distance = 3.6,
       projectile_center = {0, 0},
@@ -393,6 +393,8 @@ data:extend(
       },
       min_range = 3.5,
       range = 40,
+      health_penalty = -10, -- Try to shoot things that have a higher remaining health ratio (i.e. more healthy) to maximize damage per shot
+      threatening_asteroid_penalty = -20,
       turn_range = 0.20,
       sound = space_age_sounds.railgun_turret_gunshot,
       true_collinear_ejection = true
@@ -403,16 +405,16 @@ data:extend(
     {
       pictures =
       {
-        filename = "__base__/graphics/entity/gun-turret/gun-turret-reflection.png",
+        filename = "__space-age__/graphics/entity/railgun-turret/railgun-reflection.png",
         priority = "extra-high",
-        width = 20,
-        height = 32,
-        shift = util.by_pixel(0, 40),
-        variation_count = 1,
+        width = 40,
+        height = 48,
+        shift = util.by_pixel(5, 95),
+        variation_count = 8,
         scale = 5
       },
       rotate = false,
-      orientation_to_variation = false
+      orientation_to_variation = true
     }
   },
   {
@@ -421,9 +423,9 @@ data:extend(
     icon = "__space-age__/graphics/icons/rocket-turret.png",
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "rocket-turret"},
-    max_health = 400,
+    max_health = 1500,
     corpse = "rocket-turret-remnants",
-    dying_explosion = "gun-turret-explosion",
+    dying_explosion = "rocket-turret-explosion",
     collision_box = {{-1.2, -1.2 }, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5 }, {1.5, 1.5}},
     damaged_trigger_effect = hit_effects.entity(),
@@ -502,6 +504,21 @@ data:extend(
 
           }
         }
+      },
+      water_reflection =
+      {
+        pictures =
+        {
+          filename = "__base__/graphics/entity/lab/lab-reflection.png",
+          priority = "extra-high",
+          width = 24,
+          height = 24,
+          shift = util.by_pixel(5, 40),
+          variation_count = 1,
+          scale = 5
+        },
+        rotate = false,
+        orientation_to_variation = false
       }
     },
 
@@ -514,6 +531,7 @@ data:extend(
       projectile_center = {0, 0},
       min_range = 15,
       range = 36,
+      threatening_asteroid_penalty = -20,
       sound =
       {
         variations = sound_variations("__space-age__/sound/ammo/rocket-turret-launcher", 7, 0.7, volume_multiplier("main-menu", 1.8)),
@@ -531,22 +549,7 @@ data:extend(
       }
     },
 
-    call_for_help_radius = 40,
-    water_reflection =
-    {
-      pictures =
-      {
-        filename = "__base__/graphics/entity/gun-turret/gun-turret-reflection.png",
-        priority = "extra-high",
-        width = 20,
-        height = 32,
-        shift = util.by_pixel(0, 40),
-        variation_count = 1,
-        scale = 5
-      },
-      rotate = false,
-      orientation_to_variation = false
-    }
+    call_for_help_radius = 40
   },
   {
     type = "electric-turret",
@@ -555,7 +558,7 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy", "player-creation"},
     minable = {mining_time = 0.5, result = "tesla-turret"},
     fast_replaceable_group = "tesla-turret",
-    max_health = 1000,
+    max_health = 2000,
     collision_box = {{-1.7, -1.7 }, {1.7, 1.7}},
     selection_box = {{-2, -2 }, {2, 2}},
     collision_mask = {layers={item=true, object=true, player=true, water_tile=true, is_object=true, is_lower_object=true}},
@@ -575,12 +578,13 @@ data:extend(
       use_doppler_shift = false,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
+      max_sounds_per_prototype = 3,
     },
     preparing_sound = space_age_sounds.tesla_turret_activate,
     folding_sound = space_age_sounds.tesla_turret_deactivate,
     rotating_sound = space_age_sounds.tesla_turret_rotate,
     corpse = "tesla-turret-remnants",
-    dying_explosion = "laser-turret-explosion",
+    dying_explosion = "tesla-turret-explosion",
     energy_source =
     {
       type = "electric",
@@ -694,6 +698,20 @@ data:extend(
             }
           }
         }
+      },
+      water_reflection = {
+        pictures =
+        {
+          filename = "__space-age__/graphics/entity/tesla-turret/tesla-turret-reflection.png",
+          width = 26,
+          height = 34,
+          shift = util.by_pixel(5, 72.0),
+          priority = "extra-high",
+          variation_count = 1,
+          scale = 5
+        },
+        rotate = false,
+        orientation_to_variation = false
       }
     },
 
@@ -754,22 +772,7 @@ data:extend(
       }
     },
 
-    call_for_help_radius = 40,
-    water_reflection =
-    {
-      pictures =
-      {
-        filename = "__base__/graphics/entity/laser-turret/laser-turret-reflection.png",
-        priority = "extra-high",
-        width = 20,
-        height = 32,
-        shift = util.by_pixel(0, 40),
-        variation_count = 1,
-        scale = 5
-      },
-      rotate = false,
-      orientation_to_variation = false
-    }
+    call_for_help_radius = 40
   },
   {
     type = "sticker",

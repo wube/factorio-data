@@ -197,6 +197,32 @@ data:extend(
     categories = {"armor"}
   },
   {
+    type = "electric-energy-interface-equipment",
+    name = "electric-energy-interface-equipment",
+    sprite =
+    {
+      filename = "__base__/graphics/equipment/fission-reactor-equipment.png",
+      width = 256,
+      height = 256,
+      priority = "medium",
+      scale = 0.5
+    },
+    shape =
+    {
+      width = 4,
+      height = 4,
+      type = "full"
+    },
+    energy_source =
+    {
+      type = "electric",
+      buffer_capacity = "100MJ",
+      usage_priority = "tertiary"
+    },
+    categories = {"armor"},
+    gui_mode = "admins"
+  },
+  {
     type = "active-defense-equipment",
     name = "personal-laser-defense-equipment",
     sprite =

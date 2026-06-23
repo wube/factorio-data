@@ -6,7 +6,7 @@ data:extend(
   {
     type = "recipe",
     name = "simple-coal-liquefaction",
-    category = "oil-processing",
+    categories = {"oil-processing"},
     enabled = false,
     energy_required = 5,
     ingredients =
@@ -17,14 +17,17 @@ data:extend(
     },
     results=
     {
-      {type="fluid", name="heavy-oil", amount=50}
+      {type="fluid", name="heavy-oil", amount=50, fluidbox_index = 1}
     },
     allow_productivity = true,
     icon = "__space-age__/graphics/icons/fluid/simple-coal-liquefaction.png",
     subgroup = "fluid-recipes",
     order = "a[oil-processing]-c[coal-liquefaction]",
     allow_decomposition = false,
-    show_amount_in_title = false
+    crafting_machine_tint =
+    {
+      primary = {r = 0.469, g = 0.461, b = 0.260, a = 1.000}, -- #777542ff
+    }
   },
 
   ----------------------- gleba seeds
@@ -32,7 +35,7 @@ data:extend(
     type = "recipe",
     name = "yumako-processing",
     icon = "__space-age__/graphics/icons/yumako-processing.png",
-    category = "organic-or-hand-crafting",
+    categories = {"organic", "crafting"},
     subgroup = "agriculture-processes",
     order = "a[seeds]-a[yumako-processing]",
     enabled = false,
@@ -41,21 +44,20 @@ data:extend(
     ingredients = {{type = "item", name = "yumako", amount = 1}},
     results =
     {
-      {type = "item", name = "yumako-seed", amount = 1, probability = 0.02},
+      {type = "item", name = "yumako-seed", amount = 1, independent_probability = 0.02},
       {type = "item", name = "yumako-mash", amount = 2}
     },
     crafting_machine_tint =
     {
       primary = {r = 0.976, g = 0.006, b = 0.310, a = 1.000},
       secondary = {r = 0.805, g = 0.701, b = 0.293, a = 1.000},
-
     }
   },
   {
     type = "recipe",
     name = "jellynut-processing",
     icon = "__space-age__/graphics/icons/jellynut-processing.png",
-    category = "organic-or-hand-crafting",
+    categories = {"organic", "crafting"},
     subgroup = "agriculture-processes",
     order = "a[seeds]-b[jellynut-processing]",
     enabled = false,
@@ -67,7 +69,7 @@ data:extend(
     },
     results =
     {
-      {type = "item", name = "jellynut-seed", amount = 1, probability = 0.02 },
+      {type = "item", name = "jellynut-seed", amount = 1, independent_probability = 0.02 },
       {type = "item", name = "jelly", amount = 4}
     },
     crafting_machine_tint =
@@ -81,7 +83,7 @@ data:extend(
     type = "recipe",
     name = "copper-bacteria",
     icon = "__space-age__/graphics/icons/copper-bacteria.png",
-    category = "organic-or-hand-crafting",
+    categories = {"organic", "crafting"},
     surface_conditions =
     {
       {
@@ -101,7 +103,7 @@ data:extend(
     },
     results =
     {
-      {type = "item", name = "copper-bacteria", amount = 1, probability = 0.1 },
+      {type = "item", name = "copper-bacteria", amount = 1, independent_probability = 0.1 },
       {type = "item", name = "spoilage", amount = 1}
     },
     main_product = "copper-bacteria",
@@ -116,7 +118,8 @@ data:extend(
     type = "recipe",
     name = "copper-bacteria-cultivation",
     icon = "__space-age__/graphics/icons/copper-bacteria-cultivation.png",
-    category = "organic",
+    categories = {"organic"},
+    auto_recycle = false,
     surface_conditions =
     {
       {
@@ -129,7 +132,6 @@ data:extend(
     order = "b[agriculture]-d[bacteria]-d[copper-bacteria-cultivation]",
     enabled = false,
     allow_productivity = true,
-    reset_freshness_on_craft = true,
     energy_required = 4,
     ingredients =
     {
@@ -138,21 +140,20 @@ data:extend(
     },
     results =
     {
-      {type = "item", name = "copper-bacteria", amount = 4}
+      {type = "item", name = "copper-bacteria", amount = 4, reset_freshness_on_craft = true}
     },
     crafting_machine_tint =
     {
       primary = {r = 1.000, g = 0.457, b = 0.000, a = 1.000}, -- #ff7400ff
       secondary = {r = 1.000, g = 0.196, b = 0.000, a = 1.000}, -- #ff3100ff
     },
-    show_amount_in_title = false
   },
 
   {
     type = "recipe",
     name = "iron-bacteria",
     icon = "__space-age__/graphics/icons/iron-bacteria.png",
-    category = "organic-or-hand-crafting",
+    categories = {"organic", "crafting"},
     surface_conditions =
     {
       {
@@ -172,7 +173,7 @@ data:extend(
     },
     results =
     {
-      {type = "item", name = "iron-bacteria", amount = 1, probability = 0.1 },
+      {type = "item", name = "iron-bacteria", amount = 1, independent_probability = 0.1 },
       {type = "item", name = "spoilage", amount = 4}
     },
     main_product = "iron-bacteria",
@@ -187,7 +188,8 @@ data:extend(
     type = "recipe",
     name = "iron-bacteria-cultivation",
     icon = "__space-age__/graphics/icons/iron-bacteria-cultivation.png",
-    category = "organic",
+    categories = {"organic"},
+    auto_recycle = false,
     surface_conditions =
     {
       {
@@ -200,7 +202,6 @@ data:extend(
     order = "b[agriculture]-d[bacteria]-b[iron-bacteria-cultivation]",
     enabled = false,
     allow_productivity = true,
-    reset_freshness_on_craft = true,
     energy_required = 4,
     ingredients =
     {
@@ -209,14 +210,13 @@ data:extend(
     },
     results =
     {
-      {type = "item", name = "iron-bacteria", amount = 4}
+      {type = "item", name = "iron-bacteria", amount = 4, reset_freshness_on_craft = true}
     },
     crafting_machine_tint =
     {
       primary = {r = 0.000, g = 0.500, b = 1.000, a = 1.000}, -- #007fffff
       secondary = {r = 0.095, g = 0.412, b = 0.822, a = 1.000}, -- #1868d1ff
     },
-    show_amount_in_title = false
   },
 
   ----------------------- gleba processing
@@ -224,7 +224,7 @@ data:extend(
     type = "recipe",
     name = "artificial-yumako-soil",
     icon = "__space-age__/graphics/icons/artificial-yumako-soil.png",
-    category = "crafting",
+    categories = {"crafting"},
     surface_conditions =
     {
       {
@@ -248,7 +248,7 @@ data:extend(
     type = "recipe",
     name = "overgrowth-yumako-soil",
     icon = "__space-age__/graphics/icons/overgrowth-yumako-soil.png",
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     surface_conditions =
     {
       {
@@ -274,7 +274,7 @@ data:extend(
     type = "recipe",
     name = "artificial-jellynut-soil",
     icon = "__space-age__/graphics/icons/artificial-jellynut-soil.png",
-    category = "crafting",
+    categories = {"crafting"},
     surface_conditions =
     {
       {
@@ -298,7 +298,7 @@ data:extend(
     type = "recipe",
     name = "overgrowth-jellynut-soil",
     icon = "__space-age__/graphics/icons/overgrowth-jellynut-soil.png",
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     surface_conditions =
     {
       {
@@ -324,7 +324,7 @@ data:extend(
     type = "recipe",
     name = "nutrients-from-spoilage",
     icon = "__space-age__/graphics/icons/nutrients-from-spoilage.png",
-    category = "organic-or-assembling",
+    categories = {"organic", "crafting"},
     subgroup = "agriculture-processes",
     order = "c[nutrients]-c[nutrients-from-spoilage]",
     enabled = false,
@@ -342,7 +342,8 @@ data:extend(
     type = "recipe",
     name = "nutrients-from-yumako-mash",
     icon = "__space-age__/graphics/icons/nutrients-from-yumako-mash.png",
-    category = "organic",
+    categories = {"organic"},
+    auto_recycle = false,
     subgroup = "agriculture-processes",
     enabled = false,
     allow_productivity = true,
@@ -360,7 +361,8 @@ data:extend(
     type = "recipe",
     name = "nutrients-from-bioflux",
     icon = "__space-age__/graphics/icons/nutrients-from-bioflux.png",
-    category = "organic",
+    categories = {"organic"},
+    auto_recycle = false,
     subgroup = "agriculture-processes",
     enabled = false,
     allow_productivity = true,
@@ -379,7 +381,7 @@ data:extend(
     type = "recipe",
     name = "pentapod-egg",
     icon = "__space-age__/graphics/icons/pentapod-egg-3.png",
-    category = "organic",
+    categories = {"organic"},
     surface_conditions =
     {
       {
@@ -393,7 +395,6 @@ data:extend(
     auto_recycle = false,
     enabled = false,
     allow_productivity = true,
-    reset_freshness_on_craft = true,
     hide_from_signal_gui = true,
     energy_required = 15,
     ingredients =
@@ -404,7 +405,7 @@ data:extend(
     },
     results =
     {
-      {type = "item", name = "pentapod-egg", amount = 2, ignored_by_stats = 1, ignored_by_productivity = 1}
+      {type = "item", name = "pentapod-egg", amount = 2, ignored_by_stats = 1, ignored_by_productivity = 1, reset_freshness_on_craft = true}
     },
     crafting_machine_tint =
     {
@@ -417,7 +418,7 @@ data:extend(
     type = "recipe",
     name = "rocket-fuel-from-jelly",
     icon = "__space-age__/graphics/icons/rocket-fuel-from-jelly.png",
-    category = "organic",
+    categories = {"organic"},
     subgroup = "agriculture-products",
     order = "a[organic-products]-a[rocket-fuel-from-jelly]",
     auto_recycle = false,
@@ -442,7 +443,7 @@ data:extend(
     type = "recipe",
     name = "bioflux",
     icon = "__space-age__/graphics/icons/bioflux.png",
-    category = "organic",
+    categories = {"organic"},
     subgroup = "agriculture-products",
     order = "a[organic-products]-g[bioflux]",
     auto_recycle = false,
@@ -466,7 +467,7 @@ data:extend(
     type = "recipe",
     name = "bioplastic",
     icon = "__space-age__/graphics/icons/bioplastic.png",
-    category = "organic",
+    categories = {"organic"},
     subgroup = "agriculture-products",
     order = "a[organic-products]-c[bioplastic]",
     auto_recycle = false,
@@ -489,7 +490,7 @@ data:extend(
     type = "recipe",
     name = "biosulfur",
     icon = "__space-age__/graphics/icons/biosulfur.png",
-    category = "organic",
+    categories = {"organic"},
     subgroup = "agriculture-products",
     order = "a[organic-products]-d[biosulfur]",
     auto_recycle = false,
@@ -512,7 +513,7 @@ data:extend(
     type = "recipe",
     name = "biolubricant",
     icon = "__space-age__/graphics/icons/fluid/biolubricant.png",
-    category = "organic",
+    categories = {"organic"},
     subgroup = "agriculture-products",
     order = "a[organic-products]-b[biolubricant]",
     auto_recycle = false,
@@ -537,7 +538,7 @@ data:extend(
   {
     type = "recipe",
     name = "carbon-fiber",
-    category = "organic",
+    categories = {"organic"},
     subgroup = "agriculture-products",
     order = "a[organic-products]-h[carbon-fiber]",
     auto_recycle = false,
@@ -586,7 +587,7 @@ data:extend(
     name = "space-platform-foundation",
     energy_required = 10,
     enabled = false,
-    category = "crafting",
+    categories = {"crafting"},
     ingredients =
     {
       {type = "item", name = "steel-plate", amount = 20},
@@ -691,6 +692,20 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "landing-pad-unloading-bay",
+    enabled = false,
+    ingredients =
+    {
+      {type = "item", name = "cargo-bay", amount = 1},
+      {type = "item", name = "steel-chest", amount = 4},
+      {type = "item", name = "electric-engine-unit", amount = 15},
+      {type = "item", name = "processing-unit", amount = 8}
+    },
+    energy_required = 10,
+    results = {{type="item", name="landing-pad-unloading-bay", amount=1}}
+  },
+  {
+    type = "recipe",
     name = "asteroid-collector",
     enabled = false,
     ingredients =
@@ -760,7 +775,7 @@ data:extend(
   {
     type = "recipe",
     name = "metallurgic-science-pack",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     surface_conditions =
     {
       {
@@ -783,7 +798,7 @@ data:extend(
   {
     type = "recipe",
     name = "agricultural-science-pack",
-    category = "organic",
+    categories = {"organic"},
     subgroup = "science-pack",
     surface_conditions =
     {
@@ -812,7 +827,7 @@ data:extend(
   {
     type = "recipe",
     name = "electromagnetic-science-pack",
-    category = "electromagnetics",
+    categories = {"electromagnetics"},
     surface_conditions =
     {
       {
@@ -836,7 +851,7 @@ data:extend(
   {
     type = "recipe",
     name = "cryogenic-science-pack",
-    category = "cryogenics",
+    categories = {"cryogenics"},
     surface_conditions =
     {
       {
@@ -874,20 +889,20 @@ data:extend(
     type = "recipe",
     name = "metallic-asteroid-crushing",
     icon = "__space-age__/graphics/icons/metallic-asteroid-crushing.png",
-    category = "crushing",
+    categories = {"crushing"},
     subgroup="space-crushing",
     order = "b-a-a",
     auto_recycle = false,
     enabled = false,
     ingredients =
     {
-      {type = "item", name = "metallic-asteroid-chunk", amount = 1},
+      {type = "item", name = "metallic-asteroid-chunk", amount = 1, ignored_by_stats = 1},
     },
     energy_required = 2,
     results =
     {
       {type = "item", name = "iron-ore", amount = 20},
-      {type = "item", name = "metallic-asteroid-chunk", amount = 1, probability = 0.2}
+      {type = "item", name = "metallic-asteroid-chunk", amount = 1, independent_probability = 0.3, ignored_by_stats = 1}
     },
     allow_productivity = true,
     allow_decomposition = false
@@ -896,20 +911,20 @@ data:extend(
     type = "recipe",
     name = "carbonic-asteroid-crushing",
     icon = "__space-age__/graphics/icons/carbonic-asteroid-crushing.png",
-    category = "crushing",
+    categories = {"crushing"},
     subgroup="space-crushing",
     order = "b-a-b",
     auto_recycle = false,
     enabled = false,
     ingredients =
     {
-      {type = "item", name = "carbonic-asteroid-chunk", amount = 1},
+      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, ignored_by_stats = 1},
     },
     energy_required = 2,
     results =
     {
       {type = "item", name = "carbon", amount = 10},
-      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, probability = 0.2}
+      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, independent_probability = 0.3, ignored_by_stats = 1}
     },
     allow_productivity = true,
     allow_decomposition = false
@@ -918,20 +933,20 @@ data:extend(
     type = "recipe",
     name = "oxide-asteroid-crushing",
     icon = "__space-age__/graphics/icons/oxide-asteroid-crushing.png",
-    category = "crushing",
+    categories = {"crushing"},
     subgroup="space-crushing",
     order = "b-a-c",
     auto_recycle = false,
     enabled = false,
     ingredients =
     {
-      {type = "item", name = "oxide-asteroid-chunk", amount = 1},
+      {type = "item", name = "oxide-asteroid-chunk", amount = 1, ignored_by_stats = 1},
     },
     energy_required = 2,
     results =
     {
       {type = "item", name = "ice", amount = 5},
-      {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.2}
+      {type = "item", name = "oxide-asteroid-chunk", amount = 1, independent_probability = 0.3, ignored_by_stats = 1}
     },
     allow_productivity = true,
     allow_decomposition = false
@@ -942,21 +957,21 @@ data:extend(
     name = "advanced-metallic-asteroid-crushing",
     localised_name = {"recipe-name.advanced-metallic-asteroid-crushing"},
     icon = "__space-age__/graphics/icons/advanced-metallic-asteroid-crushing.png",
-    category = "crushing",
+    categories = {"crushing"},
     subgroup="space-crushing",
     order = "c-a-b",
     auto_recycle = false,
     enabled = false,
     ingredients =
     {
-      {type = "item", name = "metallic-asteroid-chunk", amount = 1}
+      {type = "item", name = "metallic-asteroid-chunk", amount = 1, ignored_by_stats = 1}
     },
     energy_required = 5,
     results =
     {
       {type = "item", name = "iron-ore", amount = 10},
       {type = "item", name = "copper-ore", amount = 4},
-      {type = "item", name = "metallic-asteroid-chunk", amount = 1, probability = 0.05}
+      {type = "item", name = "metallic-asteroid-chunk", amount = 1, independent_probability = 0.1, ignored_by_stats = 1}
     },
     allow_productivity = true,
     allow_decomposition = false
@@ -966,21 +981,21 @@ data:extend(
     name = "advanced-carbonic-asteroid-crushing",
     localised_name = {"recipe-name.advanced-carbonic-asteroid-crushing"},
     icon = "__space-age__/graphics/icons/advanced-carbonic-asteroid-crushing.png",
-    category = "crushing",
+    categories = {"crushing"},
     subgroup="space-crushing",
     order = "e[advanced-carbonic-asteroid-crushing]",
     auto_recycle = false,
     enabled = false,
     ingredients =
     {
-      {type = "item", name = "carbonic-asteroid-chunk", amount = 1}
+      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, ignored_by_stats = 1}
     },
     energy_required = 5,
     results =
     {
       {type = "item", name = "carbon", amount = 5},
       {type = "item", name = "sulfur", amount = 2},
-      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, probability = 0.05}
+      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, independent_probability = 0.1, ignored_by_stats = 1}
     },
     allow_productivity = true,
     allow_decomposition = false
@@ -990,21 +1005,21 @@ data:extend(
     name = "advanced-oxide-asteroid-crushing",
     localised_name = {"recipe-name.advanced-oxide-asteroid-crushing"},
     icon = "__space-age__/graphics/icons/advanced-oxide-asteroid-crushing.png",
-    category = "crushing",
+    categories = {"crushing"},
     subgroup="space-crushing",
     order = "f[advanced-oxide-asteroid-crushing]",
     auto_recycle = false,
     enabled = false,
     ingredients =
     {
-      {type = "item", name = "oxide-asteroid-chunk", amount = 1}
+      {type = "item", name = "oxide-asteroid-chunk", amount = 1, ignored_by_stats = 1}
     },
     energy_required = 5,
     results =
     {
       {type = "item", name = "ice", amount = 3},
       {type = "item", name = "calcite", amount = 2},
-      {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.05}
+      {type = "item", name = "oxide-asteroid-chunk", amount = 1, independent_probability = 0.1, ignored_by_stats = 1}
     },
     allow_productivity = true,
     allow_decomposition = false
@@ -1014,67 +1029,70 @@ data:extend(
     type = "recipe",
     name = "metallic-asteroid-reprocessing",
     icon = "__space-age__/graphics/icons/metallic-asteroid-reprocessing.png",
-    category = "crushing",
+    categories = {"crushing"},
     subgroup="space-crushing",
     order = "b-b-a",
     auto_recycle = false,
     enabled = false,
-    ingredients = {{type = "item", name = "metallic-asteroid-chunk", amount = 1}},
+    ingredients = {{type = "item", name = "metallic-asteroid-chunk", amount = 1, ignored_by_stats = 1}},
     energy_required = 2,
     results =
     {
-      {type = "item", name = "metallic-asteroid-chunk", amount = 1, probability = 0.4},
-      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, probability = 0.2},
-      {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.2}
+      {type = "item", name = "metallic-asteroid-chunk", amount = 1, shared_probability = { min = 0.0, max = 0.4 }, ignored_by_stats = 1},
+      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, shared_probability = { min = 0.4, max = 0.6 }},
+      {type = "item", name = "oxide-asteroid-chunk",    amount = 1, shared_probability = { min = 0.6, max = 0.8 }}
     },
     allow_productivity = false,
+    allow_quality = false,
     allow_decomposition = false
   },
   {
     type = "recipe",
     name = "carbonic-asteroid-reprocessing",
     icon = "__space-age__/graphics/icons/carbonic-asteroid-reprocessing.png",
-    category = "crushing",
+    categories = {"crushing"},
     subgroup="space-crushing",
     order = "b-b-b",
     auto_recycle = false,
     enabled = false,
-    ingredients = {{type = "item", name = "carbonic-asteroid-chunk", amount = 1}},
+    ingredients = {{type = "item", name = "carbonic-asteroid-chunk", amount = 1, ignored_by_stats = 1}},
     energy_required = 2,
     results =
     {
-      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, probability = 0.4},
-      {type = "item", name = "metallic-asteroid-chunk", amount = 1, probability = 0.2},
-      {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.2}
+      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, shared_probability = { min = 0.0, max = 0.4 }, ignored_by_stats = 1},
+      {type = "item", name = "metallic-asteroid-chunk", amount = 1, shared_probability = { min = 0.4, max = 0.6 }},
+      {type = "item", name = "oxide-asteroid-chunk",    amount = 1, shared_probability = { min = 0.6, max = 0.8 }}
     },
     allow_productivity = false,
+    allow_quality = false,
     allow_decomposition = false
   },
   {
     type = "recipe",
     name = "oxide-asteroid-reprocessing",
     icon = "__space-age__/graphics/icons/oxide-asteroid-reprocessing.png",
-    category = "crushing",
+    categories = {"crushing"},
     subgroup="space-crushing",
     order = "b-b-c",
     auto_recycle = false,
     enabled = false,
-    ingredients = {{type = "item", name = "oxide-asteroid-chunk", amount = 1}},
+    ingredients = {{type = "item", name = "oxide-asteroid-chunk", amount = 1, ignored_by_stats = 1}},
     energy_required = 1,
     results =
     {
-      {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.4},
-      {type = "item", name = "metallic-asteroid-chunk", amount = 1, probability = 0.2},
-      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, probability = 0.2}
+      {type = "item", name = "oxide-asteroid-chunk",    amount = 1, shared_probability = { min = 0.0, max = 0.4 }, ignored_by_stats = 1},
+      {type = "item", name = "metallic-asteroid-chunk", amount = 1, shared_probability = { min = 0.4, max = 0.6 }},
+      {type = "item", name = "carbonic-asteroid-chunk", amount = 1, shared_probability = { min = 0.6, max = 0.8 }}
     },
     allow_productivity = false,
+    allow_quality = false,
     allow_decomposition = false
   },
   -------------------------------------------------------------------------- FUEL & OXIDISER
   {
     type = "recipe",
     name = "thruster-fuel",
-    category = "chemistry",
+    categories = {"chemistry"},
     subgroup="space-processing",
     order = "a[thruster-fuel]",
     auto_recycle = false,
@@ -1095,8 +1113,6 @@ data:extend(
     energy_required = 2,
     results = {{type = "fluid", name = "thruster-fuel", amount = 75}},
     allow_productivity = true,
-    show_amount_in_title = false,
-    always_show_products = true,
     crafting_machine_tint =
     {
       primary = {r = 0.881, g = 0.100, b = 0.000, a = 0.502}, -- #e0190080
@@ -1108,7 +1124,7 @@ data:extend(
   {
     type = "recipe",
     name = "thruster-oxidizer",
-    category = "chemistry",
+    categories = {"chemistry"},
     subgroup="space-processing",
     order = "c[thruster-oxidizer]",
     auto_recycle = false,
@@ -1129,8 +1145,6 @@ data:extend(
     energy_required = 2,
     results = {{type = "fluid", name = "thruster-oxidizer", amount = 75}},
     allow_productivity = true,
-    show_amount_in_title = false,
-    always_show_products = true,
     crafting_machine_tint =
     {
       primary = {r = 0.082, g = 0.396, b = 0.792, a = 0.502}, -- #1565ca80
@@ -1143,7 +1157,7 @@ data:extend(
     type = "recipe",
     name = "ice-melting",
     icon = "__space-age__/graphics/icons/fluid/ice-melting.png",
-    category = "chemistry",
+    categories = {"chemistry"},
     subgroup = "fluid-recipes",
     order = "d[other-chemistry]-c[ice-melting]",
     auto_recycle = false,
@@ -1160,7 +1174,6 @@ data:extend(
       tertiary = {r = 0.381, g = 0.428, b = 0.436, a = 0.502}, -- #616d6f80
       quaternary = {r = 0.499, g = 0.797, b = 0.793, a = 0.733}, -- #7fcbcabb
     },
-    show_amount_in_title = false
   },
 
 -------------------------------------------------------------------------- SECONDARY FUEL / OXIDISER
@@ -1170,7 +1183,7 @@ data:extend(
     name = "advanced-thruster-fuel",
     icon = "__space-age__/graphics/icons/advanced-thruster-fuel.png",
     localised_name = {"recipe-name.advanced-thruster-fuel"},
-    category = "chemistry",
+    categories = {"chemistry"},
     subgroup = "space-processing",
     order = "b[advanced-thruster-fuel]",
     auto_recycle = false,
@@ -1195,8 +1208,6 @@ data:extend(
       {type = "fluid", name = "thruster-fuel", amount = 1500},
     },
     allow_productivity = true,
-    always_show_products = true,
-    show_amount_in_title = false,
     allow_decomposition = false,
     crafting_machine_tint =
     {
@@ -1212,7 +1223,7 @@ data:extend(
     name = "advanced-thruster-oxidizer",
     icon = "__space-age__/graphics/icons/advanced-thruster-oxidizer.png",
     localised_name = {"recipe-name.advanced-thruster-oxidizer"},
-    category = "chemistry",
+    categories = {"chemistry"},
     subgroup = "space-processing",
     order = "d[advanced-thruster-oxydizer]",
     auto_recycle = false,
@@ -1237,8 +1248,6 @@ data:extend(
       {type = "fluid", name = "thruster-oxidizer", amount = 1500},
     },
     allow_productivity = true,
-    always_show_products = true,
-    show_amount_in_title = false,
     allow_decomposition = false,
     crafting_machine_tint =
     {
@@ -1253,7 +1262,7 @@ data:extend(
     type = "recipe",
     name = "acid-neutralisation",
     icon = "__space-age__/graphics/icons/fluid/acid-neutralisation.png",
-    category = "chemistry-or-cryogenics",
+    categories = {"chemistry", "cryogenics"},
     subgroup = "fluid-recipes",
     order = "d[other-chemistry]-a[acid-neutralisation]",
     auto_recycle = false,
@@ -1269,16 +1278,14 @@ data:extend(
     ingredients =
     {
       {type = "item", name = "calcite", amount = 1},
-      {type = "fluid", name = "sulfuric-acid", amount = 1000},
+      {type = "fluid", name = "sulfuric-acid", amount = 100},
     },
-    energy_required = 5,
+    energy_required = 0.5,
     results =
     {
-      {type = "fluid", name = "steam", amount = 10000, temperature = 500}
+      {type = "fluid", name = "steam", amount = 1000, temperature = 500}
     },
     allow_productivity = false,
-    always_show_products = true,
-    show_amount_in_title = false,
     allow_decomposition = false,
     crafting_machine_tint =
     {
@@ -1293,7 +1300,7 @@ data:extend(
     name = "steam-condensation",
     icon = "__space-age__/graphics/icons/fluid/steam-condensation.png",
     localised_name = {"recipe-name.steam-condensation"},
-    category = "chemistry-or-cryogenics",
+    categories = {"chemistry", "cryogenics"},
     subgroup = "fluid-recipes",
     order = "d[other-chemistry]-b[steam-condensation]",
     auto_recycle = false,
@@ -1307,8 +1314,6 @@ data:extend(
     {
       {type = "fluid", name = "water", amount = 90},
     },
-    always_show_products = true,
-    show_amount_in_title = false,
     allow_decomposition = false,
     allow_quality = false,
     crafting_machine_tint =
@@ -1323,7 +1328,7 @@ data:extend(
     type = "recipe",
     name = "carbon",
     icon = "__space-age__/graphics/icons/carbon.png",
-    category = "chemistry-or-cryogenics",
+    categories = {"chemistry", "cryogenics"},
     subgroup = "raw-material",
     auto_recycle = false,
     enabled = false,
@@ -1347,7 +1352,7 @@ data:extend(
   {
     type = "recipe",
     name = "tungsten-carbide",
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     subgroup = "vulcanus-processes",
     order = "c[tungsten]-b[tungsten-carbide]",
     enabled = false,
@@ -1359,12 +1364,13 @@ data:extend(
     },
     energy_required = 1,
     results = {{type="item", name="tungsten-carbide", amount=1}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
   {
     type = "recipe",
     name = "foundry",
-    category = "metallurgy-or-assembling",
+    categories = {"metallurgy", "crafting-with-fluid"},
     surface_conditions =
     {
       {
@@ -1389,7 +1395,7 @@ data:extend(
     type = "recipe",
     name = "molten-iron-from-lava",
     icon = "__space-age__/graphics/icons/fluid/molten-iron-from-lava.png",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "a[melting]-a[lava-a]",
     auto_recycle = false,
@@ -1411,7 +1417,7 @@ data:extend(
     type = "recipe",
     name = "molten-copper-from-lava",
     icon = "__space-age__/graphics/icons/fluid/molten-copper-from-lava.png",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "a[melting]-a[lava-b]",
     auto_recycle = false,
@@ -1431,15 +1437,13 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "molten-iron", -- TODO: to be renamed into "iron-ore-melting" in 2.1
+    name = "iron-ore-melting",
     localised_name = {"recipe-name.iron-ore-melting"},
     icon = "__space-age__/graphics/icons/iron-ore-melting.png",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
-    order = "a[melting]-b[molten-iron]",
+    order = "a[melting]-b[iron-ore-melting]",
     auto_recycle = false,
-    show_amount_in_title = false,
-    always_show_products = true,
     enabled = false,
     ingredients =
     {
@@ -1453,19 +1457,17 @@ data:extend(
     },
     allow_productivity = true,
     hide_from_signal_gui = false,
-    main_product =  "molten-iron"
+    main_product = "molten-iron"
   },
   {
     type = "recipe",
-    name = "molten-copper", -- TODO: to be renamed into "copper-ore-melting" in 2.1
+    name = "copper-ore-melting",
     localised_name = {"recipe-name.copper-ore-melting"},
     icon = "__space-age__/graphics/icons/copper-ore-melting.png",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
-    order = "a[melting]-c[molten-copper]",
+    order = "a[melting]-c[copper-ore-melting]",
     auto_recycle = false,
-    show_amount_in_title = false,
-    always_show_products = true,
     enabled = false,
     ingredients =
     {
@@ -1479,14 +1481,14 @@ data:extend(
     },
     hide_from_signal_gui = false,
     allow_productivity = true,
-    main_product =  "molten-copper"
+    main_product = "molten-copper"
   },
 
   -- remove alternate basic resource recipes.
   {
     type = "recipe",
     name = "casting-iron",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "b[casting]-a[casting-iron]",
     icon = "__space-age__/graphics/icons/casting-iron.png",
@@ -1498,12 +1500,13 @@ data:extend(
     energy_required = 3.2,
     allow_decomposition = false,
     results = {{type = "item", name = "iron-plate", amount = 2}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
   {
     type = "recipe",
     name = "casting-steel",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "b[casting]-c[casting-steel]",
     icon = "__space-age__/graphics/icons/casting-steel.png",
@@ -1515,12 +1518,13 @@ data:extend(
     energy_required = 3.2,
     allow_decomposition = false,
     results = {{type = "item", name = "steel-plate", amount = 1}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
   {
     type = "recipe",
     name = "casting-copper",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "b[casting]-b[casting-copper]",
     icon = "__space-age__/graphics/icons/casting-copper.png",
@@ -1532,13 +1536,14 @@ data:extend(
     energy_required = 3.2,
     allow_decomposition = false,
     results = {{type = "item", name = "copper-plate", amount = 2}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
 
   {
     type = "recipe",
     name = "casting-iron-gear-wheel",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "b[casting]-d[casting-iron-gear-wheel]",
     icon = "__space-age__/graphics/icons/casting-iron-gear-wheel.png",
@@ -1550,13 +1555,14 @@ data:extend(
     energy_required = 1,
     allow_decomposition = false,
     results = {{type = "item", name = "iron-gear-wheel", amount = 1}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
 
   {
     type = "recipe",
     name = "casting-iron-stick",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "b[casting]-e[casting-iron-stick]",
     icon = "__space-age__/graphics/icons/casting-iron-stick.png",
@@ -1568,13 +1574,14 @@ data:extend(
     energy_required = 1,
     allow_decomposition = false,
     results = {{type = "item", name = "iron-stick", amount = 4}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
 
   {
     type = "recipe",
     name = "casting-pipe",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "energy-pipe-distribution",
     order = "b[casting]-f[casting-pipe]",
     icon = "__space-age__/graphics/icons/casting-pipe.png",
@@ -1586,13 +1593,14 @@ data:extend(
     energy_required = 1,
     allow_decomposition = false,
     results = {{type = "item", name = "pipe", amount = 1}},
-    allow_productivity = false
+    allow_productivity = false,
+    auto_recycle = false,
   },
 
   {
     type = "recipe",
     name = "casting-pipe-to-ground",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "energy-pipe-distribution",
     order = "b[casting]-g[casting-pipe-to-ground]",
     icon = "__space-age__/graphics/icons/casting-pipe-to-ground.png",
@@ -1605,13 +1613,14 @@ data:extend(
     energy_required = 1,
     allow_decomposition = false,
     results = {{type = "item", name = "pipe-to-ground", amount = 2}},
-    allow_productivity = false
+    allow_productivity = false,
+    auto_recycle = false,
   },
 
   {
     type = "recipe",
     name = "casting-low-density-structure",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "b[casting]-f[low-density-structure]",
     icon = "__space-age__/graphics/icons/casting-low-density-structure.png",
@@ -1631,7 +1640,7 @@ data:extend(
   {
     type = "recipe",
     name = "concrete-from-molten-iron",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "b[casting]-g[concrete]",
     icon = "__space-age__/graphics/icons/concrete-from-molten-iron.png",
@@ -1645,12 +1654,13 @@ data:extend(
     energy_required = 10,
     allow_decomposition = false,
     results = {{type = "item", name = "concrete", amount = 10}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
   {
     type = "recipe",
     name = "casting-copper-cable",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "b[casting]-h[casting-copper-cable]",
     icon = "__space-age__/graphics/icons/casting-copper-cable.png",
@@ -1662,13 +1672,14 @@ data:extend(
     energy_required = 1,
     allow_decomposition = false,
     results = {{type = "item", name = "copper-cable", amount = 2}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
 
   {
     type = "recipe",
     name = "tungsten-plate",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     subgroup = "vulcanus-processes",
     order = "c[tungsten]-c[tungsten-plate]",
     enabled = false,
@@ -1679,13 +1690,14 @@ data:extend(
     },
     energy_required = 10,
     results = {{type="item", name="tungsten-plate", amount=1}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
 
   {
     type = "recipe",
     name = "turbo-transport-belt",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     surface_conditions =
     {
       {
@@ -1701,13 +1713,14 @@ data:extend(
       {type = "item", name = "express-transport-belt", amount = 1},
       {type= "fluid", name = "lubricant", amount = 20}
     },
-    results = {{type="item", name="turbo-transport-belt", amount=1}}
+    results = {{type="item", name="turbo-transport-belt", amount=1}},
+    auto_recycle = true,
   },
   {
     type = "recipe",
     name = "turbo-underground-belt",
     energy_required = 2,
-    category = "metallurgy",
+    categories = {"metallurgy"},
     surface_conditions =
     {
       {
@@ -1723,12 +1736,13 @@ data:extend(
       {type = "item", name = "express-underground-belt", amount = 2},
       {type = "fluid", name = "lubricant", amount = 40}
     },
-    results = {{type="item", name="turbo-underground-belt", amount=2}}
+    results = {{type="item", name="turbo-underground-belt", amount=2}},
+    auto_recycle = true,
   },
   {
     type = "recipe",
     name = "turbo-splitter",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     surface_conditions =
     {
       {
@@ -1746,7 +1760,8 @@ data:extend(
       {type = "item", name = "processing-unit", amount = 2},
       {type = "fluid", name = "lubricant", amount = 80}
     },
-    results = {{type="item", name="turbo-splitter", amount=1}}
+    results = {{type="item", name="turbo-splitter", amount=1}},
+    auto_recycle = true,
   },
   {
     type = "recipe",
@@ -1764,7 +1779,7 @@ data:extend(
   {
     type = "recipe",
     name = "big-mining-drill",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     surface_conditions =
     {
       {
@@ -1783,7 +1798,8 @@ data:extend(
       {type = "item", name = "electric-engine-unit", amount = 10},
       {type = "item", name = "advanced-circuit", amount = 10},
     },
-    results = {{type="item", name="big-mining-drill", amount=1}}
+    results = {{type="item", name="big-mining-drill", amount=1}},
+    auto_recycle = true,
   },
   {
     type = "recipe",
@@ -1803,7 +1819,7 @@ data:extend(
   {
     type = "recipe",
     name = "railgun",
-    category = "cryogenics",
+    categories = {"cryogenics"},
     enabled = false,
     energy_required = 10,
     ingredients =
@@ -1820,12 +1836,13 @@ data:extend(
       secondary = {r = 0.312, g = 0.519, b = 0.601, a = 1.000}, -- #4f8499ff
       tertiary = {r = 0.402, g = 0.558, b = 0.880, a = 1.000}, -- #668ee0ff
       quaternary = {r = 0.246, g = 0.246, b = 0.246, a = 1.000}, -- #3e3e3eff
-    }
+    },
+    auto_recycle = true,
   },
   {
     type = "recipe",
     name = "railgun-turret",
-    category = "cryogenics",
+    categories = {"cryogenics"},
     enabled = false,
     energy_required = 10,
     ingredients =
@@ -1843,7 +1860,8 @@ data:extend(
       secondary = {r = 0.312, g = 0.519, b = 0.601, a = 1.000}, -- #4f8499ff
       tertiary = {r = 0.402, g = 0.558, b = 0.880, a = 1.000}, -- #668ee0ff
       quaternary = {r = 0.246, g = 0.246, b = 0.246, a = 1.000}, -- #3e3e3eff
-    }
+    },
+    auto_recycle = true,
   },
   {
     type = "recipe",
@@ -1877,7 +1895,7 @@ data:extend(
   {
     type = "recipe",
     name = "biochamber",
-    category = "organic-or-assembling",
+    categories = {"organic", "crafting"},
     surface_conditions =
     {
       {
@@ -1903,7 +1921,7 @@ data:extend(
     type = "recipe",
     name = "burnt-spoilage",
     icon = "__space-age__/graphics/icons/burnt-spoilage.png",
-    category = "organic",
+    categories = {"organic"},
     subgroup = "agriculture-products",
     order = "a[organic-products]-h[burnt-spoilage]",
     auto_recycle = false,
@@ -1928,7 +1946,7 @@ data:extend(
   {
     type = "recipe",
     name = "coal-synthesis",
-    category = "chemistry",
+    categories = {"chemistry"},
     auto_recycle = false,
     energy_required = 2,
     ingredients =
@@ -1979,15 +1997,15 @@ data:extend(
       {type = "item", name = "uranium-235", amount = 3}
     },
     results = {{type="item", name="biolab", amount=1}},
+    auto_recycle = false,
     enabled = false
   },
   {
     type = "recipe",
     name = "captive-biter-spawner",
-    category = "cryogenics",
+    categories = {"cryogenics"},
     energy_required = 10,
     enabled = false,
-    reset_freshness_on_craft = true,
     ingredients =
     {
       {type = "item", name = "biter-egg", amount = 10},
@@ -1995,13 +2013,17 @@ data:extend(
       {type = "item", name = "uranium-235", amount = 15},
       {type = "fluid", name = "fluoroketone-cold", amount = 100},
     },
-    results = {{type = "item", name = "captive-biter-spawner", amount = 1}}
+    results =
+    {
+      {type = "item", name = "captive-biter-spawner", amount = 1, reset_freshness_on_craft = true}
+    },
+    auto_recycle = false,
   },
   {
     type = "recipe",
     name = "biter-egg",
     icon = "__space-age__/graphics/icons/biter-egg.png",
-    category = "captive-spawner-process",
+    categories = {"captive-spawner-process"},
     order = "c[eggs]-a[biter-egg]",
     hide_from_player_crafting = true,
     auto_recycle = false,
@@ -2018,10 +2040,9 @@ data:extend(
     type = "recipe",
     name = "fish-breeding",
     icon = "__space-age__/graphics/icons/fish-breeding.png",
-    category = "organic-or-chemistry",
+    categories = {"organic", "chemistry"},
     subgroup = "nauvis-agriculture",
     order = "b[nauvis-agriculture]-b[fish-breeding]",
-    reset_freshness_on_craft = true,
     auto_recycle = false,
     energy_required = 6,
     enabled = false,
@@ -2039,7 +2060,10 @@ data:extend(
       {type = "item", name = "nutrients", amount = 100},
       {type = "fluid", name = "water", amount = 100}
     },
-    results = {{type="item", name="raw-fish", amount=3, ignored_by_stats = 2, ignored_by_productivity = 2}},
+    results =
+    {
+      {type = "item", name = "raw-fish", amount = 3, ignored_by_stats = 2, ignored_by_productivity = 2, reset_freshness_on_craft = true}
+    },
     allow_productivity = false,
     allow_quality = false,
     crafting_machine_tint =
@@ -2047,13 +2071,12 @@ data:extend(
       primary = {0, 0, 1, 1},
       secondary = {0, 0, 1, 1}
     },
-    show_amount_in_title = false
   },
   {
     type = "recipe",
     name = "nutrients-from-fish",
     icon = "__space-age__/graphics/icons/nutrients-from-fish.png",
-    category = "organic-or-assembling",
+    categories = {"organic", "crafting"},
     subgroup = "nauvis-agriculture",
     order = "b[nauvis-agriculture]-c[nutrients-from-fish]",
     auto_recycle = false,
@@ -2073,7 +2096,7 @@ data:extend(
     type = "recipe",
     name = "nutrients-from-biter-egg",
     icon = "__space-age__/graphics/icons/nutrients-from-biter-egg.png",
-    category = "organic-or-assembling",
+    categories = {"organic", "crafting"},
     subgroup = "nauvis-agriculture",
     order = "b[nauvis-agriculture]-d[nutrients-from-biter-egg]",
     auto_recycle = false,
@@ -2095,17 +2118,17 @@ data:extend(
     name = "scrap-recycling",
     icons = {
       {
-        icon = "__quality__/graphics/icons/recycling.png"
+        icon = "__recycler__/graphics/icons/recycling.png"
       },
       {
         icon = "__space-age__/graphics/icons/scrap.png",
         scale = 0.4
       },
       {
-        icon = "__quality__/graphics/icons/recycling-top.png"
+        icon = "__recycler__/graphics/icons/recycling-top.png"
       }
     },
-    category = "recycling-or-hand-crafting",
+    categories = {"recycling", "hand-crafting"},
     subgroup = "fulgora-processes",
     order = "a[trash]-a[trash-recycling]",
     enabled = false,
@@ -2114,24 +2137,24 @@ data:extend(
     ingredients = {{type = "item", name = "scrap", amount = 1}},
     results =
     {
-      {type = "item", name = "iron-gear-wheel",        amount = 1, probability = 0.20, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "solid-fuel",             amount = 1, probability = 0.07, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "concrete",               amount = 1, probability = 0.06, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "ice",                    amount = 1, probability = 0.05, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "steel-plate",            amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "battery",                amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "stone",                  amount = 1, probability = 0.04, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "advanced-circuit",       amount = 1, probability = 0.03, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "copper-cable",           amount = 1, probability = 0.03, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "processing-unit",        amount = 1, probability = 0.02, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "low-density-structure",  amount = 1, probability = 0.01, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "holmium-ore",            amount = 1, probability = 0.01, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "iron-gear-wheel",        amount = 1, shared_probability = { min = 0.00, max = 0.20 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "solid-fuel",             amount = 1, shared_probability = { min = 0.20, max = 0.27 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "concrete",               amount = 1, shared_probability = { min = 0.27, max = 0.33 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "ice",                    amount = 1, shared_probability = { min = 0.33, max = 0.38 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "steel-plate",            amount = 1, shared_probability = { min = 0.38, max = 0.42 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "battery",                amount = 1, shared_probability = { min = 0.42, max = 0.46 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "stone",                  amount = 1, shared_probability = { min = 0.46, max = 0.50 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "advanced-circuit",       amount = 1, shared_probability = { min = 0.50, max = 0.53 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "copper-cable",           amount = 1, shared_probability = { min = 0.53, max = 0.56 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "processing-unit",        amount = 1, shared_probability = { min = 0.56, max = 0.58 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "low-density-structure",  amount = 1, shared_probability = { min = 0.58, max = 0.59 }, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "holmium-ore",            amount = 1, shared_probability = { min = 0.59, max = 0.60 }, show_details_in_recipe_tooltip = false},
     }
   },
   {
     type = "recipe",
     name = "lightning-rod",
-    category = "electronics",
+    categories = {"electromagnetics", "crafting"},
     surface_conditions =
     {
       {
@@ -2153,7 +2176,7 @@ data:extend(
   {
     type = "recipe",
     name = "holmium-solution",
-    category = "chemistry",
+    categories = {"chemistry"},
     subgroup = "fulgora-processes",
     order = "b[holmium]-b[holmium-solution]",
     auto_recycle = false,
@@ -2182,7 +2205,7 @@ data:extend(
   {
     type = "recipe",
     name = "holmium-plate",
-    category = "crafting-with-fluid-or-metallurgy",
+    categories = {"crafting-with-fluid", "metallurgy"},
     subgroup = "fulgora-processes",
     auto_recycle = false,
     enabled = false,
@@ -2197,7 +2220,7 @@ data:extend(
   {
     type = "recipe",
     name = "electromagnetic-plant",
-    category = "electronics-or-assembling",
+    categories = {"electromagnetics", "advanced-crafting"},
     surface_conditions =
     {
       {
@@ -2219,7 +2242,7 @@ data:extend(
   {
     type = "recipe",
     name = "superconductor",
-    category = "electromagnetics",
+    categories = {"electromagnetics"},
     subgroup = "fulgora-processes",
     order = "b[holmium]-d[superconductor]",
     energy_required = 5,
@@ -2232,12 +2255,13 @@ data:extend(
     },
     results = {{type = "item", name = "superconductor", amount = 2}},
     allow_productivity = true,
+    auto_recycle = false,
     enabled = false
   },
   {
     type = "recipe",
     name = "supercapacitor",
-    category = "electromagnetics",
+    categories = {"electromagnetics"},
     subgroup = "fulgora-processes",
     order = "b[holmium]-f[supercapacitor]",
     energy_required = 10,
@@ -2256,7 +2280,7 @@ data:extend(
   {
     type = "recipe",
     name = "electrolyte",
-    category = "electromagnetics",
+    categories = {"electromagnetics"},
     subgroup = "fulgora-processes",
     order = "b[holmium]-e[electrolyte]",
     energy_required = 5,
@@ -2273,7 +2297,7 @@ data:extend(
   {
     type = "recipe",
     name = "lightning-collector",
-    category = "electromagnetics",
+    categories = {"electromagnetics"},
     surface_conditions =
     {
       {
@@ -2296,7 +2320,7 @@ data:extend(
   {
     type = "recipe",
     name = "teslagun",
-    category = "electromagnetics",
+    categories = {"electromagnetics"},
     energy_required = 30,
     ingredients =
     {
@@ -2311,7 +2335,7 @@ data:extend(
   {
     type = "recipe",
     name = "tesla-turret",
-    category = "electromagnetics",
+    categories = {"electromagnetics"},
     energy_required = 30,
     ingredients =
     {
@@ -2327,7 +2351,7 @@ data:extend(
   {
     type = "recipe",
     name = "tesla-ammo",
-    category = "electromagnetics",
+    categories = {"electromagnetics"},
     energy_required = 30,
     ingredients =
     {
@@ -2356,7 +2380,7 @@ data:extend(
   {
     type = "recipe",
     name = "lithium",
-    category = "chemistry-or-cryogenics",
+    categories = {"chemistry", "cryogenics"},
     subgroup = "aquilo-processes",
     order = "c[lithium]-a[lithium]",
     auto_recycle = false,
@@ -2381,7 +2405,7 @@ data:extend(
   {
     type = "recipe",
     name = "lithium-plate",
-    category = "smelting",
+    categories = {"smelting"},
     subgroup = "aquilo-processes",
     order = "c[lithium]-b[lithium-plate]",
     auto_recycle = false,
@@ -2394,7 +2418,7 @@ data:extend(
   {
     type = "recipe",
     name = "fluoroketone",
-    category = "cryogenics",
+    categories = {"cryogenics"},
     subgroup = "aquilo-processes",
     order = "b[fluoroketone]-a[fluoroketone]",
     auto_recycle = false,
@@ -2422,7 +2446,7 @@ data:extend(
     name = "fluoroketone-cooling",
     icon = "__space-age__/graphics/icons/fluid/fluoroketone-cooling.png",
     localised_name = {"recipe-name.fluoroketone-cooling"},
-    category = "cryogenics",
+    categories = {"cryogenics"},
     subgroup = "aquilo-processes",
     order = "b[fluoroketone]-b[fluoroketone-cooling]",
     auto_recycle = false,
@@ -2435,8 +2459,6 @@ data:extend(
     {
       {type = "fluid", name = "fluoroketone-cold", amount = 10, temperature = -150, ignored_by_stats = 10},
     },
-    show_amount_in_title = false,
-    always_show_products = true,
     allow_productivity = false,
     enabled = false,
     crafting_machine_tint =
@@ -2450,7 +2472,7 @@ data:extend(
   {
     type = "recipe",
     name = "cryogenic-plant",
-    category = "cryogenics-or-assembling",
+    categories = {"cryogenics", "advanced-crafting"},
     surface_conditions =
     {
       {
@@ -2480,7 +2502,7 @@ data:extend(
   {
     type = "recipe",
     name = "quantum-processor",
-    category = "electromagnetics",
+    categories = {"electromagnetics"},
     subgroup = "aquilo-processes",
     surface_conditions =
     {
@@ -2519,7 +2541,7 @@ data:extend(
     type = "recipe",
     name = "ammoniacal-solution-separation",
     icon = "__space-age__/graphics/icons/fluid/ammoniacal-solution-separation.png",
-    category = "chemistry-or-cryogenics",
+    categories = {"chemistry", "cryogenics"},
     subgroup = "aquilo-processes",
     order = "a[ammonia]-a[ammoniacal-solution-separation]",
     auto_recycle = false,
@@ -2536,7 +2558,6 @@ data:extend(
     allow_productivity = true,
     enabled = false,
     always_show_made_in = true,
-    always_show_products = true,
     allow_decomposition = false,
     crafting_machine_tint =
     {
@@ -2572,7 +2593,7 @@ data:extend(
   {
     type = "recipe",
     name = "fusion-power-cell",
-    category = "cryogenics",
+    categories = {"cryogenics"},
     subgroup = "aquilo-processes",
     order = "c[lithium]-d[fusion-power-cell]",
     auto_recycle = false,
@@ -2597,7 +2618,7 @@ data:extend(
   {
     type = "recipe",
     name = "fusion-reactor",
-    category = "cryogenics",
+    categories = {"cryogenics"},
     surface_conditions =
     {
       {
@@ -2622,12 +2643,13 @@ data:extend(
       secondary = {r = 0.864, g = 0.706, b = 0.902, a = 1.000}, -- #dcb4e6ff
       tertiary = {r = 0.159, g = 0.136, b = 0.207, a = 1.000}, -- #282234ff
       quaternary = {r = 0.945, g = 0.370, b = 1.000, a = 1.000}, -- #f15effff
-    }
+    },
+    auto_recycle = true,
   },
   {
     type = "recipe",
     name = "fusion-generator",
-    category = "cryogenics",
+    categories = {"cryogenics"},
     surface_conditions =
     {
       {
@@ -2652,13 +2674,14 @@ data:extend(
       secondary = {r = 0.864, g = 0.706, b = 0.902, a = 1.000}, -- #dcb4e6ff
       tertiary = {r = 0.159, g = 0.136, b = 0.207, a = 1.000}, -- #282234ff
       quaternary = {r = 0.945, g = 0.370, b = 1.000, a = 1.000}, -- #f15effff
-    }
+    },
+    auto_recycle = true,
   },
   {
     type = "recipe",
     name = "ice-platform",
     always_show_made_in = true,
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     energy_required = 30,
     ingredients =
     {
@@ -2674,7 +2697,7 @@ data:extend(
     icon = "__space-age__/graphics/icons/solid-fuel-from-ammonia.png",
     energy_required = 0.5,
     enabled = false,
-    category = "chemistry-or-cryogenics",
+    categories = {"chemistry", "cryogenics"},
     subgroup = "aquilo-processes",
     order = "a[ammonia]-b[solid-fuel-from-ammonia]",
     ingredients =
@@ -2684,6 +2707,7 @@ data:extend(
     },
     results = {{type="item", name="solid-fuel", amount=1}},
     allow_productivity = true,
+    auto_recycle = false,
     crafting_machine_tint =
     {
       primary = {r = 0.222, g = 0.188, b = 0.344, a = 1.000}, -- #383057ff
@@ -2699,7 +2723,7 @@ data:extend(
     icon = "__space-age__/graphics/icons/ammonia-rocket-fuel.png",
     energy_required = 10,
     enabled = false,
-    category = "chemistry-or-cryogenics",
+    categories = {"chemistry", "cryogenics"},
     subgroup = "aquilo-processes",
     order = "a[ammonia]-c[ammonia-rocket-fuel]",
     ingredients =
@@ -2710,6 +2734,7 @@ data:extend(
     },
     results = {{type="item", name="rocket-fuel", amount=1}},
     allow_productivity = true,
+    auto_recycle = false,
     crafting_machine_tint =
     {
       primary = {r = 0.996, g = 0.742, b = 0.408, a = 1.000}, -- #febd68ff
@@ -2723,7 +2748,7 @@ data:extend(
     name = "foundation",
     energy_required = 30,
     enabled = false,
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     ingredients =
     {
       {type = "item", name = "tungsten-plate", amount = 4},
@@ -2748,7 +2773,7 @@ data:extend(
     },
     enabled = false,
     allow_productivity = true,
-    category = "cryogenics",
+    categories = {"cryogenics"},
     ingredients =
     {
       {type = "item", name = "promethium-asteroid-chunk", amount = 25},
@@ -2766,11 +2791,10 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "wood-processing",
-    icon = "__base__/graphics/icons/wood-processing.png",
-    category = "organic-or-assembling",
+    name = "tree-seed",
+    categories = {"organic", "crafting"},
     subgroup = "nauvis-agriculture",
-    order = "a[seeds]-a[wood-processing]",
+    order = "a[seeds]-a[tree-seed]",
     enabled = false,
     allow_productivity = true,
     energy_required = 2,

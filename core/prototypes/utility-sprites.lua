@@ -164,6 +164,17 @@ data:extend(
   },
   {
     type = "sprite",
+    name = "tooltip-category-electric-network",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-electricity.png",
+    priority = "extra-high-no-scale",
+    width = 32,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
     name = "tooltip-category-equipment-grid-electricity",
     filename = "__core__/graphics/icons/tooltips/tooltip-category-equipment-grid-electricity.png",
     priority = "extra-high-no-scale",
@@ -961,7 +972,15 @@ data:extend(
     },
     cargo_bay_not_connected_icon =
     {
-      filename = "__core__/graphics/icons/alerts/danger-icon.png",
+      filename = "__core__/graphics/icons/alerts/broken-link-icon.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    cargo_bay_too_far_from_source_icon =
+    {
+      filename = "__core__/graphics/icons/alerts/out-of-range.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -976,6 +995,14 @@ data:extend(
       flags = {"icon"}
     },
     pipeline_disabled_icon =
+    {
+      filename = "__core__/graphics/icons/alerts/fluid-icon-red.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    fluid_mixing_icon =
     {
       filename = "__core__/graphics/icons/alerts/fluid-icon-red.png",
       priority = "extra-high-no-scale",
@@ -1185,7 +1212,9 @@ data:extend(
     unlock_recipe_modifier_icon                                           = make_default_modifier_icon("unlock-recipe-modifier.png"),
     unlock_space_location_modifier_icon                                   = make_default_modifier_icon("unlock-space-location-modifier.png"),
     unlock_space_platforms_modifier_icon                                  = make_default_modifier_icon("unlock-space-platforms-modifier.png"),
+    unlock_travel_to_space_platforms_modifier_icon                        = default_character_modifier_icon,
     unlock_circuit_network_modifier_icon                                  = make_technology_modifier_icon("effect-circuit-network.png"),
+    unlock_logistic_network_modifier_icon                                 = make_default_modifier_icon();
     cliff_deconstruction_enabled_modifier_icon                            = make_technology_modifier_icon("effect-cliff-deconstruction.png"),
     mining_with_fluid_modifier_icon                                       = make_technology_modifier_icon("effect-mining-with-fluid.png"),
     rail_support_on_deep_oil_ocean_modifier_icon                          = make_technology_modifier_icon("effect-rail-support-on-deep-oil-ocean.png"),
@@ -1212,6 +1241,7 @@ data:extend(
     max_failed_attempts_per_tick_per_construction_queue_modifier_icon     = make_technology_modifier_icon("effect-ghost.png"),
     max_successful_attempts_per_tick_per_construction_queue_modifier_icon = make_technology_modifier_icon("effect-ghost.png"),
     cargo_landing_pad_count_modifier_icon                                 = make_default_modifier_icon();
+    max_cargo_bay_unloading_distance_modifier_icon                        = make_default_modifier_icon();
     artillery_range_modifier_icon                                         = make_technology_modifier_icon("artillery-shell.png"),
     character_additional_mining_categories_modifier_icon                  = make_default_modifier_icon("character-additional-mining-categories-modifier.png"),
     character_logistic_requests_modifier_icon                             = make_technology_modifier_icon("effect-logistic-slots.png"),
@@ -1240,6 +1270,7 @@ data:extend(
     character_resource_reach_distance_modifier_constant                       = make_modifier_constant("effect-constant-range.png"),
     character_item_pickup_distance_modifier_constant                          = make_modifier_constant("effect-constant-range.png"),
     character_loot_pickup_distance_modifier_constant                          = make_modifier_constant("effect-constant-range.png"),
+    max_cargo_bay_unloading_distance_modifier_constant                        = make_modifier_constant("effect-constant-range.png"),
     character_inventory_slots_bonus_modifier_constant                         = make_modifier_constant("effect-constant-capacity.png"),
     character_health_bonus_modifier_constant                                  = make_modifier_constant("effect-constant-health.png"),
     bulk_inserter_capacity_bonus_modifier_constant                            = make_modifier_constant("effect-constant-capacity.png"),
@@ -2578,14 +2609,6 @@ data:extend(
       scale = 0.5
     },
 
-    fluid_visualization_extent_arrow =
-    {
-      filename = "__core__/graphics/fluid-visualization/extent-arrow.png",
-      size = {42, 55},
-      scale = 0.5,
-      flags = {"gui-icon"}
-    },
-
     ------------------------------------------------------------ new icons
     center =
     {
@@ -2731,6 +2754,24 @@ data:extend(
     recipe_arrow =
     {
       filename = "__core__/graphics/icons/mip/recipe-arrow.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      load_in_minimal_mode = true
+    },
+    recipe_ghost_arrow =
+    {
+      filename = "__core__/graphics/icons/mip/recipe-ghost-arrow.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      load_in_minimal_mode = true
+    },
+    recipe_potential_arrow =
+    {
+      filename = "__core__/graphics/icons/mip/recipe-potential-arrow.png",
       priority = "extra-high-no-scale",
       size = 32,
       mipmap_count = 2,

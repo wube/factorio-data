@@ -34,14 +34,6 @@ data:extend(
   },
   {
     type = "recipe-category",
-    name = "basic-crafting"
-  },
-  {
-    type = "recipe-category",
-    name = "recycling" -- According to the game engine, removing this is illegal :)
-  },
-  {
-    type = "recipe-category",
-    name = "recycling-or-hand-crafting"
+    name = "hand-crafting"
   }
 })

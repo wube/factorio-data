@@ -4,7 +4,7 @@ data:extend(
     type = "god-controller",
     name = "default",
 
-    crafting_categories = {"crafting"},
+    crafting_categories = {"crafting", "hand-crafting"},
     mining_categories = {"basic-solid"},
     inventory_size = 80,
     item_pickup_distance = 1,

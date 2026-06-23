@@ -5,9 +5,16 @@ local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local decorative_trigger_effects = require("__base__.prototypes.decorative.decorative-trigger-effects")
 local explosion_animations = require("__space-age__.prototypes.entity.explosion-animations")
 local gleba_enemy_animations = require("__space-age__.prototypes.entity.gleba-enemy-animations")
-local gleba_ai_settings = require ("__space-age__.prototypes.entity.gleba-ai-settings")
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
 local particle_animations = require("__space-age__/prototypes/particle-animations")
+
+local gleba_ai_settings = function()
+  return
+  {
+    destroy_when_commands_fail = true,
+    allow_try_return_to_spawner = true
+  }
+end
 
 local function lerp_color(a, b, amount)
   return
@@ -86,7 +93,8 @@ local default_ended_in_water_trigger_effect = function()
     },
     {
       type = "play-sound",
-      sound = base_sounds.small_splash
+      sound = base_sounds.small_splash,
+      probability = 0.05,
     }
   }
 
@@ -540,9 +548,14 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
     hurt_thresholds = sounds.hurt_thresholds,
     working_sound =
     {
-      sound = {filename = "__space-age__/sound/world/semi-persistent/distant-rumble-2.ogg", volume = 1, audible_distance_modifier = 0.8},
+      sound =
+      {
+        category = "enemy",
+        filename = "__space-age__/sound/enemies/demolisher/demolisher-head-moves.ogg",
+        volume = 0.7,
+        audible_distance_modifier = 0.5,
+      },
       max_sounds_per_prototype = 1,
-      match_volume_to_activity = true
     },
     animation =
     {
@@ -553,7 +566,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
       }
     },
     backward_padding = -2.5 * scale, -- tiles
-    render_layer = "higher-object-under",
+    render_layer = "object",
     update_effects =
     {
       {
@@ -1056,6 +1069,10 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
         entity_name = base_name .. "-corpse"
       },
       {
+        type = "play-sound",
+        sound = space_age_sounds.demolisher_explosion,
+      },
+      {
         type = "create-trivial-smoke",
         repeat_count = 3 * effect_multiplier,
         smoke_name = "demolisher-dying-smoke",
@@ -1303,8 +1320,8 @@ function make_demolisher_corpse(base_name, order, scale, damage_multiplier, heal
       icon = "__space-age__/graphics/icons/"..base_name.."-remains.png",
       subgroup = "grass",
       order="b[decorative]-l[rock]-a[vulcanus]-g[demolisher-corpse]-"..order,
-      collision_box = {{-3 * scale, -3 * scale}, {3 * scale, 3 * scale}},
-      selection_box = {{-3 * scale, -3 * scale}, {3 * scale, 3 * scale}},
+      collision_box = {{-3.5 * scale, -3.5 * scale}, {3.5 * scale, 3.5 * scale}},
+      selection_box = {{-3.5 * scale, -3.5 * scale}, {3.5 * scale, 3.5 * scale}},
       damaged_trigger_effect = hit_effects.rock(),
       dying_trigger_effect = decorative_trigger_effects.huge_rock(),
       minable =
@@ -1313,7 +1330,7 @@ function make_demolisher_corpse(base_name, order, scale, damage_multiplier, heal
         mining_time = 3,
         results =
         {
-          {type = "item", name = "tungsten-ore", amount_min = 1, amount_max = 33}
+          {type = "item", name = "tungsten-ore", amount_min = 10 * scale, amount_max = 33 * scale}
         },
       },
       map_color = {129, 105, 78},
@@ -1331,139 +1348,16 @@ function make_demolisher_corpse(base_name, order, scale, damage_multiplier, heal
       },
       autoplace = {
         order = "a[landscape]-c[rock]-a[huge]",
-        probability_expression = "vulcanus_rock_huge"
+        probability_expression = "0"
       },
-      pictures =
-      {
+        pictures =
         {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-05.png",
-          width = 201,
-          height = 179,
-          scale = 1.2 * scale,
-          shift = {0.25, 0.0625},
-          tint = corpse_tint
+          layers =
+            {
+              util.sprite_load("__space-age__/graphics/decorative/demolisher-corpse/demolisher-corpse", { scale = 1 * scale, variation_count = 15,multiply_shift=1}),
+              util.sprite_load("__space-age__/graphics/decorative/demolisher-corpse/demolisher-corpse-shadow", { scale = 1 * scale, variation_count = 15,multiply_shift=1,draw_as_shadow = true})
+            }
         },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-06.png",
-          width = 233,
-          height = 171,
-          scale = 1.2 * scale,
-          shift = {0.429688, 0.046875},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-07.png",
-          width = 240,
-          height = 192,
-          scale = 1.2 * scale,
-          shift = {0.398438, 0.03125},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-08.png",
-          width = 219,
-          height = 175,
-          scale = 1.2 * scale,
-          shift = {0.148438, 0.132812},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-09.png",
-          width = 240,
-          height = 208,
-          scale = 1.2 * scale,
-          shift = {0.3125, 0.0625},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-10.png",
-          width = 243,
-          height = 190,
-          scale = 1.2 * scale,
-          shift = {0.1875, 0.046875},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-11.png",
-          width = 249,
-          height = 185,
-          scale = 1.2 * scale,
-          shift = {0.398438, 0.0546875},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-12.png",
-          width = 273,
-          height = 163,
-          scale = 1.2 * scale,
-          shift = {0.34375, 0.0390625},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-13.png",
-          width = 275,
-          height = 175,
-          scale = 1.2 * scale,
-          shift = {0.273438, 0.0234375},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-14.png",
-          width = 241,
-          height = 215,
-          scale = 1.2 * scale,
-          shift = {0.195312, 0.0390625},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-15.png",
-          width = 318,
-          height = 181,
-          scale = 1.2 * scale,
-          shift = {0.523438, 0.03125},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-16.png",
-          width = 217,
-          height = 224,
-          scale = 1.2 * scale,
-          shift = {0.0546875, 0.0234375},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-17.png",
-          width = 332,
-          height = 228,
-          scale = 1.2 * scale,
-          shift = {0.226562, 0.046875},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-18.png",
-          width = 290,
-          height = 243,
-          scale = 1.2 * scale,
-          shift = {0.195312, 0.0390625},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-19.png",
-          width = 349,
-          height = 225,
-          scale = 1.2 * scale,
-          shift = {0.609375, 0.0234375},
-          tint = corpse_tint
-        },
-        {
-          filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-20.png",
-          width = 287,
-          height = 250,
-          scale = 1.2 * scale,
-          shift = {0.132812, 0.03125},
-          tint = corpse_tint
-        }
-      }
     }
   }
 end
@@ -1497,7 +1391,7 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
     forward_overlap = 2,
     forward_padding = -0.5 * scale, -- tiles
     backward_padding = 1.5 * scale, -- tiles
-    render_layer = "higher-object-under",
+    render_layer = "object",
     working_sound = sounds.segment_working_sound,
     dying_sound_volume_modifier = sounds.dying_sound_volume_modifier,
 
@@ -1878,7 +1772,7 @@ function make_demolisher_tail(base_name, scale, damage_multiplier, health, sound
     },
     forward_overlap = 2,
     forward_padding = -2.75 * scale, -- tiles
-    render_layer = "higher-object-under",
+    render_layer = "object",
     working_sound = sounds.tail_working_sound,
     corpse = base_name .. "-corpse",
   }
@@ -1935,6 +1829,7 @@ function make_ash_cloud_trigger_effects(base_name, radius, damage_multiplier)
             ignore_collision_condition = true,
             radius = radius,
             target_enemies = true,
+            require_origin_is_valid = true, -- When the demolisher that made this dies - this stops running
             action_delivery =
             {
               type = "instant",
@@ -1993,6 +1888,7 @@ function make_demolisher_fissure_attack(base_name, order, scale, damage_multipli
       subgroup = "explosions",
       height = 0,
       render_layer = "ground-patch-higher2",
+      sound = space_age_sounds.fissure_damage,
       created_effect =
       {
         {
@@ -2284,43 +2180,6 @@ function make_demolisher_fissure_attack(base_name, order, scale, damage_multipli
       subgroup = "explosions",
       height = 0,
       animations = util.empty_sprite(),
-      --[[sound =   {
-        aggregation =
-        {
-          max_count = 1,
-          remove = true
-        },
-        audible_distance_modifier = 1.95,
-        switch_vibration_data =
-        {
-          filename = "__base__/sound/fight/large-explosion.bnvib",
-          play_for = "everything",
-          gain = 0.6,
-        },
-        game_controller_vibration_data =
-        {
-          low_frequency_vibration_intensity = 0.9,
-          duration = 160,
-          play_for = "everything"
-        },
-        filename = "__base__/sound/fight/fire-impact-4.ogg",
-        volume = 1.0
-      },]]
-      sound =
-      {
-        aggregation =
-        {
-          max_count = 1,
-          remove = true
-        },
-        switch_vibration_data =
-        {
-          filename = "__base__/sound/fight/medium-explosion.bnvib",
-          gain = 1.0
-        },
-        audible_distance_modifier = 0.5,
-        variations = sound_variations("__base__/sound/fight/medium-explosion", 5, 1, volume_multiplier("main-menu", 1.2) )
-      },
       created_effect =
       {
         {
@@ -3627,6 +3486,11 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
       min_pursue_time = 10 * 60,
       --max_pursue_time = 60 * 60,
       max_pursue_distance = 50,
+      steering =
+      {
+        move = { radius = 3 * scale, separation_force = 0.1 },
+        stay = { radius = 4 * scale, separation_force = 0.1 }
+      },
       attack_parameters = spitter_behemoth_attack_parameters(
       {
         acid_stream_name = prefix .. "acid-stream-stomper",
@@ -3638,13 +3502,12 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
         scale = scale_spitter_behemoth,
         tint1 = tint_body,
         tint2 = tint_mask,
-        roarvolume = 0.8,
         range_mode = "bounding-box-to-bounding-box"
       }),
       vision_distance = 30,
       ai_settings = util.merge(
       {
-        gleba_ai_settings,
+        gleba_ai_settings(),
         {
           strafe_settings =
           {
@@ -3660,6 +3523,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
         }
       }),
       absorptions_to_join_attack = { spores = 25 },
+      buildable_entities = {"gleba-spawner-small", "gleba-spawner"},
       corpse = prefix .. "stomper-corpse",
       dying_explosion = prefix .. "stomper-pentapod-die",
       dying_trigger_effect =
@@ -5128,6 +4992,11 @@ function make_strafer(prefix, scale, health, damage, speed, ideal_strafe_distanc
       min_pursue_time = 10 * 60,
       --max_pursue_time = 60 * 60,
       max_pursue_distance = 50,
+      steering =
+      {
+        move = { radius = 3 * scale, separation_force = 0.1 },
+        stay = { radius = 4 * scale, separation_force = 0.1 }
+      },
       attack_parameters =
       {
         type = "projectile",
@@ -5154,7 +5023,7 @@ function make_strafer(prefix, scale, health, damage, speed, ideal_strafe_distanc
       vision_distance = 40,
       ai_settings = util.merge(
       {
-        gleba_ai_settings,
+        (gleba_ai_settings()),
         {
           strafe_settings =
           {
@@ -5170,6 +5039,7 @@ function make_strafer(prefix, scale, health, damage, speed, ideal_strafe_distanc
         }
       }),
       absorptions_to_join_attack = { spores = 20 },
+      buildable_entities = {"gleba-spawner-small", "gleba-spawner"},
       corpse = prefix .. "strafer-corpse",
       dying_explosion = prefix .. "strafer-pentapod-die",
       dying_trigger_effect =
@@ -6279,7 +6149,7 @@ data:extend(
     },
     -- also add to yumako areas
     autoplace = space_enemy_autoplace.gleba_spawner_autoplace("gleba_spawner", "b[enemy]-c[spawner]-a[large]"),
-    loot = {{item = "pentapod-egg", probability = 1, count_min = 9, count_max = 9}}
+    loot = {{type = "item", name = "pentapod-egg", amount = 9}}
   },
   {
     type = "unit-spawner",
@@ -6460,7 +6330,7 @@ data:extend(
     },
     -- also add to yumako areas
     autoplace = space_enemy_autoplace.gleba_spawner_autoplace("gleba_spawner_small", "b[enemy]-c[spawner]-b[small]"),
-    loot = {{item = "pentapod-egg", probability = 1, count_min = 1, count_max = 3}}
+    loot = {{type = "item", name = "pentapod-egg", amount_min = 1, amount_max = 3}}
   },
 
   {

@@ -7,12 +7,16 @@ data:extend(
       color = {43, 165, 61},
       order = "b",
       next = "rare",
-      next_probability = 0.1,
+      next_probability = 1,
+      chain_probability = 0.1,
       subgroup = "qualities",
       icon = "__quality__/graphics/icons/quality-uncommon.png",
       beacon_power_usage_multiplier = 5/6,
       mining_drill_resource_drain_multiplier = 5/6,
       science_pack_drain_multiplier = 99/100,
+      cargo_wagon_inventory_size_multiplier = 1.25,
+      locomotive_power_multiplier = 1.2,
+      rolling_stock_max_speed_multiplier = 1.03
     },
     {
       type = "quality",
@@ -21,12 +25,16 @@ data:extend(
       color = {25, 104, 178},
       order = "c",
       next = "epic",
-      next_probability = 0.1,
+      next_probability = 1,
+      chain_probability = 0.1,
       subgroup = "qualities",
       icon = "__quality__/graphics/icons/quality-rare.png",
       beacon_power_usage_multiplier = 4/6,
       mining_drill_resource_drain_multiplier = 4/6,
       science_pack_drain_multiplier = 98/100,
+      cargo_wagon_inventory_size_multiplier = 1.5,
+      locomotive_power_multiplier = 1.4,
+      rolling_stock_max_speed_multiplier = 1.06
     },
     {
       type = "quality",
@@ -35,12 +43,16 @@ data:extend(
       color = {137, 0, 178},
       order = "d",
       next = "legendary",
-      next_probability = 0.1,
+      next_probability = 1,
+      chain_probability = 0.1,
       subgroup = "qualities",
       icon = "__quality__/graphics/icons/quality-epic.png",
       beacon_power_usage_multiplier = 3/6,
       mining_drill_resource_drain_multiplier = 3/6,
       science_pack_drain_multiplier = 97/100,
+      cargo_wagon_inventory_size_multiplier = 1.75,
+      locomotive_power_multiplier = 1.6,
+      rolling_stock_max_speed_multiplier = 1.09
     },
     {
       type = "quality",
@@ -53,6 +65,9 @@ data:extend(
       beacon_power_usage_multiplier = 1/6,
       mining_drill_resource_drain_multiplier = 1/6,
       science_pack_drain_multiplier = 95/100,
+      cargo_wagon_inventory_size_multiplier = 2.5,
+      locomotive_power_multiplier = 2.0,
+      rolling_stock_max_speed_multiplier = 1.15
     }
   }
 )

@@ -30,8 +30,8 @@ data:extend(
     solar_power_in_space = 600,
     platform_procession_set =
     {
-      arrival = {"planet-to-platform-b"},
-      departure = {"platform-to-planet-a"}
+      arrival = {"planet-to-platform-b", "platform-to-platform-b"},
+      departure = {"platform-to-planet-a", "platform-to-platform-a"}
     },
     planet_procession_set =
     {
@@ -98,6 +98,7 @@ data:extend(
         noise_texture =
         {
           filename = "__space-age__/graphics/terrain/vulcanus/tint-noise.png",
+          color_channels = 3,
           size = 4096
         },
 
@@ -131,8 +132,8 @@ data:extend(
     solar_power_in_space = 200,
     platform_procession_set =
     {
-      arrival = {"planet-to-platform-b"},
-      departure = {"platform-to-planet-a"}
+      arrival = {"planet-to-platform-b", "platform-to-platform-b"},
+      departure = {"platform-to-planet-a", "platform-to-platform-a"}
     },
     planet_procession_set =
     {
@@ -156,11 +157,13 @@ data:extend(
         shape_noise_texture =
         {
           filename = "__core__/graphics/clouds-noise.png",
+          color_channels = 3,
           size = 2048
         },
         detail_noise_texture =
         {
           filename = "__core__/graphics/clouds-detail-noise.png",
+          color_channels = 1,
           size = 2048
         },
         color1 = {255, 217, 139, 1.0},
@@ -191,6 +194,7 @@ data:extend(
         noise_texture =
         {
           filename = "__space-age__/graphics/terrain/vulcanus/tint-noise.png",
+          color_channels = 3,
           size = 4096
         },
 
@@ -296,8 +300,8 @@ data:extend(
     solar_power_in_space = 120,
     platform_procession_set =
     {
-      arrival = {"planet-to-platform-b"},
-      departure = {"platform-to-planet-a"}
+      arrival = {"planet-to-platform-b", "platform-to-platform-b"},
+      departure = {"platform-to-planet-a", "platform-to-platform-a"}
     },
     planet_procession_set =
     {
@@ -489,6 +493,10 @@ data:extend(
         {
           type = "prototype",
           string = "cargo-pod"
+        },
+        {
+          type = "id",
+          string = "cargo-pod-container",
         }
       }
     },
@@ -499,11 +507,13 @@ data:extend(
         shape_noise_texture =
         {
           filename = "__core__/graphics/clouds-noise.png",
+          color_channels = 3,
           size = 2048
         },
         detail_noise_texture =
         {
           filename = "__core__/graphics/clouds-detail-noise.png",
+          color_channels = 1,
           size = 2048
         },
 
@@ -547,13 +557,14 @@ data:extend(
         noise_texture =
         {
           filename = "__space-age__/graphics/terrain/vulcanus/tint-noise.png",
+          color_channels = 3,
           size = 4096
         },
 
         offset = { 0.2, 0, 0.4, 0.8 },
-        intensity = { 0.2, 0.4, 0.3, 0.25 },
-        scale_u = { 1.85, 1.85, 1.85, 1.85 },
-        scale_v = { 1, 1, 1, 1 },
+        intensity = { 0.4, 0.4, 0.4, 0.7 },
+        scale_u = { 1.1, 1.85, 1.85, 0.5 },
+        scale_v = { 0.45, 1, 1, 0.7 },
 
         global_intensity = 0.3,
         global_scale = 0.25,
@@ -614,8 +625,8 @@ data:extend(
     solar_power_in_space = 60,
     platform_procession_set =
     {
-      arrival = {"planet-to-platform-b"},
-      departure = {"platform-to-planet-a"}
+      arrival = {"planet-to-platform-b", "platform-to-platform-b"},
+      departure = {"platform-to-planet-a", "platform-to-platform-a"}
     },
     planet_procession_set =
     {
@@ -627,8 +638,9 @@ data:extend(
     {
       ["day-night-cycle"] = 20 * minute,
       ["magnetic-field"] = 10,
-      pressure = 300,
       ["solar-power"] = 1,
+      ["robot-energy-usage"] = 5,
+      pressure = 300,
       gravity = 15
     },
     asteroid_spawn_influence = 1,

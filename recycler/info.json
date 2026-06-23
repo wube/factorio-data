@@ -1,0 +1,11 @@
+{
+  "name": "recycler",
+  "version": "2.1.7",
+  "title": "Recycler",
+  "author": "Wube Software",
+  "contact": "dev@factorio.com",
+  "homepage": "https://www.factorio.com",
+  "dependencies": ["base >= 2.1.0"],
+  "expansion_required": true,
+  "factorio_version": "2.1"
+}

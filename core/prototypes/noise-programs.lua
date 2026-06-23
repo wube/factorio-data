@@ -265,6 +265,14 @@ data:extend{
                                    segmentation_multiplier = segmentation_mult}",
     local_expressions = {segmentation_mult = "segmentation_multiplier / 4"}
   },
+  {
+    type = "noise-expression",
+    name = "starting_resources_lake_mask",
+    -- Used for resource_autoplace_all_patches starting_patches spot_favorability_expression.
+    -- Planets that use resource_autoplace_all_patches and have land < 0 elevation that is buildable might want to override this expression.
+    -- 0-1 range. 0 where resources can't be.
+    expression = "clamp((elevation - 1) / 10, 0, 1)"
+  },
 
 
   -- cliff_elevation

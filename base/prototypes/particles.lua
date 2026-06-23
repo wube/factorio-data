@@ -125,7 +125,8 @@ local default_ended_in_water_trigger_effect = function()
     },
     {
       type = "play-sound",
-      sound = sounds.small_splash
+      sound = sounds.small_splash,
+      probability = 0.05,
     }
   }
 
@@ -3818,8 +3819,22 @@ make_particle
     name = "shell-particle",
     life_time = 600,
     pictures = particle_animations.get_shell_particle_pictures(),
-    shadows = particle_animations.get_shell_particle_shadow_pictures(),
-    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect()
+    shadows = particle_animations.get_shell_particle_pictures({ tint = shadowtint(), shift = util.by_pixel(2, -0.15)}),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
+    movement_modifier_when_on_ground = 0.25,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "shotgun-shell-particle",
+    life_time = 600,
+    pictures = particle_animations.get_shotgun_shell_particle_pictures(),--{ tint = {0.7059, 0.0, 0.0, 1}}
+    shadows = particle_animations.get_shotgun_shell_particle_pictures({ tint = shadowtint(), shift = util.by_pixel(2,-0.15)}),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
+    movement_modifier_when_on_ground = 0.45,
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
+    render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
@@ -5189,6 +5204,45 @@ make_particle
     name = "heat-exchanger-metal-particle-big",
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {0.614, 0.644, 0.585, 1}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
+  },
+
+  make_particle
+  {
+    name = "heat-exchanger-copper-particle-small",
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {0.859, 0.471, 0.353, 1}}),
+    shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "heat-exchanger-copper-particle-medium",
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {0.859, 0.471, 0.353, 1}}),
+    shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
+  },
+
+  make_particle
+  {
+    name = "heat-exchanger-copper-particle-big",
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {0.859, 0.471, 0.353, 1}}),
+    shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
+  },
+
+  make_particle
+  {
+    name = "heat-exchanger-copper-particle-long",
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {0.859, 0.471, 0.353, 1}, scale = 0.3}),
+    shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 0.3}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object"

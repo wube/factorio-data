@@ -20,7 +20,8 @@ data:extend(
         "curved-rail-b",
         "half-diagonal-rail"
       },
-      stack_size = 10
+      stack_size = 10,
+      weight = 500*kg
     },
     {
       type = "item",

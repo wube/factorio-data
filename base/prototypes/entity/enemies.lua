@@ -3,11 +3,49 @@ require ("prototypes.entity.biter-animations")
 require ("prototypes.entity.spitter-animations")
 require ("prototypes.entity.spawner-animation")
 
-local biter_ai_settings = require ("prototypes.entity.biter-ai-settings")
 local enemy_autoplace = require ("prototypes.entity.enemy-autoplace-utils")
 local sounds = require ("prototypes.entity.sounds")
 local hit_effects = require ("prototypes.entity.hit-effects")
 local simulations = require("__base__.prototypes.factoriopedia-simulations")
+
+local spawn_range = 2.0
+local spawn_precision = 1.0
+local acid_cloud_range = spawn_range + 2.5 -- +2.5 to account for width of the spawner
+
+local biter_ai_settings = function(size_in_group)
+  return
+  {
+    destroy_when_commands_fail = true,
+    allow_try_return_to_spawner = true,
+    size_in_group = size_in_group
+  }
+end
+
+local biter_steering = function(a, b)
+  return
+  {
+    move = { radius = a},
+    stay = { radius = b}
+  }
+end
+
+local spawn_blocked_trigger =
+{
+  {
+    type = "direct",
+    action_delivery =
+    {
+      type = "instant",
+      target_effects =
+      {
+        type = "create-smoke",
+        show_in_tooltip = true,
+        entity_name = "acid-cloud",
+        initial_height = 0
+      }
+    }
+  }
+}
 
 local make_unit_melee_ammo_type = function(damage_value)
   return
@@ -45,6 +83,7 @@ data:extend(
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.4, -0.7}, {0.4, 0.4}},
     damaged_trigger_effect = hit_effects.biter(),
+    steering = biter_steering(1.5, 3),
     attack_parameters =
     {
       type = "projectile",
@@ -62,6 +101,7 @@ data:extend(
     movement_speed = 0.2,
     distance_per_frame = 0.125,
     absorptions_to_join_attack = { pollution = 4 },
+    buildable_entities = {"biter-spawner", "spitter-spawner"},
     distraction_cooldown = 300,
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
@@ -72,7 +112,7 @@ data:extend(
     run_animation = biterrunanimation(small_biter_scale, small_biter_tint1, small_biter_tint2),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.biter_walk(0, 0.3),
-    ai_settings = biter_ai_settings,
+    ai_settings = biter_ai_settings(1),
     water_reflection = biter_water_reflection(small_biter_scale)
   },
 
@@ -162,13 +202,14 @@ data:extend(
                    end)(),
     -- With zero evolution the spawn rate is 6 seconds, with max evolution it is 2.5 seconds
     spawning_cooldown = {360, 150},
-    spawning_radius = 10,
-    spawning_spacing = 3,
+    spawning_radius = spawn_range,
+    spawning_spacing = spawn_precision,
     max_spawn_shift = 0,
     max_richness_for_spawn_shift = 100,
     autoplace = enemy_autoplace.enemy_spawner_autoplace("enemy_autoplace_base(0, 6)"),
     call_for_help_radius = 50,
     time_to_capture = 60 * 20,
+    spawn_blocked_trigger = spawn_blocked_trigger,
     spawn_decorations_on_expansion = true,
     spawn_decoration =
     {
@@ -286,6 +327,7 @@ data:extend(
     distraction_cooldown = 300,
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
+    steering = biter_steering(2, 3.5),
     attack_parameters =
     {
       type = "projectile",
@@ -301,8 +343,8 @@ data:extend(
     vision_distance = 30,
     movement_speed = 0.24,
     distance_per_frame = 0.188,
-    -- in pu
     absorptions_to_join_attack = { pollution = 20 },
+    buildable_entities = {"biter-spawner", "spitter-spawner"},
     corpse = "medium-biter-corpse",
     dying_explosion = "medium-biter-die",
     working_sound = sounds.biter_calls(0.4, 0.9),
@@ -310,7 +352,7 @@ data:extend(
     run_animation = biterrunanimation(medium_biter_scale, medium_biter_tint1, medium_biter_tint2),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.biter_walk(0.1, 0.4),
-    ai_settings = biter_ai_settings,
+    ai_settings = biter_ai_settings(1),
     water_reflection = biter_water_reflection(medium_biter_scale)
   },
 
@@ -345,6 +387,7 @@ data:extend(
     distraction_cooldown = 300,
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
+    steering = biter_steering(2.5, 4),
     attack_parameters =
     {
       type = "projectile",
@@ -360,8 +403,8 @@ data:extend(
     vision_distance = 30,
     movement_speed = 0.23,
     distance_per_frame = 0.30,
-    -- in pu
     absorptions_to_join_attack = { pollution = 80 },
+    buildable_entities = {"biter-spawner", "spitter-spawner"},
     corpse = "big-biter-corpse",
     dying_explosion = "big-biter-die",
     working_sound = sounds.biter_calls_big(0.4, 0.7),
@@ -369,7 +412,7 @@ data:extend(
     run_animation = biterrunanimation(big_biter_scale, big_biter_tint1, big_biter_tint2),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.biter_walk_big(0.6, 0.7),
-    ai_settings = biter_ai_settings,
+    ai_settings = biter_ai_settings(2),
     water_reflection = biter_water_reflection(big_biter_scale)
   },
 
@@ -405,6 +448,7 @@ data:extend(
     distraction_cooldown = 300,
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
+    steering = biter_steering(3, 4.5),
     attack_parameters =
     {
       type = "projectile",
@@ -420,8 +464,8 @@ data:extend(
     vision_distance = 30,
     movement_speed = 0.3,
     distance_per_frame = 0.32,
-    -- in pu
     absorptions_to_join_attack = { pollution = 400 },
+    buildable_entities = {"biter-spawner", "spitter-spawner"},
     corpse = "behemoth-biter-corpse",
     dying_explosion = "behemoth-biter-die",
     working_sound = sounds.biter_calls_behemoth(0.5, 0.9),
@@ -429,7 +473,7 @@ data:extend(
     run_animation = biterrunanimation(behemoth_biter_scale, behemoth_biter_tint1, behemoth_biter_tint2),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.biter_walk_big(0.6, 0.8),
-    ai_settings = biter_ai_settings,
+    ai_settings = biter_ai_settings(3),
     water_reflection = biter_water_reflection(behemoth_biter_scale)
   },
 
@@ -454,6 +498,7 @@ data:extend(
     max_pursue_distance = 50,
 
     alternative_attacking_frame_sequence = spitter_alternative_attacking_animation_sequence,
+    steering = biter_steering(1.5, 3),
     attack_parameters = spitter_attack_parameters(
     {
       acid_stream_name = "acid-stream-spitter-small",
@@ -465,15 +510,13 @@ data:extend(
       scale = scale_spitter_small,
       tint1 = tint_1_spitter_small,
       tint2 = tint_2_spitter_small,
-      roarvolume = 0.4,
       range_mode = "bounding-box-to-bounding-box"
     }),
     vision_distance = 30,
     movement_speed = 0.185,
-
     distance_per_frame = 0.04,
-    -- in pu
     absorptions_to_join_attack = { pollution = 4 },
+    buildable_entities = {"small-worm-turret"},
     corpse = "small-spitter-corpse",
     dying_explosion = "small-spitter-die",
     working_sound = sounds.spitter_calls(0.1, 0.44),
@@ -481,7 +524,7 @@ data:extend(
     run_animation = spitterrunanimation(scale_spitter_small, tint_1_spitter_small, tint_2_spitter_small),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.spitter_walk(0, 0.3),
-    ai_settings = biter_ai_settings,
+    ai_settings = biter_ai_settings(1),
     water_reflection = spitter_water_reflection(scale_spitter_small)
   },
 
@@ -511,6 +554,7 @@ data:extend(
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
     alternative_attacking_frame_sequence = spitter_alternative_attacking_animation_sequence,
+    steering = biter_steering(2, 3.5),
     attack_parameters = spitter_mid_attack_parameters(
     {
       acid_stream_name = "acid-stream-spitter-medium",
@@ -522,14 +566,13 @@ data:extend(
       scale = scale_spitter_medium,
       tint1 = tint_1_spitter_medium,
       tint2 = tint_2_spitter_medium,
-      roarvolume = 0.5,
       range_mode = "bounding-box-to-bounding-box"
     }),
     vision_distance = 30,
     movement_speed = 0.165,
     distance_per_frame = 0.055,
-    -- in pu
     absorptions_to_join_attack = { pollution = 12 },
+    buildable_entities = {"small-worm-turret", "medium-worm-turret"},
     corpse = "medium-spitter-corpse",
     dying_explosion = "medium-spitter-die",
     working_sound = sounds.spitter_calls_med(0.2, 0.53),
@@ -537,7 +580,7 @@ data:extend(
     run_animation = spitterrunanimation(scale_spitter_medium, tint_1_spitter_medium, tint_2_spitter_medium),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.spitter_walk(0.1, 0.4),
-    ai_settings = biter_ai_settings,
+    ai_settings = biter_ai_settings(1),
     water_reflection = spitter_water_reflection(scale_spitter_medium)
   },
 
@@ -568,6 +611,7 @@ data:extend(
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
     alternative_attacking_frame_sequence = spitter_alternative_attacking_animation_sequence,
+    steering = biter_steering(2.5, 4),
     attack_parameters = spitter_big_attack_parameters(
     {
       acid_stream_name = "acid-stream-spitter-big",
@@ -579,14 +623,13 @@ data:extend(
       scale = scale_spitter_big,
       tint1 = tint_1_spitter_big,
       tint2 = tint_2_spitter_big,
-      roarvolume = 0.6,
       range_mode = "bounding-box-to-bounding-box"
     }),
     vision_distance = 30,
     movement_speed = 0.15,
     distance_per_frame = 0.07,
-    -- in pu
     absorptions_to_join_attack = { pollution = 30 },
+    buildable_entities = {"medium-worm-turret", "big-worm-turret"},
     corpse = "big-spitter-corpse",
     dying_explosion = "big-spitter-die",
     working_sound = sounds.spitter_calls_big(0.2, 0.46),
@@ -594,7 +637,7 @@ data:extend(
     run_animation = spitterrunanimation(scale_spitter_big, tint_1_spitter_big, tint_2_spitter_big),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.spitter_walk_big(0.2, 0.5),
-    ai_settings = biter_ai_settings,
+    ai_settings = biter_ai_settings(2),
     water_reflection = spitter_water_reflection(scale_spitter_big)
   },
 
@@ -625,6 +668,7 @@ data:extend(
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
     alternative_attacking_frame_sequence = spitter_alternative_attacking_animation_sequence,
+    steering = biter_steering(3, 4.5),
     attack_parameters = spitter_behemoth_attack_parameters(
     {
       acid_stream_name = "acid-stream-spitter-behemoth",
@@ -636,13 +680,13 @@ data:extend(
       scale = scale_spitter_behemoth,
       tint1 = tint_1_spitter_behemoth,
       tint2 = tint_2_spitter_behemoth,
-      roarvolume = 0.8,
       range_mode = "bounding-box-to-bounding-box"
     }),
     vision_distance = 30,
     movement_speed = 0.15,
     distance_per_frame = 0.084,
     absorptions_to_join_attack = { pollution = 200 },
+    buildable_entities = {"big-worm-turret", "behemoth-worm-turret"},
     corpse = "behemoth-spitter-corpse",
     dying_explosion = "behemoth-spitter-die",
     working_sound = sounds.spitter_calls_big(0.4, 0.6),
@@ -650,7 +694,7 @@ data:extend(
     run_animation = spitterrunanimation(scale_spitter_behemoth, tint_1_spitter_behemoth, tint_2_spitter_behemoth),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.spitter_walk_big(0.3, 0.6),
-    ai_settings = biter_ai_settings,
+    ai_settings = biter_ai_settings(3),
     water_reflection = spitter_water_reflection(scale_spitter_behemoth)
   },
 
@@ -811,8 +855,8 @@ data:extend(
     },
     -- With zero evolution the spawn rate is 6 seconds, with max evolution it is 2.5 seconds
     spawning_cooldown = {360, 150},
-    spawning_radius = 10,
-    spawning_spacing = 3,
+    spawning_radius = spawn_range,
+    spawning_spacing = spawn_precision,
     max_spawn_shift = 0,
     max_richness_for_spawn_shift = 100,
     -- distance_factor used to be 1, but Twinsen says:
@@ -821,6 +865,7 @@ data:extend(
     autoplace = enemy_autoplace.enemy_spawner_autoplace("enemy_autoplace_base(0, 7)"),
     call_for_help_radius = 50,
     time_to_capture = 60 * 30,
+    spawn_blocked_trigger = spawn_blocked_trigger,
     spawn_decorations_on_expansion = true,
     spawn_decoration =
     {
@@ -965,4 +1010,158 @@ data:extend(
       },
     }
   },
+  {
+    name = "acid-cloud",
+    type = "smoke-with-trigger",
+    flags = {"not-on-map"},
+    hidden = true,
+    show_when_smoke_off = true,
+    particle_count = 16,
+    particle_spread = { 3.6 * 1.05, 3.6 * 0.6 * 1.05 },
+    particle_distance_scale_factor = 0.5,
+    particle_scale_factor = { 1, 0.707 },
+    wave_speed = { 1/80, 1/60 },
+    wave_distance = { 0.3, 0.2 },
+    spread_duration_variation = 20,
+    particle_duration_variation = 60 * 3,
+    render_layer = "object",
+
+    affected_by_wind = false,
+    cyclic = true,
+    duration = 60 * 4,
+    fade_away_duration = 2 * 60,
+    spread_duration = 30,
+    color = {1.000, 0.992, 0.512, 1.000}, -- #fffc82ff
+
+    animation =
+    {
+      width = 152,
+      height = 120,
+      line_length = 5,
+      frame_count = 60,
+      shift = {-0.53125, -0.4375},
+      priority = "high",
+      animation_speed = 0.25,
+      filename = "__base__/graphics/entity/smoke/smoke.png",
+      flags = { "smoke" }
+    },
+
+    created_effect =
+    {
+      {
+        type = "cluster",
+        cluster_count = 5,
+        distance = acid_cloud_range,
+        distance_deviation = 1,
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "create-smoke",
+              show_in_tooltip = false,
+              entity_name = "acid-cloud-visual-dummy",
+              initial_height = 0
+            },
+            {
+              type = "play-sound",
+              sound = sounds.poison_capsule_explosion
+            }
+          }
+        }
+      },
+      {
+        type = "cluster",
+        cluster_count = 5,
+        distance = acid_cloud_range,
+        distance_deviation = 1,
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "create-smoke",
+              show_in_tooltip = false,
+              entity_name = "acid-cloud-visual-dummy",
+              initial_height = 0
+            }
+          }
+        }
+      }
+    },
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          type = "nested-result",
+          action =
+          {
+            type = "area",
+            radius = acid_cloud_range,
+            force = "enemy",
+            action_delivery =
+            {
+              type = "instant",
+              target_effects =
+              {
+                type = "damage",
+                damage = { amount = 50, type = "acid"},
+              }
+            }
+          }
+        }
+      }
+    },
+    action_cooldown = 30
+  },
+  {
+    type = "smoke-with-trigger",
+    name = "acid-cloud-visual-dummy",
+    flags = {"not-on-map"},
+    hidden = true,
+    show_when_smoke_off = true,
+    particle_count = 24,
+    particle_spread = { 3.6 * 1.05, 3.6 * 0.6 * 1.05 },
+    particle_distance_scale_factor = 0.5,
+    particle_scale_factor = { 1, 0.707 },
+    particle_duration_variation = 60 * 3,
+    wave_speed = { 0.5 / 80, 0.5 / 60 },
+    wave_distance = { 1, 0.5 },
+    spread_duration_variation = 300 - 20,
+
+    render_layer = "object",
+
+    affected_by_wind = false,
+    cyclic = true,
+    duration = 60 * 6,
+    fade_away_duration = 3 * 60,
+    spread_duration = (300 - 20) / 2,
+    color = {1.000, 0.992, 0.512, 1.000}, -- #fffc82ff
+
+    animation =
+    {
+      width = 152,
+      height = 120,
+      line_length = 5,
+      frame_count = 60,
+      shift = {-0.53125, -0.4375},
+      priority = "high",
+      animation_speed = 0.25,
+      filename = "__base__/graphics/entity/smoke/smoke.png",
+      flags = { "smoke" },
+      scale = 0.5
+    },
+    working_sound =
+    {
+      sound = {filename = "__base__/sound/fight/poison-cloud.ogg", volume = 0.5, audible_distance_modifier = 0.8},
+      max_sounds_per_prototype = 1,
+      match_volume_to_activity = true
+    }
+  }
 })

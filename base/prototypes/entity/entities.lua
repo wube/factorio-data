@@ -1,7 +1,6 @@
 require ("util")
 require ("prototypes.entity.pipecovers")
 require ("circuit-connector-sprites")
-require ("prototypes.entity.assemblerpipes")
 require ("prototypes.entity.laser-sounds")
 require ("prototypes.entity.enemy-constants")
 require ("prototypes.entity.spawner-animation")
@@ -20,6 +19,7 @@ function create_entity_parameter(number)
       name = "parameter-" .. number,
       icon = "__base__/graphics/icons/parameter/parameter-" .. number .. ".png",
       localised_name = {"parameter-x", tostring(number)},
+      flags = {"always-show"},
       subgroup = "parameters",
       order = "a",
       parameter = true,
@@ -328,6 +328,20 @@ function robot_reflection(scale)
   }
 end
 
+function chest_reflection()
+  return
+  {
+    pictures =
+    {
+        filename = "__base__/graphics/entity/wooden-chest/chest-reflection.png",
+        width = 13,
+        height = 20,
+        scale = 5,
+    },
+    rotate = false,
+  }
+end
+
 --- @param i integer
 local function make_visualization(i)
   return
@@ -594,14 +608,6 @@ pipepictures = function()
   }
 end
 
-function crash_trigger()
-  return
-  {
-    type = "play-sound",
-    sound = { filename = "__base__/sound/car-crash.ogg", volume = 0 }
-  }
-end
-
 data:extend(
 {
   {
@@ -706,7 +712,7 @@ data:extend(
     selection_box = {{-0.4, -1.4}, {0.4, 0.2}},
     hit_visualization_box = {{-0.2, -1.1}, {0.2, 0.2}},
     sticker_box = {{-0.2, -1}, {0.2, 0}},
-    crafting_categories = {"crafting"},
+    crafting_categories = {"crafting", "hand-crafting"},
     mining_categories = {"basic-solid"},
     character_corpse = "character-corpse",
     inventory_size = 80,
@@ -1300,6 +1306,8 @@ data:extend(
         }
       }
     },
+    circuit_connector = circuit_connector_definitions["boiler"],
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
     working_sound =
     {
       sound = {filename = "__base__/sound/boiler.ogg", volume = 0.7, audible_distance_modifier = 0.3},
@@ -1569,7 +1577,8 @@ data:extend(
       }
     },
     circuit_connector = circuit_connector_definitions["chest"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
   {
     type = "container",
@@ -1624,7 +1633,8 @@ data:extend(
       }
     },
     circuit_connector = circuit_connector_definitions["chest"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
   {
     type = "electric-pole",
@@ -1799,53 +1809,63 @@ data:extend(
       type = "electric",
       usage_priority = "secondary-output"
     },
-    horizontal_animation =
+    two_direction_only = true,
+    pictures =
     {
-      layers =
+      north =
       {
+        animation =
         {
-          filename = "__base__/graphics/entity/steam-engine/steam-engine-H.png",
-          width = 352,
-          height = 257,
-          frame_count = 32,
-          line_length = 8,
-          shift = util.by_pixel(1, -4.75),
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/steam-engine/steam-engine-H-shadow.png",
-          width = 508,
-          height = 160,
-          frame_count = 32,
-          line_length = 8,
-          draw_as_shadow = true,
-          shift = util.by_pixel(48, 24),
-          scale = 0.5
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/steam-engine/steam-engine-V.png",
+              width = 225,
+              height = 391,
+              frame_count = 32,
+              line_length = 8,
+              shift = util.by_pixel(4.75, -6.25),
+              scale = 0.5
+            },
+            {
+              filename = "__base__/graphics/entity/steam-engine/steam-engine-V-shadow.png",
+              width = 330,
+              height = 307,
+              frame_count = 32,
+              line_length = 8,
+              draw_as_shadow = true,
+              shift = util.by_pixel(40.5, 9.25),
+              scale = 0.5
+            }
+          }
         }
-      }
-    },
-    vertical_animation =
-    {
-      layers =
+      },
+      east =
       {
+        animation =
         {
-          filename = "__base__/graphics/entity/steam-engine/steam-engine-V.png",
-          width = 225,
-          height = 391,
-          frame_count = 32,
-          line_length = 8,
-          shift = util.by_pixel(4.75, -6.25),
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/steam-engine/steam-engine-V-shadow.png",
-          width = 330,
-          height = 307,
-          frame_count = 32,
-          line_length = 8,
-          draw_as_shadow = true,
-          shift = util.by_pixel(40.5, 9.25),
-          scale = 0.5
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/steam-engine/steam-engine-H.png",
+              width = 352,
+              height = 257,
+              frame_count = 32,
+              line_length = 8,
+              shift = util.by_pixel(1, -4.75),
+              scale = 0.5
+            },
+            {
+              filename = "__base__/graphics/entity/steam-engine/steam-engine-H-shadow.png",
+              width = 508,
+              height = 160,
+              frame_count = 32,
+              line_length = 8,
+              draw_as_shadow = true,
+              shift = util.by_pixel(48, 24),
+              scale = 0.5
+            }
+          }
         }
       }
     },
@@ -2745,13 +2765,15 @@ data:extend(
       pipe_covers = pipecoverspictures(), -- in case a real pipe is connected to a ghost
       pipe_connections =
       {
-        { direction = defines.direction.north, position = {0, 0} },
-        { direction = defines.direction.east, position = {0, 0} },
-        { direction = defines.direction.south, position = {0, 0} },
-        { direction = defines.direction.west, position = {0, 0} }
+        { direction = defines.direction.north, position = {0, 0}, hide_connection_info = true },
+        { direction = defines.direction.east, position = {0, 0}, hide_connection_info = true },
+        { direction = defines.direction.south, position = {0, 0}, hide_connection_info = true },
+        { direction = defines.direction.west, position = {0, 0}, hide_connection_info = true }
       },
-      hide_connection_info = true
     },
+    circuit_connector = circuit_connector_definitions["pipe"],
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_fluid_temperature_signal = {type = "virtual", name = "signal-T"},
     impact_category = "metal",
     pictures = pipepictures(),
     working_sound = sounds.pipe,
@@ -2887,8 +2909,8 @@ data:extend(
     energy_usage_per_tick = "5kW",
     darkness_for_all_lamps_on = 0.5,
     darkness_for_all_lamps_off = 0.3,
-    light = {intensity = 0.9, size = 40, color = {1, 1, 0.75}},
-    light_when_colored = {intensity = 0, size = 6, color = {1, 1, 0.75}},
+    light = {intensity = 0.9, size = 40, color = {1, 1, 1}},
+    light_when_colored = {intensity = 0, size = 6, color = {1, 1, 1}},
     glow_size = 6,
     glow_color_intensity = 1,
     glow_render_mode = "multiplicative",
@@ -2942,7 +2964,8 @@ data:extend(
     default_rgb_signal = { type = "virtual", name = "signal-white" },
 
     circuit_connector = circuit_connector_definitions["lamp"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
 
   {
@@ -3000,20 +3023,23 @@ data:extend(
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
-        { direction = defines.direction.north, position = {0, 0} },
+        { direction = defines.direction.north, position = {0, 0}, hide_connection_info = true },
         {
           connection_type = "underground",
           direction = defines.direction.south,
           position = {0, 0},
-          max_underground_distance = 10
+          max_underground_distance = 10,
+          hide_connection_info = true
         }
       },
-      hide_connection_info = true
     },
     impact_category = "metal",
     working_sound = sounds.pipe,
     open_sound = sounds.metal_small_open,
     close_sound = sounds.metal_small_close,
+    circuit_connector = circuit_connector_definitions["pipe-to-ground"],
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_fluid_temperature_signal = {type = "virtual", name = "signal-T"},
     pictures =
     {
       north =
@@ -3128,7 +3154,6 @@ data:extend(
       },
     },
   },
-
   {
     type = "assembling-machine",
     name = "assembling-machine-1",
@@ -3152,39 +3177,10 @@ data:extend(
     fast_replaceable_group = "assembling-machine",
     next_upgrade = "assembling-machine-2",
     circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
-    circuit_connector = circuit_connector_definitions["assembling-machine"],
+    circuit_connector = require("prototypes.entity.assembler-pictures").circuit_connector,
     alert_icon_shift = util.by_pixel(0, -12),
-    graphics_set =
-    {
-      animation =
-      {
-        layers =
-        {
-          {
-            filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
-            priority="high",
-            width = 214,
-            height = 226,
-            frame_count = 32,
-            line_length = 8,
-            shift = util.by_pixel(0, 2),
-            scale = 0.5
-          },
-          {
-            filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1-shadow.png",
-            priority="high",
-            width = 190,
-            height = 165,
-            line_length = 1,
-            repeat_count = 32,
-            draw_as_shadow = true,
-            shift = util.by_pixel(8.5, 5),
-            scale = 0.5
-          }
-        }
-      }
-    },
-    crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
+    graphics_set = require("prototypes.entity.assembler-pictures").assembler1_graphics_set,
+    crafting_categories = {"crafting", "advanced-crafting"},
     crafting_speed = 0.5,
     energy_source =
     {
@@ -3203,7 +3199,8 @@ data:extend(
       sound = {filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.5, audible_distance_modifier = 0.5},
       fade_in_ticks = 4,
       fade_out_ticks = 20
-    }
+    },
+    water_reflection = require("prototypes.entity.assembler-pictures").water_reflection,
   },
   {
     type = "assembling-machine",
@@ -3216,7 +3213,7 @@ data:extend(
     dying_explosion = "assembling-machine-2-explosion",
     icon_draw_specification = {shift = {0, -0.3}},
     circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
-    circuit_connector = circuit_connector_definitions["assembling-machine"],
+    circuit_connector = require("prototypes.entity.assembler-pictures").circuit_connector,
     alert_icon_shift = util.by_pixel(0, -12),
     resistances =
     {
@@ -3229,7 +3226,7 @@ data:extend(
     {
       {
         production_type = "input",
-        pipe_picture = assembler2pipepictures(),
+        pipe_picture = require("prototypes.entity.assembler-pictures").assembler2pipepictures,
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections = {{ flow_direction="input", direction = defines.direction.north, position = {0, -1} }},
@@ -3237,7 +3234,7 @@ data:extend(
       },
       {
         production_type = "output",
-        pipe_picture = assembler2pipepictures(),
+        pipe_picture = require("prototypes.entity.assembler-pictures").assembler2pipepictures,
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections = {{ flow_direction="output", direction = defines.direction.south, position = {0, 1} }},
@@ -3250,36 +3247,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     fast_replaceable_group = "assembling-machine",
     next_upgrade = "assembling-machine-3",
-    graphics_set =
-    {
-      animation =
-      {
-        layers =
-        {
-          {
-            filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2.png",
-            priority = "high",
-            width = 214,
-            height = 218,
-            frame_count = 32,
-            line_length = 8,
-            shift = util.by_pixel(0, 4),
-            scale = 0.5
-          },
-          {
-            filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2-shadow.png",
-            priority = "high",
-            width = 196,
-            height = 163,
-            frame_count = 32,
-            line_length = 8,
-            draw_as_shadow = true,
-            shift = util.by_pixel(12, 4.75),
-            scale = 0.5
-          }
-        }
-      },
-    },
+    graphics_set = require("prototypes.entity.assembler-pictures").assembler2_graphics_set,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
     impact_category = "metal",
@@ -3289,7 +3257,7 @@ data:extend(
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
-    crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid"},
+    crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
 
     crafting_speed = 0.75,
     energy_source =
@@ -3300,7 +3268,8 @@ data:extend(
     },
     energy_usage = "150kW",
     module_slots = 2,
-    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"}
+    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+    water_reflection = require("prototypes.entity.assembler-pictures").water_reflection,
   },
 
   {
@@ -3312,6 +3281,8 @@ data:extend(
     medium_build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-medium.ogg", volume = 0.7, aggregation = {max_count = 3, remove = true}},
     large_build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-large.ogg",  volume = 0.7, aggregation = {max_count = 3, remove = true}},
     huge_build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-large.ogg",  volume = 0.7, aggregation = {max_count = 3, remove = true}},
+    open_sound = {category = "gui-effect", filename = "__base__/sound/open-close/ghost-entity-open.ogg", volume = 0.7},
+    close_sound = {category = "gui-effect", filename = "__base__/sound/open-close/ghost-entity-close.ogg", volume = 0.7},
     minable = {mining_time = 0, results={}},
     mined_sound = {category = "gui-effect", filename = "__core__/sound/deconstruct-ghost.ogg", volume = 0.4}
   },
@@ -3331,6 +3302,7 @@ data:extend(
   {
     type = "deconstructible-tile-proxy",
     name = "deconstructible-tile-proxy",
+    icon = "__core__/graphics/cancel.png",
     flags = {"not-on-map"},
     hidden = true,
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
@@ -3812,7 +3784,18 @@ data:extend(
 
     circuit_connector = circuit_connector_definitions["wall"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    default_output_signal = {type = "virtual", name = "signal-G"}
+    default_output_signal = {type = "virtual", name = "signal-G"},
+    water_reflection =
+    {
+      pictures =
+      {
+          filename = "__base__/graphics/entity/wall/wall-reflection.png",
+          width = 13,
+          height = 30,
+          scale = 5,
+      },
+      rotate = false,
+    }
   },
   {
     type = "lab",
@@ -3942,6 +3925,24 @@ data:extend(
       {inventory_index = defines.inventory.lab_modules, shift = {0, 0.9}},
       {inventory_index = defines.inventory.lab_input, shift = {0, 0}, max_icons_per_row = 4, separation_multiplier = 1/1.1}
     },
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/lab/lab-reflection.png",
+        priority = "extra-high",
+        width = 24,
+        height = 24,
+        shift = util.by_pixel(5, 40),
+        variation_count = 1,
+        scale = 5
+      },
+      rotate = false,
+      orientation_to_variation = false
+    },
+    circuit_wire_max_distance = lab_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["lab"],
+    default_technology_level_signal = {type = "virtual", name = "signal-L"},
   },
   {
     type = "highlight-box",
@@ -3988,7 +3989,6 @@ data:extend(
     dying_explosion = "car-explosion",
     alert_icon_shift = util.by_pixel(0, -13),
     energy_per_hit_point = 1,
-    crash_trigger = crash_trigger(),
     resistances =
     {
       {
@@ -4009,7 +4009,7 @@ data:extend(
     selection_box = {{-0.7, -1}, {0.7, 1}},
     damaged_trigger_effect = hit_effects.entity(),
     effectivity = 0.6,
-    braking_power = "200kW",
+    braking_force = (200 * 1000) / 60,
     energy_source =
     {
       type = "burner",
@@ -4029,7 +4029,7 @@ data:extend(
       }
     },
     consumption = "150kW",
-    friction = 2e-3,
+    friction_force = 2e-3,
     light =
     {
       {
@@ -4322,7 +4322,7 @@ data:extend(
     icon_draw_specification = {shift = {0, -0.1}},
     icons_positioning =
     {
-      {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}}
+      {inventory_index = defines.inventory.crafter_modules, shift = {0, 0.8}}
     },
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
     crafting_categories = {"smelting"},
@@ -5215,7 +5215,8 @@ data:extend(
       }
     },
     circuit_connector = circuit_connector_definitions["chest"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
   {
     type = "solar-panel",
@@ -5227,7 +5228,7 @@ data:extend(
     max_health = 200,
     corpse = "solar-panel-remnants",
     dying_explosion = "solar-panel-explosion",
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    collision_box = {{-1.35, -1.35}, {1.35, 1.35}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     damaged_trigger_effect = hit_effects.entity(),
     energy_source =
@@ -5273,7 +5274,22 @@ data:extend(
       }
     },
     impact_category = "glass",
-    production = "60kW"
+    production = "60kW",
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/solar-panel/solar-panel-reflection.png",
+        priority = "extra-high",
+        width = 24,
+        height = 24,
+        shift = util.by_pixel(5, 40),
+        variation_count = 1,
+        scale = 5
+      },
+      rotate = false,
+      orientation_to_variation = false
+    },
   },
 
   {
@@ -5397,7 +5413,7 @@ data:extend(
     dying_explosion = "assembling-machine-3-explosion",
     icon_draw_specification = {shift = {0, -0.3}},
     circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
-    circuit_connector = circuit_connector_definitions["assembling-machine"],
+    circuit_connector = require("prototypes.entity.assembler-pictures").circuit_connector,
     alert_icon_shift = util.by_pixel(0, -12),
     resistances =
     {
@@ -5410,7 +5426,7 @@ data:extend(
     {
       {
         production_type = "input",
-        pipe_picture = assembler3pipepictures(),
+        pipe_picture = require("prototypes.entity.assembler-pictures").assembler3pipepictures,
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections = {{ flow_direction="input", direction = defines.direction.north, position = {0, -1} }},
@@ -5418,7 +5434,7 @@ data:extend(
       },
       {
         production_type = "output",
-        pipe_picture = assembler3pipepictures(),
+        pipe_picture = require("prototypes.entity.assembler-pictures").assembler3pipepictures,
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections = {{ flow_direction="output", direction = defines.direction.south, position = {0, 1} }},
@@ -5440,39 +5456,8 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 0.2,
     fast_replaceable_group = "assembling-machine",
-    graphics_set =
-    {
-      animation_progress = 0.5,
-      animation =
-      {
-        layers =
-        {
-          {
-            filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3.png",
-            priority = "high",
-            width = 214,
-            height = 237,
-            frame_count = 32,
-            line_length = 8,
-            shift = util.by_pixel(0, -0.75),
-            scale = 0.5
-          },
-          {
-            filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3-shadow.png",
-            priority = "high",
-            width = 260,
-            height = 162,
-            frame_count = 32,
-            line_length = 8,
-            draw_as_shadow = true,
-            shift = util.by_pixel(28, 4),
-            scale = 0.5
-          }
-        }
-      }
-    },
-
-    crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid"},
+    graphics_set = require("prototypes.entity.assembler-pictures").assembler3_graphics_set,
+    crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
     crafting_speed = 1.25,
     energy_source =
     {
@@ -5482,7 +5467,8 @@ data:extend(
     },
     energy_usage = "375kW",
     module_slots = 4,
-    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"}
+    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+    water_reflection = require("prototypes.entity.assembler-pictures").water_reflection,
   },
   {
     type = "inserter",
@@ -5599,6 +5585,7 @@ data:extend(
       "placeable-off-grid",
       "not-on-map"
     },
+    alert_when_damaged = false,
     minable = {mining_time = 0.5, result = "land-mine"},
     fast_replaceable_group = "land-mine",
     mined_sound = sounds.deconstruct_small(1.0),
@@ -5678,7 +5665,9 @@ data:extend(
           }
         }
       }
-    }
+    },
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["land-mine"],
   },
   {
     type = "logistic-container",
@@ -5709,36 +5698,40 @@ data:extend(
     logistic_mode = "passive-provider",
     open_sound = sounds.metallic_chest_open,
     close_sound = sounds.metallic_chest_close,
-    animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
-    opened_duration = logistic_chest_opened_duration,
-    animation =
+    robot_door =
     {
-      layers =
+      animation_sound = sounds.logistics_chest_open,
+      opened_duration = logistic_chest_opened_duration,
+      animation =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/logistic-chest/passive-provider-chest.png",
-          priority = "extra-high",
-          width = 66,
-          height = 74,
-          frame_count = 7,
-          shift = util.by_pixel(0, -2),
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
-          priority = "extra-high",
-          width = 112,
-          height = 46,
-          repeat_count = 7,
-          shift = util.by_pixel(12, 4.5),
-          draw_as_shadow = true,
-          scale = 0.5
+          {
+            filename = "__base__/graphics/entity/logistic-chest/passive-provider-chest.png",
+            priority = "extra-high",
+            width = 66,
+            height = 74,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          },
+          {
+            filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 112,
+            height = 46,
+            repeat_count = 7,
+            shift = util.by_pixel(12, 4.5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
     circuit_connector = circuit_connector_definitions["chest"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
   {
     type = "logistic-container",
@@ -5769,36 +5762,40 @@ data:extend(
     logistic_mode = "active-provider",
     open_sound = sounds.metallic_chest_open,
     close_sound = sounds.metallic_chest_close,
-    animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
-    opened_duration = logistic_chest_opened_duration,
-    animation =
+    robot_door =
     {
-      layers =
+      animation_sound = sounds.logistics_chest_open,
+      opened_duration = logistic_chest_opened_duration,
+      animation =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/logistic-chest/active-provider-chest.png",
-          priority = "extra-high",
-          width = 66,
-          height = 74,
-          frame_count = 7,
-          shift = util.by_pixel(0, -2),
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
-          priority = "extra-high",
-          width = 112,
-          height = 46,
-          repeat_count = 7,
-          shift = util.by_pixel(12, 4.5),
-          draw_as_shadow = true,
-          scale = 0.5
+          {
+            filename = "__base__/graphics/entity/logistic-chest/active-provider-chest.png",
+            priority = "extra-high",
+            width = 66,
+            height = 74,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          },
+          {
+            filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 112,
+            height = 46,
+            repeat_count = 7,
+            shift = util.by_pixel(12, 4.5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
     circuit_connector = circuit_connector_definitions["chest"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
   {
     type = "logistic-container",
@@ -5830,36 +5827,40 @@ data:extend(
     logistic_mode = "storage",
     open_sound = sounds.metallic_chest_open,
     close_sound = sounds.metallic_chest_close,
-    animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
-    opened_duration = logistic_chest_opened_duration,
-    animation =
+    robot_door =
     {
-      layers =
+      animation_sound = sounds.logistics_chest_open,
+      opened_duration = logistic_chest_opened_duration,
+      animation =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/logistic-chest/storage-chest.png",
-          priority = "extra-high",
-          width = 66,
-          height = 74,
-          frame_count = 7,
-          shift = util.by_pixel(0, -2),
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
-          priority = "extra-high",
-          width = 112,
-          height = 46,
-          repeat_count = 7,
-          shift = util.by_pixel(12, 4.5),
-          draw_as_shadow = true,
-          scale = 0.5
+          {
+            filename = "__base__/graphics/entity/logistic-chest/storage-chest.png",
+            priority = "extra-high",
+            width = 66,
+            height = 74,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          },
+          {
+            filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 112,
+            height = 46,
+            repeat_count = 7,
+            shift = util.by_pixel(12, 4.5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
     circuit_connector = circuit_connector_definitions["chest"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
   {
     type = "logistic-container",
@@ -5891,36 +5892,40 @@ data:extend(
     logistic_mode = "buffer",
     open_sound = sounds.metallic_chest_open,
     close_sound = sounds.metallic_chest_close,
-    animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
-    opened_duration = logistic_chest_opened_duration,
-    animation =
+    robot_door =
     {
-      layers =
+      animation_sound = sounds.logistics_chest_open,
+      opened_duration = logistic_chest_opened_duration,
+      animation =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/logistic-chest/buffer-chest.png",
-          priority = "extra-high",
-          width = 66,
-          height = 74,
-          frame_count = 7,
-          shift = util.by_pixel(0, -2),
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
-          priority = "extra-high",
-          width = 112,
-          height = 46,
-          repeat_count = 7,
-          shift = util.by_pixel(12, 4.5),
-          draw_as_shadow = true,
-          scale = 0.5
+          {
+            filename = "__base__/graphics/entity/logistic-chest/buffer-chest.png",
+            priority = "extra-high",
+            width = 66,
+            height = 74,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          },
+          {
+            filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 112,
+            height = 46,
+            repeat_count = 7,
+            shift = util.by_pixel(12, 4.5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
     circuit_connector = circuit_connector_definitions["chest"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
   {
     type = "logistic-container",
@@ -5952,36 +5957,40 @@ data:extend(
     logistic_mode = "requester",
     open_sound = sounds.metallic_chest_open,
     close_sound = sounds.metallic_chest_close,
-    animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
-    opened_duration = logistic_chest_opened_duration,
-    animation =
+    robot_door =
     {
-      layers =
+      animation_sound = sounds.logistics_chest_open,
+      opened_duration = logistic_chest_opened_duration,
+      animation =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/logistic-chest/requester-chest.png",
-          priority = "extra-high",
-          width = 66,
-          height = 74,
-          frame_count = 7,
-          shift = util.by_pixel(0, -2),
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
-          priority = "extra-high",
-          width = 112,
-          height = 46,
-          repeat_count = 7,
-          shift = util.by_pixel(12, 4.5),
-          draw_as_shadow = true,
-          scale = 0.5
+          {
+            filename = "__base__/graphics/entity/logistic-chest/requester-chest.png",
+            priority = "extra-high",
+            width = 66,
+            height = 74,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          },
+          {
+            filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 112,
+            height = 46,
+            repeat_count = 7,
+            shift = util.by_pixel(12, 4.5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
     circuit_connector = circuit_connector_definitions["chest"],
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection = chest_reflection()
   },
   {
     type = "rocket-silo",
@@ -5993,6 +6002,9 @@ data:extend(
     fast_replaceable_group = "rocket-silo",
     rocket_parts_required = 100,
     rocket_quick_relaunch_start_offset = -0.625,
+    rocket_rising_speed_modifier_per_quality_level = 0.15,
+    rocket_engine_starting_speed_modifier_per_quality_level = 0.45,
+    arms_speed_modifier_per_quality_level = 0.2,
     cargo_station_parameters =
     {
       is_input_station = false,
@@ -6006,7 +6018,7 @@ data:extend(
     module_slots = 4,
     icons_positioning =
     {
-      {inventory_index = defines.inventory.assembling_machine_modules, shift = {0, 3.3}}
+      {inventory_index = defines.inventory.crafter_modules, shift = {0, 3.3}}
     },
     fixed_recipe = "rocket-part",
     show_recipe_icon = false,
@@ -6015,10 +6027,12 @@ data:extend(
     max_health = 5000,
     corpse = "rocket-silo-remnants",
     dying_explosion = "rocket-silo-explosion",
-    collision_box = {{-4.20, -4.20}, {4.20, 4.20}},
+    collision_box = {{-4.42, -4.20}, {4.42, 4.20}},
     selection_box = {{-4.5, -4.5}, {4.5, 4.5}},
     damaged_trigger_effect = hit_effects.entity(),
     hole_clipping_box = { {-2.75, -1.15}, {2.75, 2.25} },
+    graphics_set = require("__base__.prototypes.entity.rocket-silo-crafting-pictures").graphics_set,
+    perceived_performance = {minimum = 1, maximum = 2.2},
     resistances =
     {
       {
@@ -6055,11 +6069,11 @@ data:extend(
     {
       filename = "__base__/graphics/entity/rocket-silo/00-rocket-silo-shadow.png",
       priority = "medium",
-      width = 612,
-      height = 578,
+      width = 656,
+      height = 600,
       draw_as_shadow = true,
       dice = 2,
-      shift = util.by_pixel(7, 2),
+      shift = util.by_pixel(20.0, -4.0),
       scale = 0.5
     },
 
@@ -6123,9 +6137,9 @@ data:extend(
     {
       filename = "__base__/graphics/entity/rocket-silo/06-rocket-silo.png",
       dice_y = 3,
-      width = 608,
-      height = 596,
-      shift = util.by_pixel(3, -1),
+      width = 628,
+      height = 612,
+      shift = util.by_pixel(  2.0, 3.5),
       scale = 0.5
     },
 
@@ -6226,6 +6240,7 @@ data:extend(
         }
       }
     },
+
     satellite_animation =
     {
       filename = "__base__/graphics/entity/rocket-silo/15-rocket-silo-turbine.png",
@@ -6235,8 +6250,21 @@ data:extend(
       frame_count = 32,
       line_length = 8,
       animation_speed = 0.4,
-      shift = util.by_pixel(-100, 111),
+      shift = util.by_pixel(-99.5, 111.5),
       scale = 0.5
+    },
+
+    robot_door =
+    {
+      location_offset = {3.8, -3.6},
+      opened_duration = logistic_chest_opened_duration,
+      animation = util.sprite_load("__base__/graphics/entity/rocket-silo/roboport-door",
+                  {
+                    frame_count = 16,
+                    scale = 0.5,
+                    shift = { 0, 0},
+                  }),
+      animation_sound = sounds.logistics_chest_open,
     },
 
     arm_01_back_animation =
@@ -6281,9 +6309,9 @@ data:extend(
     base_front_sprite =
     {
       filename = "__base__/graphics/entity/rocket-silo/14-rocket-silo-front.png",
-      width = 580,
+      width = 586,
       height = 262,
-      shift = util.by_pixel(-1, 78),
+      shift = util.by_pixel(1.0, 78.0),
       scale = 0.5
     },
     silo_fade_out_start_distance = 8,
@@ -6300,13 +6328,56 @@ data:extend(
     working_sound =
     {
       sound =
-        {
-          filename = "__base__/sound/rocket-silo-working-1.ogg",
-          volume = 0.8,
-          aggregation = {max_count = 3, remove = true, count_already_playing = true}
-        },
+      {
+        filename = "__base__/sound/rocket-silo-working-1.ogg",
+        volume = 0.8,
+        aggregation = {max_count = 3, remove = true, count_already_playing = true}
+      },
       fade_in_ticks = 10,
-      fade_out_ticks = 15
+      fade_out_ticks = 15,
+      sound_accents =
+      {
+        {
+          sound =
+          {
+            filename = "__base__/sound/silo-accents/silo-metal-rotate.ogg",
+            volume = 0.2,
+            aggregation = {max_count = 1, remove = true, count_already_playing = true}
+          },
+          play_for_working_visualisation = "crafting",
+          frame = 6,
+        },
+        {
+          sound =
+          {
+            filename = "__base__/sound/silo-accents/silo-metal-stop.ogg",
+            volume = 0.2,
+            aggregation = {max_count = 1, remove = true, count_already_playing = true}
+          },
+          play_for_working_visualisation = "crafting",
+          frame = 9,
+        },
+        {
+          sound =
+          {
+            filename = "__base__/sound/silo-accents/silo-welder-start.ogg",
+            volume = 0.2,
+            aggregation = {max_count = 1, remove = true, count_already_playing = true}
+          },
+          play_for_working_visualisation = "crafting",
+          frame = 12,
+        },
+        {
+          sound =
+          {
+            filename = "__base__/sound/silo-accents/silo-welder.ogg",
+            volume = 0.2,
+            aggregation = {max_count = 1, remove = true, count_already_playing = true}
+          },
+          play_for_working_visualisation = "crafting",
+          frame = 20,
+        },
+      }
     },
   },
   {
@@ -6447,7 +6518,7 @@ data:extend(
     }),
     rocket_flame_left_rotation = 0.0611,
     rocket_flame_right_rotation = 0.952,
-    rocket_initial_offset = {0, 3},
+    rocket_initial_offset = {0, 3.5},
     rocket_rise_offset = {0, -2.8},
     rocket_launch_offset = {0, -256},
     cargo_attachment_offset = util.by_pixel(0, -63.4),
@@ -6463,11 +6534,16 @@ data:extend(
 
     flying_sound =
     {
-      filename = "__base__/sound/silo-rocket.ogg",
-      volume = 1.0,
-      modifiers = volume_multiplier("main-menu", 0.6),
+      variations = sound_variations("__base__/sound/entity/silo-rocket-takeoff/silo-rocket", 3, 1.0, volume_multiplier("main-menu", 0.6)),
       audible_distance_modifier = 6,
-      aggregation = {max_count = 3, remove = true, count_already_playing = true, priority = "oldest"}
+      aggregation =
+      {
+        max_count = 3,
+        remove = true,
+        count_already_playing = true,
+        priority = "oldest",
+        progress_threshold = 0.7,
+      }
     }
   },
   {
@@ -6505,6 +6581,18 @@ data:extend(
     radar_visualisation_color = {0.059, 0.092, 0.235, 0.275},
     open_sound = sounds.mech_large_open,
     close_sound = sounds.mech_large_close,
+    radius_visualisation_picture =
+    {
+      filename = "__base__/graphics/entity/cargo-hubs/hubs/unloading-bay-radius-visualization.png",
+      priority = "extra-high-no-scale",
+      width = 10,
+      height = 10
+    },
+    icon_draw_specification =
+    {
+      scale = 2,
+      scale_for_many = 2
+    },
     graphics_set =
     {
         water_reflection =
@@ -6642,15 +6730,18 @@ data:extend(
           }
       }
     },
-    robot_landing_location_offset = {-2.1, -2.8},
-    robot_opened_duration = logistic_chest_opened_duration,
-    robot_animation = util.sprite_load("__base__/graphics/entity/cargo-hubs/hubs/planet-hub-drone-hatch",
-                      {
-                        frame_count = 7,
-                        scale = 0.5,
-                        shift = {0, -0.5},
-                      }),
-    robot_animation_sound = sounds.logistics_chest_open,
+    robot_door =
+    {
+      location_offset = {-2.1, -2.8},
+      opened_duration = logistic_chest_opened_duration,
+      animation = util.sprite_load("__base__/graphics/entity/cargo-hubs/hubs/planet-hub-drone-hatch",
+                  {
+                    frame_count = 7,
+                    scale = 0.5,
+                    shift = {0, -0.5},
+                  }),
+      animation_sound = sounds.logistics_chest_open,
+    },
     cargo_station_parameters =
     {
       is_input_station = true,
@@ -6888,12 +6979,11 @@ data:extend(
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
-        { direction = defines.direction.north, position = {-1, -1} },
-        { direction = defines.direction.east, position = {1, 1} },
-        { direction = defines.direction.south, position = {1, 1} },
-        { direction = defines.direction.west, position = {-1, -1} }
+        { direction = defines.direction.north, position = {-1, -1}, hide_connection_info = true },
+        { direction = defines.direction.east, position = {1, 1}, hide_connection_info = true },
+        { direction = defines.direction.south, position = {1, 1}, hide_connection_info = true },
+        { direction = defines.direction.west, position = {-1, -1}, hide_connection_info = true }
       },
-      hide_connection_info = true
     },
     two_direction_only = true,
     window_bounding_box = {{-0.125, 0.6875}, {0.1875, 1.1875}},
@@ -6971,6 +7061,7 @@ data:extend(
 
     circuit_connector = circuit_connector_definitions["storage-tank"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_fluid_temperature_signal = {type = "virtual", name = "signal-T"},
     water_reflection =
     {
       pictures =
@@ -7003,8 +7094,19 @@ data:extend(
     icon_draw_specification = {scale = 0.5},
     working_sound =
     {
-      sound = {filename = "__base__/sound/pump.ogg", volume = 0.3, audible_distance_modifier = 0.5},
-      max_sounds_per_prototype = 2
+      main_sounds =
+      {
+        {
+          sound = {filename = "__base__/sound/pump.ogg", volume = 0.3, audible_distance_modifier = 0.5},
+        },
+        {
+          sound = {filename = "__base__/sound/entity/pump/pump-fluid-flow.ogg", volume = 0.35},
+          match_volume_to_activity = true,
+          fade_out_ticks = 50,
+          activity_to_volume_modifiers = {offset = 1.0},
+        },
+      },
+      max_sounds_per_prototype = 1
     },
     damaged_trigger_effect = hit_effects.entity(),
     resistances =
@@ -7025,7 +7127,7 @@ data:extend(
       pipe_connections =
       {
         { direction = defines.direction.north, position = {0, -0.5}, flow_direction = "output" },
-        { direction = defines.direction.south, position = {0, 0.5}, flow_direction = "input" }
+        { direction = defines.direction.south, position = {0, 0.5}, flow_direction = "input", hide_connection_info = true }
       }
     },
     energy_source =
@@ -7044,55 +7146,154 @@ data:extend(
     {
       north =
       {
-        filename = "__base__/graphics/entity/pump/pump-north.png",
-        width = 103,
-        height = 164,
-        scale = 0.5,
-        line_length =8,
-        frame_count =32,
-        animation_speed = 0.5,
-        shift = util.by_pixel(8, -0.85)
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/pump/pump-north.png",
+            width = 103,
+            height = 164,
+            scale = 0.5,
+            line_length =8,
+            frame_count =32,
+            animation_speed = 0.5,
+            shift = util.by_pixel(8, -0.85)
+          },
+          {
+            filename = "__base__/graphics/entity/pump/pump-north-shadow.png",
+            width = 103,
+            height = 164,
+            scale = 0.5,
+            line_length =8,
+            frame_count =32,
+            animation_speed = 0.5,
+            shift = util.by_pixel(8, -0.85),
+            draw_as_shadow = true,
+          },
+        }
       },
       east =
       {
-        filename = "__base__/graphics/entity/pump/pump-east.png",
-        width = 130,
-        height = 109,
-        scale = 0.5,
-        line_length =8,
-        frame_count =32,
-        animation_speed = 0.5,
-        shift = util.by_pixel(-0.5, 1.75)
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/pump/pump-east.png",
+            width = 130,
+            height = 109,
+            scale = 0.5,
+            line_length =8,
+            frame_count =32,
+            animation_speed = 0.5,
+            shift = util.by_pixel(-0.5, 1.75)
+          },
+          {
+            filename = "__base__/graphics/entity/pump/pump-east-shadow.png",
+            width = 130,
+            height = 109,
+            scale = 0.5,
+            line_length =8,
+            frame_count =32,
+            animation_speed = 0.5,
+            shift = util.by_pixel(-0.5, 1.75),
+            draw_as_shadow = true,
+          },
+        }
       },
-
       south =
       {
-        filename = "__base__/graphics/entity/pump/pump-south.png",
-        width = 114,
-        height = 160,
-        scale = 0.5,
-        line_length =8,
-        frame_count =32,
-        animation_speed = 0.5,
-        shift = util.by_pixel(12.5, -8)
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/pump/pump-south.png",
+            width = 114,
+            height = 160,
+            scale = 0.5,
+            line_length =8,
+            frame_count =32,
+            animation_speed = 0.5,
+            shift = util.by_pixel(12.5, -8)
+          },
+          {
+            filename = "__base__/graphics/entity/pump/pump-south-shadow.png",
+            width = 114,
+            height = 160,
+            scale = 0.5,
+            line_length =8,
+            frame_count =32,
+            animation_speed = 0.5,
+            shift = util.by_pixel(12.5, -8),
+            draw_as_shadow = true,
+          },
+        }
       },
       west =
       {
-        filename = "__base__/graphics/entity/pump/pump-west.png",
-        width = 131,
-        height = 111,
-        scale = 0.5,
-        line_length =8,
-        frame_count =32,
-        animation_speed = 0.5,
-        shift = util.by_pixel(-0.25, 1.25)
-      }
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/pump/pump-west.png",
+            width = 131,
+            height = 111,
+            scale = 0.5,
+            line_length =8,
+            frame_count =32,
+            animation_speed = 0.5,
+            shift = util.by_pixel(-0.25, 1.25)
+          },
+          {
+            filename = "__base__/graphics/entity/pump/pump-west-shadow.png",
+            width = 131,
+            height = 111,
+            scale = 0.5,
+            line_length =8,
+            frame_count =32,
+            animation_speed = 0.5,
+            shift = util.by_pixel(-0.25, 1.25),
+            draw_as_shadow = true,
+          },
+        }
+      },
+    },
+    wagon_connection_graphics = require("prototypes.entity.pump-wagon-connector-graphics"),
+    fluid_wagon_tank_valve_max_distance = 2.22,
+
+    base_lifting_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/entity/pump/pump-base-lift-loop.ogg",
+        volume = 0.6,
+        advanced_volume_control =
+        {
+          fades = {fade_in = {curve_type = "S-curve", from = {control = 0.3, volume_percentage = 0.0}, to = {2.0, 100.0}}}
+        },
+        aggregation = {max_count = 1, remove = true, count_already_playing = true},
+      },
     },
 
-    fluid_wagon_connector_frame_count = 35,
-    fluid_wagon_connector_alignment_tolerance = 2.0 / 32.0,
+    arm_orienting_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/entity/pump/pump-arm-orient-loop.ogg",
+        volume = 0.8,
+        advanced_volume_control =
+        {
+          fades = {fade_in = {curve_type = "S-curve", from = {control = 0.3, volume_percentage = 0.0}, to = {2.0, 100.0}}}
+        },
+        aggregation = {max_count = 1, remove = true, count_already_playing = true},
+      },
+    },
 
-    fluid_wagon_connector_graphics = require("prototypes.entity.pump-connector"),
+    clamp_sound =
+    {
+      filename = "__base__/sound/entity/pump/pump-clamp.ogg",
+      volume = 0.6,
+      advanced_volume_control =
+      {
+        fades = {fade_in = {curve_type = "S-curve", from = {control = 0.3, volume_percentage = 0.0}, to = {2.0, 100.0}}}
+      },
+      aggregation = {max_count = 1, remove = true, count_already_playing = true},
+    },
 
     fluid_animation =
     {
@@ -7196,7 +7397,7 @@ data:extend(
       pipe_connections =
       {
         {direction = defines.direction.north, position = {0, 0}, flow_direction = "output"},
-        {direction = defines.direction.south, position = {0, 0}, flow_direction = "input-output"},
+        {direction = defines.direction.south, position = {0, 0}, flow_direction = "input-output", hide_connection_info = true},
       },
     },
     max_health = 100,
@@ -7231,7 +7432,7 @@ data:extend(
       pipe_connections =
       {
         {direction = defines.direction.north, position = {0, 0}, flow_direction = "output"},
-        {direction = defines.direction.south, position = {0, 0}, flow_direction = "input-output"},
+        {direction = defines.direction.south, position = {0, 0}, flow_direction = "input-output", hide_connection_info = true},
       },
     },
     max_health = 100,
@@ -7266,7 +7467,7 @@ data:extend(
       pipe_connections =
       {
         {direction = defines.direction.north, position = {0, 0}, flow_direction = "output"},
-        {direction = defines.direction.south, position = {0, 0}, flow_direction = "input-output"},
+        {direction = defines.direction.south, position = {0, 0}, flow_direction = "input-output", hide_connection_info = true},
       },
     },
     max_health = 100,
@@ -7646,6 +7847,7 @@ data:extend(
     alert_icon_shift = util.by_pixel(0, -13),
     immune_to_tree_impacts = true,
     immune_to_rock_impacts = true,
+    immune_to_all_impacts = true,
     energy_per_hit_point = 0.5,
     allow_remote_driving = true,
     equipment_grid = "medium-equipment-grid",
@@ -7683,7 +7885,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 0.5,
     effectivity = 0.9,
-    braking_power = "800kW",
+    braking_force = (800 * 1000) / 60,
     energy_source =
     {
       type = "burner",
@@ -7704,7 +7906,7 @@ data:extend(
     },
     consumption = "600kW",
     terrain_friction_modifier = 0.2,
-    friction = 0.002,
+    friction_force = 0.002,
     light =
     {
       {
@@ -8044,6 +8246,15 @@ data:extend(
   },
   {
     type = "sticker",
+    name = "shotgun-impact-sticker",
+    flags = {"not-on-map"},
+    hidden = true,
+    duration_in_ticks = 100,
+    target_movement_modifier_from = 0.5,
+    target_movement_modifier_to = 1,
+  },
+  {
+    type = "sticker",
     name = "electric-mini-stun",
     flags = {"not-on-map"},
     hidden = true,
@@ -8062,9 +8273,13 @@ data:extend(
     corpse = "oil-refinery-remnants",
     dying_explosion = "oil-refinery-explosion",
     icon_draw_specification = {scale = 2, shift = {0, -0.3}},
+    icons_positioning =
+    {
+      {inventory_index = defines.inventory.crafter_modules, shift = {0, 1.25}}
+    },
     circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
     circuit_connector = circuit_connector_definitions["oil-refinery"],
-    collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
+    collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
     collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true, is_object=true, is_lower_object=true, meltable=true}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     damaged_trigger_effect = hit_effects.entity(),
@@ -8081,108 +8296,60 @@ data:extend(
     },
     energy_usage = "420kW",
 
-    graphics_set =
-    {
-      animation = make_4way_animation_from_spritesheet(
-      {
-        layers =
-        {
-          {
-            filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
-            width = 386,
-            height = 430,
-            shift = util.by_pixel(0, -7.5),
-            scale = 0.5
-          },
-          {
-            filename = "__base__/graphics/entity/oil-refinery/oil-refinery-shadow.png",
-            width = 674,
-            height = 426,
-            shift = util.by_pixel(82.5, 26.5),
-            draw_as_shadow = true,
-            scale = 0.5
-          }
-        }
-      }),
+    perceived_performance = {minimum = 0.25, maximum = 5},
+    use_mirroring = true,
+    graphics_set = require("__base__/prototypes/entity/oil-refinery-animation"),
 
-      working_visualisations =
-      {
-        {
-          fadeout = true,
-          constant_speed = true,
-          north_position = util.by_pixel(34, -65),
-          east_position = util.by_pixel(-52, -61),
-          south_position = util.by_pixel(-59, -82),
-          west_position = util.by_pixel(57, -58),
-          animation =
-          {
-            filename = "__base__/graphics/entity/oil-refinery/oil-refinery-fire.png",
-            line_length = 10,
-            width = 40,
-            height = 81,
-            frame_count = 60,
-            animation_speed = 0.75,
-            scale = 0.5,
-            draw_as_glow = true,
-            shift = util.by_pixel(0, -14.25)
-          },
-        },
-        {
-          fadeout = true,
-          north_animation =
-          {
-            filename = "__base__/graphics/entity/oil-refinery/oil-refinery-light.png",
-            width = 321,
-            height = 205,
-            blend_mode = "additive",
-            draw_as_glow = true,
-            shift = util.by_pixel(-1, -50),
-            scale = 0.5,
-          },
-          east_animation =
-          {
-            filename = "__base__/graphics/entity/oil-refinery/oil-refinery-light.png",
-            width = 321,
-            x = 321;
-            height = 205,
-            blend_mode = "additive",
-            draw_as_glow = true,
-            shift = util.by_pixel(-1, -50),
-            scale = 0.5,
-          },
-          south_animation =
-          {
-            filename = "__base__/graphics/entity/oil-refinery/oil-refinery-light.png",
-            width = 321,
-            x = 321 * 2;
-            height = 205,
-            blend_mode = "additive",
-            draw_as_glow = true,
-            shift = util.by_pixel(-1, -50),
-            scale = 0.5,
-          },
-          west_animation =
-          {
-            filename = "__base__/graphics/entity/oil-refinery/oil-refinery-light.png",
-            width = 321,
-            x = 321 * 3;
-            height = 205,
-            blend_mode = "additive",
-            draw_as_glow = true,
-            shift = util.by_pixel(-1, -50),
-            scale = 0.5,
-          },
-        }
-      }
-    },
     impact_category = "metal-large",
     open_sound = sounds.metal_large_open,
     close_sound = sounds.metal_large_close,
     working_sound =
     {
-      sound = { filename = "__base__/sound/oil-refinery.ogg" },
-      fade_in_ticks = 4,
-      fade_out_ticks = 20
+      main_sounds =
+      {
+        {
+          sound = {filename = "__base__/sound/oil-refinery-north.ogg", volume = 0.9},
+          fade_in_ticks = 4,
+          fade_out_ticks = 20,
+          play_for_directions = {defines.direction.north}
+        },
+        {
+          sound = {filename = "__base__/sound/oil-refinery.ogg", volume = 0.9},
+          fade_in_ticks = 4,
+          fade_out_ticks = 20,
+          play_for_directions = {defines.direction.east, defines.direction.south, defines.direction.west}
+        },
+      },
+      sound_accents =
+      {
+        {
+          sound =
+          {
+            variations = sound_variations("__base__/sound/oil-refinery-accents/oil-refinery-fluid", 3, 0.5),
+            audible_distance_modifier = 0.3
+          },
+          frame = 1,
+          play_for_directions = {defines.direction.north, defines.direction.west}
+        },
+        {
+          sound =
+          {
+            variations = sound_variations("__base__/sound/oil-refinery-accents/oil-refinery-gear", 3, 0.7),
+            audible_distance_modifier = 0.3
+          },
+          frame = 1,
+          play_for_directions = {defines.direction.north, defines.direction.west}
+        },
+        {
+          sound =
+          {
+            variations = sound_variations("__base__/sound/oil-refinery-accents/oil-refinery-mech", 3, 0.35),
+            audible_distance_modifier = 0.5
+          },
+          frame = 3,
+          play_for_directions = {defines.direction.south, defines.direction.west}
+        },
+      },
     },
     fluid_boxes =
     {
@@ -8254,16 +8421,11 @@ data:extend(
     },
     water_reflection =
     {
-      pictures =
+      pictures = util.sprite_load("__base__/graphics/entity/oil-refinery/oil-refinery-reflections",
       {
-        filename = "__base__/graphics/entity/oil-refinery/oil-refinery-reflection.png",
-        priority = "extra-high",
-        width = 40,
-        height = 48,
-        shift = util.by_pixel(5, 95),
+        scale = 3,
         variation_count = 4,
-        scale = 5
-      },
+      }),
       rotate = false,
       orientation_to_variation = true
     }
@@ -8289,29 +8451,143 @@ data:extend(
     module_slots = 3,
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
 
+    use_mirroring = true,
     graphics_set =
     {
-      animation = make_4way_animation_from_spritesheet({ layers =
+      animation = 
       {
+        north = 
         {
-          filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
-          width = 220,
-          height = 292,
-          frame_count = 24,
-          line_length = 12,
-          shift = util.by_pixel(0.5, -9),
-          scale = 0.5
+          layers = 
+          {
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-north-base", {
+              scale = 0.5,
+              frame_count = 1,
+              repeat_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-north-anim-1", {
+              scale = 0.5,
+              frame_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-north-anim-2", {
+              scale = 0.5,
+              frame_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            {
+              filename = "__base__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
+              width = 312,
+              height = 222,
+              x = 0,
+              frame_count = 1,
+              repeat_count = 24,
+              shift = util.by_pixel(27, 6),
+              draw_as_shadow = true,
+              scale = 0.5,
+            }
+          }
         },
+        east = 
         {
-          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
-          width = 312,
-          height = 222,
-          repeat_count = 24,
-          shift = util.by_pixel(27, 6),
-          draw_as_shadow = true,
-          scale = 0.5
+          layers = 
+          {
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-east-base", {
+              scale = 0.5,
+              frame_count = 1,
+              repeat_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-east-anim-1", {
+              scale = 0.5,
+              frame_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-east-anim-2", {
+              scale = 0.5,
+              frame_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            {
+              filename = "__base__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
+              width = 312,
+              height = 222,
+              x = 312,
+              frame_count = 1,
+              repeat_count = 24,
+              shift = util.by_pixel(27, 6),
+              draw_as_shadow = true,
+              scale = 0.5,
+            }
+          }
+        },
+        south = 
+        {
+          layers = 
+          {
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-south-base", {
+              scale = 0.5,
+              frame_count = 1,
+              repeat_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-south-anim-1", {
+              scale = 0.5,
+              frame_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-south-anim-2", {
+              scale = 0.5,
+              frame_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            {
+              filename = "__base__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
+              width = 312,
+              height = 222,
+              x = 312 * 2,
+              frame_count = 1,
+              repeat_count = 24,
+              shift = util.by_pixel(27, 6),
+              draw_as_shadow = true,
+              scale = 0.5,
+            }
+          }
+        },
+        west = 
+        {
+          layers = 
+          {
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-west-base", {
+              scale = 0.5,
+              frame_count = 1,
+              repeat_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-west-anim-1", {
+              scale = 0.5,
+              frame_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-west-anim-2", {
+              scale = 0.5,
+              frame_count = 24,
+              shift = util.by_pixel(0, -9),
+            }),
+            {
+              filename = "__base__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
+              width = 312,
+              height = 222,
+              x = 312 * 3,
+              repeat_count = 24,
+              shift = util.by_pixel(27, 6),
+              draw_as_shadow = true,
+              scale = 0.5,
+            }
+          }
         }
-      }}),
+      },
       working_visualisations =
       {
         {
@@ -8554,7 +8830,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "10GJ",
-      usage_priority = "tertiary"
+      usage_priority = "dynamic"
     },
 
     energy_production = "500GW",
@@ -8577,6 +8853,16 @@ data:extend(
     dying_explosion = "nuclear-reactor-explosion",
     consumption = "40MW",
     neighbour_bonus = 1,
+    neighbour_connectable =
+    {
+      connections =
+      {
+        { location = { position = {  0,   -2.5 }, direction = defines.direction.north }, category = "nuclear-reactor", neighbour_category = {"nuclear-reactor"} },
+        { location = { position = {  2.5,  0   }, direction = defines.direction.east  }, category = "nuclear-reactor", neighbour_category = {"nuclear-reactor"} },
+        { location = { position = {  0,    2.5 }, direction = defines.direction.south }, category = "nuclear-reactor", neighbour_category = {"nuclear-reactor"} },
+        { location = { position = { -2.5,  0   }, direction = defines.direction.west  }, category = "nuclear-reactor", neighbour_category = {"nuclear-reactor"} },
+      }
+    },
     energy_source =
     {
       type = "burner",
@@ -8594,6 +8880,7 @@ data:extend(
     collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     damaged_trigger_effect = hit_effects.entity(),
+    temperature_to_suppress_energy_icons = 800,
     lower_layer_picture =
     {
       filename = "__base__/graphics/entity/nuclear-reactor/reactor-pipes.png",
@@ -8792,6 +9079,17 @@ data:extend(
     default_temperature_signal = {type = "virtual", name = "signal-T"},
     circuit_wire_max_distance = reactor_circuit_wire_max_distance,
     circuit_connector = circuit_connector_definitions["nuclear-reactor"],
+    water_reflection =
+    {
+      pictures =
+      {
+          filename = "__base__/graphics/entity/nuclear-reactor/nuclear-reactor-reflection.png",
+          width = 74,
+          height = 74,
+          scale = 5,
+      },
+      rotate = false,
+    }
   },
   {
     type = "assembling-machine",
@@ -8825,72 +9123,26 @@ data:extend(
       {
         layers =
         {
-          -- Centrifuge A
+          util.sprite_load("__base__/graphics/entity/centrifuge/centrifuge-ABC-integration",
           {
-            filename = "__base__/graphics/entity/centrifuge/centrifuge-C.png",
             priority = "high",
             scale = 0.5,
-            line_length = 8,
-            width = 237,
-            height = 214,
-            frame_count = 64,
-            shift = util.by_pixel(-0.25, -26.5)
-          },
+            frame_count = 1,
+            repeat_count = 64
+          }),
+          util.sprite_load("__base__/graphics/entity/centrifuge/centrifuge-ABC",
           {
-            filename = "__base__/graphics/entity/centrifuge/centrifuge-C-shadow.png",
-            draw_as_shadow = true,
             priority = "high",
             scale = 0.5,
-            line_length = 8,
-            width = 279,
-            height = 152,
-            frame_count = 64,
-            shift = util.by_pixel(16.75, -10)
-          },
-          -- Centrifuge B
+            frame_count = 64
+          }),
+          util.sprite_load("__base__/graphics/entity/centrifuge/centrifuge-ABC-shadow",
           {
-            filename = "__base__/graphics/entity/centrifuge/centrifuge-B.png",
             priority = "high",
             scale = 0.5,
-            line_length = 8,
-            width = 156,
-            height = 234,
             frame_count = 64,
-            shift = util.by_pixel(23, 6.5)
-          },
-          {
-            filename = "__base__/graphics/entity/centrifuge/centrifuge-B-shadow.png",
-            draw_as_shadow = true,
-            priority = "high",
-            scale = 0.5,
-            line_length = 8,
-            width = 251,
-            height = 149,
-            frame_count = 64,
-            shift = util.by_pixel(63.25, 15.25)
-          },
-          -- Centrifuge A
-          {
-            filename = "__base__/graphics/entity/centrifuge/centrifuge-A.png",
-            priority = "high",
-            scale = 0.5,
-            line_length = 8,
-            width = 139,
-            height = 246,
-            frame_count = 64,
-            shift = util.by_pixel(-26.25, 3.5)
-          },
-          {
-            filename = "__base__/graphics/entity/centrifuge/centrifuge-A-shadow.png",
-            priority = "high",
-            draw_as_shadow = true,
-            scale = 0.5,
-            line_length = 8,
-            width = 230,
-            height = 124,
-            frame_count = 64,
-            shift = util.by_pixel(8.5, 23.5)
-          }
+            draw_as_shadow = true
+          })
         }
       },
 
@@ -8908,45 +9160,14 @@ data:extend(
           {
             layers =
             {
-              -- Centrifuge C
+              util.sprite_load("__base__/graphics/entity/centrifuge/centrifuge-ABC-light",
               {
-                filename = "__base__/graphics/entity/centrifuge/centrifuge-C-light.png",
                 priority = "high",
                 scale = 0.5,
-                blend_mode = "additive", -- centrifuge
-                line_length = 8,
-                width = 190,
-                height = 207,
                 frame_count = 64,
-                draw_as_glow = true,
-                shift = util.by_pixel(0, -27.25)
-              },
-              -- Centrifuge B
-              {
-                filename = "__base__/graphics/entity/centrifuge/centrifuge-B-light.png",
-                priority = "high",
-                scale = 0.5,
-                blend_mode = "additive", -- centrifuge
-                line_length = 8,
-                width = 131,
-                height = 206,
-                frame_count = 64,
-                draw_as_glow = true,
-                shift = util.by_pixel(16.75, 0.5)
-              },
-              -- Centrifuge A
-              {
-                filename = "__base__/graphics/entity/centrifuge/centrifuge-A-light.png",
-                priority = "high",
-                scale = 0.5,
-                blend_mode = "additive", -- centrifuge
-                line_length = 8,
-                width = 108,
-                height = 197,
-                frame_count = 64,
-                draw_as_glow = true,
-                shift = util.by_pixel(-23.5, -1.75)
-              }
+                blend_mode = "additive",
+                draw_as_glow = true
+              })
             }
           }
         }
@@ -9078,44 +9299,99 @@ data:extend(
         }),
       heat_picture =
       {
-        north = apply_heat_pipe_glow
+        north =
         {
-          filename = "__base__/graphics/entity/heat-exchanger/heatex-N-heated.png",
-          priority = "extra-high",
-          width = 44,
-          height = 96,
-          shift = util.by_pixel(-0.5, 8.5),
-          scale = 0.5
+          layers =
+          {
+            apply_heat_pipe_glow
+            {
+              filename = "__base__/graphics/entity/heat-exchanger/heatex-N-heated.png",
+              priority = "extra-high",
+              width = 44,
+              height = 96,
+              shift = util.by_pixel(-0.5, 8.5),
+              scale = 0.5
+            },
+            apply_heat_pipe_glow(util.sprite_load( "__base__/graphics/entity/heat-exchanger/heatex-N-glow",
+              {
+                priority = "extra-high",
+                blend_mode = "additive",
+                scale = 0.5
+              }
+            ))
+          }
+
         },
-        east = apply_heat_pipe_glow
+        east =
         {
-          filename = "__base__/graphics/entity/heat-exchanger/heatex-E-heated.png",
-          priority = "extra-high",
-          width = 80,
-          height = 80,
-          shift = util.by_pixel(-21, -13),
-          scale = 0.5
+          layers =
+          {
+            apply_heat_pipe_glow
+            {
+              filename = "__base__/graphics/entity/heat-exchanger/heatex-E-heated.png",
+              priority = "extra-high",
+              width = 80,
+              height = 80,
+              shift = util.by_pixel(-21, -13),
+              scale = 0.5
+            },
+            apply_heat_pipe_glow(util.sprite_load( "__base__/graphics/entity/heat-exchanger/heatex-E-glow",
+              {
+                priority = "extra-high",
+                blend_mode = "additive",
+                scale = 0.5
+              }
+            ))
+          }
         },
-        south = apply_heat_pipe_glow
+        south =
         {
-          filename = "__base__/graphics/entity/heat-exchanger/heatex-S-heated.png",
-          priority = "extra-high",
-          width = 28,
-          height = 40,
-          shift = util.by_pixel(-1, -30),
-          scale = 0.5
+          layers =
+          {
+            apply_heat_pipe_glow
+            {
+              filename = "__base__/graphics/entity/heat-exchanger/heatex-S-heated.png",
+              priority = "extra-high",
+              width = 28,
+              height = 40,
+              shift = util.by_pixel(-1, -30),
+              scale = 0.5
+            },
+            apply_heat_pipe_glow(util.sprite_load( "__base__/graphics/entity/heat-exchanger/heatex-S-glow",
+              {
+                priority = "extra-high",
+                blend_mode = "additive",
+                scale = 0.5
+              }
+            ))
+          }
         },
-        west = apply_heat_pipe_glow
+        west =
         {
-          filename = "__base__/graphics/entity/heat-exchanger/heatex-W-heated.png",
-          priority = "extra-high",
-          width = 64,
-          height = 76,
-          shift = util.by_pixel(23, -13),
-          scale = 0.5
+          layers =
+          {
+            apply_heat_pipe_glow
+            {
+              filename = "__base__/graphics/entity/heat-exchanger/heatex-W-heated.png",
+              priority = "extra-high",
+              width = 64,
+              height = 76,
+              shift = util.by_pixel(23, -13),
+              scale = 0.5
+            },
+             apply_heat_pipe_glow(util.sprite_load( "__base__/graphics/entity/heat-exchanger/heatex-W-glow",
+              {
+                priority = "extra-high",
+                blend_mode = "additive",
+                scale = 0.5
+              }
+            ))
+          }
         }
       }
     },
+    circuit_connector = circuit_connector_definitions["boiler"],
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
     working_sound =
     {
       sound =
@@ -9139,25 +9415,28 @@ data:extend(
         {
           layers =
           {
+            util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-N-idle",
             {
-              filename = "__base__/graphics/entity/heat-exchanger/heatex-N-idle.png",
               priority = "extra-high",
-              width = 269,
-              height = 221,
-              shift = util.by_pixel(-1.25, 5.25),
               scale = 0.5
-            },
+            }),
+            util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-N-shadow",
             {
-              filename = "__base__/graphics/entity/boiler/boiler-N-shadow.png",
               priority = "extra-high",
-              width = 274,
-              height = 164,
               scale = 0.5,
-              shift = util.by_pixel(20.5, 9),
               draw_as_shadow = true
-            }
+            })
           }
-        }
+        },
+       fire = util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-N-fluid",
+        {
+          draw_as_glow = true,
+          priority = "extra-high",
+          frame_count = 32,
+          animation_speed = 0.5,
+          blend_mode = "additive",
+          scale = 0.5,
+        })
       },
       east =
       {
@@ -9165,25 +9444,28 @@ data:extend(
         {
           layers =
           {
+            util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-E-idle",
             {
-              filename = "__base__/graphics/entity/heat-exchanger/heatex-E-idle.png",
               priority = "extra-high",
-              width = 211,
-              height = 301,
-              shift = util.by_pixel(-1.75, 1.25),
               scale = 0.5
-            },
+            }),
+            util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-E-shadow",
             {
-              filename = "__base__/graphics/entity/boiler/boiler-E-shadow.png",
               priority = "extra-high",
-              width = 184,
-              height = 194,
               scale = 0.5,
-              shift = util.by_pixel(30, 9.5),
               draw_as_shadow = true
-            }
+            })
           }
-        }
+        },
+        fire = util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-E-fluid",
+        {
+          draw_as_glow = true,
+          priority = "extra-high",
+          frame_count = 32,
+          animation_speed = 0.5,
+          blend_mode = "additive",
+          scale = 0.5,
+        })
       },
       south =
       {
@@ -9191,25 +9473,28 @@ data:extend(
         {
           layers =
           {
+            util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-S-idle",
             {
-              filename = "__base__/graphics/entity/heat-exchanger/heatex-S-idle.png",
               priority = "extra-high",
-              width = 260,
-              height = 201,
-              shift = util.by_pixel(4, 10.75),
               scale = 0.5
-            },
+            }),
+            util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-S-shadow",
             {
-              filename = "__base__/graphics/entity/boiler/boiler-S-shadow.png",
               priority = "extra-high",
-              width = 311,
-              height = 131,
               scale = 0.5,
-              shift = util.by_pixel(29.75, 15.75),
               draw_as_shadow = true
-            }
+            })
           }
-        }
+        },
+        fire = util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-S-fluid",
+          {
+            draw_as_glow = true,
+            priority = "extra-high",
+            frame_count = 32,
+            animation_speed = 0.5,
+            blend_mode = "additive",
+            scale = 0.5
+          })
       },
       west =
       {
@@ -9217,27 +9502,32 @@ data:extend(
         {
           layers =
           {
+            util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-W-idle",
             {
-              filename = "__base__/graphics/entity/heat-exchanger/heatex-W-idle.png",
               priority = "extra-high",
-              width = 196,
-              height = 273,
-              shift = util.by_pixel(1.5, 7.75),
               scale = 0.5
-            },
+            }),
+            util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-W-shadow",
             {
-              filename = "__base__/graphics/entity/boiler/boiler-W-shadow.png",
               priority = "extra-high",
-              width = 206,
-              height = 218,
               scale = 0.5,
-              shift = util.by_pixel(19.5, 6.5),
               draw_as_shadow = true
-            }
+            })
           }
-        }
+        },
+        fire = util.sprite_load("__base__/graphics/entity/heat-exchanger/heatex-W-fluid",
+          {
+            draw_as_glow = true,
+            priority = "extra-high",
+            frame_count = 32,
+            animation_speed = 0.5,
+            blend_mode = "additive",
+            scale = 0.5
+          })
       },
     },
+    fire_flicker_enabled = true,
+    fire_glow_flicker_enabled = true,
     burning_cooldown = 20,
     water_reflection = boiler_reflection()
   },
@@ -9284,57 +9574,67 @@ data:extend(
       type = "electric",
       usage_priority = "secondary-output"
     },
-    horizontal_animation =
+    two_direction_only = true,
+    pictures =
     {
-      layers =
+      north =
       {
+        animation =
         {
-          filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H.png",
-          width = 320,
-          height = 245,
-          frame_count = 8,
-          line_length = 4,
-          shift = util.by_pixel(0, -2.75),
-          run_mode = "backward",
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
-          width = 435,
-          height = 150,
-          repeat_count = 8,
-          line_length = 1,
-          draw_as_shadow = true,
-          shift = util.by_pixel(28.5, 18),
-          run_mode = "backward",
-          scale = 0.5
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
+              width = 217,
+              height = 374,
+              frame_count = 8,
+              line_length = 4,
+              shift = util.by_pixel(4.75, 0.0),
+              run_mode = "backward",
+              scale = 0.5
+            },
+            {
+              filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
+              width = 302,
+              height = 260,
+              repeat_count = 8,
+              line_length = 1,
+              draw_as_shadow = true,
+              shift = util.by_pixel(39.5, 24.5),
+              run_mode = "backward",
+              scale = 0.5
+            }
+          }
         }
-      }
-    },
-    vertical_animation =
-    {
-     layers =
-     {
+      },
+      east =
+      {
+        animation =
         {
-          filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
-          width = 217,
-          height = 374,
-          frame_count = 8,
-          line_length = 4,
-          shift = util.by_pixel(4.75, 0.0),
-          run_mode = "backward",
-          scale = 0.5
-        },
-        {
-          filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
-          width = 302,
-          height = 260,
-          repeat_count = 8,
-          line_length = 1,
-          draw_as_shadow = true,
-          shift = util.by_pixel(39.5, 24.5),
-          run_mode = "backward",
-          scale = 0.5
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H.png",
+              width = 320,
+              height = 245,
+              frame_count = 8,
+              line_length = 4,
+              shift = util.by_pixel(0, -2.75),
+              run_mode = "backward",
+              scale = 0.5
+            },
+            {
+              filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
+              width = 435,
+              height = 150,
+              repeat_count = 8,
+              line_length = 1,
+              draw_as_shadow = true,
+              shift = util.by_pixel(28.5, 18),
+              run_mode = "backward",
+              scale = 0.5
+            }
+          }
         }
       }
     },
@@ -9489,7 +9789,10 @@ data:extend(
       ending_down = {},
       ending_right = {},
       ending_left = {}
-    }, true)
+    }, true),
+    default_temperature_signal = {type = "virtual", name = "signal-T"},
+    circuit_connector = circuit_connector_definitions["heat-pipe"],
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
   },
   {
     type = "simple-entity-with-force",
@@ -9563,7 +9866,7 @@ data:extend(
           scale = 0.5
         }
       }
-    },
+    }
   }
 })
 
@@ -9844,7 +10147,7 @@ red_chest.order = "r-e-d"
 local red_chest_reference = data.raw["logistic-container"]["passive-provider-chest"]
 red_chest.icon = util.table.deepcopy(red_chest_reference.icon)
 red_chest.icon_size = red_chest_reference.icon_size
-red_chest.picture = util.table.deepcopy(red_chest_reference.animation)
+red_chest.picture = util.table.deepcopy(red_chest_reference.robot_door.animation)
 red_chest.picture.layers[1].frame_count = nil
 red_chest.picture.layers[2].repeat_count = nil
 red_chest.hidden = true
@@ -9856,7 +10159,7 @@ blue_chest.name = "blue-chest"
 blue_chest.order = "b-l-u-e"
 local blue_chest_reference = data.raw["logistic-container"]["requester-chest"]
 blue_chest.icon = util.table.deepcopy(blue_chest_reference.icon)
-blue_chest.picture = util.table.deepcopy(blue_chest_reference.animation)
+blue_chest.picture = util.table.deepcopy(blue_chest_reference.robot_door.animation)
 blue_chest.picture.layers[1].frame_count = nil
 blue_chest.picture.layers[2].repeat_count = nil
 blue_chest.hidden = true
@@ -9891,8 +10194,8 @@ infinity_chest.hidden = true
 infinity_chest.gui_mode = "admins" -- all, none, admins
 infinity_chest.erase_contents_when_mined = true
 infinity_chest.preserve_contents_when_created = true
-infinity_chest.animation = nil
-infinity_chest.animation_sound = nil
+infinity_chest.robot_door.animation = nil
+infinity_chest.robot_door.animation_sound = nil
 infinity_chest.picture =
 {
   layers =
@@ -9957,10 +10260,10 @@ data:extend({
   minable = {mining_time = 1, result = "burner-generator"},
   animation =
   {
-    north = util.table.deepcopy(data.raw.generator["steam-engine"].vertical_animation),
-    east = util.table.deepcopy(data.raw.generator["steam-engine"].horizontal_animation),
-    south = util.table.deepcopy(data.raw.generator["steam-engine"].vertical_animation),
-    west = util.table.deepcopy(data.raw.generator["steam-engine"].horizontal_animation)
+    north = util.table.deepcopy(data.raw.generator["steam-engine"].pictures.north.animation),
+    east = util.table.deepcopy(data.raw.generator["steam-engine"].pictures.east.animation),
+    south = util.table.deepcopy(data.raw.generator["steam-engine"].pictures.north.animation),
+    west = util.table.deepcopy(data.raw.generator["steam-engine"].pictures.east.animation)
   },
   -- idle_animation can also be specified
   perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
@@ -10050,6 +10353,7 @@ linked_chest.hidden = true
 linked_chest.minable.result = "linked-chest"
 linked_chest.gui_mode = "admins" -- all, none, admins
 linked_chest.icon = "__base__/graphics/icons/linked-chest-icon.png"
+linked_chest.circuit_connector = circuit_connector_definitions["chest-single"]
 linked_chest.picture =
 {
   layers =
@@ -10094,7 +10398,7 @@ data:extend{
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.6 },
     impact_category = "wood",
     icon_draw_specification = {scale = 0.7},
-    circuit_connector = circuit_connector_definitions["chest"],
+    circuit_connector = circuit_connector_definitions["chest-single"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
     picture =
     {
@@ -10189,6 +10493,7 @@ data:extend({
     type = "cargo-pod",
     name = "cargo-pod",
     icon = "__base__/graphics/icons/cargo-pod.png",
+    factoriopedia_simulation = simulations.factoriopedia_cargo_pod,
     flags = {"not-on-map"},
     order = "d[cargo-pod]",
     collision_mask = {layers = {}},
@@ -10222,47 +10527,40 @@ data:extend({
         sound =
         {
           filename = "__base__/sound/procession/cargo-pod-reentry-flame.ogg",
-          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+          aggregation = {max_count = 3, remove = true, count_already_playing = true},
+          volume = 0.7,
         }
       },
       {
-        index = procession_audio_catalogue_types.pod_thruster_burst_1,
+        index = procession_audio_catalogue_types.pod_thruster_burst,
         sound =
         {
-          filename = "__base__/sound/procession/cargo-pod-thruster-burst-1.ogg",
-          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+          variations = sound_variations("__base__/sound/procession/cargo-pod-thruster-burst", 5, 0.6, volume_multiplier("main-menu", 3)),
+          aggregation = {max_count = 2, remove = true, count_already_playing = true},
         }
       },
       {
-        index = procession_audio_catalogue_types.pod_thruster_burst_2,
+        index = procession_audio_catalogue_types.pod_thruster_burst_short,
         sound =
         {
-          filename = "__base__/sound/procession/cargo-pod-thruster-burst-2.ogg",
-          aggregation = {max_count = 3, remove = true, count_already_playing = true}
-        }
-      },
-      {
-        index = procession_audio_catalogue_types.pod_thruster_burst_3,
-        sound =
-        {
-          filename = "__base__/sound/procession/cargo-pod-thruster-burst-3.ogg",
-          aggregation = {max_count = 3, remove = true, count_already_playing = true}
-        }
-      },
-      {
-        index = procession_audio_catalogue_types.pod_thruster_burst_4,
-        sound =
-        {
-          filename = "__base__/sound/procession/cargo-pod-thruster-burst-4.ogg",
-          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+          variations = sound_variations("__base__/sound/procession/cargo-pod-thruster-burst-short", 2, 0.6),
+          aggregation = {max_count = 2, remove = true, count_already_playing = true}
         }
       },
       {
         index = procession_audio_catalogue_types.pod_wings,
         sound =
         {
-          filename = "__base__/sound/procession/cargo-pod-wings.ogg",
-          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+          variations = sound_variations("__base__/sound/procession/cargo-pod-wings", 3, 0.35),
+          aggregation = {max_count = 1, remove = true, count_already_playing = true}
+        }
+      },
+      {
+        index = procession_audio_catalogue_types.pod_jet_burst,
+        sound =
+        {
+          variations = sound_variations("__base__/sound/procession/cargo-pod-jet-burst", 5, 0.15),
+          aggregation = {max_count = 2, remove = true, count_already_playing = true}
         }
       },
       {
@@ -10270,16 +10568,23 @@ data:extend({
         sound =
         {
           filename = "__base__/sound/procession/cargo-pod-rocket-claws-open.ogg",
-          aggregation = {max_count = 3, remove = true, count_already_playing = true}
+          aggregation = {max_count = 1, remove = true, count_already_playing = true}
         }
       },
       {
         index = procession_audio_catalogue_types.pod_ground_land,
         sound =
         {
-          filename = "__base__/sound/car-stone-impact-2.ogg",
-          volume = 0.8,
+          variations = sound_variations("__base__/sound/procession/cargo-pod-ground-land", 3, 0.6),
           aggregation = {max_count = 3, remove = true, count_already_playing = true}
+        }
+      },
+      {
+        index = procession_audio_catalogue_types.pod_wings_close,
+        sound =
+        {
+          variations = sound_variations("__base__/sound/procession/cargo-pod-wings-close", 3, 0.3),
+          aggregation = {max_count = 1, remove = true, count_already_playing = true}
         }
       }
     }

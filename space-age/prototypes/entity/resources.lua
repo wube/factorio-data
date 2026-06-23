@@ -51,6 +51,8 @@ local function resource(resource_parameters, autoplace_parameters)
     category = resource_parameters.category,
     subgroup = resource_parameters.subgroup,
     walking_sound = resource_parameters.walking_sound,
+    driving_sound = resource_parameters.driving_sound,
+    mining_sound = resource_parameters.mining_sound,
     collision_mask = resource_parameters.collision_mask,
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -157,9 +159,7 @@ data:extend({
         {
           type = "fluid",
           name = "sulfuric-acid",
-          amount_min = 10,
-          amount_max = 10,
-          probability = 1
+          amount = 10
         }
       }
     },
@@ -168,7 +168,9 @@ data:extend({
     {
       sound =
       {
-        category = "world-ambient", variations = sound_variations("__space-age__/sound/world/resources/sulfuric-acid-geyser", 1, 0.3),
+        category = "world-ambient",
+        filename = "__space-age__/sound/world/resources/sulfuric-acid-geyser-1.ogg",
+        volume = 0.3,
         advanced_volume_control =
         {
           fades = {fade_in = {curve_type = "S-curve", from = {control = 0.3, volume_percentage = 0.0}, to = {2.0, 100.0}}}
@@ -274,11 +276,23 @@ data:extend({
         {
           type = "fluid",
           name = "lithium-brine",
-          amount_min = 1,
-          amount_max = 1,
-          probability = 1
+          amount = 1
         }
       }
+    },
+    working_sound =
+    {
+      sound =
+      {
+        category = "world-ambient",
+        filename = "__space-age__/sound/world/resources/lithium-brine-1.ogg",
+        volume = 0.3,
+        advanced_volume_control =
+        {
+          fades = {fade_in = {curve_type = "S-curve", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
+        }
+      },
+      max_sounds_per_prototype = 2,
     },
     walking_sound = base_tile_sounds.walking.oil({}),
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
@@ -393,11 +407,23 @@ data:extend({
         {
           type = "fluid",
           name = "fluorine",
-          amount_min = 1,
-          amount_max = 1,
-          probability = 1
+          amount = 1
         }
       }
+    },
+    working_sound =
+    {
+      sound =
+      {
+        category = "world-ambient",
+        filename = "__space-age__/sound/world/resources/fluorine-vent-1.ogg",
+        volume = 0.2,
+        advanced_volume_control =
+        {
+          fades = {fade_in = {curve_type = "S-curve", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
+        }
+      },
+      max_sounds_per_prototype = 2,
     },
     walking_sound = base_tile_sounds.walking.oil({}),
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},

@@ -143,30 +143,4 @@ data:extend
       time = 60
     }
   },
-  {
-    type = "technology",
-    name = "recycling",
-    icon = "__quality__/graphics/technology/recycling.png",
-    icon_size = 256,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "recycler"
-      },
-    },
-    prerequisites = {"production-science-pack", "processing-unit", "concrete"},
-    unit =
-    {
-      count = 5000,
-      ingredients =
-      {
-        { "automation-science-pack", 1 },
-        { "logistic-science-pack", 1 },
-        { "chemical-science-pack", 1 },
-        { "production-science-pack", 1 }
-      },
-      time = 15
-    }
-  }
 })

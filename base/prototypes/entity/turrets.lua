@@ -2,7 +2,6 @@ require ("circuit-connector-sprites")
 require ("prototypes.entity.enemy-projectiles")
 require ("prototypes.entity.worm-animations")
 require ("prototypes.entity.pipecovers")
-require ("prototypes.entity.assemblerpipes")
 enemy_autoplace = require ("prototypes.entity.enemy-autoplace-utils")
 
 local sounds = require("prototypes.entity.sounds")
@@ -402,7 +401,7 @@ data:extend(
       projectile_creation_parameters = worm_shoot_shiftings(scale_worm_small, scale_worm_small * scale_worm_stream),
       use_shooter_direction = true,
 
-      lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 *1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+      lead_target_for_projectile_speed = 0.35, -- same as stream particle horizontal speed
 
       ammo_category = "biological",
       ammo_type =
@@ -550,7 +549,6 @@ data:extend(
     {
       type = "projectile",
       ammo_category = "bullet",
-      health_penalty = 1,
       cooldown = 6,
       projectile_creation_distance = 1.39375,
       projectile_center = {0, -0.0875}, -- same as gun_turret_attack shift
@@ -566,9 +564,11 @@ data:extend(
         starting_frame_speed_deviation = 0.1
       },
       range = 18,
+      health_penalty = 10, -- Shoot things with lower health ratio
+      threatening_asteroid_penalty = -20, -- negative penalty to prefer threatening asteroids over other targets
       sound = sounds.gun_turret_gunshot
     },
-
+    prepare_range = 18 + 2, -- A smidgen more than range
     call_for_help_radius = 40,
     water_reflection =
     {
@@ -693,6 +693,7 @@ data:extend(
       type = "beam",
       cooldown = 40,
       range = 24,
+      threatening_asteroid_penalty = -20,
       range_mode = "center-to-bounding-box",
       source_direction_count = 64,
       source_offset = {0, -3.423489 / 4},
@@ -749,8 +750,17 @@ data:extend(
     mined_sound = sounds.deconstruct_large(0.8),
     rotating_sound =
     {
-      sound = {filename = "__base__/sound/fight/artillery-rotation-loop.ogg", volume = 0.6},
-      stopped_sound = {filename = "__base__/sound/fight/artillery-rotation-stop.ogg"}
+      sound =
+      {
+        filename = "__base__/sound/fight/artillery-rotation-loop.ogg",
+        volume = 0.6,
+        aggregation = {max_count = 3, remove = true, count_already_playing = true}
+      },
+      stopped_sound =
+      {
+        filename = "__base__/sound/fight/artillery-rotation-stop.ogg",
+        aggregation = {max_count = 3, remove = true, count_already_playing = true}
+      }
     },
     max_health = 2000,
     corpse = "artillery-turret-remnants",
@@ -1021,7 +1031,7 @@ data:extend(
 
       use_shooter_direction = true,
 
-      lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 *1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+      lead_target_for_projectile_speed = 0.35, -- same as stream particle horizontal speed
 
       ammo_category = "biological",
       ammo_type =
@@ -1038,7 +1048,6 @@ data:extend(
         }
       }
     },
-    build_base_evolution_requirement = 0.3,
     autoplace = enemy_autoplace.enemy_worm_autoplace("enemy_autoplace_base(2, 3)"),
     call_for_help_radius = 40,
     spawn_decorations_on_expansion = true,
@@ -1165,7 +1174,7 @@ data:extend(
 
       use_shooter_direction = true,
 
-      lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 * 1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+      lead_target_for_projectile_speed = 0.35, -- same as stream particle horizontal speed
 
       ammo_category = "biological",
       ammo_type =
@@ -1182,7 +1191,6 @@ data:extend(
         }
       }
     },
-    build_base_evolution_requirement = 0.5,
     autoplace = enemy_autoplace.enemy_worm_autoplace("enemy_autoplace_base(5, 4)"),
     call_for_help_radius = 40,
     spawn_decorations_on_expansion = true,
@@ -1308,7 +1316,7 @@ data:extend(
       projectile_creation_parameters = worm_shoot_shiftings(scale_worm_behemoth, scale_worm_behemoth * scale_worm_stream),
       use_shooter_direction = true,
 
-      lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 * 1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+      lead_target_for_projectile_speed = 0.35, -- same as stream particle horizontal speed
 
       ammo_type =
       {
@@ -1324,7 +1332,6 @@ data:extend(
         }
       }
     },
-    build_base_evolution_requirement = 0.9,
     autoplace = enemy_autoplace.enemy_worm_autoplace("enemy_autoplace_base(8, 5)"),
     call_for_help_radius = 80,
     spawn_decorations_on_expansion = true,

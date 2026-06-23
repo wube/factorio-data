@@ -264,33 +264,6 @@ local ground_to_out_of_map_transition =
   overlay_enabled = false
 }
 
-local concrete_to_out_of_map_transition =
-{
-  to_tiles = out_of_map_tile_type_names,
-  transition_group = out_of_map_transition_group_id,
-
-  background_layer_offset = 1,
-  background_layer_group = "zero",
-  offset_background_layer_by_tile_layer = true,
-
-  spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition.png",
-  layout = tile_spritesheet_layout.transition_4_4_8_1_1,
-}
-
-local stone_path_to_out_of_map_transition =
-{
-  to_tiles = out_of_map_tile_type_names,
-  transition_group = out_of_map_transition_group_id,
-
-  background_layer_offset = 1,
-  background_layer_group = "zero",
-  offset_background_layer_by_tile_layer = true,
-
-  spritesheet = "__base__/graphics/terrain/out-of-map-transition/stone-path-out-of-map-transition.png",
-  layout = tile_spritesheet_layout.transition_4_4_8_1_1,
-  mask_enabled = false
-}
-
 base_tiles_util.ground_to_out_of_map_transition = ground_to_out_of_map_transition
 base_tiles_util.concrete_to_out_of_map_transition = concrete_to_out_of_map_transition
 base_tiles_util.stone_path_to_out_of_map_transition = stone_path_to_out_of_map_transition
@@ -695,11 +668,13 @@ local concrete_transitions =
     transition_group = water_transition_group_id,
 
     spritesheet = "__base__/graphics/terrain/water-transitions/concrete.png",
-    layout = tile_spritesheet_layout.transition_8_8_8_4_4,
-    background_enabled = false,
+    layout = tile_spritesheet_layout.concrete_layout(false,false,false),
+    background_enabled = true,
+    background_layer_offset = 1,
+    offset_background_layer_by_tile_layer = true,
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-mask.png",
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
       inner_corner_count = 1,
       outer_corner_count = 1,
       side_count = 1,
@@ -707,7 +682,52 @@ local concrete_transitions =
       o_transition_count = 1
     }
   },
-  concrete_to_out_of_map_transition
+  {
+    to_tiles = out_of_map_tile_type_names,
+    transition_group = out_of_map_transition_group_id,
+  
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+  
+    spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.concrete_layout(false,true,false),
+  }
+
+}
+
+local refined_concrete_transitions =
+{
+  {
+    to_tiles = water_tile_type_names,
+    transition_group = water_transition_group_id,
+
+    spritesheet = "__base__/graphics/terrain/water-transitions/refined-concrete.png",
+    layout = tile_spritesheet_layout.concrete_layout(true,false,false),
+    background_enabled = true,
+    background_layer_offset = 1,
+    offset_background_layer_by_tile_layer = true,
+    effect_map_layout =
+    {
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
+    }
+  },
+  {
+    to_tiles = out_of_map_tile_type_names,
+    transition_group = out_of_map_transition_group_id,
+    spritesheet = "__base__/graphics/terrain/out-of-map-transition/refined-concrete-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.concrete_layout(true,true,false),
+    background_enabled = true,
+
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+  }
 }
 
 local concrete_transitions_between_transitions =
@@ -717,12 +737,18 @@ local concrete_transitions_between_transitions =
     transition_group2 = water_transition_group_id,
 
     spritesheet = "__base__/graphics/terrain/water-transitions/concrete-transitions.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
-    background_enabled = false,
+    layout = tile_spritesheet_layout.concrete_layout(false,false,true),
+    background_enabled = true,
+    background_layer_offset = 1,
+    offset_background_layer_by_tile_layer = true,
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-land-mask.png",
-      o_transition_count = 0
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
     }
   },
   {
@@ -734,7 +760,7 @@ local concrete_transitions_between_transitions =
     offset_background_layer_by_tile_layer = true,
 
     spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition-b.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+    layout = tile_spritesheet_layout.concrete_layout(false,true,true),
   },
   {
     transition_group1 = water_transition_group_id,
@@ -745,12 +771,69 @@ local concrete_transitions_between_transitions =
     offset_background_layer_by_tile_layer = true,
 
     spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-shore-out-of-map-transition.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+    layout = tile_spritesheet_layout.concrete_layout(false,true,true),
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-out-of-map-mask.png",
-      u_transition_count = 0,
-      o_transition_count = 0
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-out-of-map-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
+    }
+  }
+}
+
+local refined_concrete_transitions_between_transitions =
+{
+  {
+    transition_group1 = default_transition_group_id,
+    transition_group2 = water_transition_group_id,
+
+    spritesheet = "__base__/graphics/terrain/water-transitions/refined-concrete-transitions.png",
+    layout = tile_spritesheet_layout.concrete_layout(true,false,true),
+    background_enabled = true,
+    background_layer_offset = 1,
+    offset_background_layer_by_tile_layer = true,
+    effect_map_layout =
+    {
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
+    }
+  },
+  {
+    transition_group1 = default_transition_group_id,
+    transition_group2 = out_of_map_transition_group_id,
+
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+
+    spritesheet = "__base__/graphics/terrain/out-of-map-transition/refined-concrete-out-of-map-transition-b.png",
+    layout = tile_spritesheet_layout.concrete_layout(true,true,true),
+  },
+  {
+    transition_group1 = water_transition_group_id,
+    transition_group2 = out_of_map_transition_group_id,
+
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+
+    spritesheet = "__base__/graphics/terrain/out-of-map-transition/refined-concrete-shore-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.concrete_layout(true,true,true),
+    effect_map_layout =
+    {
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-out-of-map-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
     }
   }
 }
@@ -764,11 +847,13 @@ local stone_path_transitions =
     transition_group = water_transition_group_id,
 
     spritesheet = "__base__/graphics/terrain/water-transitions/stone-path.png",
-    layout = tile_spritesheet_layout.transition_8_8_8_4_4,
-    background_enabled = false,
+    layout = tile_spritesheet_layout.concrete_layout(false,false,false),
+    background_enabled = true,
+    background_layer_offset = 1,
+    offset_background_layer_by_tile_layer = true,
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-mask.png",
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
       inner_corner_count = 1,
       outer_corner_count = 1,
       side_count = 1,
@@ -776,7 +861,18 @@ local stone_path_transitions =
       o_transition_count = 1
     }
   },
-  stone_path_to_out_of_map_transition
+  {
+    to_tiles = out_of_map_tile_type_names,
+    transition_group = out_of_map_transition_group_id,
+  
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+  
+    spritesheet = "__base__/graphics/terrain/out-of-map-transition/stone-path-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.concrete_layout(false,true,false),
+    background_enabled = true,
+  }
 }
 
 local stone_path_transitions_between_transitions =
@@ -786,12 +882,18 @@ local stone_path_transitions_between_transitions =
     transition_group2 = water_transition_group_id,
 
     spritesheet = "__base__/graphics/terrain/water-transitions/stone-path-transitions.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
-    background_enabled = false,
+    layout = tile_spritesheet_layout.concrete_layout(false,false,true),
+    background_enabled = true,
+    background_layer_offset = 1,
+    offset_background_layer_by_tile_layer = true,
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-land-mask.png",
-      o_transition_count = 0
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
     }
   },
   {
@@ -803,8 +905,7 @@ local stone_path_transitions_between_transitions =
     offset_background_layer_by_tile_layer = true,
 
     spritesheet = "__base__/graphics/terrain/out-of-map-transition/stone-path-out-of-map-transition-b.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
-    mask_enabled = false
+    layout = tile_spritesheet_layout.concrete_layout(false,true,true),
   },
   {
     transition_group1 = water_transition_group_id,
@@ -815,13 +916,15 @@ local stone_path_transitions_between_transitions =
     offset_background_layer_by_tile_layer = true,
 
     spritesheet = "__base__/graphics/terrain/out-of-map-transition/stone-path-shore-out-of-map-transition.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
-    mask_enabled = false,
+    layout = tile_spritesheet_layout.concrete_layout(false,true,true),
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-out-of-map-mask.png",
-      u_transition_count = 0,
-      o_transition_count = 0
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-out-of-map-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
     }
   }
 }
@@ -1924,33 +2027,62 @@ data:extend
           {
             spritesheet = "__base__/graphics/terrain/stone-path/stone-path-inner-corner.png",
             count = 16,
-            tile_height = 2,
             scale = 0.5
           },
           outer_corner =
           {
             spritesheet = "__base__/graphics/terrain/stone-path/stone-path-outer-corner.png",
             count = 8,
-            tile_height = 2,
             scale = 0.5
           },
           side =
           {
             spritesheet = "__base__/graphics/terrain/stone-path/stone-path-side.png",
             count = 16,
-            tile_height = 2,
             scale = 0.5
           },
           u_transition =
           {
             spritesheet = "__base__/graphics/terrain/stone-path/stone-path-u.png",
-            count = 8,
-            tile_height = 2,
+            count = 4,
             scale = 0.5
           },
           o_transition =
           {
             spritesheet = "__base__/graphics/terrain/stone-path/stone-path-o.png",
+            count = 4,
+            scale = 0.5
+          }
+        },
+        mask_layout =
+        {
+          inner_corner =
+          {
+            spritesheet = "__base__/graphics/terrain/stone-path/stone-path-inner-corner-mask.png",
+            count = 16,
+            scale = 0.5
+          },
+          outer_corner =
+          {
+            spritesheet = "__base__/graphics/terrain/stone-path/stone-path-outer-corner-mask.png",
+            count = 8,
+            scale = 0.5
+          },
+          side =
+          {
+            spritesheet = "__base__/graphics/terrain/stone-path/stone-path-side-mask.png",
+            count = 16,
+            scale = 0.5
+          },
+          u_transition =
+          {
+            spritesheet = "__base__/graphics/terrain/stone-path/stone-path-u-mask.png",
+            count = 4,
+            scale = 0.5
+          },
+          o_transition =
+          {
+            spritesheet = "__base__/graphics/terrain/stone-path/stone-path-o-mask.png",
             count = 4,
             scale = 0.5
           }
@@ -2168,7 +2300,7 @@ data:extend
           u_transition =
           {
             spritesheet = "__base__/graphics/terrain/concrete/concrete-u.png",
-            count = 8,
+            count = 4,
             scale = 0.5
           },
           o_transition =
@@ -2201,7 +2333,7 @@ data:extend
           u_transition =
           {
             spritesheet = "__base__/graphics/terrain/concrete/concrete-u-mask.png",
-            count = 8,
+            count = 4,
             scale = 0.5
           },
           o_transition =
@@ -2329,31 +2461,31 @@ data:extend
         {
           inner_corner =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
-            count = 16,
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-inner-corner.png",
+            count = 8,
             scale = 0.5
           },
           outer_corner =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
-            count = 8,
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-outer-corner.png",
+            count = 1,
             scale = 0.5
           },
           side =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-side.png",
-            count = 16,
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-side.png",
+            count = 8,
             scale = 0.5
           },
           u_transition =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-u.png",
-            count = 8,
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-u.png",
+            count = 4,
             scale = 0.5
           },
           o_transition =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-o.png",
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-o.png",
             count = 4,
             scale = 0.5
           }
@@ -2362,31 +2494,31 @@ data:extend
         {
           inner_corner =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-inner-corner-mask.png",
-            count = 16,
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-inner-corner-mask.png",
+            count = 8,
             scale = 0.5
           },
           outer_corner =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-outer-corner-mask.png",
-            count = 8,
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-outer-corner-mask.png",
+            count = 1,
             scale = 0.5
           },
           side =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-side-mask.png",
-            count = 16,
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-side-mask.png",
+            count = 8,
             scale = 0.5
           },
           u_transition =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-u-mask.png",
-            count = 8,
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-u-mask.png",
+            count = 4,
             scale = 0.5
           },
           o_transition =
           {
-            spritesheet = "__base__/graphics/terrain/concrete/concrete-o-mask.png",
+            spritesheet = "__base__/graphics/terrain/concrete/refined-concrete-o-mask.png",
             count = 4,
             scale = 0.5
           }
@@ -2401,8 +2533,8 @@ data:extend
       }
     },
 
-    transitions = concrete_transitions,
-    transitions_between_transitions = concrete_transitions_between_transitions,
+    transitions = refined_concrete_transitions,
+    transitions_between_transitions = refined_concrete_transitions_between_transitions,
 
     walking_sound = tile_sounds.walking.refined_concrete,
     driving_sound = tile_sounds.driving.concrete,
@@ -2531,9 +2663,7 @@ data:extend(
     {
       textures =
       {{
-        filename = "__base__/graphics/terrain/effects/water-noise.png",
-        width = 512,
-        height = 512
+        filename = "__base__/graphics/terrain/effects/water-noise.png"
       }},
       specular_lightness = { 1, 1, 1 },
       foam_color = { 230, 255, 252 },

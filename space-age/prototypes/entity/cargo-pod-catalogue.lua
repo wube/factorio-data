@@ -15,14 +15,89 @@ local cargo_pod_catalogue =
         scale = 0.5,
       })
   },
+  {
+    index = procession_graphic_catalogue_types.pod_anim_rotation_closed,
+    animation = util.sprite_load("__space-age__/graphics/entity/cargo-pod/pod-closed-rotation",
+       {
+         priority = "medium",
+         scale = 0.5,
+         frame_count = 59
+       })
+  },
+  {
+    index = procession_graphic_catalogue_types.pod_anim_rotation_closed_emission,
+    animation = util.sprite_load("__space-age__/graphics/entity/cargo-pod/pod-closed-rotation-emission",
+       {
+         priority = "medium",
+         scale = 0.5,
+         blend_mode = "additive",
+         frame_count = 59
+       })
+  },
+  {
+    index = procession_graphic_catalogue_types.pod_anim_rotation_open,
+    animation = util.sprite_load("__space-age__/graphics/entity/cargo-pod/pod-open-rotation",
+       {
+         priority = "medium",
+         scale = 0.5,
+         frame_count = 60
+       })
+  },
+  {
+    index = procession_graphic_catalogue_types.pod_anim_rotation_open_emission,
+    animation = util.sprite_load("__space-age__/graphics/entity/cargo-pod/pod-open-rotation-emission",
+       {
+         priority = "medium",
+         scale = 0.5,
+         blend_mode = "additive",
+         frame_count = 60
+       })
+  },
+  {
+    index = procession_graphic_catalogue_types.reentry_flames,
+    animation = util.sprite_load("__space-age__/graphics/entity/cargo-pod/pod-open-reentry-flame",
+      {
+        priority = "medium",
+        scale = 0.5,
+        animation_speed = 0.5,
+        draw_as_glow = true,
+        blend_mode = "additive",
+        frame_count = 30
+      })
+  },
+  -- VECTORING THRUSTERS
+  {
+      index = procession_graphic_catalogue_types.vct_single,
+      type = "sprite",
+      animation = util.sprite_load("__space-age__/graphics/entity/cargo-pod/vct_single",
+      {
+        scale = 1,
+        frame_count = 20,
+        shift = util.by_pixel(-30, 0),
+        flags = { "group=procession", "linear-minification", "linear-magnification" },
+        tint = thruster_tint
+      })
+  },
+  {
+      index = procession_graphic_catalogue_types.vct_small,
+      type = "sprite",
+      animation = util.sprite_load("__space-age__/graphics/entity/cargo-pod/vct_single_strong",
+      {
+        scale = 0.7,
+        frame_count = 20,
+        shift = util.by_pixel(-15, 0),
+        flags = { "group=procession", "linear-minification", "linear-magnification" },
+        tint = thruster_tint
+      })
+  },  
   -- IMPOSTOR
   {
     index = procession_graphic_catalogue_types.impostor_opening_base,
     sprite = util.sprite_load("__space-age__/graphics/entity/cargo-pod/rocket-opening-base",
     {
       scale = 0.5,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "group=procession", "linear-minification", "linear-magnification" }
     })
   },
   {
@@ -31,8 +106,8 @@ local cargo_pod_catalogue =
     {
       scale = 0.5,
       frame_count = 20,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "group=procession", "linear-minification", "linear-magnification" }
     })
   },
   {
@@ -41,8 +116,8 @@ local cargo_pod_catalogue =
     {
       scale = 0.5,
       frame_count = 20,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "group=procession", "linear-minification", "linear-magnification" }
     })
   },
   {
@@ -50,8 +125,8 @@ local cargo_pod_catalogue =
     animation = util.sprite_load("__space-age__/graphics/entity/cargo-pod/rocket-backblast-back",
     {
       scale = 0.5,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "group=procession", "linear-minification", "linear-magnification" },
       draw_as_glow = true,
       blend_mode = "additive",
       shift = util.by_pixel(0, -16)
@@ -62,8 +137,8 @@ local cargo_pod_catalogue =
     animation = util.sprite_load("__space-age__/graphics/entity/cargo-pod/rocket-backblast-front",
     {
       scale = 0.5,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "group=procession", "linear-minification", "linear-magnification" },
       draw_as_glow = true,
       blend_mode = "additive",
       shift = util.by_pixel(0, -16)
@@ -75,8 +150,8 @@ local cargo_pod_catalogue =
     util.sprite_load("__base__/graphics/entity/rocket-silo/rocket-static-emission",
         {
           scale = 0.5,
-          priority = "no-atlas",
-          flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+          priority = "medium",
+          flags = { "group=procession", "linear-minification", "linear-magnification" },
           draw_as_glow = true,
           blend_mode = "additive",
           shift = util.by_pixel(0, -16)
@@ -92,7 +167,7 @@ local cargo_pod_catalogue =
       width = 481,
       height = 481,
       shift = util.by_pixel(-2, -2+282-65),
-      flags = { "linear-magnification", "linear-minification" }
+      flags = { "group=procession", "linear-minification", "linear-magnification" }
     }
   },
   {

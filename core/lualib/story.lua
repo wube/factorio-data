@@ -433,7 +433,7 @@ function export_entities(param)
         info.position = entity.position
         info.inventory = get_inventory(entity)
         info.backer_name = entity.backer_name
-        info.minable = entity.minable
+        info.minable_flag = entity.minable_flag
         info.rotatable = entity.rotatable
         info.operable = entity.operable
         info.destructible = entity.destructible
@@ -530,9 +530,9 @@ function recreate_entities(array, param, bool)
           if entity.line_contents then
             for k, contents in pairs (entity.line_contents) do
               local line = created.get_transport_line(k)
-              for name, count in pairs (contents) do
-                for i = 0, count-1 do
-                  line.insert_at((0.1+i)/count, {name = name, count = 1})
+              for _, content in pairs (contents) do
+                for i = 0, content.count-1 do
+                  line.insert_at((0.1+i)/content.count, {name = content.name, quality = content.quality, count = 1})
                 end
               end
             end
@@ -546,7 +546,10 @@ function recreate_entities(array, param, bool)
           if entity.recipe then
             created.set_recipe(entity.recipe)
           end
-          created.minable = entity.minable or false
+          if entity.name_tag then
+            created.name_tag = entity.name_tag
+          end
+          created.minable_flag = entity.minable_flag or false
           created.rotatable = entity.rotatable or false
           created.operable = entity.operable or false
           created.destructible = entity.destructible or false

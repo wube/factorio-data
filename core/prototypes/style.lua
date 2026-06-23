@@ -9,6 +9,9 @@ default_dirt_color_filler = {15, 7, 3, 56}
 default_container_padding = 4
 default_container_spacing = 4 -- one module spacing
 
+minimap_slot_hovered_tint = {r = 255, g = 162, b = 0}
+minimap_slot_clicked_tint = {r = 219, g = 122, b = 0}
+
 -- Button
 button_default_font_color = {} -- less surface of black (not bold), we need it to be pure black
 button_hovered_font_color = {}
@@ -936,6 +939,13 @@ data:extend(
       type = "label_style",
       parent = "count_label",
       top_padding = 16
+    },
+
+    recipe_ghost_count_line_label =
+    {
+      type = "label_style",
+      parent = "recipe_count_line_label",
+      font_color = {170, 222, 255, 200},
     },
 
     frame_subheading_label =
@@ -2707,14 +2717,6 @@ data:extend(
       },
     },
 
-    -- TODO raiguard: Remove this
-    universe_widget =
-    {
-      type = "empty_widget_style",
-      horizontally_stretchable = "on",
-      vertically_stretchable = "on"
-    },
-
     universe_planet_button =
     {
       type = "button_style",
@@ -2910,7 +2912,11 @@ data:extend(
     {
       type = "frame_style",
       padding = 0,
-      vertical_align = "center",
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        vertical_align = "center",
+      },
       graphical_set = { base = { center = {position = {8, 8}, size = {1, 1}} } },
       left_padding = 4,
       right_margin = 4,
@@ -3175,6 +3181,16 @@ data:extend(
       left_click_sound = "__core__/sound/gui-click.ogg"
     },
 
+    dropdown_list_box_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      padding = 0,
+      always_draw_borders = true,
+      extra_padding_when_activated = 0,
+      graphical_set = {shadow = default_shadow},
+      vertical_flow_style = { type = "vertical_flow_style", parent = "packed_vertical_flow" }
+    },
+
     dropdown =
     {
       type = "dropdown_style",
@@ -3198,7 +3214,6 @@ data:extend(
         priority = "extra-high-no-scale",
         size = 32,
         scale = 0.5,
-        --flags = {"icon", "no-crop"},
         flags = {"gui-icon"},
         mipmap_count = 2
       },
@@ -3206,38 +3221,7 @@ data:extend(
       {
         type = "list_box_style",
         maximal_height = 400,
-        scroll_pane_style =
-        {
-          type = "scroll_pane_style",
-          always_draw_borders = true,
-          padding = 0,
-          extra_padding_when_activated = 0,
-          graphical_set = {shadow = default_shadow}
-        }
-      }
-    },
-
-    locale_dropdown =
-    {
-      type = "dropdown_style",
-      parent = "dropdown",
-      list_box_style =
-      {
-        type = "list_box_style",
-        maximal_height = 400,
-        item_style =
-        {
-          type = "button_style",
-          parent = "button",
-          font = "locale-pick"
-        },
-        scroll_pane_style =
-        {
-          type = "scroll_pane_style",
-          padding = 0,
-          extra_padding_when_activated = 0,
-          graphical_set = {shadow = default_shadow}
-        }
+        scroll_pane_style = { type = "scroll_pane_style", parent = "dropdown_list_box_scroll_pane" }
       }
     },
 
@@ -3256,13 +3240,7 @@ data:extend(
           horizontal_align = "left",
           font = "default-dropdown",
         },
-        scroll_pane_style =
-        {
-          type = "scroll_pane_style",
-          padding = 0,
-          extra_padding_when_activated = 0,
-          graphical_set = {shadow = default_shadow}
-        }
+        scroll_pane_style = { type = "scroll_pane_style", parent = "dropdown_list_box_scroll_pane" }
       }
     },
 
@@ -3325,13 +3303,7 @@ data:extend(
           left_padding = 4,
           right_padding = 4
         },
-        scroll_pane_style =
-        {
-          type = "scroll_pane_style",
-          padding = 0,
-          extra_padding_when_activated = 0,
-          graphical_set = {shadow = default_shadow}
-        }
+        scroll_pane_style = { type = "scroll_pane_style", parent = "dropdown_list_box_scroll_pane" }
       }
     },
 
@@ -3428,6 +3400,7 @@ data:extend(
       always_draw_borders = true,
       padding = 0,
       extra_padding_when_activated = 0,
+      vertical_flow_style = { type = "vertical_flow_style", parent = "packed_vertical_flow" },
       graphical_set =
       {
         base =
@@ -3563,7 +3536,8 @@ data:extend(
       scroll_pane_style =
       {
         type = "scroll_pane_style",
-        parent = "naked_scroll_pane"
+        parent = "naked_scroll_pane",
+        vertical_flow_style = { type = "vertical_flow_style", parent = "packed_vertical_flow" }
       }
     },
 
@@ -3609,6 +3583,7 @@ data:extend(
     {
       type = "scroll_pane_style",
       parent = "list_box_in_shallow_frame_scroll_pane",
+      vertical_flow_style = { type = "vertical_flow_style"},
       scrollbars_go_outside = true,
       vertically_stretchable = "on",
       left_margin = 12 - 4,
@@ -4356,6 +4331,84 @@ data:extend(
       height = 3*28
     },
 
+    minimap_slot =
+    {
+      type = "button_style",
+      parent = "button",
+      padding = 0,
+      size = right_menu_width,
+      default_graphical_set =
+      {
+        base =
+        {
+          position = {17, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+      hovered_graphical_set =
+      {
+        base =
+        {
+          position = {17, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_glow(minimap_slot_hovered_tint, 1)
+      },
+      clicked_graphical_set =
+      {
+        base =
+        {
+          position = {17, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_glow(minimap_slot_clicked_tint, 1)
+      },
+      disabled_graphical_set =
+      {
+        base =
+        {
+          position = {17, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+      selected_graphical_set =
+      {
+        base =
+        {
+          position = {17, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+      selected_hovered_graphical_set =
+      {
+        base =
+        {
+          position = {17, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+      selected_clicked_graphical_set =
+      {
+        base =
+        {
+          position = {17, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+    },
+
     locomotive_minimap_button =
     {
       type = "button_style",
@@ -4380,7 +4433,7 @@ data:extend(
           center = {position = {42, 8}, size = {1, 1}},
           draw_type = "outer"
         },
-        shadow = default_inner_shadow
+        shadow = default_inner_glow(minimap_slot_hovered_tint, 1)
       },
       clicked_graphical_set =
       {
@@ -4390,7 +4443,7 @@ data:extend(
           center = {position = {42, 8}, size = {1, 1}},
           draw_type = "outer"
         },
-        shadow = default_inner_shadow
+        shadow = default_inner_glow(minimap_slot_clicked_tint, 1)
       },
       disabled_graphical_set =
       {
@@ -4898,6 +4951,16 @@ data:extend(
       type = "textbox_style",
       maximal_width = 0,
       horizontally_stretchable = "on"
+    },
+
+    ime_composition_textfield =
+    {
+      type = "textbox_style",
+      default_background = {size = 1, position = {203, 80}},
+      active_background = {size = 1, position = {203, 80}},
+      padding = 0,
+      width = 0,
+      minimal_height = 20,
     },
 
     browse_games_gui_toggle_favorite_on_button =
@@ -5583,6 +5646,28 @@ data:extend(
         single_line = false,
         font_color = {255, 174, 24}
       }
+    },
+
+    lab_research_info_button =
+    {
+      type = "button_style",
+      default_graphical_set =
+      {
+        base = {corner_size = 19, position = {162, 584}, draw_type = "inner", scale = 1},
+        shadow = default_inner_shadow
+      },
+      hovered_graphical_set =
+      {
+        base = {corner_size = 19, position = {202, 584}, draw_type = "inner", scale = 1},
+        shadow = default_inner_shadow
+      },
+      clicked_graphical_set =
+      {
+        base = {corner_size = 19, position = {242, 584}, draw_type = "inner", scale = 1},
+        shadow = default_inner_shadow,
+      },
+      width = slot_table_width,
+      padding = -8
     },
 
     current_research_info_button =
@@ -9428,38 +9513,6 @@ data:extend(
         right_top = {position = {60, 17}, size = 8},
         right = {position = {392, 56}, size = {8, 1}},
         right_bottom = {position = {392, 57}, size = {8, 8}}
-      }
-    },
-
-    lab_technology_frame =
-    {
-      type = "frame_style",
-      parent = "shallow_frame_in_shallow_frame",
-      left_padding = 12,
-      top_margin = 4,
-      bottom_margin = 4,
-      vertically_stretchable = "off",
-      horizontal_flow_style =
-      {
-        type = "horizontal_flow_style",
-        vertical_align = "center",
-        horizontal_spacing = 12
-      }
-    },
-
-    lab_technology_frame_empty =
-    {
-      type = "frame_style",
-      parent = "deep_frame_in_shallow_frame",
-      left_padding = 12,
-      top_margin = 4,
-      bottom_margin = 4,
-      vertically_stretchable = "off",
-      horizontal_flow_style =
-      {
-        type = "horizontal_flow_style",
-        vertical_align = "center",
-        horizontal_spacing = 12
       }
     },
 

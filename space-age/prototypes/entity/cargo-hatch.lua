@@ -72,7 +72,7 @@ function platform_upper_hatch(hatch_offset, slice_offset, travel_offset, sky_sli
     travel_height = travel_offset or 1,
     pod_shadow_offset = bay_pod_shadow_offset();
     illumination_graphic_index = hatch_illumination_index,
-    cargo_unit_entity_to_spawn = "",
+    cargo_unit_entity_to_spawn = nil,
     receiving_cargo_units = {"cargo-pod"}
   }
 end

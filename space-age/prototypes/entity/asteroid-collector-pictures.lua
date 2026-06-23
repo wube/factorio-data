@@ -5,7 +5,12 @@ return {
     {
       layers =
       {
-        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-north",
+        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-north-base",
+        {
+          repeat_count = 16,
+          scale = 0.5,
+        }),
+        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-north-anim",
         {
           frame_count = 16,
           scale = 0.5,
@@ -25,7 +30,13 @@ return {
     {
       layers =
       {
-        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-east",
+        
+        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-east-base",
+        {
+          repeat_count = 16,
+          scale = 0.5,
+        }),
+        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-east-anim",
         {
           frame_count = 16,
           scale = 0.5,
@@ -45,7 +56,12 @@ return {
     {
       layers =
       {
-        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-south",
+        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-south-base",
+        {
+          repeat_count = 16,
+          scale = 0.5,
+        }),
+        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-south-anim",
         {
           frame_count = 16,
           scale = 0.5,
@@ -65,7 +81,12 @@ return {
     {
       layers =
       {
-        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-west",
+        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-west-base",
+        {
+          repeat_count = 16,
+          scale = 0.5,
+        }),
+        util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-top-west-anim",
         {
           frame_count = 16,
           scale = 0.5,

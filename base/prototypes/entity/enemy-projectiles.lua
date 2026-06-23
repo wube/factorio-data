@@ -19,7 +19,7 @@ function spitter_attack_parameters(data)
     projectile_creation_parameters = spitter_shoot_shiftings(data.scale, data.scale * scale_spitter_stream),
     use_shooter_direction = true,
 
-    lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 *1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+    lead_target_for_projectile_speed = 0.35, -- same as stream particle horizontal speed
 
     ammo_type =
     {
@@ -62,7 +62,7 @@ function spitter_mid_attack_parameters(data)
     projectile_creation_parameters = spitter_shoot_shiftings(data.scale, data.scale * scale_spitter_stream),
     use_shooter_direction = true,
 
-    lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 *1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+    lead_target_for_projectile_speed = 0.35, -- same as stream particle horizontal speed
 
     ammo_type =
     {
@@ -105,7 +105,7 @@ function spitter_big_attack_parameters(data)
     projectile_creation_parameters = spitter_shoot_shiftings(data.scale, data.scale * scale_spitter_stream),
     use_shooter_direction = true,
 
-    lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 *1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+    lead_target_for_projectile_speed = 0.35, -- same as stream particle horizontal speed
 
     ammo_type =
     {
@@ -128,7 +128,6 @@ function spitter_big_attack_parameters(data)
         aggregation = { max_count = 3, remove = true, count_already_playing = true}
       }
     },
-    --sound = sounds.spitter_roars(data.roarvolume),
     animation = spitterattackanimation(data.scale, data.tint1, data.tint2)
   }
 end
@@ -149,7 +148,7 @@ function spitter_behemoth_attack_parameters(data)
     projectile_creation_parameters = spitter_shoot_shiftings(data.scale, data.scale * scale_spitter_stream),
     use_shooter_direction = true,
 
-    lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 *1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+    lead_target_for_projectile_speed = 0.35, -- same as stream particle horizontal speed
 
     ammo_type =
     {
@@ -192,9 +191,9 @@ function acid_stream(data)
     particle_buffer_size = 90,
     particle_spawn_interval = data.particle_spawn_interval,
     particle_spawn_timeout = data.particle_spawn_timeout,
-    particle_vertical_acceleration = 0.005 * 0.60 *1.5, --x
-    particle_horizontal_speed = 0.2* 0.75 * 1.5 * 1.5, --x
-    particle_horizontal_speed_deviation = 0.005 * 0.70,
+    particle_vertical_acceleration = 0.005 * 0.60 *1.5,
+    particle_horizontal_speed = 0.35,
+    particle_horizontal_speed_deviation = 0.035,
     particle_start_alpha = 0.5,
     particle_end_alpha = 1,
     particle_alpha_per_part = 0.8,

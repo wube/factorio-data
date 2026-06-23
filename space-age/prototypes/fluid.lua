@@ -7,8 +7,6 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-e[aquilo]-a[ammoniacal-solution]",
     default_temperature = -50,
-    max_temperature = 100,
-    heat_capacity = "0.2kJ",
     base_color = {0, 0.15, 0.4},
     flow_color = {0, 0.35, 0.7},
     auto_barrel = false
@@ -20,8 +18,6 @@ data:extend(
     icon = "__space-age__/graphics/icons/fluid/ammonia.png",
     order = "b[new-fluid]-e[aquilo]-b[ammonia]",
     default_temperature = -35,
-    max_temperature = -33,
-    heat_capacity = "0.2kJ",
     base_color = {0, 0, 0.6},
     flow_color = {0, 0, 0.7},
     auto_barrel = false
@@ -33,7 +29,6 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-e[aquilo]-c[fluorine]",
     default_temperature = 25,
-    heat_capacity = "0.1kJ",
     base_color = {0.0, 0.3, 0.15},
     flow_color = {0.1, 0.7, 0.4},
     gas_temperature = 15,
@@ -46,8 +41,6 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-e[aquilo]-e[fluoroketone-cold]",
     default_temperature = -150,
-    max_temperature = 180,
-    heat_capacity = "1kJ",
     base_color = {0.0, 0.3, 0.15},
     flow_color = {0.1, 0.7, 0.4},
   },
@@ -58,7 +51,6 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-e[aquilo]-d[fluoroketone-hot]",
     default_temperature = 180,
-    heat_capacity = "1kJ",
     base_color = {0.3, 0.3, 0.10},
     flow_color = {0.4, 0.7, 0.35},
   },
@@ -69,9 +61,7 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-c[fulgora]-a[holmium-solution]",
     default_temperature = 15,
-    max_temperature = 2000,
-    heat_capacity = "0.01kJ",
-    base_color = {0.53, 0.1, 53},
+    base_color = {0.53, 0.1, 0.53},
     flow_color = {0.93, 0.68, 0.73},
     auto_barrel = false,
   },
@@ -82,8 +72,6 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-c[fulgora]-b[electrolyte]",
     default_temperature = 15,
-    max_temperature = 500,
-    heat_capacity = "0.01kJ",
     base_color = {0.8, 0.01, 0.2},
     flow_color = {0.99, 0.01, 0.3},
     auto_barrel = false
@@ -95,7 +83,6 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-e[aquilo]-f[lithium-brine]",
     default_temperature = 15,
-    heat_capacity = "0.1kJ",
     base_color = {0.8, 0.85, .8},
     flow_color = {0.6, 0.65, 0.6},
     auto_barrel = false
@@ -107,10 +94,9 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-b[vulcanus]-a[lava]",
     default_temperature = 1500,
-    max_temperature = 2000,
-    heat_capacity = "0.01kJ",
     base_color = {1, 0.4, 0.1},
     flow_color = {0.3, 0.1, 0},
+    draw_as_glow = true,
     auto_barrel = false
   },
   {
@@ -120,10 +106,9 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-b[vulcanus]-a[molten-iron]",
     default_temperature = 1500,
-    max_temperature = 2000,
-    heat_capacity = "0.01kJ",
     base_color = {0, 0.1, 0.53},
     flow_color = {0.2, 0.68, 0.93},
+    draw_as_glow = true,
     auto_barrel = false
   },
   {
@@ -133,10 +118,9 @@ data:extend(
     subgroup = "fluid",
     order = "b[new-fluid]-b[vulcanus]-b[molten-copper]",
     default_temperature = 1100,
-    max_temperature = 2000,
-    heat_capacity = "0.01kJ",
     base_color = {0.53, 0.1, 0},
     flow_color = {0.93, 0.68, 0.2},
+    draw_as_glow = true,
     auto_barrel = false
   },
   {

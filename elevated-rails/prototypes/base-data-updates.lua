@@ -17,3 +17,6 @@ for _, prototype in pairs(data.raw["rail-planner"]) do
 end
 
 require("__elevated-rails__.prototypes.sloped-trains-updates").apply_all_base()
+
+data.raw.shortcut["toggle-tall-entity-visibility"].hidden = nil
+data.raw.shortcut["toggle-tall-entity-visibility"].technology_to_unlock = "elevated-rail"

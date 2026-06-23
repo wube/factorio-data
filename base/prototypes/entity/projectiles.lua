@@ -22,9 +22,9 @@ data:extend(
     name = "shotgun-pellet",
     flags = {"not-on-map"},
     hidden = true,
-    collision_box = {{-0.05, -0.25}, {0.05, 0.25}},
+    collision_box = {{-0.1, -0.25}, {0.1, 0.25}},
     acceleration = 0,
-    direction_only = true,
+    hit_at_collision_position = true,
     action =
     {
       type = "direct",
@@ -33,8 +33,22 @@ data:extend(
         type = "instant",
         target_effects =
         {
-          type = "damage",
-          damage = {amount = 8, type = "physical"}
+          {
+            type = "activate-impact",
+            deliver_category = "bullet"
+          },
+          {
+            type = "damage",
+            damage = {amount = 8, type = "physical"}
+          },
+          {
+            type = "create-entity",
+            entity_name = "small-explosion-hit"
+          },
+          {
+            type = "create-sticker",
+            sticker = "shotgun-impact-sticker"
+          }
         }
       }
     },
@@ -397,9 +411,9 @@ data:extend(
     name = "piercing-shotgun-pellet",
     flags = {"not-on-map"},
     hidden = true,
-    collision_box = {{-0.05, -0.25}, {0.05, 0.25}},
+    collision_box = {{-0.1, -0.25}, {0.1, 0.25}},
     acceleration = 0,
-    direction_only = true,
+    hit_at_collision_position = true,
     action =
     {
       type = "direct",
@@ -408,8 +422,22 @@ data:extend(
         type = "instant",
         target_effects =
         {
-          type = "damage",
-          damage = {amount = 8, type = "physical"}
+          {
+            type = "activate-impact",
+            deliver_category = "bullet"
+          },
+          {
+            type = "damage",
+            damage = {amount = 12, type = "physical"}
+          },
+          {
+            type = "create-entity",
+            entity_name = "small-explosion-hit"
+          },
+          {
+            type = "create-sticker",
+            sticker = "shotgun-impact-sticker"
+          }
         }
       }
     },
@@ -429,7 +457,6 @@ data:extend(
     hidden = true,
     collision_box = {{-0.3, -1.1}, {0.3, 1.1}},
     acceleration = 0,
-    direction_only = true,
     piercing_damage = 1000,
     action =
     {
@@ -601,7 +628,6 @@ data:extend(
     hidden = true,
     collision_box = {{-0.3, -1.1}, {0.3, 1.1}},
     acceleration = 0,
-    direction_only = true,
     piercing_damage = 2200,
     action =
     {

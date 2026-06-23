@@ -37,6 +37,7 @@ data:extend(
     drop_sound = item_sounds.metal_large_inventory_move,
     stack_size = 100,
     weight = 20*kg,
+    space_platform_request_priority = true,
     place_as_tile =
     {
       result = "space-platform-foundation",
@@ -46,7 +47,7 @@ data:extend(
     }
   },
   {
-    type = "tool",
+    type = "item",
     name = "metallurgic-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__space-age__/graphics/icons/metallurgic-science-pack.png",
@@ -59,14 +60,10 @@ data:extend(
     stack_size = 200,
     default_import_location = "vulcanus",
     weight = 1*kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
-    type = "tool",
+    type = "item",
     name = "agricultural-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__space-age__/graphics/icons/agricultural-science-pack.png",
@@ -79,16 +76,12 @@ data:extend(
     stack_size = 200,
     default_import_location = "gleba",
     weight = 1*kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     spoil_ticks = 1 * hour,
     spoil_result = "spoilage",
     random_tint_color = item_tints.bluish_science
   },
   {
-    type = "tool",
+    type = "item",
     name = "electromagnetic-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__space-age__/graphics/icons/electromagnetic-science-pack.png",
@@ -101,14 +94,10 @@ data:extend(
     stack_size = 200,
     default_import_location = "fulgora",
     weight = 1*kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
-    type = "tool",
+    type = "item",
     name = "cryogenic-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__space-age__/graphics/icons/cryogenic-science-pack.png",
@@ -121,14 +110,10 @@ data:extend(
     stack_size = 200,
     default_import_location = "aquilo",
     weight = 1*kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
-    type = "tool",
+    type = "item",
     name = "promethium-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__space-age__/graphics/icons/promethium-science-pack.png",
@@ -141,10 +126,6 @@ data:extend(
     stack_size = 200,
     default_import_location = "aquilo",
     weight = 1*kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
@@ -248,8 +229,16 @@ data:extend(
     takeoff_sound = {filename = "__space-age__/sound/entity/mech-armor/mech-armor-takeoff.ogg", volume = 0.2, aggregation = {max_count = 2, remove = true, count_already_playing = true}},
     landing_sound = {filename = "__space-age__/sound/entity/mech-armor/mech-armor-land.ogg", volume = 0.3, aggregation = {max_count = 2, remove = true, count_already_playing = true}},
     flight_sound = {sound={filename = "__space-age__/sound/entity/mech-armor/mech-armor-flight.ogg", volume = 0.2}},
-    steps_sound = sound_variations("__space-age__/sound/entity/mech-armor/mech-armor-steps-metallic", 5, 0.2),
-    moving_sound = sound_variations("__space-age__/sound/entity/mech-armor/mech-armor-moves", 10, 0.4),
+    steps_sound = 
+    {
+      variations = sound_variations("__space-age__/sound/entity/mech-armor/mech-armor-steps-metallic", 5, 0.2),
+      advanced_volume_control = default_tile_sounds_advanced_volume_control(),
+    },
+    moving_sound = 
+    {
+      variations = sound_variations("__space-age__/sound/entity/mech-armor/mech-armor-moves", 10, 0.4),
+      advanced_volume_control = default_tile_sounds_advanced_volume_control(),
+    },
     collision_box = {{-0.25, -0.25}, {0.25, 0.25}},
     drawing_box = {{-0.4, -2}, {0.4, 0}},
     open_sound = sounds.armor_open,
@@ -294,8 +283,23 @@ data:extend(
     pick_sound = item_sounds.mechanical_large_inventory_pickup,
     drop_sound = item_sounds.mechanical_large_inventory_move,
     place_result = "cargo-bay",
+    space_platform_request_priority = true,
     stack_size = 10,
     weight = 100 * kg
+  },
+  {
+    type = "item",
+    name = "landing-pad-unloading-bay",
+    icon = "__space-age__/graphics/icons/cargo-unloading-bay.png",
+    icon_size = 64,
+    subgroup = "space-platform",
+    order = "c[landing-pad-unloading-bay]",
+    inventory_move_sound = item_sounds.mechanical_large_inventory_move,
+    pick_sound = item_sounds.mechanical_large_inventory_pickup,
+    drop_sound = item_sounds.mechanical_large_inventory_move,
+    place_result = "landing-pad-unloading-bay",
+    stack_size = 10,
+    weight = 200 * kg
   },
   {
     type = "space-platform-starter-pack",
@@ -327,7 +331,10 @@ data:extend(
       }
     },
     tiles = make_tile_area({{-5, -5}, {4, 4}}, "space-platform-foundation"),
-    initial_items = {{type = "item", name = "space-platform-foundation", amount = 10}},
+    initial_items =
+    {
+      {type = "item", name = "space-platform-foundation", amount = 10, quality_min = "normal", quality_max = "normal"}, -- fixed `normal` quality since quality items cannot build tiles.
+    },
     create_electric_network = true,
   },
   {
@@ -1050,6 +1057,7 @@ data:extend(
               entity_name = "behemoth-biter",
               affects_target = true,
               show_in_tooltip = true,
+              show_details_in_tooltip = false,
               as_enemy = true,
               find_non_colliding_position = true,
               offset_deviation = {{-1, -1}, {1, 1}},
@@ -1115,6 +1123,7 @@ data:extend(
               entity_name = "big-biter",
               affects_target = true,
               show_in_tooltip = true,
+              show_details_in_tooltip = false,
               as_enemy = true,
               find_non_colliding_position = true,
               abort_if_over_space = true,
@@ -1182,6 +1191,7 @@ data:extend(
               entity_name = "big-wriggler-pentapod-premature",
               affects_target = true,
               show_in_tooltip = true,
+              show_details_in_tooltip = false,
               as_enemy = true,
               find_non_colliding_position = true,
               abort_if_over_space = true,
@@ -1657,7 +1667,8 @@ data:extend(
         "water", "deepwater", "water-green", "deepwater-green", -- all water
         "water-mud", "water-shallow", -- all shallows
         "wetland-light-green-slime", "wetland-green-slime", "wetland-light-dead-skin", "wetland-dead-skin", "wetland-pink-tentacle", "wetland-red-tentacle", "wetland-yumako", "wetland-jellynut",
-        "oil-ocean-shallow", "oil-ocean-deep", -- all oil ocean
+        "wetland-blue-slime", "gleba-deep-lake",
+        "oil-ocean-shallow", "oil-ocean-shallow-2", "oil-ocean-deep", "oil-ocean-deep-2", -- all oil ocean
         "lava", "lava-hot", -- all lava
         -- not ammoniacal ocean
       }

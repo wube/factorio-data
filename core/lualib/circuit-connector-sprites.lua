@@ -199,3 +199,4 @@ furnace_circuit_wire_max_distance = 9
 reactor_circuit_wire_max_distance = 9
 combinator_circuit_wire_max_distance = 9
 splitter_circuit_wire_max_distance = 9
+lab_circuit_wire_max_distance = 9

@@ -68,6 +68,7 @@ return
   ["valve"] = building(),
   ["wall"] = building(),
   ["display-panel"] = building(),
+  ["cargo-bay"] = building(),
 
   ["accumulator"] = building_unheated(),
   ["cargo-pod"] = building_unheated(),
@@ -77,7 +78,6 @@ return
   ["solar-panel"] = building_unheated(),
   ["train-stop"] = building_unheated(),
 
-  ["cargo-bay"] = building_tall(),
   ["cargo-landing-pad"] = building_tall(),
   ["lightning-attractor"] = building_tall(),
   ["roboport"] = building_tall(),

@@ -545,6 +545,9 @@ local robots =
     friction = 0.01,
     range_from_player = 6.0,
     speed = 0.01,
+    separation_range = 1.0,
+    max_separation_force = 0.01,
+    separation_force_factor = 0.01,
     working_sound =
     {
       sound = { filename = "__base__/sound/fight/defender-robot-loop.ogg", volume = 0.7 },
@@ -613,6 +616,7 @@ local robots =
     icon = "__base__/graphics/icons/construction-robot.png",
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {mining_time = 0.1, result = "construction-robot"},
+    tall = true,
     resistances =
     {
       {
@@ -674,6 +678,7 @@ local robots =
     icon = "__base__/graphics/icons/logistic-robot.png",
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {mining_time = 0.1, result = "logistic-robot"},
+    tall = true,
     is_military_target = false,
     resistances =
     {
@@ -820,6 +825,9 @@ local robots =
     follows_player = true,
     friction = 0.01,
     range_from_player = 6.0,
+    separation_range = 1.5,
+    max_separation_force = 0.01,
+    separation_force_factor = 0.01,
     working_sound =
     {
       sound = { filename = "__base__/sound/fight/destroyer-robot-loop.ogg", volume = 0.7 },

@@ -119,6 +119,9 @@ gleba_tree_underwater_things["yumako-tree"] = gleba_tree_underwater_things["hair
 
 local gleba_tree_particle_effects =
 {
+  ["planted-tree"] =    { crop_2 = "yumako-leaf-particle",
+                        trunk_2 = "yumako-branch-particle"
+                      },
   ["yumako-tree"] =   { crop_2 = "yumako-leaf-particle",
                         trunk_2 = "yumako-branch-particle"
                       },
@@ -164,8 +167,9 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
   local width = width or 640
   local height = height or 560
   local variations = {}
-  local reflection_shift = reflection_shift or util.by_pixel(52, 80)
   local shift = shift or util.by_pixel(52, -40)
+  local reflection_shift = reflection_shift or util.by_pixel(52, 80)
+
  -- local reflection_shift = {shift[0], shift[1]} --or util.by_pixel(52, 40)
 
   local sap_particle = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].sap
@@ -630,6 +634,61 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
   return variations
 end
 
+local function gleba_tree_growth_variations(name, variation_count, per_row, scale_multiplier, width, height, shift)
+  variation_count = variation_count or 5
+  per_row = per_row or 5
+  scale_multiplier = scale_multiplier or 1
+  local width = width or 640
+  local height = height or 560
+  local growth_variations = {}
+  local shift = shift or util.by_pixel(52, -40)
+
+  for i = 1, variation_count do
+    local function make_variation_sprite(filename)
+      return {
+        surface = "gleba",
+        width = width,
+        height = height,
+        x = ((i - 1) % per_row) * width,
+        y = math.floor((i - 1) / per_row) * height,
+        shift = shift,
+        scale = 0.33 * scale_multiplier,
+        filename = filename,
+      }
+    end
+    local growth_variation = {
+      growth_warp = make_variation_sprite(string.format("__space-age__/graphics/entity/plant/%s/%s-growth-warp.png", name, name)),
+      trunk_warp = make_variation_sprite(string.format("__space-age__/graphics/entity/plant/%s/%s-trunk-warp.png", name, name)),
+      shadow_warp = make_variation_sprite(string.format("__space-age__/graphics/entity/plant/%s/%s-shadow-warp.png", name, name)),
+      harvest_warp = make_variation_sprite(string.format("__space-age__/graphics/entity/plant/%s/%s-harvest-warp.png", name, name)),
+      trunk_alpha = make_variation_sprite(string.format("__space-age__/graphics/entity/plant/%s/%s-trunk-alpha.png", name, name)),
+      shadow_alpha = make_variation_sprite(string.format("__space-age__/graphics/entity/plant/%s/%s-shadow-alpha.png", name, name)),
+      harvest_alpha = make_variation_sprite(string.format("__space-age__/graphics/entity/plant/%s/%s-harvest-alpha.png", name, name)),
+      progress_exponent = 1.0,
+    }
+    table.insert(growth_variations, growth_variation)
+  end
+  return growth_variations
+end
+
+local function gleba_tree_growth_mounds(name, variation_count, scale_multiplier)
+  variation_count = variation_count or 5
+  scale_multiplier = scale_multiplier or 1
+  local growth_mounds = {}
+  for i = 1, variation_count do
+    table.insert(growth_mounds,
+    {
+      filename = string.format("__space-age__/graphics/entity/plant/%s/%s-mound.png", name, name),
+      x = 0,
+      y = 0,
+      width = 100,
+      height = 75,
+      scale = 0.33 * scale_multiplier,
+    })
+  end
+  return growth_mounds
+end
+
 local function lerp_color(a, b, amount)
   return {
     r = a.r + (b.r - a.r) * amount,
@@ -658,6 +717,7 @@ local function minor_tints() -- Only for leaves where most if the colour is bake
   }
 end
 
+local nauvis_tree = data.raw.tree["tree-08"]
 data:extend(
 {
   {
@@ -671,6 +731,54 @@ data:extend(
     name = "gleba_plants_noise_b",
     expression = "abs(multioctave_noise{x = x, y = y, persistence = 0.8, seed0 = map_seed, seed1 = 750000, octaves = 3, input_scale = 1/20 * control:gleba_plants:frequency }\z
                       * multioctave_noise{x = x, y = y, persistence = 0.8, seed0 = map_seed, seed1 = 250000, octaves = 3, input_scale = 1/6 * control:gleba_plants:frequency })"
+  },
+  {
+    type = "plant",
+    name = "tree-plant", -- food
+    icon = "__space-age__/graphics/icons/planted-tree.png",
+    flags = plant_flags,
+    localised_name = {"entity-name.tree"},
+    minable =
+    {
+      mining_particle = "wooden-particle",
+      mining_time = 0.5,
+      results = {{type = "item", name = "wood", amount = 4}},
+    },
+    growth_ticks = 10 * minutes,
+    emissions_per_second = {pollution = -0.001},
+    max_health = 50,
+    collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selection_box = {{-1, -3}, {1, 0.8}},
+    drawing_box_vertical_extension = 0.8,
+    subgroup = "trees",
+    order = "a[tree]-c[nauvis]-a[seedable]-a[tree-plant]",
+    impact_category = "tree",
+    autoplace =
+    {
+      probability_expression = 0,
+      -- required to show agricultural tower plots
+      tile_restriction =
+      {
+        "grass-1", "grass-2", "grass-3", "grass-4",
+        "dry-dirt", "dirt-1", "dirt-2", "dirt-3", "dirt-4", "dirt-5", "dirt-6", "dirt-7",
+        "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3",
+        "sand-1", "sand-2", "sand-3"
+      }
+    },
+    surface_conditions = {{property = "pressure", min = 1000, max = 1000}},
+    variations = gleba_tree_variations("planted-tree", 8, 4, 1.3, 640, 560, util.by_pixel(70, -40), util.by_pixel(50, 0)),
+    growth_variations = gleba_tree_growth_variations("planted-tree", 8, 4, 1.3, 640, 560, util.by_pixel(70, -40)),
+    growth_mounds = gleba_tree_growth_mounds("planted-tree", 8, 1.3),
+    colors = minor_tints(),
+    agricultural_tower_tint =
+    {
+      primary = {r = 0.7, g =  1.0, b = 0.2,a =  1},
+      secondary = {r = 0.561, g = 0.613, b = 0.308, a = 1.000}, -- #8f4f4eff
+    },
+    map_color = {0.19, 0.39, 0.19, 0.40},
+    mining_sound = nauvis_tree and table.deepcopy(nauvis_tree.mining_sound) or nil,
+    mined_sound = nauvis_tree and table.deepcopy(nauvis_tree.mined_sound) or nil,
+    ambient_sounds = nauvis_tree and table.deepcopy(nauvis_tree.ambient_sounds) or nil,
   },
   {
     type = "plant",
@@ -718,7 +826,9 @@ data:extend(
       richness_expression = "random_penalty_at(3, 1)",
       tile_restriction = {"natural-yumako-soil", "artificial-yumako-soil", "overgrowth-yumako-soil"}
     },
-    variations = gleba_tree_variations("yumako-tree", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73)),
+    variations = gleba_tree_variations("yumako-tree", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73), util.by_pixel(52, 73)),
+    growth_variations = gleba_tree_growth_variations("yumako-tree", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73)),
+    growth_mounds = gleba_tree_growth_mounds("yumako-tree", 8, 1.3),
     colors = minor_tints(),
     agricultural_tower_tint =
     {
@@ -777,7 +887,9 @@ data:extend(
       richness_expression = "random_penalty_at(3, 1)",
       tile_restriction = {"natural-jellynut-soil", "artificial-jellynut-soil", "overgrowth-jellynut-soil"}
     },
-    variations = gleba_tree_variations("jellystem", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73)),
+    variations = gleba_tree_variations("jellystem", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73), util.by_pixel(52, 73)),
+    growth_variations = gleba_tree_growth_variations("jellystem", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73)),
+    growth_mounds = gleba_tree_growth_mounds("jellystem", 8, 1.3),
     colors = {
       {r = 255, g = 255, b =  255},
       {r = 233, g = 218, b =  225},
@@ -937,7 +1049,7 @@ data:extend(
         main_probability = "min(0.02, gleba_water_plant_ramp * 0.2 * (main_box + gleba_plants_noise - 0.2) * control:gleba_plants:size)"
       }
     },
-    variations = gleba_tree_variations("slipstack", 8, 5, nil, 640, 560, util.by_pixel(52, -65)),
+    variations = gleba_tree_variations("slipstack", 8, 5, nil, 640, 560, util.by_pixel(52, -65), util.by_pixel(52, 60)),
     colors = minor_tints(),
     ambient_sounds =
     {
@@ -1036,7 +1148,7 @@ data:extend(
       probability_expression = "gleba_funnel_trunk_region",
       richness_expression = "random_penalty_at(3, 1)"
     },
-    variations = gleba_tree_variations("funneltrunk", 5, 4, nil, 640, 560, util.by_pixel(52, -65)),
+    variations = gleba_tree_variations("funneltrunk", 5, 4, nil, 640, 560, util.by_pixel(52, -65), util.by_pixel(52, 65)),
     colors = minor_tints(),
     ambient_sounds =
     {
@@ -1132,7 +1244,7 @@ data:extend(
         main_probability = "min(0.02, gleba_water_plant_ramp * 0.2 * (main_box + gleba_plants_noise - 0.2) * control:gleba_plants:size)"
       }
     },
-    variations = gleba_tree_variations("hairyclubnub", 10, 5, nil, 640, 560, util.by_pixel(52, -65)),
+    variations = gleba_tree_variations("hairyclubnub", 10, 5, nil, 640, 560, util.by_pixel(52, -65), util.by_pixel(52, 55)),
     colors = minor_tints(),
     created_effect = {
       type = "direct",
@@ -1215,7 +1327,7 @@ data:extend(
       probability_expression = "gleba_teflilly_region",
       richness_expression = "random_penalty_at(3, 1)"
     },
-    variations = gleba_tree_variations("teflilly", 10, 5, nil, 640, 560, util.by_pixel(52, -60)),
+    variations = gleba_tree_variations("teflilly", 10, 5, nil, 640, 560, util.by_pixel(52, -60), util.by_pixel(52, 60)),
     colors = {
       {r = 255, g = 255, b =  255},
       {r = 220, g = 255, b =  255},
@@ -1328,7 +1440,7 @@ data:extend(
         main_probability = "min(0.02, 0.1 * (main_box + gleba_plants_noise - 0.2) * control:gleba_plants:size)"
       }
     },
-    variations = gleba_tree_variations("lickmaw", nil, nil, nil, nil, nil, util.by_pixel(52, -60)),
+    variations = gleba_tree_variations("lickmaw", nil, nil, nil, nil, nil, util.by_pixel(52, -60),  util.by_pixel(52, 60)),
     colors = minor_tints(),
     ambient_sounds =
     {
@@ -1448,7 +1560,7 @@ data:extend(
         invasion_top_probability = "min(0.05, 0.1 * (invasion_top_box + gleba_plants_noise - 0.55) * control:gleba_plants:size)", -- smaller patches, sparser
       }
     },
-    variations = gleba_tree_variations("stingfrond", 10, 5, 1.1, nil, nil, util.by_pixel(52, -60)),
+    variations = gleba_tree_variations("stingfrond", 10, 5, 1.1, nil, nil, util.by_pixel(52, -60), util.by_pixel(52, 60)),
     colors = {
       {r = 255, g = 255, b =  255},
       {r = 240, g = 255, b =  255},
@@ -1556,7 +1668,7 @@ data:extend(
       probability_expression = "gleba_boompuff_region",
       richness_expression = "random_penalty_at(3, 1)"
     },
-    variations = gleba_tree_variations("boompuff", 14, 5, 0.9, nil, nil, util.by_pixel(49, -40)),
+    variations = gleba_tree_variations("boompuff", 14, 5, 0.9, nil, nil, util.by_pixel(49, -40), util.by_pixel(49, 40)),
     colors = lerp_colors({
       {r = 255, g = 255, b =  255},
       {r = 220, g = 255, b =  255},
@@ -1762,7 +1874,7 @@ data:extend(
         invasion_tall_probability = "min(0.05, 0.15 * (invasion_tall_box + gleba_plants_noise_b - 0.4) * control:gleba_plants:size)", -- smaller patches, sparser
       }
     },
-    variations = gleba_tree_variations("sunnycomb", 10, 5, nil, 3200/5, 1120/2, util.by_pixel(52, -60)),
+    variations = gleba_tree_variations("sunnycomb", 10, 5, nil, 3200/5, 1120/2, util.by_pixel(52, -60), util.by_pixel(52, 60)),
     colors = minor_tints(),
     ambient_sounds =
     {
@@ -1851,7 +1963,7 @@ data:extend(
       probability_expression = "min(0.8, (min(1, 1.5 * gleba_water_plant_ramp) + 0.5 * gleba_decal_noise - gleba_plants_noise - 0.5 * gleba_select(gleba_aux, 0.45, 0.55, 0.2, 0, 1) - 0.7) * control:gleba_plants:size)",
       richness_expression = 1,
     },
-    variations = gleba_tree_variations("water-cane", 16, 3, 1, 340, 290, util.by_pixel(30, -28), util.by_pixel(30, -20)),
+    variations = gleba_tree_variations("water-cane", 16, 3, 1, 340, 290, util.by_pixel(30, -28), util.by_pixel(30, -18)),
     colors = minor_tints(),
     ambient_sounds =
     {
@@ -1871,38 +1983,3 @@ data:extend(
     }
   },
 })
-
-local tree_plant = util.table.deepcopy(data.raw["tree"]["tree-08"])
-tree_plant.type = "plant"
-tree_plant.name = "tree-plant"
-tree_plant.flags = plant_flags
-tree_plant.hidden_in_factoriopedia = false
-tree_plant.factoriopedia_alternative = nil
-tree_plant.map_color = {0.19, 0.39, 0.19, 0.40}
-tree_plant.agricultural_tower_tint =
-{
-  primary = {r = 0.7, g =  1.0, b = 0.2,a =  1},
-  secondary = {r = 0.561, g = 0.613, b = 0.308, a = 1.000}, -- #8f4f4eff
-}
-tree_plant.minable =
-{
-  mining_particle = "wooden-particle",
-  mining_time = 0.5,
-  results = {{type = "item", name = "wood", amount = 4}},
-}
-tree_plant.variation_weights = { 1, 1, 1, 1, 1, 1, 1, 1, 0.3, 0.3, 0.0, 0.0}
-tree_plant.growth_ticks = 10 * minutes
-tree_plant.surface_conditions = { {property = "pressure", min = 1000, max = 1000}}  -- only Nauvis (doesn't work yet)
-tree_plant.autoplace =
-{
-  probability_expression = 0,
-  -- required to show agricultural tower plots
-  tile_restriction =
-  {
-    "grass-1", "grass-2", "grass-3", "grass-4",
-    "dry-dirt", "dirt-1", "dirt-2", "dirt-3", "dirt-4", "dirt-5", "dirt-6", "dirt-7",
-    "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3"
-  }
-}
-
-data:extend({tree_plant})

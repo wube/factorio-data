@@ -7,11 +7,13 @@ effects.default_clouds_effect_properties =
       shape_noise_texture =
       {
         filename = "__core__/graphics/clouds-noise.png",
+        color_channels = 3,
         size = 2048
       },
       detail_noise_texture =
       {
         filename = "__core__/graphics/clouds-detail-noise.png",
+        color_channels = 1,
         size = 2048
       },
 
@@ -38,11 +40,13 @@ effects.default_clouds_effect_properties =
         shape_noise_texture =
         {
           filename = "__core__/graphics/clouds-noise.png",
+          color_channels = 3,
           size = 2048
         },
         detail_noise_texture =
         {
           filename = "__core__/graphics/clouds-detail-noise.png",
+          color_channels = 1,
           size = 2048
         },
         color1 = {1.0, 0.8706, 0.302},

@@ -78,7 +78,8 @@ data:extend(
       priority = 64
     },
     metal_walking_sound = sound_variations("__core__/sound/walking/transport-belt", 9, 0.6),
-    new_objective = { filename = "__core__/sound/new-objective.ogg", volume = 0.9 },
+    heat_pipe_walking_sound = sound_variations("__core__/sound/walking/heat-pipe", 5, 0.7),
+    new_objective = {filename = "__core__/sound/new-objective.ogg", volume = 0.9},
     deconstruct_medium =
     {
       switch_vibration_data =
@@ -109,6 +110,17 @@ data:extend(
         gain = 0.25
       },
       filename = "__core__/sound/deconstruct-large.ogg",
+      volume = 0.8,
+      priority = 64
+    },
+    deconstruct_behemoth =
+    {
+      switch_vibration_data =
+      {
+        filename = "__core__/sound/deconstruct-behemoth.bnvib",
+        gain = 0.4
+      },
+      filename = "__core__/sound/deconstruct-behemoth.ogg",
       volume = 0.8,
       priority = 64
     },
@@ -173,15 +185,18 @@ data:extend(
 add_utility_sound_with_vibration("build_small", "__core__/sound/build-small.ogg", 0.7, 64, {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)}, "__core__/sound/build-small.bnvib", 0.2)
 add_utility_sound_with_vibration("build_medium", "__core__/sound/build-medium.ogg", 0.7, 64, {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)}, "__core__/sound/build-medium.bnvib", 0.25)
 add_utility_sound_with_vibration("build_large", "__core__/sound/build-large.ogg", 0.7, 64, {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)}, "__core__/sound/build-large.bnvib", 0.3)
-add_utility_sound("build_huge", "__core__/sound/build-large.ogg", 0.7, 64, {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)})
+add_utility_sound_with_vibration("build_huge", "__core__/sound/build-large.ogg", 1.0, 64, {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)}, "__core__/sound/build-large.bnvib", 0.4)
+add_utility_sound_with_vibration("build_behemoth", "__core__/sound/build-behemoth.ogg", 1.0, 64, {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)}, "__core__/sound/build-behemoth.bnvib", 0.45)
 add_utility_sound("build_blueprint_small", "__core__/sound/build-blueprint-small.ogg", 0.7, 64, volume_multiplier("tips-and-tricks", 0.8))
 add_utility_sound("build_blueprint_medium", "__core__/sound/build-blueprint-medium.ogg", 0.7, 64)
 add_utility_sound("build_blueprint_large", "__core__/sound/build-blueprint-large.ogg", 0.7, 64)
-add_utility_sound("build_blueprint_huge", "__core__/sound/build-blueprint-large.ogg", 0.7, 64)
+add_utility_sound("build_blueprint_huge", "__core__/sound/build-blueprint-huge.ogg", 0.9, 64)
 add_utility_sound("build_ghost_upgrade", "__core__/sound/build-ghost-upgrade.ogg", 0.7, 64)
 add_utility_sound("build_ghost_upgrade_cancel", "__core__/sound/build-ghost-upgrade-cancel.ogg", 0.7, 64)
 add_utility_sound("gui_click", "__core__/sound/gui-click.ogg")
 add_utility_sound("gui_switch", "__core__/sound/gui-switch.ogg", 0.7)
+add_utility_sound("gui_toggle", "__core__/sound/gui-toggle.ogg", 0.3)
+add_utility_sound("gui_tab", "__core__/sound/gui-tab.ogg")
 add_utility_sound("list_box_click", "__core__/sound/list-box-click.ogg")
 add_utility_sound("cannot_build", "__core__/sound/cannot-build.ogg")
 add_utility_sound_with_vibration("deconstruct_small", "__core__/sound/deconstruct-small.ogg", 1.0, 64, nil, "__core__/sound/deconstruct-small.bnvib", 0.25)
@@ -192,6 +207,16 @@ add_utility_sound("rotated_large", "__core__/sound/rotate-big.ogg", 1.0, 64)
 add_utility_sound("rotated_huge", "__core__/sound/rotate-big.ogg", 1.0, 64)
 add_utility_sound("alert_destroyed", "__core__/sound/alert-destroyed.ogg", 0.5)
 add_utility_sound("console_message", "__core__/sound/console-message.ogg")
+add_utility_sound("console_player_joined", "__core__/sound/console-player-joined.ogg")
+add_utility_sound("console_player_respawned", "__core__/sound/console-player-joined.ogg")
+add_utility_sound("console_player_left", "__core__/sound/console-player-left.ogg")
+add_utility_sound("console_player_paused_game", "__core__/sound/console-player-paused-game.ogg")
+add_utility_sound("console_player_resumed_game", "__core__/sound/console-player-resumed-game.ogg")
+add_utility_sound("console_player_died", "__core__/sound/console-player-died.ogg")
+add_utility_sound("console_player_research", "__core__/sound/console-player-research.ogg")
+add_utility_sound("console_platform_created", "__core__/sound/console-platform-created.ogg")
+add_utility_sound("console_platform_destroyed", "__core__/sound/console-platform-destroyed.ogg")
+add_utility_sound("console_player_changed_logistic_group", "__core__/sound/console-player-changed-logistic-group.ogg")
 add_utility_sound("scenario_message", "__core__/sound/scenario-message.ogg")
 add_utility_sound("game_lost", "__core__/sound/game-lost.ogg", 0.8)
 add_utility_sound("game_won", "__core__/sound/game-won.ogg", 0.75)
@@ -215,3 +240,9 @@ add_utility_sound("confirm", "__core__/sound/gui-green-confirm.ogg")
 add_utility_sound("undo", "__core__/sound/undo.ogg")
 add_utility_sound("rail_plan_start", "__core__/sound/rail-plan-start.ogg")
 add_utility_sound("default_landing_steps", "__core__/sound/walking/default-land-step.ogg", 1.0)
+add_utility_sound("toggle_show_entity_info", "__core__/sound/gui-toggle.ogg", 0.3)
+add_utility_sound("cycle_blueprint_book", "__core__/sound/gui-cycling.ogg")
+add_utility_sound("blueprint_preview_build", "__core__/sound/blueprint-preview-build.ogg", 0.6)
+add_utility_sound("blueprint_preview_mine", "__core__/sound/blueprint-preview-mine.ogg", 0.7)
+add_utility_sound("adjust_blueprint_snapping", "__core__/sound/gui-snapping.ogg", 0.7)
+add_utility_sound("change_quality", "__core__/sound/gui-cycling.ogg")

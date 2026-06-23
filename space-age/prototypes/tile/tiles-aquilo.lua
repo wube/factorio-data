@@ -58,9 +58,9 @@ local ice_transitions_between_transitions =
     background_layer_group = "zero",
     offset_background_layer_by_tile_layer = true,
 
-    spritesheet = "__base__/graphics/terrain/out-of-map-transition/dirt-out-of-map-transition.png",
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/ice-out-of-map-transition-b.png",
     layout = tile_spritesheet_layout.transition_3_3_3_1_0,
-    overlay_enabled = false
+    overlay_enabled = true
   },
   {
     transition_group1 = water_transition_group_id,
@@ -70,8 +70,9 @@ local ice_transitions_between_transitions =
     background_layer_group = "zero",
     offset_background_layer_by_tile_layer = true,
 
-    spritesheet = "__base__/graphics/terrain/out-of-map-transition/dry-dirt-shore-out-of-map-transition.png",
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/ice-shore-out-of-map.png",
     layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+    overlay_enabled = true,
     effect_map_layout =
     {
       spritesheet = "__base__/graphics/terrain/effect-maps/water-dirt-to-out-of-map-mask.png",
@@ -100,25 +101,6 @@ local ice_transitions =
     }
   },
   {
-    to_tiles = lava_tile_type_names,
-    transition_group = lava_transition_group_id,
-    spritesheet = "__space-age__/graphics/terrain/water-transitions/lava-stone.png",
-    lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/water-transitions/lava-stone-lightmap.png" },
-     -- this added the lightmap spritesheet
-    layout = tile_spritesheet_layout.transition_16_16_16_4_4,
-    lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/water-transitions/lava-stone-lightmap.png" },
-     -- this added the lightmap spritesheet
-    effect_map_layout =
-    {
-      spritesheet = "__space-age__/graphics/terrain/effect-maps/lava-dirt-mask.png",
-      inner_corner_count = 8,
-      outer_corner_count = 8,
-      side_count = 8,
-      u_transition_count = 2,
-      o_transition_count = 1
-    }
-  },
-  {
     to_tiles = {"out-of-map","empty-space","oil-ocean-shallow"},
     transition_group = out_of_map_transition_group_id,
 
@@ -126,76 +108,9 @@ local ice_transitions =
     background_layer_group = "zero",
     offset_background_layer_by_tile_layer = true,
 
-    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/volcanic-out-of-map-transition.png",
-    layout = tile_spritesheet_layout.transition_4_4_8_1_1,
-    overlay_enabled = false
-  }
-}
-
-local concrete_transitions =
-{
-  {
-    to_tiles = water_tile_type_names,
-    transition_group = water_transition_group_id,
-
-    spritesheet = "__base__/graphics/terrain/water-transitions/concrete.png",
-    layout = tile_spritesheet_layout.transition_8_8_8_4_4,
-    background_enabled = false,
-    effect_map_layout =
-    {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-mask.png",
-      inner_corner_count = 1,
-      outer_corner_count = 1,
-      side_count = 1,
-      u_transition_count = 1,
-      o_transition_count = 1
-    }
-  },
-  concrete_to_out_of_map_transition
-}
-
-local concrete_transitions_between_transitions =
-{
-  {
-    transition_group1 = default_transition_group_id,
-    transition_group2 = water_transition_group_id,
-
-    spritesheet = "__base__/graphics/terrain/water-transitions/concrete-transitions.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
-    background_enabled = false,
-    effect_map_layout =
-    {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-land-mask.png",
-      o_transition_count = 0
-    }
-  },
-  {
-    transition_group1 = default_transition_group_id,
-    transition_group2 = out_of_map_transition_group_id,
-
-    background_layer_offset = 1,
-    background_layer_group = "zero",
-    offset_background_layer_by_tile_layer = true,
-
-    spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition-b.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
-  },
-  {
-    transition_group1 = water_transition_group_id,
-    transition_group2 = out_of_map_transition_group_id,
-
-    background_layer_offset = 1,
-    background_layer_group = "zero",
-    offset_background_layer_by_tile_layer = true,
-
-    spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-shore-out-of-map-transition.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
-    effect_map_layout =
-    {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-out-of-map-mask.png",
-      u_transition_count = 0,
-      o_transition_count = 0
-    }
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/ice-out-of-map.png",
+    layout = tile_spritesheet_layout.transition_16_16_16_4_4,
+    overlay_enabled = true
   }
 }
 
@@ -615,7 +530,7 @@ data:extend({
       },
       transition = tile_graphics.generic_masked_tile_transitions1
     },
-    transitions = { space_age_tiles_util.lava_to_out_of_map_transition},
+    transitions = data.raw.tile["water"].transitions,
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     map_color = {21,42,56},
     walking_speed_modifier = 1,
@@ -635,14 +550,10 @@ data:extend({
       textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
-          width = 512,
-          height = 512
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
         },
         {
-          filename = "__space-age__/graphics/terrain/aquilo/brash-ice.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/aquilo/brash-ice.png"
         }
       },
       texture_variations_columns = 1,
@@ -689,11 +600,46 @@ local function frozen_concrete(base_name, item_name, transition_merge_tile)
       count = 8,
       scale = 0.5
     },
-    transition = tile_graphics.generic_texture_on_concrete_transition
+    transition = {
+      mask_layout =
+      {
+        inner_corner =
+        {
+          spritesheet = "__space-age__/graphics/terrain/aquilo/frozen-concrete-inner-corner-mask.png",
+          count = 1,
+          scale = 0.5
+        },
+        outer_corner =
+        {
+          spritesheet = "__space-age__/graphics/terrain/aquilo/frozen-concrete-outer-corner-mask.png",
+          count = 1,
+          scale = 0.5
+        },
+        side =
+        {
+          spritesheet = "__space-age__/graphics/terrain/aquilo/frozen-concrete-side-mask.png",
+          count = 1,
+          scale = 0.5
+        },
+        u_transition =
+        {
+          spritesheet = "__space-age__/graphics/terrain/aquilo/frozen-concrete-u-mask.png",
+          count = 1,
+          scale = 0.5
+        },
+        o_transition =
+        {
+          spritesheet = "__space-age__/graphics/terrain/aquilo/frozen-concrete-o-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      }
+    }
   }
   frozen_concrete.transition_merges_with_tile = transition_merge_tile
   frozen_concrete.transitions = nil
   frozen_concrete.transitions_between_transitions = nil
+  frozen_concrete.transition_overlay_layer_offset = 0
   frozen_concrete.thawed_variant = base_name
   frozen_concrete.frozen_variant = nil
   frozen_concrete.walking_sound = tile_sounds.walking.frozen_concrete
@@ -707,3 +653,8 @@ frozen_concrete("hazard-concrete-right", "hazard-concrete", "concrete")
 frozen_concrete("refined-concrete", "refined-concrete", "refined-concrete")
 frozen_concrete("refined-hazard-concrete-left", "refined-hazard-concrete", "refined-concrete")
 frozen_concrete("refined-hazard-concrete-right", "refined-hazard-concrete", "refined-concrete")
+frozen_concrete("foundation", "foundation", "foundation")
+
+-- make the snow effect go over the transition
+data.raw.tile["frozen-concrete"].layer = data.raw.tile["frozen-hazard-concrete-left"].layer
+data.raw.tile["frozen-refined-concrete"].layer = data.raw.tile["frozen-refined-hazard-concrete-left"].layer

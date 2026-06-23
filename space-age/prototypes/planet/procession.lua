@@ -1,14 +1,15 @@
 require("__space-age__.prototypes.planet.procession-common")
 require("__space-age__.prototypes.planet.general.planet-to-platform")
 require("__space-age__.prototypes.planet.general.platform-to-planet")
+require("__space-age__.prototypes.planet.general.platform-to-platform")
 -- Nauvis changes
 local procession_graphic_catalogue = require("__base__.prototypes.planet.procession-graphic-catalogue-types")
 local meld = require("__core__.lualib.meld")
 
 data.raw.planet.nauvis.platform_procession_set =
 {
-  arrival = {"planet-to-platform-b"},
-  departure = {"platform-to-planet-a"}
+  arrival = {"planet-to-platform-b", "platform-to-platform-b"},
+  departure = {"platform-to-planet-a", "platform-to-platform-a"}
 }
 
 data.raw.planet.nauvis.planet_procession_set =
@@ -27,8 +28,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/nauvis-cloudscape.png",
       width = 960,
       height = 960,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -38,8 +39,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape.png",
       width = 960,
       height = 960,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -50,8 +51,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/nauvis-cloudscape-layered-0.png",
       width = 2000,
       height = 1500,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -61,8 +62,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape-layered-0.png",
       width = 2000,
       height = 1500,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -73,8 +74,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/nauvis-cloudscape-layered-1.png",
       width = 1600,
       height = 1200,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -84,8 +85,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape-layered-1.png",
       width = 1600,
       height = 1200,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -97,8 +98,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/nauvis-cloudscape-layered-2.png",
       width = 1400,
       height = 1050,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -108,8 +109,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape-layered-2.png",
       width = 1400,
       height = 1050,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -120,8 +121,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/nauvis-cloudscape-layered-3.png",
       width = 1200,
       height = 900,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -131,8 +132,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/mask-cloudscape-layered-3.png",
       width = 1200,
       height = 900,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 
@@ -144,8 +145,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/space-rear-star.png",
       width = 1024,
       height = 1024,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
   {
@@ -155,8 +156,8 @@ meld(data.raw.planet.nauvis.procession_graphic_catalogue,
       filename = "__space-age__/graphics/procession/clouds/nauvis-sky-tint.png",
       width = 16,
       height = 16,
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "procession-cover" },
     }
   },
 

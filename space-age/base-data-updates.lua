@@ -7,9 +7,17 @@ local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local cargo_pod_catalogue_additions = require("__space-age__/prototypes/entity/cargo-pod-catalogue")
 local procession_graphic_catalogue_types = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
 
+local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
+local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
+
+local function add_recipe_category(recipe, category)
+  recipe.categories = recipe.categories or {"crafting"}
+  table.insert(recipe.categories, category)
+end
+
 data.raw.technology["space-science-pack"].localised_description = {"technology-description.space-science-pack-space-age"}
 data.raw["rocket-silo"]["rocket-silo"].launch_to_space_platforms = true
-data.raw["rocket-silo"]["rocket-silo"].to_be_inserted_to_rocket_inventory_size = 20
+data.raw["rocket-silo"]["rocket-silo"].to_be_inserted_to_rocket_inventory_size = nil
 data.raw["rocket-silo"]["rocket-silo"].logistic_trash_inventory_size = 20
 data.raw["rocket-silo-rocket"]["rocket-silo-rocket"].inventory_size = 20
 data.raw.item["rocket-silo"].flags = data.raw.item["rocket-silo"].flags or {}
@@ -72,16 +80,7 @@ data.raw.technology["space-science-pack"].effects =
   }
 }
 
-data.raw.character.character.crafting_categories = {"crafting", "electronics", "pressing", "recycling-or-hand-crafting", "organic-or-hand-crafting", "organic-or-assembling"}
-data.raw["god-controller"].default.crafting_categories = {"crafting", "electronics", "pressing", "recycling-or-hand-crafting", "organic-or-hand-crafting", "organic-or-assembling"}
 data.raw.character.character.synced_footstep_particle_triggers[1].tiles = { "water-shallow", "wetland-blue-slime", "wetland-light-green-slime", "wetland-green-slime", "wetland-light-dead-skin", "wetland-dead-skin", "wetland-pink-tentacle", "wetland-red-tentacle", "wetland-yumako", "wetland-jellynut"}
-
-
-data.raw["assembling-machine"]["assembling-machine-1"].crafting_categories = {"crafting", "basic-crafting", "advanced-crafting", "electronics", "pressing"}
-data.raw["assembling-machine"]["assembling-machine-2"].crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid", "electronics", "electronics-with-fluid", "pressing", "metallurgy-or-assembling", "organic-or-hand-crafting", "organic-or-assembling", "electronics-or-assembling", "cryogenics-or-assembling", "crafting-with-fluid-or-metallurgy"}
-data.raw["assembling-machine"]["assembling-machine-3"].crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid", "electronics", "electronics-with-fluid", "pressing", "metallurgy-or-assembling", "organic-or-hand-crafting", "organic-or-assembling", "electronics-or-assembling", "cryogenics-or-assembling", "crafting-with-fluid-or-metallurgy"}
-
-data.raw["assembling-machine"]["chemical-plant"].crafting_categories = {"chemistry", "chemistry-or-cryogenics", "organic-or-chemistry"}
 
 --data.raw["furnace"]["stone-furnace"].heating_energy = "50kW"
 --data.raw["furnace"]["steel-furnace"].heating_energy = "50kW"
@@ -141,6 +140,7 @@ data.raw["rocket-silo"]["rocket-silo"].surface_conditions =
   }
 }
 
+table.insert(data.raw["cargo-landing-pad"]["cargo-landing-pad"].flags, "hide-alt-info")
 data.raw["cargo-landing-pad"]["cargo-landing-pad"].trash_inventory_size = 20
 data.raw["cargo-landing-pad"]["cargo-landing-pad"].surface_conditions =
 {
@@ -235,42 +235,42 @@ for t,l in pairs(containers) do
 end
 
 for _, connection in pairs(data.raw["infinity-pipe"]["infinity-pipe"].fluid_box.pipe_connections) do
-  connection.connection_category = {"default", "fusion-plasma"}
+  connection.connection_category = {"default", "fusion-reactor", "fusion-generator"}
 end
 
-data.raw.recipe["transport-belt"].category = "pressing"
-data.raw.recipe["underground-belt"].category = "pressing"
-data.raw.recipe["splitter"].category = "pressing"
-data.raw.recipe["fast-transport-belt"].category = "pressing"
-data.raw.recipe["fast-underground-belt"].category = "pressing"
-data.raw.recipe["fast-splitter"].category = "pressing"
-data.raw.recipe["express-transport-belt"].category = "crafting-with-fluid-or-metallurgy"
-data.raw.recipe["express-underground-belt"].category = "crafting-with-fluid-or-metallurgy"
-data.raw.recipe["express-splitter"].category = "crafting-with-fluid-or-metallurgy"
+add_recipe_category(data.raw.recipe["transport-belt"], "metallurgy")
+add_recipe_category(data.raw.recipe["underground-belt"], "metallurgy")
+add_recipe_category(data.raw.recipe["splitter"], "metallurgy")
+add_recipe_category(data.raw.recipe["fast-transport-belt"], "metallurgy")
+add_recipe_category(data.raw.recipe["fast-underground-belt"], "metallurgy")
+add_recipe_category(data.raw.recipe["fast-splitter"], "metallurgy")
+add_recipe_category(data.raw.recipe["express-transport-belt"], "metallurgy")
+add_recipe_category(data.raw.recipe["express-underground-belt"], "metallurgy")
+add_recipe_category(data.raw.recipe["express-splitter"], "metallurgy")
 
-data.raw.recipe["beacon"].category = "electronics"
-data.raw.recipe["solar-panel"].category = "electronics"
+add_recipe_category(data.raw.recipe["beacon"], "electromagnetics")
+add_recipe_category(data.raw.recipe["solar-panel"], "electromagnetics")
 
-data.raw.recipe["speed-module"].category = "electronics"
-data.raw.recipe["speed-module-2"].category = "electronics"
-data.raw.recipe["speed-module-3"].category = "electronics"
+add_recipe_category(data.raw.recipe["speed-module"], "electromagnetics")
+add_recipe_category(data.raw.recipe["speed-module-2"], "electromagnetics")
+add_recipe_category(data.raw.recipe["speed-module-3"], "electromagnetics")
 table.insert(data.raw.recipe["speed-module-3"].ingredients, {type = "item", name = "tungsten-carbide", amount = 1})
 
-data.raw.recipe["productivity-module"].category = "electronics"
-data.raw.recipe["productivity-module-2"].category = "electronics"
-data.raw.recipe["productivity-module-3"].category = "electronics"
+add_recipe_category(data.raw.recipe["productivity-module"], "electromagnetics")
+add_recipe_category(data.raw.recipe["productivity-module-2"], "electromagnetics")
+add_recipe_category(data.raw.recipe["productivity-module-3"], "electromagnetics")
 table.insert(data.raw.recipe["productivity-module-3"].ingredients, {type = "item", name = "biter-egg", amount = 1})
 
-data.raw.recipe["efficiency-module"].category = "electronics"
-data.raw.recipe["efficiency-module-2"].category = "electronics"
-data.raw.recipe["efficiency-module-3"].category = "electronics"
+add_recipe_category(data.raw.recipe["efficiency-module"], "electromagnetics")
+add_recipe_category(data.raw.recipe["efficiency-module-2"], "electromagnetics")
+add_recipe_category(data.raw.recipe["efficiency-module-3"], "electromagnetics")
 table.insert(data.raw.recipe["efficiency-module-3"].ingredients, {type = "item", name = "spoilage", amount = 5})
 
-data.raw.recipe["sulfuric-acid"].category = "chemistry-or-cryogenics"
+add_recipe_category(data.raw.recipe["sulfuric-acid"], "cryogenics")
 
-data.raw.recipe["heavy-oil-cracking"].category = "organic-or-chemistry"
-data.raw.recipe["light-oil-cracking"].category = "organic-or-chemistry"
-data.raw.recipe["rocket-fuel"].category = "organic-or-assembling"
+add_recipe_category(data.raw.recipe["heavy-oil-cracking"], "organic")
+add_recipe_category(data.raw.recipe["light-oil-cracking"], "organic")
+add_recipe_category(data.raw.recipe["rocket-fuel"], "organic")
 
 table.insert(data.raw.lab["lab"].inputs, "metallurgic-science-pack")
 table.insert(data.raw.lab["lab"].inputs, "agricultural-science-pack")
@@ -289,6 +289,9 @@ table.insert(data.raw["land-mine"]["land-mine"].action.action_delivery.source_ef
 data.raw.item["rocket-silo"].subgroup = "space-interactors"
 data.raw.item["cargo-landing-pad"].subgroup = "space-interactors"
 data.raw["cargo-pod"]["cargo-pod"].subgroup = "space-interactors"
+
+local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
+data.raw["cargo-pod"]["cargo-pod"].factoriopedia_simulation = simulations.factoriopedia_cargo_pod_space
 data.raw["temporary-container"]["cargo-pod-container"].subgroup = "space-interactors"
 
 local pfunctions = require("__space-age__/prototypes/planet/general/general-functions")
@@ -304,21 +307,22 @@ data.raw["item-subgroup"]["space-related"].order = "e"
 
 data.raw.recipe["coal-liquefaction"].order = "a[oil-processing]-d[coal-liquefaction]"
 
-data.raw.recipe.sulfur.category = "chemistry-or-cryogenics"
+add_recipe_category(data.raw.recipe.sulfur, "cryogenics")
 
-data.raw.recipe["accumulator"].category = "electronics"
-data.raw.recipe["discharge-defense-equipment"].category = "electronics"
-data.raw.recipe["electronic-circuit"].category = "electronics"
-data.raw.recipe["small-electric-pole"].category = "electronics"
-data.raw.recipe["big-electric-pole"].category = "electronics"
-data.raw.recipe["medium-electric-pole"].category = "electronics"
-data.raw.recipe["copper-cable"].category = "electronics"
-data.raw.recipe["advanced-circuit"].category = "electronics"
-data.raw.recipe["processing-unit"].category = "electronics-with-fluid"
-data.raw.recipe.substation.category = "electronics"
-data.raw.recipe["plastic-bar"].category = "chemistry-or-cryogenics"
-data.raw.recipe.explosives.category = "chemistry-or-cryogenics"
-data.raw.recipe.battery.category = "chemistry-or-cryogenics"
+add_recipe_category(data.raw.recipe["accumulator"], "electromagnetics")
+add_recipe_category(data.raw.recipe["discharge-defense-equipment"], "electromagnetics")
+add_recipe_category(data.raw.recipe["electronic-circuit"], "electromagnetics")
+add_recipe_category(data.raw.recipe["small-electric-pole"], "electromagnetics")
+add_recipe_category(data.raw.recipe["big-electric-pole"], "electromagnetics")
+add_recipe_category(data.raw.recipe["medium-electric-pole"], "electromagnetics")
+add_recipe_category(data.raw.recipe["copper-cable"], "electromagnetics")
+add_recipe_category(data.raw.recipe["advanced-circuit"], "electromagnetics")
+add_recipe_category(data.raw.recipe["processing-unit"], "electromagnetics")
+add_recipe_category(data.raw.recipe.substation, "electromagnetics")
+
+add_recipe_category(data.raw.recipe["plastic-bar"], "cryogenics")
+add_recipe_category(data.raw.recipe.explosives, "cryogenics")
+add_recipe_category(data.raw.recipe.battery, "cryogenics")
 
 data.raw.recipe["personal-roboport-mk2-equipment"].ingredients =
 {
@@ -823,85 +827,86 @@ table.insert(data.raw.item.landfill.place_as_tile.tile_condition, "wetland-jelly
 table.insert(data.raw.item.landfill.place_as_tile.tile_condition, "wetland-blue-slime");
 table.insert(data.raw.item.landfill.place_as_tile.tile_condition, "gleba-deep-lake");
 
-data.raw.tool["space-science-pack"].stack_size = 200
+data.raw.item["space-science-pack"].stack_size = 200
 
 data.raw.capsule["raw-fish"].spoil_ticks = 453000
 data.raw.capsule["raw-fish"].spoil_result = "spoilage"
 
 --quality stuff
-
-data.raw.technology["quality-module-2"].prerequisites = { "quality-module", "space-science-pack" }
-data.raw.technology["quality-module-2"].unit.count = 500
-data.raw.technology["quality-module-2"].unit.ingredients =
-{
-  {"automation-science-pack", 1},
-  {"logistic-science-pack", 1},
-  {"chemical-science-pack", 1},
-  {"space-science-pack", 1}
-}
-
-data.raw.technology["quality-module-3"].prerequisites = { "quality-module-2", "electromagnetic-science-pack" }
-data.raw.technology["quality-module-3"].unit =
-{
-  count = 2000,
-  ingredients =
+if mods["quality"] then
+  data.raw.technology["quality-module-2"].prerequisites = { "quality-module", "space-science-pack" }
+  data.raw.technology["quality-module-2"].unit.count = 500
+  data.raw.technology["quality-module-2"].unit.ingredients =
   {
-    { "automation-science-pack", 1 },
-    { "logistic-science-pack", 1 },
-    { "chemical-science-pack", 1 },
-    { "space-science-pack", 1 },
-    { "electromagnetic-science-pack", 1 }
-  },
-  time = 60
-}
+    {"automation-science-pack", 1},
+    {"logistic-science-pack", 1},
+    {"chemical-science-pack", 1},
+    {"space-science-pack", 1}
+  }
 
-data.raw.technology["epic-quality"].prerequisites = { "agricultural-science-pack", "utility-science-pack", "quality-module" }
-data.raw.technology["epic-quality"].unit =
-{
-  count = 5000,
-  ingredients =
+  data.raw.technology["quality-module-3"].prerequisites = { "quality-module-2", "electromagnetic-science-pack" }
+  data.raw.technology["quality-module-3"].unit =
   {
-    { "automation-science-pack", 1 },
-    { "logistic-science-pack", 1 },
-    { "chemical-science-pack", 1 },
-    { "utility-science-pack", 1 },
-    { "space-science-pack", 1 },
-    { "agricultural-science-pack", 1 }
-  },
-  time = 60
-}
+    count = 2000,
+    ingredients =
+    {
+      { "automation-science-pack", 1 },
+      { "logistic-science-pack", 1 },
+      { "chemical-science-pack", 1 },
+      { "space-science-pack", 1 },
+      { "electromagnetic-science-pack", 1 }
+    },
+    time = 60
+  }
 
-data.raw.technology["legendary-quality"].prerequisites = { "cryogenic-science-pack", "epic-quality" }
-data.raw.technology["legendary-quality"].unit =
-{
-  count = 5000,
-  ingredients =
+  data.raw.technology["epic-quality"].prerequisites = { "agricultural-science-pack", "utility-science-pack", "quality-module" }
+  data.raw.technology["epic-quality"].unit =
   {
-    { "automation-science-pack", 1 },
-    { "logistic-science-pack", 1 },
-    { "chemical-science-pack", 1 },
-    { "production-science-pack", 1 },
-    { "utility-science-pack", 1 },
-    { "space-science-pack", 1 },
-    { "metallurgic-science-pack", 1 },
-    { "agricultural-science-pack", 1 },
-    { "electromagnetic-science-pack", 1 },
-    { "cryogenic-science-pack", 1 }
-  },
-  time = 60
-}
+    count = 5000,
+    ingredients =
+    {
+      { "automation-science-pack", 1 },
+      { "logistic-science-pack", 1 },
+      { "chemical-science-pack", 1 },
+      { "utility-science-pack", 1 },
+      { "space-science-pack", 1 },
+      { "agricultural-science-pack", 1 }
+    },
+    time = 60
+  }
 
-data.raw.recipe["quality-module-3"].ingredients =
-{
-  {type = "item", name = "quality-module-2", amount = 4},
-  {type = "item", name = "advanced-circuit", amount = 5},
-  {type = "item", name = "processing-unit", amount = 5},
-  {type = "item", name = "superconductor", amount = 1}
-}
+  data.raw.technology["legendary-quality"].prerequisites = { "cryogenic-science-pack", "epic-quality" }
+  data.raw.technology["legendary-quality"].unit =
+  {
+    count = 5000,
+    ingredients =
+    {
+      { "automation-science-pack", 1 },
+      { "logistic-science-pack", 1 },
+      { "chemical-science-pack", 1 },
+      { "production-science-pack", 1 },
+      { "utility-science-pack", 1 },
+      { "space-science-pack", 1 },
+      { "metallurgic-science-pack", 1 },
+      { "agricultural-science-pack", 1 },
+      { "electromagnetic-science-pack", 1 },
+      { "cryogenic-science-pack", 1 }
+    },
+    time = 60
+  }
 
-data.raw.recipe["quality-module"].category = "electronics"
-data.raw.recipe["quality-module-2"].category = "electronics"
-data.raw.recipe["quality-module-3"].category = "electronics"
+  data.raw.recipe["quality-module-3"].ingredients =
+  {
+    {type = "item", name = "quality-module-2", amount = 4},
+    {type = "item", name = "advanced-circuit", amount = 5},
+    {type = "item", name = "processing-unit", amount = 5},
+    {type = "item", name = "superconductor", amount = 1}
+  }
+
+  add_recipe_category(data.raw.recipe["quality-module"], "electromagnetics")
+  add_recipe_category(data.raw.recipe["quality-module-2"], "electromagnetics")
+  add_recipe_category(data.raw.recipe["quality-module-3"], "electromagnetics")
+end
 
 data.raw["optimized-decorative"]["cracked-mud-decal"].tile_layer = 210
 data.raw["optimized-decorative"]["light-mud-decal"].tile_layer = 210
@@ -922,7 +927,7 @@ data.raw.technology.recycling.unit = nil
 data.raw.technology.recycling.research_trigger =
 {
   type = "mine-entity",
-  entity = "fulgoran-ruin-vault"
+  entities = {"fulgoran-ruin-vault"}
 }
 table.insert(data.raw.technology.recycling.effects,
 {
@@ -980,4 +985,670 @@ data.raw.tile["refined-concrete"].landing_steps_sound = tile_sounds.landing.conc
 data.raw.tile["refined-hazard-concrete-left"].landing_steps_sound = tile_sounds.landing.concrete
 data.raw.tile["refined-hazard-concrete-right"].landing_steps_sound = tile_sounds.landing.concrete
 
+
+data.raw.tile["stone-path"].transitions[3] =
+{
+  to_tiles = lava_tile_type_names,
+  transition_group = lava_transition_group_id,
+
+  spritesheet = "__space-age__/graphics/terrain/lava-transitions/stone-path-lava.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/stone-path-lava-lightmap.png" },
+  layout = tile_spritesheet_layout.concrete_layout(false,false,false),
+  background_enabled = false,
+  effect_map_layout =
+  {
+    spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+    inner_corner_count = 1,
+    outer_corner_count = 1,
+    side_count = 1,
+    u_transition_count = 1,
+    o_transition_count = 1
+  }
+}
+
+data.raw.tile["stone-path"].transitions_between_transitions[4] =
+{
+  transition_group1 = default_transition_group_id,
+  transition_group2 = lava_transition_group_id,
+
+  spritesheet = "__space-age__/graphics/terrain/lava-transitions/stone-path-lava-transitions.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/stone-path-lava-transitions-lightmap.png" },
+  layout = tile_spritesheet_layout.concrete_layout(false,false,true),
+  background_enabled = false,
+  effect_map_layout =
+  {
+    spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+    inner_corner_count = 1,
+    outer_corner_count = 1,
+    side_count = 1,
+    u_transition_count = 1,
+    o_transition_count = 1
+  }
+}
+data.raw.tile["stone-path"].transitions_between_transitions[5] =
+{
+  transition_group1 = lava_transition_group_id,
+  transition_group2 = out_of_map_transition_group_id,
+
+  background_layer_offset = 1,
+  background_layer_group = "zero",
+  offset_background_layer_by_tile_layer = true,
+  background_enabled = true,
+
+  spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/stone-path-lava-shore-out-of-map.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/stone-path-lava-shore-out-of-map-lightmap.png" },
+  layout = tile_spritesheet_layout.concrete_layout(false,true,true),
+  effect_map_layout =
+  {
+    spritesheet = "__base__/graphics/terrain/effect-maps/concrete-out-of-map-mask.png",
+    inner_corner_count = 1,
+    outer_corner_count = 1,
+    side_count = 1,
+    u_transition_count = 1,
+    o_transition_count = 1
+  }
+}
+data.raw.tile["concrete"].transitions[3] =
+{
+  to_tiles = lava_tile_type_names,
+  transition_group = lava_transition_group_id,
+
+  spritesheet = "__space-age__/graphics/terrain/lava-transitions/concrete-lava.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/concrete-lava-lightmap.png" },
+  layout = tile_spritesheet_layout.concrete_layout(false,false,false),
+  background_enabled = false,
+  effect_map_layout =
+  {
+    spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+    inner_corner_count = 1,
+    outer_corner_count = 1,
+    side_count = 1,
+    u_transition_count = 1,
+    o_transition_count = 1
+  }
+}
+data.raw.tile["concrete"].transitions_between_transitions[4] =
+{
+  transition_group1 = default_transition_group_id,
+  transition_group2 = lava_transition_group_id,
+
+  spritesheet = "__space-age__/graphics/terrain/lava-transitions/concrete-transitions-lava.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/concrete-transitions-lightmap.png" },
+  layout = tile_spritesheet_layout.concrete_layout(false,false,true),
+  background_enabled = false,
+  effect_map_layout =
+  {
+    spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+    inner_corner_count = 1,
+    outer_corner_count = 1,
+    side_count = 1,
+    u_transition_count = 1,
+    o_transition_count = 1
+  }
+}
+data.raw.tile["concrete"].transitions_between_transitions[5] =
+{
+  transition_group1 = lava_transition_group_id,
+  transition_group2 = out_of_map_transition_group_id,
+
+  background_layer_offset = 1,
+  background_layer_group = "zero",
+  offset_background_layer_by_tile_layer = true,
+  background_enabled = true,
+
+  spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/concrete-lava-shore-out-of-map.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/concrete-lava-shore-out-of-map-lightmap.png" },
+  layout = tile_spritesheet_layout.concrete_layout(false,true,true),
+  effect_map_layout =
+  {
+    spritesheet = "__base__/graphics/terrain/effect-maps/concrete-out-of-map-mask.png",
+    inner_corner_count = 1,
+    outer_corner_count = 1,
+    side_count = 1,
+    u_transition_count = 1,
+    o_transition_count = 1
+  }
+}
+
+data.raw.tile["refined-concrete"].transitions[3] =
+{
+  to_tiles = lava_tile_type_names,
+  transition_group = lava_transition_group_id,
+
+  spritesheet = "__space-age__/graphics/terrain/lava-transitions/refined-concrete-lava.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/refined-concrete-lava-lightmap.png" },
+  layout = tile_spritesheet_layout.concrete_layout(true,false,false),
+  background_enabled = false,
+  effect_map_layout =
+  {
+    spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+    inner_corner_count = 1,
+    outer_corner_count = 1,
+    side_count = 1,
+    u_transition_count = 1,
+    o_transition_count = 1
+  }
+}
+data.raw.tile["refined-concrete"].transitions_between_transitions[4] =
+{
+  transition_group1 = default_transition_group_id,
+  transition_group2 = lava_transition_group_id,
+
+  spritesheet = "__space-age__/graphics/terrain/lava-transitions/refined-concrete-transitions-lava.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/refined-concrete-transitions-lightmap.png" },
+  layout = tile_spritesheet_layout.concrete_layout(true,false,true),
+  background_enabled = false,
+  effect_map_layout =
+  {
+    spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+    inner_corner_count = 1,
+    outer_corner_count = 1,
+    side_count = 1,
+    u_transition_count = 1,
+    o_transition_count = 1
+  }
+}
+data.raw.tile["refined-concrete"].transitions_between_transitions[5] =
+{
+  transition_group1 = lava_transition_group_id,
+  transition_group2 = out_of_map_transition_group_id,
+
+  background_layer_offset = 1,
+  background_layer_group = "zero",
+  offset_background_layer_by_tile_layer = true,
+  background_enabled = true,
+
+  spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/refined-concrete-lava-shore-out-of-map.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/refined-concrete-lava-shore-out-of-map-lightmap.png" },
+  layout = tile_spritesheet_layout.concrete_layout(true,true,true),
+  effect_map_layout =
+  {
+    spritesheet = "__base__/graphics/terrain/effect-maps/concrete-out-of-map-mask.png",
+    inner_corner_count = 1,
+    outer_corner_count = 1,
+    side_count = 1,
+    u_transition_count = 1,
+    o_transition_count = 1
+  }
+}
+
+for _, tile in pairs(data.raw.tile) do
+  local has_transition_to_lava = false
+  if tile.transitions ~= nil and tile.transitions_between_transitions ~= nil then
+    for _, transition in pairs(tile.transitions) do
+      if transition.transition_group == lava_transition_group_id then has_transition_to_lava = true end
+    end
+
+
+    if has_transition_to_lava == false then
+      tile.transitions[#tile.transitions + 1] =
+      {
+        to_tiles = lava_tile_type_names,
+        transition_group = lava_transition_group_id,
+        spritesheet = "__space-age__/graphics/terrain/lava-transitions/lava-stone.png",
+        layout = tile_spritesheet_layout.transition_16_16_16_4_4,
+        lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/lava-stone-lightmap.png" },
+        effect_map_layout =
+        {
+          spritesheet = "__space-age__/graphics/terrain/effect-maps/lava-dirt-mask.png",
+          inner_corner_count = 8,
+          outer_corner_count = 8,
+          side_count = 8,
+          u_transition_count = 2,
+          o_transition_count = 1
+        }
+      }
+      tile.transitions_between_transitions[#tile.transitions_between_transitions + 1] =
+      {
+        transition_group1 = default_transition_group_id,
+        transition_group2 = lava_transition_group_id,
+        spritesheet = "__space-age__/graphics/terrain/lava-transitions/lava-stone-transition.png",
+        layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+        effect_map_layout =
+        {
+          spritesheet = "__space-age__/graphics/terrain/effect-maps/lava-dirt-to-land-mask.png",
+          o_transition_count = 0
+        },
+        water_patch = lava_patch
+      }
+      tile.transitions_between_transitions[#tile.transitions_between_transitions + 1] =
+      {
+        transition_group1 = lava_transition_group_id,
+        transition_group2 = out_of_map_transition_group_id,
+        background_layer_offset = 1,
+        background_layer_group = "zero",
+        offset_background_layer_by_tile_layer = true,
+        spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/lava-stone-shore-out-of-map-transition.png",
+        layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+        effect_map_layout =
+        {
+          spritesheet = "__space-age__/graphics/terrain/effect-maps/lava-dirt-to-out-of-map-mask.png",
+          o_transition_count = 0
+        }
+      }
+    end
+  end
+end
+
 data.raw["dont-build-entity-achievement"]["logistic-network-embargo"].research_with = {"metallurgic-science-pack", "electromagnetic-science-pack", "agricultural-science-pack"}
+
+data.raw["utility-constants"].default.default_platform_surface_render_parameters =
+  {
+    shadow_opacity = 0.5,
+    space_dust_background =
+    {
+      animation_speed = 1,
+      noise_texture =
+      {
+        filename = "__space-age__/graphics/space/dustTrailSpeckDust.png",
+        size = 4096,
+        premul_alpha = false
+      },
+      asteroid_texture =
+      {
+        filename = "__space-age__/graphics/space/asteroidTexture.png",
+        size = 1024
+      },
+      asteroid_normal_texture =
+      {
+        filename = "__space-age__/graphics/space/asteroidNormalTexture.png",
+        size = 1024
+      },
+    },
+    space_dust_foreground =
+    {
+      animation_speed = 1,
+      noise_texture =
+      {
+        filename = "__space-age__/graphics/space/dustTrailSpeckDust.png",
+        size = 4096,
+        premul_alpha = false
+      },
+      asteroid_texture =
+      {
+        filename = "__space-age__/graphics/space/asteroidTexture.png",
+        size = 1024
+      },
+      asteroid_normal_texture =
+      {
+        filename = "__space-age__/graphics/space/asteroidNormalTexture.png",
+        size = 1024
+      },
+    }
+  }
+
+data.raw.planet["nauvis"].platform_surface_render_parameters =
+{
+  shadow_opacity = 0.5,
+  space_dust_background =
+  {
+    animation_speed = 1,
+    noise_texture =
+    {
+      filename = "__space-age__/graphics/space/dustTrailSpeckDust.png",
+      size = 4096,
+      premul_alpha = false
+    },
+    asteroid_texture =
+    {
+      filename = "__space-age__/graphics/space/asteroidTexture.png",
+      size = 1024
+    },
+    asteroid_normal_texture =
+    {
+      filename = "__space-age__/graphics/space/asteroidNormalTexture.png",
+      size = 1024
+    },
+  },
+  space_dust_foreground =
+  {
+    animation_speed = 1,
+    noise_texture =
+    {
+      filename = "__space-age__/graphics/space/dustTrailSpeckDust.png",
+      size = 4096,
+      premul_alpha = false
+    },
+    asteroid_texture =
+    {
+      filename = "__space-age__/graphics/space/asteroidTexture.png",
+      size = 1024
+    },
+    asteroid_normal_texture =
+    {
+      filename = "__space-age__/graphics/space/asteroidNormalTexture.png",
+      size = 1024
+    },
+  },
+  platform_backdrop =
+  {
+    cloudiness = 0.5,
+    surface_vertical_offset = 0.1,
+    cloud_vertical_offset = 0.015,
+    specular_intensity = 1,
+    atmosphere_color = {0.055, 0.09, 0.11, 0.1},
+    cloud_flow_intensity = 0.5,
+    cloud_panning_rate = -0.1,
+    rotation_seconds = -660,
+    planet_axis = {-33.0, -3.0},
+    planet_axis_deviation_amplitude = {10.0, 10.0},
+    planet_axis_deviation_seconds = {890.5, 753.7},
+    position = {-680, 601},
+    parallax_strength = {0.95, 0.95},
+    light_direction = {-0.42, 0.23, 0.67},
+    light_radius = 8.9,
+    light_intensity_contrast = 0.3,
+    radius = 600,
+    planet_surface =
+    {
+      filename = "__space-age__/graphics/space/nauvis.png",
+      width = 2048,
+      height = 1024
+    },
+    planet_normal =
+    {
+      filename = "__space-age__/graphics/space/nauvis-normal.png",
+      width = 2048,
+      height = 1024
+    },
+    planet_reflectivity =
+    {
+      filename = "__space-age__/graphics/space/nauvis-reflectivity.png",
+      width = 2048,
+      height = 1024
+    },
+    global_cloud =
+    {
+      filename = "__space-age__/graphics/space/nauvis-cloud.png",
+      width = 2048,
+      height = 1024
+    },
+    global_cloud_normal =
+    {
+      filename = "__space-age__/graphics/space/nauvis-cloud-normal.png",
+      width = 2048,
+      height = 1024
+    },
+    global_cloud_flow =
+    {
+      filename = "__space-age__/graphics/space/nauvis-cloud-flow.png",
+      width = 2048,
+      height = 1024
+    }
+  }
+}
+data.raw.planet["vulcanus"].platform_surface_render_parameters = util.table.deepcopy(data.raw.planet["nauvis"].platform_surface_render_parameters)
+data.raw.planet["gleba"].platform_surface_render_parameters = util.table.deepcopy(data.raw.planet["nauvis"].platform_surface_render_parameters)
+data.raw.planet["fulgora"].platform_surface_render_parameters = util.table.deepcopy(data.raw.planet["nauvis"].platform_surface_render_parameters)
+data.raw.planet["aquilo"].platform_surface_render_parameters = util.table.deepcopy(data.raw.planet["nauvis"].platform_surface_render_parameters)
+
+data.raw.planet["vulcanus"].platform_surface_render_parameters.platform_backdrop =
+{
+  emission_scales_with_shadow = false,
+  radius = 772,
+  rotation_seconds = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.rotation_seconds * 2 / 4.66,
+  light_radius = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.light_radius * 1.5,
+  cloudiness = 0.5,
+  surface_vertical_offset = 0.12,
+  cloud_vertical_offset = 0.05,
+  specular_intensity = 0,
+  atmosphere_color = {0.072, 0.073, 0.067, 0.1},
+  cloud_flow_intensity = 0.8,
+  cloud_panning_rate = -0.025,
+  planet_axis = {3.0, 13.0},
+  planet_axis_deviation_amplitude = {10.0, 10.0},
+  planet_axis_deviation_seconds = {890.5*2/4.66, 753.7*2/4.66},
+  position = {-680, 601},
+  parallax_strength = {0.95, 0.95},
+  light_direction = {-0.42, 0.23, 0.67},
+  light_intensity_contrast = 0.3,
+  planet_surface =
+  {
+    filename = "__space-age__/graphics/space/vulcanus.png",
+    width = 2048,
+    height = 1024
+  },
+  planet_normal = nil,
+  planet_emission =
+  {
+    filename = "__space-age__/graphics/space/vulcanus-emission.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud =
+  {
+    filename = "__space-age__/graphics/space/vulcanus-cloud.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_normal =
+  {
+    filename = "__space-age__/graphics/space/vulcanus-cloud-normal.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_flow =
+  {
+    filename = "__space-age__/graphics/space/vulcanus-cloud-flow.png",
+    width = 2048,
+    height = 1024
+  }
+}
+
+data.raw.planet["gleba"].platform_surface_render_parameters.platform_backdrop =
+{
+  emission_scales_with_shadow = false,
+  radius = 680,
+  rotation_seconds = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.rotation_seconds / 0.6,
+  light_radius = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.light_radius * 0.75,
+  cloudiness = 0.6,
+  surface_vertical_offset = 0.1,
+  cloud_vertical_offset = 0.05,
+  specular_intensity = 1,
+  atmosphere_color = {0.053, 0.060, 0.03715, 0.1},
+  cloud_flow_intensity = 0.8,
+  cloud_panning_rate = -0.01,
+  planet_axis = {-37.0, 18.0},
+  planet_axis_deviation_amplitude = {10.0, 10.0},
+  planet_axis_deviation_seconds = {890.5/0.6, 753.7/0.6},
+  position = {-680, 601},
+  parallax_strength = {0.95, 0.95},
+  light_direction = {-0.42, 0.23, 0.67},
+  light_intensity_contrast = 0.3,
+  light_radius = 13.9,
+  planet_surface =
+  {
+    filename = "__space-age__/graphics/space/gleba.png",
+    width = 2048,
+    height = 1024
+  },
+  planet_normal = nil,
+  planet_reflectivity =
+  {
+    filename = "__space-age__/graphics/space/gleba-reflectivity.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud =
+  {
+    filename = "__space-age__/graphics/space/gleba-cloud.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_normal =
+  {
+    filename = "__space-age__/graphics/space/gleba-cloud-normal.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_flow =
+  {
+    filename = "__space-age__/graphics/space/gleba-cloud-flow.png",
+    width = 2048,
+    height = 1024
+  }
+}
+
+data.raw.planet["fulgora"].platform_surface_render_parameters.platform_backdrop =
+{
+  emission_scales_with_shadow = false,
+  radius = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.radius * 0.7,
+  rotation_seconds = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.rotation_seconds / 1.8,
+  light_radius = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.light_radius * 0.75,
+  cloudiness = 0.05,
+  surface_vertical_offset = 0.1,
+  cloud_vertical_offset = 0.07,
+  specular_intensity = 0.7,
+  specular_color = {0.95, 0.83, 0.52, 1},
+  atmosphere_color = {0.07, 0.057, 0.075, 0.1},
+  cloud_flow_intensity = 1.5,
+  cloud_panning_rate = 0.1,
+  planet_axis = {3.0, 13.0},
+  planet_axis_deviation_amplitude = {10.0, 10.0},
+  planet_axis_deviation_seconds = {890.5/1.8, 753.7/1.8},
+  position = {-400, 270},
+  parallax_strength = {0.95, 0.95},
+  light_direction = {-0.42, 0.23, 0.4},
+  light_intensity_contrast = 0.3,
+  light_radius = 5.9,
+  hero_clouds_are_emissive = true,
+  hero_clouds =
+  {
+    {
+      sprite_index = 1,
+      rotate_with_planet = false,
+      positions = {{0.2, 0.5}},
+      position_deviation = {-0.05, -0.3},
+      rotation_deviation = 100.0,
+      starting_frame_offset = 0,
+      size = {0.3, 0.3}
+    },
+    {
+      sprite_index = 1,
+      rotate_with_planet = false,
+      positions = {{0.21, 0.7}},
+      position_deviation = {0.05, -0.2},
+      rotation_deviation = 1.0,
+      starting_frame_offset = 24,
+      size = {0.3, 0.3}
+    },
+    {
+      sprite_index = 1,
+      rotate_with_planet = false,
+      positions = {{0.21, 0.9}},
+      position_deviation = {-0.05, -0.4},
+      rotation_deviation = 1.0,
+      starting_frame_offset = 32,
+      size = {0.3, 0.3}
+    },
+    {
+      sprite_index = 1,
+      rotate_with_planet = false,
+      positions = {{0.21, 0.9}},
+      position_deviation = {-0.05, -0.4},
+      rotation_deviation = 1.0,
+      starting_frame_offset = 64,
+      size = {0.3, 0.3}
+    }
+  },
+  hero_cloud_texture_1 = util.sprite_load("__space-age__/graphics/space/planet-lightning",{
+    frame_count = 12,
+    frame_sequence = {1,2,3,4,5,6,7,8,9,10,11,12,
+    12,12,12,12,12,12,12,12,12,12,
+    12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,},
+    --12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12},
+  animation_speed = 0.5
+  }),
+  planet_surface =
+  {
+    filename = "__space-age__/graphics/space/fulgora.png",
+    width = 2048,
+    height = 1024
+  },
+  planet_normal =
+  {
+    filename = "__space-age__/graphics/space/fulgora-normal.png",
+    width = 2048,
+    height = 1024
+  },
+  planet_reflectivity =
+  {
+    filename = "__space-age__/graphics/space/fulgora-reflectivity.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud =
+  {
+    filename = "__space-age__/graphics/space/fulgora-cloud.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_normal =
+  {
+    filename = "__space-age__/graphics/space/fulgora-cloud-normal.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_flow =
+  {
+    filename = "__space-age__/graphics/space/fulgora-cloud-flow.png",
+    width = 2048,
+    height = 1024
+  }
+}
+
+data.raw.planet["aquilo"].platform_surface_render_parameters.platform_backdrop =
+{
+  emission_scales_with_shadow = false,
+  radius = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.radius * 1.25,
+  rotation_seconds = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.rotation_seconds / 0.45,
+  light_radius = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.light_radius * 0.6,
+  cloudiness = 0.32,
+  surface_vertical_offset = 0.08,
+  cloud_vertical_offset = 0.01,
+  atmosphere_color = {0.075, 0.065, 0.133, 0.1},
+  specular_color = {0.55, 0.43, 0.62, 1.0},
+  specular_intensity = 1,
+  atmosphere_ray_light_color_1 = {0.2, 0.25665, 0.3, 1.0},
+  atmosphere_ray_light_color_2 = {0.1, 0.08431, 0.05059, 1.0},
+  cloud_flow_intensity = 0.8,
+  cloud_panning_rate = 0.2,
+  light_intensity_contrast = 0.3,
+  planet_axis = {3.0, 13.0},
+  planet_axis_deviation_amplitude = {10.0, 10.0},
+  planet_axis_deviation_seconds = {890.5/0.45, 753.7/0.45},
+  position = {-680, 601},
+  parallax_strength = {0.95, 0.95},
+  light_direction = {-0.42, 0.23, 0.67},
+  planet_surface =
+  {
+    filename = "__space-age__/graphics/space/aquilo.png",
+    width = 2048,
+    height = 1024
+  },
+  planet_reflectivity =
+  {
+    filename = "__space-age__/graphics/space/aquilo-reflectivity.png",
+    width = 2048,
+    height = 1024
+  },
+  planet_normal = nil,
+  global_cloud =
+  {
+    filename = "__space-age__/graphics/space/aquilo-cloud.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_normal =
+  {
+    filename = "__space-age__/graphics/space/aquilo-cloud-normal.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_flow =
+  {
+    filename = "__space-age__/graphics/space/aquilo-cloud-flow.png",
+    width = 2048,
+    height = 1024
+  }
+}

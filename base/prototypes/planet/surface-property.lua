@@ -16,6 +16,11 @@ data:extend{
   },
   {
     type = "surface-property",
+    name = "robot-energy-usage",
+    default_value = 1
+  },
+  {
+    type = "surface-property",
     name = "solar-power",
     default_value = 100
   },

@@ -133,6 +133,24 @@ explosion_animations.hit_explosion = function()
   }
 end
 
+explosion_animations.hit_explosion_small = function()
+  return
+  {
+    {
+      filename = "__base__/graphics/entity/explosion-hit/explosion-hit.png",
+      draw_as_glow = true,
+      priority = "extra-high",
+      width = 34,
+      height = 38,
+      frame_count = 13,
+      animation_speed = 1.5,
+      scale = 0.5,
+      shift = {0, -0.15625},
+      usage = "explosion"
+    }
+  }
+end
+
 explosion_animations.dust_explosion = function ()
   return
   {
@@ -262,7 +280,7 @@ explosion_animations.small_dust_explosion = function()
       usage = "explosion"
     }
   }
-end  
+end
 ------
 explosion_animations.space_platform_foundation_explosion = function()
   return
@@ -346,7 +364,7 @@ explosion_animations.space_platform_foundation_explosion = function()
       usage = "explosion"
     }
   }
-end  
+end
 ------
 explosion_animations.nuke_shockwave = function()
   return
@@ -455,6 +473,7 @@ explosion_animations.massive_explosion = function(shift)
     animation_speed = 0.5,
     scale = 0.5,
     allow_forced_downscale = true,
+    allow_reducing_frames = true,
     draw_as_glow = true,
     stripes =
     {

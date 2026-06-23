@@ -18,14 +18,16 @@ data:extend(
     building_not_buildable_tint = {1, 0.4, 0.4, 1},
     building_ignorable_tint = {0.4, 0.4, 1, 1},
     building_no_tint = {1, 1, 1, 1},
+    tall_entity_tint = {0.2, 0.2, 0.1, 0.2},
+    tall_entity_smoke_tint = {0.3, 0.3, 0.3, 0.3},
     underground_belt_max_distance_tint = {0, 1, 0, 1},
     underground_pipe_max_distance_tint = {0, 1, 0, 1},
     ghost_shader_tint =
     {
-      ghost_tint = {118, 135, 209, 77},
-      ghost_delivery_tint = {168,214,196,77},
-      tile_ghost_tint = {37, 123, 194, 255},
-      tile_ghost_delivery_tint = {174, 221, 242, 255},
+      ghost_tint = {147, 168, 255, 77},
+      ghost_delivery_tint = {210,250,245, 77},
+      tile_ghost_tint = {46, 153, 242, 255},
+      tile_ghost_delivery_tint = {217, 255, 255, 255},
       wire_tint = {118, 135, 209, 77}
     },
     ghost_shaderless_tint =
@@ -136,10 +138,13 @@ data:extend(
       }
     },
     probability_product_count_tint = {255, 220, 170, 255},
+    ghost_product_count_tint = {170, 222, 255, 200},
     zero_count_value_tint = {255, 255, 255, 64},
     equipment_default_background_color = premultiply_alpha{200 / 255, 200 / 255, 200 / 255, 0.3},
     equipment_default_background_border_color = {36 / 255, 35 / 255, 36 / 255},
     equipment_default_grabbed_background_color = premultiply_alpha{1, 1, 1, 0.3},
+    equipment_disabled_background_tint = {0.5, 0.5, 0.5, 1.0},
+    equipment_disabled_tint = {0.5, 0.5, 0.5, 0.5},
     turret_range_visualization_color = {0.05, 0.1, 0.05, 0.15},
     capsule_range_visualization_color = {0.05, 0.1, 0.05, 0.15},
     agricultural_range_visualization_color = {0.05, 0.1, 0.05, 0.15},
@@ -254,6 +259,7 @@ data:extend(
     small_area_size = 1.5, -- less than this plays the 'small' sound variants
     medium_area_size = 6.5, -- less than this plays the 'medium' sound variants
     large_area_size = 15, -- less than this plays the 'large' sound variants, otherwise plays the 'huge' sound variants.
+    huge_area_size = 26, -- less than this plays the 'huge' sound variants (if present)
     huge_platform_animation_sound_area = 81, -- 9x9 area - anything larger than this, the engine will speed up the animation so it ends as if it was this size
 
     small_blueprint_area_size = 50, -- less than this plays the 'small' sound variants
@@ -398,6 +404,7 @@ data:extend(
     },
 
     light_renderer_search_distance_limit = 20,
+    far_away_chunk_generation_radius = 20,
 
     tree_leaf_distortion_strength_far = { 0.46, 0.47 },
     tree_leaf_distortion_distortion_far = { 7.6, 9.1 },
@@ -483,6 +490,7 @@ data:extend(
       {0.75, "identity"}
     },
     frozen_color_lookup = "__core__/graphics/color_luts/frozen.png",
+    default_platform_surface_render_parameters = {},
 
     select_group_row_count = 6,
     select_slot_row_count = 10,
@@ -495,9 +503,6 @@ data:extend(
     trash_inventory_width = 10,
     tooltip_monitor_edge_border = 10,
     flying_text_ttl = 80,
-
-    minimap_slot_hovered_tint = {r = 255 / 255, g = 162 / 255, b = 0, a = 0.7},
-    minimap_slot_clicked_tint = {r = 219 / 255, g = 122 / 255, b = 0, a = 0.7},
 
     clear_cursor_volume_modifier = 0.6,
     weapons_in_simulation_volume_modifier = 0.7,
@@ -531,11 +536,10 @@ data:extend(
     space_platform_asteroid_chunk_trajectory_updates_per_tick = 1,
 
     default_item_weight = 100,
-    rocket_lift_weight = 1000000, -- 1 000 kg
+    default_rocket_lift_weight = 1000000, -- 1 000 kg
 
-    factoriopedia_recycling_recipe_categories = { "recycling", "recycling-or-hand-crafting" },
+    factoriopedia_recycling_recipe_categories = {},
 
-    max_fluid_flow = 100,
     default_pipeline_extent = 320, -- Can be overridden on a per-fluidbox basis
 
     default_platform_procession_set =
@@ -604,6 +608,7 @@ data:extend(
     moving_sound_count_reduction_rate = 0.5,
 
     environment_sounds_transition_fade_in_ticks = 20,
+    sound_fade_ticks = 120,
 
     starmap_orbit_default_color = gui_color.grey,
     starmap_orbit_hovered_color = gui_color.orange,

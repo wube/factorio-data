@@ -19,6 +19,22 @@ simulations.factoriopedia_turbo_underground_belt =
 
 -----------////////////////////////////////////////////////////////////// SPACE
 
+
+simulations.factoriopedia_cargo_pod_space =
+{
+  hide_factoriopedia_gradient = true,
+  init =
+  [[
+    game.simulation.camera_position = {0, 0}
+    for x = -8, 8, 1 do
+      for y = -3, 3 do
+        game.surfaces[1].set_tiles{{position = {x, y}, name = "empty-space"}}
+      end
+    end
+    rendering.draw_sprite{sprite = "cargo-pod-factoriopedia", target = {0, 0}, surface = game.surfaces[1]}
+  ]]
+}
+
 simulations.factoriopedia_asteroid_collector =
 {
   hide_factoriopedia_gradient = true,
@@ -37,6 +53,48 @@ simulations.factoriopedia_asteroid_collector =
       position = {-1, -1}
     }
     game.surfaces[1].create_entity{name = "asteroid-collector", position = {0, -1}, direction = defines.direction.east}
+  ]]
+}
+
+simulations.factoriopedia_thruster =
+{
+  hide_factoriopedia_gradient = true,
+  init =
+  [[
+    game.simulation.camera_zoom = 1.1
+    game.simulation.camera_position = {0, 2}
+    for x = -12, 11, 1 do
+      for y = -3, 6 do
+        game.surfaces[1].set_tiles{{position = {x, y}, name = "empty-space"}}
+      end
+    end
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNql1bFuwyAQxvF3uRlLPiCOzatEHUhMGiQbLMBVK4t3j5NU6tIh0rdy/G/4LbfReVrdknwoZDbylxgymdNG2X8GOz3egp0dGSq3tObiElVBPozumwzXD0HFT+6VLDH74mN4RPu0YRb0Q6bdg98debEX1yyTLdeY5uYa1zDaZ1LFP32L9QOW91h+xPIOtHvZM2jPmD1j9ozZM2bPoL0E7SVmLzF7idlLzF6C9gq0V5i9wuwVZq8wewXaa9BeY/Yas9eYvcbs38v3q+uLm/dPf8db0JdL+bnw0MlBD8Oh161sdV/rHYnoqQA=",
+      position = {0, 0}
+    }
+    game.surfaces[1].create_entity{name = "thruster", position = {0, 0}, direction = defines.direction.north}
+  ]]
+}
+
+simulations.factoriopedia_crusher =
+{
+  hide_factoriopedia_gradient = true,
+  init =
+  [[
+    game.simulation.camera_zoom = 3
+    game.simulation.camera_position = {0, 0}
+    for x = -8, 8, 1 do
+      for y = -3, 3 do
+        game.surfaces[1].set_tiles{{position = {x, y}, name = "empty-space"}}
+      end
+    end
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNql1LEOgyAQxvF3uRkTBTTqqzQdqGJLomAAmzaGd6/WNF06NPlWuP8Nv+FWuoyLnr2xkdqVTOdsoPa0UjBXq8b9zapJU0udX8JNe0qMjO31g9oinRlFM+qjmF0w0Ti7N9tvVlSMnvsU+6wIs+p0No8qDs5P2eAW26t3ktiPvgR7CfYC7DnYH34c9OOgHwf9OOjHQT8B+gnQT4B+AvQToJ8E/SToJ0E/Cfr912+X0EQ9bUPfe8rorn14bywr3simKWuZ81zWKb0AR1TVRQ==",
+      position = {0, 0}
+    }
+    game.surfaces[1].create_entity{name = "crusher", position = {0, 0}, direction = defines.direction.east}
   ]]
 }
 

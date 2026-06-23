@@ -809,8 +809,6 @@ data:extend(
       activate_sound = { filename = "__base__/sound/train-engine-start.ogg", volume = 0.35 },
       deactivate_sound = { filename = "__base__/sound/train-engine-stop.ogg", volume = 0.35 },
     },
-    open_sound = { filename = "__base__/sound/train-door-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/train-door-close.ogg", volume = 0.4 },
     water_reflection = locomotive_reflection(),
     allow_remote_driving = true
   },
@@ -833,7 +831,6 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     vertical_selection_shift = -0.796875,
     weight = 1000,
-    max_speed = 1.5,
     braking_force = 3,
     friction_force = 0.50,
     air_resistance = 0.01,
@@ -982,7 +979,6 @@ data:extend(
     drive_over_tie_trigger_minimal_speed = 0.5,
     tie_distance = 50,
     working_sound = sounds.train_wagon_wheels,
-    crash_trigger = crash_trigger(),
     open_sound = sounds.cargo_wagon_open,
     close_sound = sounds.cargo_wagon_close,
     impact_category = "metal-large",
@@ -1038,7 +1034,6 @@ data:extend(
     vertical_selection_shift = -0.796875,
     icon_draw_specification = {scale = 1.25, shift = {0, -1}},
     weight = 1000,
-    max_speed = 1.5,
     braking_force = 3,
     friction_force = 0.50,
     air_resistance = 0.01,
@@ -1127,9 +1122,14 @@ data:extend(
     drive_over_tie_trigger_minimal_speed = 0.5,
     tie_distance = 50,
     working_sound = sounds.train_wagon_wheels,
-    crash_trigger = crash_trigger(),
     impact_category = "metal-large",
-    water_reflection = locomotive_reflection()
+    water_reflection = locomotive_reflection(),
+    valve_to_valve_offset_when_horizontal = { 2, 0 },
+    valve_to_valve_offset_when_vertical = { 0, 1.775 },
+    base_valve_z_offset_projected_when_horizontal = -1.4,
+    base_valve_z_offset_projected_when_vertical = -1.55,
+    base_valve_xy_offset_when_horizontal = { 0, 0 },
+    base_valve_xy_offset_when_vertical = { 0, 0 },
   },
   {
     type = "artillery-wagon",
@@ -1150,7 +1150,6 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     vertical_selection_shift = -0.796875,
     weight = 4000,
-    max_speed = 1.5,
     braking_force = 3,
     friction_force = 0.50,
     air_resistance = 0.015,
@@ -1341,13 +1340,22 @@ data:extend(
     drive_over_tie_trigger_minimal_speed = 0.5,
     tie_distance = 50,
     working_sound = sounds.train_wagon_wheels,
-    crash_trigger = crash_trigger(),
     open_sound = sounds.artillery_open,
     close_sound = sounds.artillery_close,
     rotating_sound =
     {
-      sound = {filename = "__base__/sound/fight/artillery-rotation-loop.ogg", volume = 0.2},
-      stopped_sound = {filename = "__base__/sound/fight/artillery-rotation-stop.ogg"}
+      sound =
+      {
+        filename = "__base__/sound/fight/artillery-rotation-loop.ogg",
+        volume = 0.2,
+        aggregation = {max_count = 3, remove = true, count_already_playing = true}
+      },
+      stopped_sound =
+      {
+        filename = "__base__/sound/fight/artillery-rotation-stop.ogg",
+        volume = 0.35,
+        aggregation = {max_count = 3, remove = true, count_already_playing = true}
+      }
     },
     water_reflection =
     {
@@ -1619,7 +1627,22 @@ data:extend(
     default_train_stopped_signal = {type = "virtual", name = "signal-T"},
     default_trains_count_signal = {type = "virtual", name = "signal-C"},
     default_trains_limit_signal = {type = "virtual", name = "signal-L"},
-    default_priority_signal = {type = "virtual", name = "signal-P"}
+    default_priority_signal = {type = "virtual", name = "signal-P"},
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/train-stop/train-stop-reflection.png",
+        priority = "extra-high",
+        width = 48,
+        height = 48,
+        shift = util.by_pixel(0, 96),
+        variation_count = 4,
+        scale = 5
+      },
+      rotate = false,
+      orientation_to_variation = true
+    },
   },
   {
     type = "rail-signal",

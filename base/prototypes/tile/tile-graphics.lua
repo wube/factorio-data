@@ -218,6 +218,204 @@ tile_spritesheet_layout.transition_8_8_8_2_4 =
   background = { x_offset = 1088 }
 }
 
+function tile_spritesheet_layout.concrete_layout(refined, out_of_map, tramsition_to_transition)
+  return 
+  {
+    scale = 0.5,
+    inner_corner_count = refined and 8 or (tramsition_to_transition and 3 or 16),
+    outer_corner_count = refined and 4 or (tramsition_to_transition and 3 or 8),
+    side_count = refined and 8 or (tramsition_to_transition and 3 or 16),
+    u_transition_count = tramsition_to_transition and 1 or 4,
+    o_transition_count = tramsition_to_transition and 0 or 4,
+    inner_corner_y = 0,
+    outer_corner_y = out_of_map and 768 or 576,
+    side_y = out_of_map and 1280 or 1152,
+    u_transition_y = out_of_map and 1792 or 1728,
+    o_transition_y = out_of_map and 2304 or 2304,
+    inner_corner_tile_height = out_of_map and 3 or 2,
+    outer_corner_tile_height = 2,
+    side_tile_height = 2,
+    u_transition_tile_height = 2,
+    overlay    = { x_offset = 0 },
+    mask       = { x_offset = refined and 1024 or 2048 },
+    background = { x_offset = refined and 512 or 1024 }
+  }
+end
+--[[
+tile_spritesheet_layout.concrete =
+{
+  scale = 0.5,
+  inner_corner_count = 16,
+  outer_corner_count = 8,
+  side_count = 16,
+  u_transition_count = 4,
+  o_transition_count = 4,
+  inner_corner_y = 0,
+  outer_corner_y = 576,
+  side_y = 1152,
+  u_transition_y = 1728,
+  o_transition_y = 2304,
+  inner_corner_tile_height = 2,
+  outer_corner_tile_height = 2,
+  side_tile_height = 2,
+  u_transition_tile_height = 2,
+  overlay    = { x_offset = 0 },
+  mask       = { x_offset = 2048 },
+  background = { x_offset = 1024 }
+}
+
+tile_spritesheet_layout.concrete_transitions_between_transitions =
+{
+  scale = 0.5,
+  inner_corner_count = 3,
+  outer_corner_count = 3,
+  side_count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+  inner_corner_y = 0,
+  outer_corner_y = 576,
+  side_y = 1152,
+  u_transition_y = 1728,
+  o_transition_y = 2304,
+  inner_corner_tile_height = 2,
+  outer_corner_tile_height = 2,
+  side_tile_height = 2,
+  u_transition_tile_height = 2,
+  overlay    = { x_offset = 0 },
+  mask       = { x_offset = 2048 },
+  background = { x_offset = 1024 }
+}
+tile_spritesheet_layout.concrete_out_of_map =
+{
+  scale = 0.5,
+  inner_corner_count = 16,
+  outer_corner_count = 8,
+  side_count = 16,
+  u_transition_count = 4,
+  o_transition_count = 4,
+  inner_corner_y = 0,
+  outer_corner_y = 768,
+  side_y = 1280,
+  u_transition_y = 1792,
+  o_transition_y = 2304,
+  inner_corner_tile_height = 3,
+  outer_corner_tile_height = 2,
+  side_tile_height = 2,
+  u_transition_tile_height = 2,
+  overlay    = { x_offset = 0 },
+  mask       = { x_offset = 1024 },
+  background = { x_offset = 512 }
+}
+
+tile_spritesheet_layout.concrete_out_of_map_transitions_between_transitions =
+{
+  scale = 0.5,
+  inner_corner_count = 3,
+  outer_corner_count = 3,
+  side_count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+  inner_corner_y = 0,
+  outer_corner_y = 768,
+  side_y = 1280,
+  u_transition_y = 1792,
+  o_transition_y = 2304,
+  inner_corner_tile_height = 3,
+  outer_corner_tile_height = 2,
+  side_tile_height = 2,
+  u_transition_tile_height = 2,
+  overlay    = { x_offset = 0 },
+  mask       = { x_offset = 2048 },
+  background = { x_offset = 1024 }
+}
+tile_spritesheet_layout.refined_concrete =
+{
+  scale = 0.5,
+  inner_corner_count = 8,
+  outer_corner_count = 4,
+  side_count = 8,
+  u_transition_count = 4,
+  o_transition_count = 4,
+  inner_corner_y = 0,
+  outer_corner_y = 576,
+  side_y = 1152,
+  u_transition_y = 1728,
+  o_transition_y = 2304,
+  inner_corner_tile_height = 2,
+  outer_corner_tile_height = 2,
+  side_tile_height = 2,
+  u_transition_tile_height = 2,
+  overlay    = { x_offset = 0 },
+  mask       = { x_offset = 1024 },
+  background = { x_offset = 512 }
+}
+
+tile_spritesheet_layout.refined_concrete_transitions_between_transitions =
+{
+  scale = 0.5,
+  inner_corner_count = 3,
+  outer_corner_count = 3,
+  side_count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+  inner_corner_y = 0,
+  outer_corner_y = 576,
+  side_y = 1152,
+  u_transition_y = 1728,
+  o_transition_y = 2304,
+  inner_corner_tile_height = 2,
+  outer_corner_tile_height = 2,
+  side_tile_height = 2,
+  u_transition_tile_height = 2,
+  overlay    = { x_offset = 0 },
+  mask       = { x_offset = 1024 },
+  background = { x_offset = 512 }
+}
+
+tile_spritesheet_layout.refined_concrete_out_of_map =
+{
+  scale = 0.5,
+  inner_corner_count = 8,
+  outer_corner_count = 4,
+  side_count = 8,
+  u_transition_count = 4,
+  o_transition_count = 4,
+  inner_corner_y = 0,
+  outer_corner_y = 768,
+  side_y = 1280,
+  u_transition_y = 1792,
+  o_transition_y = 2304,
+  inner_corner_tile_height = 3,
+  outer_corner_tile_height = 2,
+  side_tile_height = 2,
+  u_transition_tile_height = 2,
+  overlay    = { x_offset = 0 },
+  mask       = { x_offset = 1024 },
+  background = { x_offset = 512 }
+}
+
+tile_spritesheet_layout.refined_concrete_out_of_map_transitions_between_transitions =
+{
+  scale = 0.5,
+  inner_corner_count = 3,
+  outer_corner_count = 3,
+  side_count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+  inner_corner_y = 0,
+  outer_corner_y = 768,
+  side_y = 1280,
+  u_transition_y = 1792,
+  o_transition_y = 2304,
+  inner_corner_tile_height = 3,
+  outer_corner_tile_height = 2,
+  side_tile_height = 2,
+  u_transition_tile_height = 2,
+  overlay    = { x_offset = 0 },
+  mask       = { x_offset = 1024 },
+  background = { x_offset = 512 }
+}
+]]--
 tile_spritesheet_layout.transition_8_8_8_4_4 =
 {
   scale = 0.5,
@@ -269,6 +467,28 @@ tile_spritesheet_layout.transition_16_16_16_4_8 =
   outer_corner_count = 16,
   side_count = 16,
   u_transition_count = 4,
+  o_transition_count = 8,
+  inner_corner_y = 0,
+  outer_corner_y = 576,
+  side_y = 1152,
+  u_transition_y = 1728,
+  o_transition_y = 2304,
+  inner_corner_tile_height = 2,
+  outer_corner_tile_height = 2,
+  side_tile_height = 2,
+  u_transition_tile_height = 2,
+  overlay    = { x_offset = 0 },
+  mask       = { x_offset = 2176 },
+  background = { x_offset = 1088 }
+}
+
+tile_spritesheet_layout.transition_16_16_16_8_8 =
+{
+  scale = 0.5,
+  inner_corner_count = 16,
+  outer_corner_count = 16,
+  side_count = 16,
+  u_transition_count = 8,
   o_transition_count = 8,
   inner_corner_y = 0,
   outer_corner_y = 576,

@@ -111,7 +111,8 @@ local default_ended_in_water_trigger_effect = function()
     },
     {
       type = "play-sound",
-      sound = sounds.small_splash
+      sound = sounds.small_splash,
+      probability = 0.03,
     }
   }
 

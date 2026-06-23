@@ -62,80 +62,48 @@ end
 local function assemblerpipepicturesfrozen()
   return
   {
-    north =
-    {
-      filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-N-frozen.png",
+    north = util.sprite_load("__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-N-frozen", {
       priority = "extra-high",
-      width = 71,
-      height = 38,
-      shift = util.by_pixel(2.25, 13.5),
       scale = 0.5
-    },
-    east =
-    {
-      filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-E-frozen.png",
+    }),
+    east = util.sprite_load("__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-E-frozen", {
       priority = "extra-high",
-      width = 42,
-      height = 76,
-      shift = util.by_pixel(-24.5, 1),
       scale = 0.5
-    },
-    south =
-    {
-      filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-S-frozen.png",
+    }),
+    south = util.sprite_load("__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-S-frozen", {
       priority = "extra-high",
-      width = 88,
-      height = 61,
-      shift = util.by_pixel(0, -31.25),
       scale = 0.5
-    },
-    west =
-    {
-      filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-W-frozen.png",
+    }),
+    west = util.sprite_load("__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-W-frozen", {
       priority = "extra-high",
-      width = 39,
-      height = 73,
-      shift = util.by_pixel(25.75, 1.25),
       scale = 0.5
-    }
+    }),
   }
 end
 
 data.raw["assembling-machine"]["assembling-machine-1"].graphics_set.reset_animation_when_frozen = true
-data.raw["assembling-machine"]["assembling-machine-1"].graphics_set.frozen_patch =
+data.raw["assembling-machine"]["assembling-machine-1"].graphics_set.frozen_patch = util.sprite_load("__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-1-frozen",
 {
-  filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-1-frozen.png",
   priority = "high",
-  width = 214,
-  height = 226,
-  shift = util.by_pixel(0, 2),
   scale = 0.5
-}
+})
 data.raw["assembling-machine"]["assembling-machine-2"].graphics_set.reset_animation_when_frozen = true
-data.raw["assembling-machine"]["assembling-machine-2"].graphics_set.frozen_patch =
+data.raw["assembling-machine"]["assembling-machine-2"].graphics_set.frozen_patch = util.sprite_load("__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-2-frozen",
 {
-  filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-2-frozen.png",
   priority = "high",
-  width = 214,
-  height = 218,
-  shift = util.by_pixel(0, 4),
   scale = 0.5
-}
+})
 for key, fluid_box in pairs(data.raw["assembling-machine"]["assembling-machine-2"].fluid_boxes) do
   if type(fluid_box) == "table" then
     fluid_box.pipe_picture_frozen = assemblerpipepicturesfrozen()
   end
 end
 data.raw["assembling-machine"]["assembling-machine-3"].graphics_set.reset_animation_when_frozen = true
-data.raw["assembling-machine"]["assembling-machine-3"].graphics_set.frozen_patch =
+data.raw["assembling-machine"]["assembling-machine-3"].graphics_set.frozen_patch = util.sprite_load("__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-3-frozen",
 {
-  filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-3-frozen.png",
   priority = "high",
-  width = 214,
-  height = 237,
-  shift = util.by_pixel(0, -0.75),
   scale = 0.5
-}
+})
 for key, fluid_box in pairs(data.raw["assembling-machine"]["assembling-machine-3"].fluid_boxes) do
   if type(fluid_box) == "table" then
     fluid_box.pipe_picture_frozen = assemblerpipepicturesfrozen()
@@ -186,46 +154,51 @@ data.raw["assembling-machine"]["chemical-plant"].graphics_set.frozen_patch =
   }
 }
 
+data.raw["assembling-machine"]["oil-refinery"].graphics_set.reset_animation_when_frozen = true
 data.raw["assembling-machine"]["oil-refinery"].graphics_set.frozen_patch =
 {
   north =
   {
-    filename = "__space-age__/graphics/entity/frozen/oil-refinery/oil-refinery.png",
+    filename = "__space-age__/graphics/entity/frozen/oil-refinery/oil-refinery-frozen.png",
     priority = "high",
-    width = 386,
-    height = 430,
-    shift = util.by_pixel(0, -7.5),
+    width = 326,
+    height = 444,
+    shift = util.by_pixel( 0.0, -22.0),
+    line_length = 4,
     scale = 0.5
   },
   east =
   {
-    filename = "__space-age__/graphics/entity/frozen/oil-refinery/oil-refinery.png",
+    filename = "__space-age__/graphics/entity/frozen/oil-refinery/oil-refinery-frozen.png",
     priority = "high",
-    width = 386,
-    x = 386,
-    height = 430,
-    shift = util.by_pixel(0, -7.5),
-    scale = 0.5
+    width = 326,
+    height = 444,
+    shift = util.by_pixel( 0.0, -22.0),
+    line_length = 4,
+    scale = 0.5,
+    x = 326
   },
   south =
   {
-    filename = "__space-age__/graphics/entity/frozen/oil-refinery/oil-refinery.png",
+    filename = "__space-age__/graphics/entity/frozen/oil-refinery/oil-refinery-frozen.png",
     priority = "high",
-    width = 386,
-    x = 386 * 2,
-    height = 430,
-    shift = util.by_pixel(0, -7.5),
-    scale = 0.5
+    width = 326,
+    height = 444,
+    shift = util.by_pixel( 0.0, -22.0),
+    line_length = 4,
+    scale = 0.5,
+    x = 326 * 2
   },
   west =
   {
-    filename = "__space-age__/graphics/entity/frozen/oil-refinery/oil-refinery.png",
+    filename = "__space-age__/graphics/entity/frozen/oil-refinery/oil-refinery-frozen.png",
     priority = "high",
-    width = 386,
-    x = 386 * 3,
-    height = 430,
-    shift = util.by_pixel(0, -7.5),
-    scale = 0.5
+    width = 326,
+    height = 444,
+    shift = util.by_pixel( 0.0, -22.0),
+    line_length = 4,
+    scale = 0.5,
+    x = 326 * 3
   }
 }
 
@@ -607,7 +580,7 @@ data.raw["power-switch"]["power-switch"].frozen_patch =
   scale = 0.5
 }
 
-data.raw.generator["steam-turbine"].horizontal_frozen_patch =
+data.raw.generator["steam-turbine"].pictures.east.frozen_patch =
 {
   filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-H.png",
   width = 320,
@@ -615,7 +588,7 @@ data.raw.generator["steam-turbine"].horizontal_frozen_patch =
   shift = util.by_pixel(0, -2.75),
   scale = 0.5
 }
-data.raw.generator["steam-turbine"].vertical_frozen_patch =
+data.raw.generator["steam-turbine"].pictures.north.frozen_patch =
 {
   filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-V.png",
   width = 217,

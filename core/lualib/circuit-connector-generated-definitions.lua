@@ -564,10 +564,18 @@ circuit_connector_definitions["chemical-plant"] = circuit_connector_definitions.
   }
 )
 
-circuit_connector_definitions["chest"] = circuit_connector_definitions.create_single
+circuit_connector_definitions["chest-single"] = circuit_connector_definitions.create_single
 (
   universal_connector_template,
   { variation = 26, main_offset = util.by_pixel(3, 5.5), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = true }
+)
+
+circuit_connector_definitions["chest"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 26, main_offset = util.by_pixel(3, 5.5), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = true }
+  }
 )
 
 circuit_connector_definitions["electric-mining-drill"] = circuit_connector_definitions.create_vector
@@ -619,10 +627,10 @@ circuit_connector_definitions["oil-refinery"] = circuit_connector_definitions.cr
 (
   universal_connector_template,
   {
-    { variation = 17, main_offset = util.by_pixel(-45, -29.5), shadow_offset = util.by_pixel(48.5, 11), show_shadow = true },
-    { variation = 19, main_offset = util.by_pixel(29.5, -24), shadow_offset = util.by_pixel(81, 53), show_shadow = true },
-    { variation = 19, main_offset = util.by_pixel(29.5, -24), shadow_offset = util.by_pixel(82.5, 65.5), show_shadow = true },
-    { variation = 17, main_offset = util.by_pixel(-8, -35.5), shadow_offset = util.by_pixel(86.5, 77.5), show_shadow = true }
+    { variation = 25, main_offset = util.by_pixel(-45-21, -1), shadow_offset = util.by_pixel(48.5, 11), show_shadow = true },
+    { variation = 25, main_offset = util.by_pixel(-68, 20), shadow_offset = util.by_pixel(81, 53), show_shadow = true },
+    { variation = 35, main_offset = util.by_pixel(54, 44), shadow_offset = util.by_pixel(82.5, 65.5), show_shadow = true },
+    { variation = 27, main_offset = util.by_pixel(34, 34), shadow_offset = util.by_pixel(86.5, 77.5), show_shadow = true }
   }
 )
 
@@ -795,7 +803,7 @@ circuit_connector_definitions["rocket-silo"] = circuit_connector_definitions.cre
 (
   universal_connector_template,
   {
-    { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true },
+    { variation = 1, main_offset = util.by_pixel(139.5, 60), shadow_offset = util.by_pixel(175.5, 104), show_shadow = true },
     { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true }, -- unused but RocketSilo derives from AssemblingMachine which requires 4 connectors
     { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true }, -- also unused
     { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true }  -- also unused
@@ -856,10 +864,14 @@ circuit_connector_definitions["flamethrower-turret"] = circuit_connector_definit
 (
   universal_connector_template,
   {
-    { variation = 14, main_offset = util.by_pixel(    -7,  24), shadow_offset = util.by_pixel(  15, 38), show_shadow = false },
-    { variation = 21, main_offset = util.by_pixel( -39.5, -12), shadow_offset = util.by_pixel( -21,  7), show_shadow = false },
-    { variation = 2,  main_offset = util.by_pixel(     7, -47), shadow_offset = util.by_pixel(  14, 40), show_shadow = false },
-    { variation = 23, main_offset = util.by_pixel(  39.5,  -8), shadow_offset = util.by_pixel(  45,  7), show_shadow = false }
+    { variation = 14, main_offset = util.by_pixel(    -7,  24), shadow_offset = util.by_pixel(  15, 38), show_shadow = true }, --N
+    { variation = 9,  main_offset = util.by_pixel( -28, -4), shadow_offset = util.by_pixel( 29.5, 23.5), show_shadow = true }, -- NE
+    { variation = 21, main_offset = util.by_pixel( -39.5, -12), shadow_offset = util.by_pixel( -21,  7), show_shadow = true }, -- E
+    { variation = 35, main_offset = util.by_pixel( -16, -28), shadow_offset = util.by_pixel( 30, 22.5), show_shadow = true }, -- SE
+    { variation = 2,  main_offset = util.by_pixel(     7, -47), shadow_offset = util.by_pixel(  14, 40), show_shadow = true }, -- S
+    { variation = 34, main_offset = util.by_pixel( 28, -24), shadow_offset = util.by_pixel( -3, 22.5), show_shadow = true }, -- SW
+    { variation = 23, main_offset = util.by_pixel(  39.5,  -8), shadow_offset = util.by_pixel(  45,  7), show_shadow = true }, --W
+    { variation = 11, main_offset = util.by_pixel( 15, 2), shadow_offset = util.by_pixel( -3.5, 23.5), show_shadow = true } --NW
   },
   true
 )
@@ -888,6 +900,15 @@ circuit_connector_definitions["cargo-landing-pad"] =
   {
     wire = { red = {2.559, 1.059}, green = {2.328, 1.223} },
     shadow = { red = {2.559 + 1.5, 1.059 + 1.5}, green = {2.328 + 1.5, 1.223 + 1.5} } -- TODO: to be adjusted
+  }
+}
+
+circuit_connector_definitions["land-mine"] =
+{
+  points =
+  {
+    wire = { red = {-0.1, 0.3}, green = {0.1, 0.3} },
+    shadow = { red = {-0.1, 0.3}, green = {0.1, 0.3} } -- TODO: to be adjusted
   }
 }
 
@@ -950,4 +971,82 @@ circuit_connector_definitions["splitter"] = circuit_connector_definitions.create
     { variation = 4, main_offset = util.by_pixel(-21, 0), shadow_offset = util.by_pixel(-21+12, 0+10), show_shadow = true },
     { variation = 2, main_offset = util.by_pixel(-7, -29), shadow_offset = util.by_pixel(-7+12, -29+10), show_shadow = true },
   }
+)
+circuit_connector_definitions["lab"] = circuit_connector_definitions.create_single
+(
+  universal_connector_template,
+  { variation = 27, main_offset = util.by_pixel(30, 24), shadow_offset = util.by_pixel(35, 32), show_shadow = true }
+)
+circuit_connector_definitions["bio-lab"] = circuit_connector_definitions.create_single
+(
+  universal_connector_template,
+  { variation = 27, main_offset = util.by_pixel(74, -40), shadow_offset = util.by_pixel(140, -5), show_shadow = true }
+)
+
+circuit_connector_definitions["pipe-to-ground"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 2, main_offset = util.by_pixel(0, -17.375), shadow_offset = util.by_pixel(0, -17.375), show_shadow = false },
+    { variation = 8, main_offset = util.by_pixel(7, -6), shadow_offset = util.by_pixel(7, -6), show_shadow = false },
+    { variation = 6, main_offset = util.by_pixel(0, 3.75), shadow_offset = util.by_pixel(0, 3.75), show_shadow = false },
+    { variation = 12, main_offset = util.by_pixel(-7, -6), shadow_offset = util.by_pixel(-7, -6), show_shadow = false },
+  }
+)
+
+circuit_connector_definitions["pipe"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 2, main_offset = util.by_pixel(0, -13), shadow_offset = util.by_pixel(0, -13), show_shadow = false },
+    { variation = 12, main_offset = util.by_pixel(0.75, -13), shadow_offset = util.by_pixel(0.75, -13), show_shadow = false },
+    { variation = 26, main_offset = util.by_pixel(3, 4), shadow_offset = util.by_pixel(3, 4), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(2.25, -18), shadow_offset = util.by_pixel(2.25, -18), show_shadow = false },
+    { variation = 12, main_offset = util.by_pixel(0.75, -2.5), shadow_offset = util.by_pixel(0.75, -2.5), show_shadow = false },
+    { variation = 12, main_offset = util.by_pixel(0.75, -7), shadow_offset = util.by_pixel(0.75, -7), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(5.25, -6.25), shadow_offset = util.by_pixel(5.25, -6.25), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(1, -9), shadow_offset = util.by_pixel(1, -9), show_shadow = false },
+    { variation = 26, main_offset = util.by_pixel(-2.25, 4), shadow_offset = util.by_pixel(-2.25, 4), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(-1.25, -18), shadow_offset = util.by_pixel(-1.25, -18), show_shadow = false },
+    { variation = 26, main_offset = util.by_pixel(0, 4), shadow_offset = util.by_pixel(0, 4), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(0, -13), shadow_offset = util.by_pixel(0, -13), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(-2, -3.5), shadow_offset = util.by_pixel(-2, -3.5), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(-1, -9), shadow_offset = util.by_pixel(-1, -9), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(0, -9), shadow_offset = util.by_pixel(0, -9), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(0, -9), shadow_offset = util.by_pixel(0, -9), show_shadow = false },
+  }
+)
+
+circuit_connector_definitions["boiler"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 2, main_offset = util.by_pixel(0, -22), shadow_offset = util.by_pixel(0, -22), show_shadow = false },
+    { variation = 0, main_offset = util.by_pixel(7, -23), shadow_offset = util.by_pixel(7, -23), show_shadow = false },
+    { variation = 6, main_offset = util.by_pixel(0, -12), shadow_offset = util.by_pixel(0, -12), show_shadow = false },
+    { variation = 4, main_offset = util.by_pixel(-7, -24), shadow_offset = util.by_pixel(-7, -24), show_shadow = false },
+  }
+)
+
+circuit_connector_definitions["heat-pipe"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [    ] single
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [   N] endingUp
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [  E ] endingRight
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [  EN] cornerRightUp
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [ S  ] endingDown
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [ S N] straightVertical
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [ SE ] cornerRightDown
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [ SEN] tRight
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [W   ] endingLeft
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [W  N] cornerLeftUp
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [W E ] straightHorizontal
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [W EN] tUp
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [WS  ] cornerLeftDown
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [WS N] tLeft
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [WSE ] tDown
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [WSEN] cross
+  } -- TODO: to be refined
 )

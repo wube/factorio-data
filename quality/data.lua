@@ -6,6 +6,5 @@ require("prototypes.recipe")
 require("prototypes.signal")
 require("prototypes.technology")
 require("prototypes.tips-and-tricks")
-require("prototypes.entity.entity")
-require("prototypes.entity.remnants")
-require("prototypes.entity.explosions")
+
+data.raw.quality.normal.hidden = false

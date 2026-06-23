@@ -45,10 +45,11 @@ meld.meld = function(target, source)
       target[k] = v
     elseif v.marker == meld.control_marker then
       meld.control_handlers[v.op](target, k, v)
-    elseif target[k] and type(target[k]) == "table" then
-      meld.meld(target[k], v)
     else
-      target[k] = util.copy(v)
+      if type(target[k]) ~= "table" then
+        target[k] = {}
+      end
+      meld.meld(target[k], v)
     end
   end
   return target

@@ -11,6 +11,7 @@ function create_item_parameter(number)
       name = "parameter-" .. number,
       icon = "__base__/graphics/icons/parameter/parameter-" .. number .. ".png",
       localised_name = {"parameter-x", tostring(number)},
+      flags = {"always-show"},
       subgroup = "parameters",
       order = "a",
       parameter = true,
@@ -450,7 +451,7 @@ data:extend
     name = "red-wire",
     icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-red-wire-x56.png",
     icon_size = 56,
-    flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    flags = {"only-in-cursor", "not-stackable", "spawnable", "always-show"},
     auto_recycle = false,
     subgroup = "spawnables",
     color_hint = { text = "R" },
@@ -464,7 +465,7 @@ data:extend
     name = "green-wire",
     icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-green-wire-x56.png",
     icon_size = 56,
-    flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    flags = {"only-in-cursor", "not-stackable", "spawnable", "always-show"},
     auto_recycle = false,
     subgroup = "spawnables",
     color_hint = { text = "G" },
@@ -478,7 +479,7 @@ data:extend
     name = "copper-wire",
     icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-copper-wire-x56.png",
     icon_size = 56,
-    flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    flags = {"only-in-cursor", "not-stackable", "spawnable", "always-show"},
     auto_recycle = false,
     subgroup = "spawnables",
     color_hint = { text = "C" },
@@ -601,7 +602,7 @@ data:extend
     select =
     {
       border_color = {1, 1, 1},
-      mode = {"blueprint", "avoid-rolling-stock", "avoid-vehicle"},
+      mode = {"blueprint", "avoid-rolling-stock", "avoid-vehicle", "any-entity", "any-tile"},
       cursor_box_type = "copy",
       started_sound = { filename = "__core__/sound/blueprint-select.ogg" },
       ended_sound = { filename = "__core__/sound/blueprint-create.ogg" }
@@ -609,7 +610,7 @@ data:extend
     alt_select =
     {
       border_color = {0, 1, 1},
-      mode = {"blueprint"},
+      mode = {"blueprint", "any-entity", "any-tile"},
       cursor_box_type = "copy",
       started_sound = { filename = "__core__/sound/blueprint-select.ogg" },
       ended_sound = { filename = "__core__/sound/blueprint-create.ogg" }
@@ -630,7 +631,7 @@ data:extend
     select =
     {
       border_color = {1, 1, 1},
-      mode = {"blueprint", "deconstruct", "avoid-rolling-stock", "avoid-vehicle"},
+      mode = {"blueprint", "deconstruct", "avoid-rolling-stock", "avoid-vehicle", "any-entity", "any-tile"},
       cursor_box_type = "copy",
       started_sound = { filename = "__core__/sound/blueprint-select.ogg" },
       ended_sound = { filename = "__core__/sound/blueprint-create.ogg" }
@@ -638,7 +639,7 @@ data:extend
     alt_select =
     {
       border_color = {1, 1, 1},
-      mode = {"blueprint", "deconstruct"},
+      mode = {"blueprint", "deconstruct", "any-entity", "any-tile"},
       cursor_box_type = "copy",
       started_sound = { filename = "__core__/sound/blueprint-select.ogg" },
       ended_sound = { filename = "__core__/sound/blueprint-create.ogg" }
@@ -650,7 +651,7 @@ data:extend
     type = "blueprint",
     name = "blueprint",
     icon = "__base__/graphics/icons/blueprint.png",
-    flags = {"not-stackable", "spawnable"},
+    flags = {"not-stackable", "spawnable", "always-show", "excluded-from-character-lift-weight"},
     subgroup = "tool",
     order = "c[automated-construction]-a[blueprint]",
     inventory_move_sound = item_sounds.planner_inventory_move,
@@ -662,7 +663,7 @@ data:extend
     {
       border_color = {57, 156, 251},
       count_button_color = {43, 113, 180},
-      mode = {"blueprint"},
+      mode = {"blueprint", "any-entity", "any-tile"},
       cursor_box_type = "copy",
       started_sound = { filename = "__core__/sound/blueprint-select.ogg" },
       ended_sound = { filename = "__core__/sound/blueprint-create.ogg" }
@@ -671,7 +672,7 @@ data:extend
     {
       border_color = {0.3, 0.8, 1},
       count_button_color = {0.3, 0.8, 1},
-      mode = {"blueprint"},
+      mode = {"blueprint", "any-entity", "any-tile"},
       cursor_box_type = "copy",
       started_sound = { filename = "__core__/sound/blueprint-select.ogg" },
       ended_sound = { filename = "__core__/sound/blueprint-create.ogg" }
@@ -680,7 +681,7 @@ data:extend
     close_sound = "__base__/sound/item-close.ogg"
   },
   {
-    type = "tool",
+    type = "item",
     name = "automation-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/automation-science-pack.png",
@@ -692,14 +693,10 @@ data:extend
     drop_sound = item_sounds.science_inventory_move,
     stack_size = 200,
     weight = 1 * kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
-    type = "tool",
+    type = "item",
     name = "logistic-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/logistic-science-pack.png",
@@ -711,10 +708,6 @@ data:extend
     drop_sound = item_sounds.science_inventory_move,
     stack_size = 200,
     weight = 1 * kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
@@ -1386,7 +1379,7 @@ data:extend
     stack_size = 1
   },
   {
-    type = "tool",
+    type = "item",
     name = "chemical-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/chemical-science-pack.png",
@@ -1398,14 +1391,10 @@ data:extend
     drop_sound = item_sounds.science_inventory_move,
     stack_size = 200,
     weight = 1 * kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
-    type = "tool",
+    type = "item",
     name = "military-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/military-science-pack.png",
@@ -1417,14 +1406,10 @@ data:extend
     drop_sound = item_sounds.science_inventory_move,
     stack_size = 200,
     weight = 1 * kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
-    type = "tool",
+    type = "item",
     name = "production-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/production-science-pack.png",
@@ -1436,14 +1421,10 @@ data:extend
     drop_sound = item_sounds.science_inventory_move,
     stack_size = 200,
     weight = 1 * kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
-    type = "tool",
+    type = "item",
     name = "utility-science-pack",
     localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/utility-science-pack.png",
@@ -1455,14 +1436,10 @@ data:extend
     drop_sound = item_sounds.science_inventory_move,
     stack_size = 200,
     weight = 1 * kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
-    type = "tool",
+    type = "item",
     name = "space-science-pack",
     icon = "__base__/graphics/icons/space-science-pack.png",
     subgroup = "science-pack",
@@ -1473,10 +1450,6 @@ data:extend
     drop_sound = item_sounds.science_inventory_move,
     stack_size = 2000,
     weight = 1 * kg,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
   {
@@ -1850,7 +1823,7 @@ data:extend
     type = "upgrade-item",
     name = "upgrade-planner",
     icon = "__base__/graphics/icons/upgrade-planner.png",
-    flags = {"spawnable"},
+    flags = {"spawnable", "always-show", "excluded-from-character-lift-weight"},
     subgroup = "tool",
     order = "c[automated-construction]-c[upgrade-planner]",
     inventory_move_sound = item_sounds.planner_inventory_move,
@@ -1860,7 +1833,7 @@ data:extend
     select =
     {
       border_color = {71, 255, 73},
-      mode = {"upgrade"},
+      mode = {"upgrade", "any-entity"},
       cursor_box_type = "not-allowed",
       started_sound = { filename = "__core__/sound/upgrade-select-start.ogg" },
       ended_sound = { filename = "__core__/sound/upgrade-select-end.ogg" }
@@ -1868,7 +1841,7 @@ data:extend
     alt_select =
     {
       border_color = {239, 153, 34},
-      mode = {"cancel-upgrade"},
+      mode = {"cancel-upgrade", "any-entity"},
       cursor_box_type = "not-allowed",
       started_sound = { filename = "__core__/sound/upgrade-cancel-start.ogg" },
       ended_sound = { filename = "__core__/sound/upgrade-cancel-end.ogg" }
@@ -1876,7 +1849,7 @@ data:extend
     reverse_select =
     {
       border_color = {246, 255, 0},
-      mode = {"downgrade"},
+      mode = {"downgrade", "any-entity"},
       cursor_box_type = "not-allowed",
       started_sound = { filename = "__core__/sound/upgrade-select-start.ogg" },
       ended_sound = { filename = "__core__/sound/upgrade-select-end.ogg" }
@@ -1889,20 +1862,18 @@ data:extend
     type = "deconstruction-item",
     name = "deconstruction-planner",
     icon = "__base__/graphics/icons/deconstruction-planner.png",
-    flags = {"spawnable"},
+    flags = {"spawnable", "always-show", "excluded-from-character-lift-weight"},
     subgroup = "tool",
     order = "c[automated-construction]-b[deconstruction-planner]",
     inventory_move_sound = item_sounds.planner_inventory_move,
     pick_sound = item_sounds.planner_inventory_pickup,
     drop_sound = item_sounds.planner_inventory_move,
     stack_size = 1,
-    entity_filter_count = 30,
-    tile_filter_count = 30,
     select =
     {
       border_color = {255, 24, 24},
       count_button_color = {195, 52, 52},
-      mode = {"deconstruct"},
+      mode = {"deconstruct", "any-entity", "any-tile"},
       cursor_box_type = "not-allowed",
       started_sound = { filename = "__core__/sound/deconstruct-select-start.ogg" },
       ended_sound = { filename = "__core__/sound/deconstruct-select-end.ogg" }
@@ -1911,7 +1882,7 @@ data:extend
     {
       border_color = {255, 24, 24},
       count_button_color = {195, 52, 52},
-      mode = {"deconstruct"},
+      mode = {"deconstruct", "any-entity", "any-tile"},
       cursor_box_type = "not-allowed",
       started_sound = { filename = "__core__/sound/deconstruct-select-start.ogg" },
       ended_sound = { filename = "__core__/sound/deconstruct-select-end.ogg" }
@@ -1920,7 +1891,7 @@ data:extend
     {
       border_color = {239, 153, 34},
       count_button_color = {255, 176, 66},
-      mode = {"cancel-deconstruct"},
+      mode = {"cancel-deconstruct", "any-entity"},
       cursor_box_type = "not-allowed",
       started_sound = { filename = "__core__/sound/deconstruct-cancel-start.ogg" },
       ended_sound = { filename = "__core__/sound/deconstruct-cancel-end.ogg" },
@@ -1933,7 +1904,7 @@ data:extend
     type = "blueprint-book",
     name = "blueprint-book",
     icon = "__base__/graphics/icons/blueprint-book.png",
-    flags = {"spawnable"},
+    flags = {"spawnable", "always-show", "excluded-from-character-lift-weight"},
     subgroup = "tool",
     order = "c[automated-construction]-d[blueprint-book]",
     inventory_move_sound = item_sounds.blueprint_inventory_move,
@@ -2159,7 +2130,7 @@ data:extend
     name = "spidertron-remote",
     icon = "__base__/graphics/icons/spidertron-remote.png",
     icon_color_indicator_mask = "__base__/graphics/icons/spidertron-remote-mask.png",
-    flags = {"not-stackable", "only-in-cursor", "spawnable"},
+    flags = {"not-stackable", "only-in-cursor", "spawnable", "always-show", "excluded-from-character-lift-weight"},
     auto_recycle = false,
     subgroup = "spawnables",
     inventory_move_sound = item_sounds.spidertron_inventory_move,
@@ -2201,13 +2172,13 @@ data:extend
     select =
     {
       border_color = {1, 1, 1},
-      mode = {"blueprint"},
+      mode = {"blueprint", "any-entity", "any-tile"},
       cursor_box_type = "copy",
     },
     alt_select =
     {
       border_color = {0, 1, 0},
-      mode = {"blueprint"},
+      mode = {"blueprint", "any-entity", "any-tile"},
       cursor_box_type = "copy",
     }
   },
@@ -2305,7 +2276,7 @@ data:extend
     pick_sound = item_sounds.mechanical_inventory_pickup,
     drop_sound = item_sounds.mechanical_inventory_move,
     place_result = "centrifuge",
-    stack_size = 50,
+    stack_size = 10,
     random_tint_color = item_tints.iron_rust
   },
   {
@@ -2582,7 +2553,7 @@ data:extend
     drop_sound = item_sounds.module_inventory_move,
     stack_size = 50,
     weight = 20 * kg,
-    effect = {speed = 0.2, consumption = 0.5, quality = -0.1},
+    effect = {speed = 0.2, consumption = 0.5, quality = -0.01},
     beacon_tint =
     {
       primary = {0.441, 0.714, 1.000, 1.000}, -- #70b6ffff
@@ -2606,7 +2577,7 @@ data:extend
     drop_sound = item_sounds.module_inventory_move,
     stack_size = 50,
     weight = 20 * kg,
-    effect = {speed = 0.3, consumption = 0.6, quality = -0.15},
+    effect = {speed = 0.3, consumption = 0.6, quality = -0.015},
     beacon_tint =
     {
       primary = {0.441, 0.714, 1.000, 1.000}, -- #70b6ffff
@@ -2630,7 +2601,7 @@ data:extend
     drop_sound = item_sounds.module_inventory_move,
     stack_size = 50,
     weight = 20 * kg,
-    effect = {speed = 0.5, consumption = 0.7, quality = -0.25},
+    effect = {speed = 0.5, consumption = 0.7, quality = -0.025},
     beacon_tint =
     {
       primary = {0.441, 0.714, 1.000, 1.000}, -- #70b6ffff
@@ -2840,13 +2811,13 @@ data:extend
               offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}}
             },
             {
+              type = "activate-impact",
+              deliver_category = "bullet"
+            },
+            {
               type = "damage",
               damage = {amount = 24, type = "physical"}
             },
-            {
-              type = "activate-impact",
-              deliver_category = "bullet"
-            }
           }
         }
       }
@@ -2923,6 +2894,7 @@ data:extend
           type = "projectile",
           projectile = "rocket",
           starting_speed = 0.1,
+          inherit_speed = true,
           source_effects =
           {
             type = "create-entity",
@@ -2955,6 +2927,7 @@ data:extend
           type = "projectile",
           projectile = "explosive-rocket",
           starting_speed = 0.1,
+          inherit_speed = true,
           source_effects =
           {
             type = "create-entity",
@@ -3008,6 +2981,7 @@ data:extend
           type = "projectile",
           projectile = "atomic-rocket",
           starting_speed = 0.05,
+          inherit_speed = true,
           source_effects =
           {
             type = "create-entity",
@@ -3032,7 +3006,7 @@ data:extend
     ammo_type =
     {
       target_type = "direction",
-      clamp_position = true,
+      force_clamp_to_max_range = true,
       action =
       {
         {
@@ -3046,21 +3020,26 @@ data:extend
                 type = "create-explosion",
                 entity_name = "explosion-gunshot"
               }
+            },
+            target_effects =
+            {
+              type = "nested-result",
+              action =
+              {
+                type = "area",
+                target_entities = false,
+                repeat_count = 18,
+                radius = 2.5,
+                action_delivery =
+                {
+                  type = "projectile",
+                  projectile = "piercing-shotgun-pellet",
+                  starting_speed = 1.2,
+                  starting_speed_deviation = 0.1,
+                  inherit_speed = true,
+                }
+              }
             }
-          }
-        },
-        {
-          type = "direct",
-          repeat_count = 16,
-          action_delivery =
-          {
-            type = "projectile",
-            projectile = "piercing-shotgun-pellet",
-            starting_speed = 1,
-            starting_speed_deviation = 0.1,
-            direction_deviation = 0.3,
-            range_deviation = 0.3,
-            max_range = 15
           }
         }
       }
@@ -3082,7 +3061,8 @@ data:extend
     ammo_type =
     {
       range_modifier = 1.25,
-      target_type = "direction",
+      target_type = "position",
+      clamp_position = true,
       action =
       {
         type = "direct",
@@ -3091,10 +3071,7 @@ data:extend
           type = "projectile",
           projectile = "cannon-projectile",
           starting_speed = 1,
-          direction_deviation = 0.1,
-          range_deviation = 0.1,
-          max_range = 30,
-          min_range = 5,
+          inherit_speed = true,
           source_effects =
           {
             type = "create-explosion",
@@ -3118,7 +3095,8 @@ data:extend
     ammo_category = "cannon-shell",
     ammo_type =
     {
-      target_type = "direction",
+      target_type = "position",
+      clamp_position = true,
       action =
       {
         type = "direct",
@@ -3127,10 +3105,7 @@ data:extend
           type = "projectile",
           projectile = "explosive-cannon-projectile",
           starting_speed = 1,
-          direction_deviation = 0.1,
-          range_deviation = 0.1,
-          max_range = 30,
-          min_range = 5,
+          inherit_speed = true,
           source_effects =
           {
             type = "create-explosion",
@@ -3173,7 +3148,8 @@ data:extend
     ammo_type =
     {
       range_modifier = 1.25,
-      target_type = "direction",
+      target_type = "position",
+      clamp_position = true,
       action =
       {
         type = "direct",
@@ -3182,10 +3158,7 @@ data:extend
           type = "projectile",
           projectile = "uranium-cannon-projectile",
           starting_speed = 1,
-          direction_deviation = 0.1,
-          range_deviation = 0.1,
-          max_range = 30,
-          min_range = 5,
+          inherit_speed = true,
           source_effects =
           {
             type = "create-explosion",
@@ -3227,7 +3200,8 @@ data:extend
     ammo_category = "cannon-shell",
     ammo_type =
     {
-      target_type = "direction",
+      target_type = "position",
+      clamp_position = true,
       action =
       {
         type = "direct",
@@ -3236,10 +3210,7 @@ data:extend
           type = "projectile",
           projectile = "explosive-uranium-cannon-projectile",
           starting_speed = 1,
-          direction_deviation = 0.1,
-          range_deviation = 0.1,
-          max_range = 30,
-          min_range = 5,
+          inherit_speed = true,
           source_effects =
           {
             type = "create-explosion",
@@ -3429,11 +3400,24 @@ data:extend
       type = "projectile",
       ammo_category = "shotgun-shell",
       cooldown = 30,
-      movement_slow_down_factor = 0.5,
-      damage_modifier = 1.2,
+      shell_particle =
+      {
+        name = "shotgun-shell-particle",
+        direction_deviation = 0.1,
+        speed = 0.065,
+        speed_deviation = 0.03,
+        center = {0, 0},
+        creation_distance = 0.3875,
+        starting_frame_speed = 0.4,
+        vertical_speed = 0.055,
+        vertical_speed_deviation = 0.01,
+        starting_frame_speed_deviation = 0.1,
+      },
+      damage_modifier = 1.5,
       projectile_creation_distance = 0.125,
       range = 15,
-      sound = sounds.shotgun
+      sound = sounds.shotgun,
+      movement_slow_down_factor = 0
     },
     stack_size = 5
   },
@@ -3457,6 +3441,7 @@ data:extend
       projectile_creation_distance = 1.6,
       projectile_center = {-0.15625, -0.07812},
       range = 30,
+      min_range = 5,
       sound = sounds.tank_gunshot
     },
     stack_size = 1
@@ -4094,13 +4079,13 @@ data:extend
                   only_when_visible = true
                 },
                 {
+                  type = "activate-impact",
+                  deliver_category = "bullet"
+                },
+                {
                   type = "damage",
                   damage = {amount = 5, type = "physical"}
                 },
-                {
-                  type = "activate-impact",
-                  deliver_category = "bullet"
-                }
               }
             }
           }
@@ -4145,13 +4130,13 @@ data:extend
               only_when_visible = true
             },
             {
+              type = "activate-impact",
+              deliver_category = "bullet"
+            },
+            {
               type = "damage",
               damage = {amount = 8, type = "physical"}
             },
-            {
-              type = "activate-impact",
-              deliver_category = "bullet"
-            }
           }
         }
       }
@@ -4173,7 +4158,7 @@ data:extend
     ammo_type =
     {
       target_type = "direction",
-      clamp_position = true,
+      force_clamp_to_max_range = true,
       action =
       {
         {
@@ -4187,21 +4172,26 @@ data:extend
                 type = "create-explosion",
                 entity_name = "explosion-gunshot"
               }
+            },
+            target_effects =
+            {
+              type = "nested-result",
+              action =
+              {
+                type = "area",
+                target_entities = false,
+                repeat_count = 12,
+                radius = 2.5,
+                action_delivery =
+                {
+                  type = "projectile",
+                  projectile = "shotgun-pellet",
+                  starting_speed = 1,
+                  starting_speed_deviation = 0.1,
+                  inherit_speed = true,
+                }
+              }
             }
-          }
-        },
-        {
-          type = "direct",
-          repeat_count = 12,
-          action_delivery =
-          {
-            type = "projectile",
-            projectile = "shotgun-pellet",
-            starting_speed = 1,
-            starting_speed_deviation = 0.1,
-            direction_deviation = 0.3,
-            range_deviation = 0.3,
-            max_range = 15
           }
         }
       }
@@ -4399,12 +4389,24 @@ data:extend
     {
       type = "projectile",
       ammo_category = "shotgun-shell",
-      cooldown = 60,
-      movement_slow_down_factor = 0.6,
+      cooldown = 40,
+      shell_particle =
+      {
+        name = "shotgun-shell-particle",
+        direction_deviation = 0.1,
+        speed = 0.065,
+        speed_deviation = 0.03,
+        center = {0, 0},
+        creation_distance = 0.3875,
+        starting_frame_speed = 0.4,
+        vertical_speed = 0.055,
+        vertical_speed_deviation = 0.01,
+        starting_frame_speed_deviation = 0.1,
+      },
       projectile_creation_distance = 0.125,
       range = 15,
-      min_range = 1,
-      sound = sounds.shotgun
+      sound = sounds.shotgun,
+      movement_slow_down_factor = 0
     },
     stack_size = 5
   },
@@ -4431,6 +4433,20 @@ data:extend
     pick_sound = item_sounds.reactor_inventory_pickup,
     drop_sound = item_sounds.reactor_inventory_move,
     stack_size = 20,
+    weight = 0.25 * tons
+  },
+  {
+    type = "item",
+    name = "electric-energy-interface-equipment",
+    icon = "__base__/graphics/icons/fission-reactor-equipment.png",
+    place_as_equipment_result = "electric-energy-interface-equipment",
+    subgroup = "other",
+    order = "a[electric-energy-interface]-b[electric-energy-interface-equipment]",
+    hidden = true,
+    inventory_move_sound = item_sounds.reactor_inventory_move,
+    pick_sound = item_sounds.reactor_inventory_pickup,
+    drop_sound = item_sounds.reactor_inventory_move,
+    stack_size = 1,
     weight = 0.25 * tons
   },
   {
@@ -4575,7 +4591,7 @@ data:extend
     type = "capsule",
     name = "discharge-defense-remote",
     icon = "__base__/graphics/icons/discharge-defense-equipment-controller.png",
-    flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    flags = {"only-in-cursor", "not-stackable", "spawnable", "always-show"},
     auto_recycle = false,
     capsule_action =
     {
@@ -4644,7 +4660,7 @@ data:extend
     type = "capsule",
     name = "artillery-targeting-remote",
     icon = "__base__/graphics/icons/artillery-targeting-remote.png",
-    flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    flags = {"only-in-cursor", "not-stackable", "spawnable", "always-show"},
     auto_recycle = false,
     capsule_action =
     {

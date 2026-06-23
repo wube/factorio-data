@@ -1,3 +1,11 @@
+local cargo_pod_sprite = util.sprite_load("__base__/graphics/entity/cargo-pod/pod-static-detached",
+                         {
+                           priority = "medium",
+                           scale = 0.5,
+                         })
+cargo_pod_sprite.type = "sprite"
+cargo_pod_sprite.name = "cargo-pod-factoriopedia"
+
 data:extend(
 {
   {
@@ -54,5 +62,6 @@ data:extend(
     flags = {"gui-icon"},
     mipmap_count = 2,
     scale = 0.5
-  }
+  },
+  cargo_pod_sprite
 })

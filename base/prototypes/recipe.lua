@@ -7,7 +7,7 @@ function create_recipe_parameter(number)
       icon = "__base__/graphics/icons/parameter/parameter-" .. number .. ".png",
       localised_name = {"parameter-x", tostring(number)},
       subgroup = "parameters",
-      category = "parameters",
+      categories = {"parameters"},
       order = "a",
       parameter = true,
       allow_productivity = true
@@ -151,7 +151,7 @@ data:extend
   {
     type = "recipe",
     name = "basic-oil-processing",
-    category = "oil-processing",
+    categories = {"oil-processing"},
     enabled = false,
     energy_required = 5,
     ingredients =
@@ -166,13 +166,17 @@ data:extend
     icon = "__base__/graphics/icons/fluid/basic-oil-processing.png",
     subgroup = "fluid-recipes",
     order = "a[oil-processing]-a[basic-oil-processing]",
-    main_product = ""
+    main_product = "",
+    crafting_machine_tint =
+    {
+      primary = {r = 0.489, g = 0.316, b = 0.549, a = 1.000}, -- #7c508bff
+    }
   },
 
   {
     type = "recipe",
     name = "advanced-oil-processing",
-    category = "oil-processing",
+    categories = {"oil-processing"},
     enabled = false,
     energy_required = 5,
     ingredients =
@@ -189,13 +193,17 @@ data:extend
     allow_productivity = true,
     icon = "__base__/graphics/icons/fluid/advanced-oil-processing.png",
     subgroup = "fluid-recipes",
-    order = "a[oil-processing]-b[advanced-oil-processing]"
+    order = "a[oil-processing]-b[advanced-oil-processing]",
+    crafting_machine_tint =
+    {
+      primary = {r = 0.996, g = 0.454, b = 0.061, a = 1.000}, -- #fd730fff
+    }
   },
 
   {
     type = "recipe",
     name = "coal-liquefaction",
-    category = "oil-processing",
+    categories = {"oil-processing"},
     enabled = false,
     energy_required = 5,
     ingredients =
@@ -214,13 +222,18 @@ data:extend
     icon = "__base__/graphics/icons/fluid/coal-liquefaction.png",
     subgroup = "fluid-recipes",
     order = "a[oil-processing]-c[coal-liquefaction]",
-    allow_decomposition = false
+    allow_decomposition = false,
+    crafting_machine_tint =
+    {
+      primary = {r = 0.406, g = 0.095, b = 0.000, a = 1.000}, -- #671800ff
+    }
   },
 
   {
     type = "recipe",
     name = "heavy-oil-cracking",
-    category = "chemistry",
+    categories = {"chemistry"},
+    auto_recycle = false,
     enabled = false,
     energy_required = 2,
     ingredients =
@@ -249,7 +262,8 @@ data:extend
   {
     type = "recipe",
     name = "light-oil-cracking",
-    category = "chemistry",
+    categories = {"chemistry"},
+    auto_recycle = false,
     enabled = false,
     energy_required = 2,
     ingredients =
@@ -278,7 +292,7 @@ data:extend
   {
     type = "recipe",
     name = "sulfuric-acid",
-    category = "chemistry",
+    categories = {"chemistry"},
     subgroup = "fluid-recipes",
     order = "c[oil-products]-b[sulfuric-acid]",
     energy_required = 1,
@@ -294,6 +308,7 @@ data:extend
       {type = "fluid", name = "sulfuric-acid", amount = 50}
     },
     allow_productivity = true,
+    auto_recycle = false,
     crafting_machine_tint =
     {
       primary = {r = 1.000, g = 0.958, b = 0.000, a = 1.000}, -- #fff400ff
@@ -306,7 +321,7 @@ data:extend
   {
     type = "recipe",
     name = "plastic-bar",
-    category = "chemistry",
+    categories = {"chemistry"},
     energy_required = 1,
     enabled = false,
     auto_recycle = false,
@@ -332,7 +347,8 @@ data:extend
   {
     type = "recipe",
     name = "solid-fuel-from-light-oil",
-    category = "chemistry",
+    categories = {"chemistry"},
+    auto_recycle = false,
     energy_required = 1,
     ingredients =
     {
@@ -359,7 +375,8 @@ data:extend
   {
     type = "recipe",
     name = "solid-fuel-from-petroleum-gas",
-    category = "chemistry",
+    categories = {"chemistry"},
+    auto_recycle = false,
     energy_required = 1,
     ingredients =
     {
@@ -386,7 +403,8 @@ data:extend
   {
     type = "recipe",
     name = "solid-fuel-from-heavy-oil",
-    category = "chemistry",
+    categories = {"chemistry"},
+    auto_recycle = false,
     energy_required = 1,
     ingredients =
     {
@@ -413,7 +431,7 @@ data:extend
   {
     type = "recipe",
     name = "sulfur",
-    category = "chemistry",
+    categories = {"chemistry"},
     energy_required = 1,
     enabled = false,
     auto_recycle = false,
@@ -439,7 +457,8 @@ data:extend
   {
     type = "recipe",
     name = "lubricant",
-    category = "chemistry",
+    categories = {"chemistry"},
+    auto_recycle = false,
     enabled = false,
     energy_required = 1,
     ingredients =
@@ -464,7 +483,7 @@ data:extend
   {
     type = "recipe",
     name = "barrel",
-    category = "crafting",
+    categories = {"crafting"},
     energy_required = 1,
     subgroup = "intermediate-product",
     enabled = false,
@@ -889,7 +908,8 @@ data:extend
       {type = "item", name = "copper-plate", amount = 5},
       {type = "item", name = "iron-plate", amount = 5}
     },
-    results = {{type="item", name="pistol", amount=1}}
+    results = {{type="item", name="pistol", amount=1}},
+    auto_recycle = false
   },
   {
     type = "recipe",
@@ -1104,7 +1124,7 @@ data:extend
     type = "recipe",
     name = "engine-unit",
     energy_required = 10,
-    category = "advanced-crafting",
+    categories = {"advanced-crafting"},
     ingredients =
     {
       {type = "item", name = "steel-plate", amount = 1},
@@ -1257,7 +1277,7 @@ data:extend
     name = "concrete",
     energy_required = 10,
     enabled = false,
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     ingredients =
     {
       {type = "item", name = "stone-brick", amount = 5},
@@ -1271,19 +1291,20 @@ data:extend
     name = "hazard-concrete",
     energy_required = 0.25,
     enabled = false,
-    category = "crafting",
+    categories = {"crafting"},
     ingredients =
     {
       {type = "item", name = "concrete", amount = 10}
     },
-    results = {{type="item", name="hazard-concrete", amount=10}}
+    results = {{type="item", name="hazard-concrete", amount=10}},
+    recycle_to_ingredients_of = "concrete"
   },
   {
     type = "recipe",
     name = "refined-concrete",
     energy_required = 15,
     enabled = false,
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     ingredients =
     {
       {type = "item", name = "concrete", amount = 20},
@@ -1298,12 +1319,13 @@ data:extend
     name = "refined-hazard-concrete",
     energy_required = 0.25,
     enabled = false,
-    category = "crafting",
+    categories = {"crafting"},
     ingredients =
     {
       {type = "item", name = "refined-concrete", amount = 10}
     },
-    results = {{type="item", name="refined-hazard-concrete", amount=10}}
+    results = {{type="item", name="refined-hazard-concrete", amount=10}},
+    recycle_to_ingredients_of = "refined-concrete"
   },
   {
     type = "recipe",
@@ -1311,7 +1333,7 @@ data:extend
     energy_required = 0.5,
     enabled = false,
     auto_recycle = false,
-    category = "crafting",
+    categories = {"crafting"},
     ingredients =
     {
       {type = "item", name = "stone", amount = 50}
@@ -1418,7 +1440,7 @@ data:extend
   {
     type = "recipe",
     name = "copper-plate",
-    category = "smelting",
+    categories = {"smelting"},
     auto_recycle = false,
     energy_required = 3.2,
     ingredients = {{type = "item", name = "copper-ore", amount = 1}},
@@ -1428,7 +1450,7 @@ data:extend
   {
     type = "recipe",
     name = "iron-plate",
-    category = "smelting",
+    categories = {"smelting"},
     auto_recycle = false,
     energy_required = 3.2,
     ingredients = {{type = "item", name = "iron-ore", amount = 1}},
@@ -1438,7 +1460,8 @@ data:extend
   {
     type = "recipe",
     name = "stone-brick",
-    category = "smelting",
+    categories = {"smelting"},
+    auto_recycle = false,
     energy_required = 3.2,
     enabled = true,
     ingredients = {{type = "item", name = "stone", amount = 2}},
@@ -1448,7 +1471,8 @@ data:extend
   {
     type = "recipe",
     name = "steel-plate",
-    category = "smelting",
+    categories = {"smelting"},
+    auto_recycle = false,
     enabled = false,
     energy_required = 16,
     ingredients = {{type = "item", name = "iron-plate", amount = 5}},
@@ -1672,10 +1696,10 @@ data:extend
     ingredients =
     {
       {type = "item", name = "shotgun-shell", amount = 2},
-      {type = "item", name = "copper-plate", amount = 5},
-      {type = "item", name = "steel-plate", amount = 2}
+      {type = "item", name = "copper-plate", amount = 2},
+      {type = "item", name = "steel-plate", amount = 1}
     },
-    results = {{type="item", name="piercing-shotgun-shell", amount=1}}
+    results = {{type = "item", name = "piercing-shotgun-shell", amount = 2}}
   },
   {
     type = "recipe",
@@ -1743,7 +1767,8 @@ data:extend
   {
     type = "recipe",
     name = "flamethrower-ammo",
-    category = "chemistry",
+    categories = {"chemistry"},
+    auto_recycle = false,
     enabled = false,
     energy_required = 6,
     ingredients =
@@ -1763,7 +1788,7 @@ data:extend
   {
     type = "recipe",
     name = "express-transport-belt",
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     enabled = false,
     ingredients =
     {
@@ -2013,7 +2038,7 @@ data:extend
     type = "recipe",
     name = "express-underground-belt",
     energy_required = 2,
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     enabled = false,
     ingredients =
     {
@@ -2052,7 +2077,7 @@ data:extend
   {
     type = "recipe",
     name = "express-splitter",
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     enabled = false,
     energy_required = 2,
     ingredients =
@@ -2081,7 +2106,7 @@ data:extend
   {
     type = "recipe",
     name = "processing-unit",
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     enabled = false,
     energy_required = 10,
     ingredients =
@@ -2295,7 +2320,7 @@ data:extend
   {
     type = "recipe",
     name = "electric-engine-unit",
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     energy_required = 10,
     ingredients =
     {
@@ -2325,7 +2350,7 @@ data:extend
   {
     type = "recipe",
     name = "explosives",
-    category = "chemistry",
+    categories = {"chemistry"},
     crafting_machine_tint =
     {
       primary = {r = 0.968, g = 0.381, b = 0.259, a = 1.000}, -- #f66142ff
@@ -2342,12 +2367,13 @@ data:extend
       {type = "fluid", name = "water", amount = 10}
     },
     results = {{type="item", name="explosives", amount=2}},
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false,
   },
   {
     type = "recipe",
     name = "battery",
-    category = "chemistry",
+    categories = {"chemistry"},
     energy_required = 4,
     enabled = false,
     ingredients =
@@ -2364,7 +2390,8 @@ data:extend
       tertiary = {r = 0.728, g = 0.818, b = 0.443, a = 1.000}, -- #b9d070ff
       quaternary = {r = 0.939, g = 0.763, b = 0.191, a = 1.000}, -- #efc230ff
     },
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = true,
   },
   {
     type = "recipe",
@@ -2408,7 +2435,7 @@ data:extend
   {
     type = "recipe",
     name = "low-density-structure",
-    category = "crafting",
+    categories = {"crafting"},
     energy_required = 15,
     enabled = false,
     ingredients =
@@ -2425,7 +2452,7 @@ data:extend
     name = "rocket-fuel",
     energy_required = 15,
     enabled = false,
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     ingredients =
     {
       {type = "item", name = "solid-fuel", amount = 10},
@@ -2446,7 +2473,7 @@ data:extend
     enabled = false,
     hide_from_player_crafting = true,
     auto_recycle = false,
-    category = "rocket-building",
+    categories = {"rocket-building"},
     ingredients =
     {
       {type = "item", name = "processing-unit", amount = 10},
@@ -2461,7 +2488,7 @@ data:extend
     name = "satellite",
     energy_required = 5,
     enabled = false,
-    category = "crafting",
+    categories = {"crafting"},
     ingredients =
     {
       {type = "item", name = "low-density-structure", amount = 100},
@@ -2510,7 +2537,7 @@ data:extend
     energy_required = 12,
     enabled = false,
     auto_recycle = false,
-    category = "centrifuging",
+    categories = {"centrifuging"},
     ingredients = {{type = "item", name = "uranium-ore", amount = 10}},
     icon = "__base__/graphics/icons/uranium-processing.png",
     subgroup = "uranium-processing",
@@ -2520,13 +2547,13 @@ data:extend
       {
         type = "item",
         name = "uranium-235",
-        probability = 0.007,
+        shared_probability = { min = 0, max = 0.007 },
         amount = 1
       },
       {
         type = "item",
         name = "uranium-238",
-        probability = 0.993,
+        shared_probability = { min = 0.007, max = 1 },
         amount = 1
       }
     },
@@ -2538,7 +2565,7 @@ data:extend
     energy_required = 60,
     enabled = false,
     auto_recycle = false,
-    category = "centrifuging",
+    categories = {"centrifuging"},
     icon = "__base__/graphics/icons/kovarex-enrichment-process.png",
     subgroup = "uranium-processing",
     order = "b[uranium-products]-c[kovarex-enrichment-process]",
@@ -2562,7 +2589,7 @@ data:extend
     name = "nuclear-fuel",
     energy_required = 90,
     enabled = false,
-    category = "centrifuging",
+    categories = {"centrifuging"},
     subgroup = "uranium-processing",
     order = "b[uranium-products]-d[nuclear-fuel]",
     ingredients = {{type = "item", name = "uranium-235", amount = 1}, {type = "item", name = "rocket-fuel", amount = 1}},
@@ -2575,7 +2602,7 @@ data:extend
     energy_required = 60,
     enabled = false,
     auto_recycle = false,
-    category = "centrifuging",
+    categories = {"centrifuging"},
     ingredients = {{type = "item", name = "depleted-uranium-fuel-cell", amount = 5}},
     icon = "__base__/graphics/icons/nuclear-fuel-reprocessing.png",
     subgroup = "uranium-processing",

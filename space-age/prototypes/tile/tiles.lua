@@ -63,11 +63,11 @@ local foundation_transitions =
     transition_group = water_transition_group_id,
 
     spritesheet = "__space-age__/graphics/terrain/water-transitions/foundation.png",
-    layout = tile_spritesheet_layout.transition_8_8_8_4_4,
-    background_enabled = false,
+    layout = tile_spritesheet_layout.concrete_layout(false, false, false),
+    background_enabled = true,
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-mask.png",
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
       inner_corner_count = 1,
       outer_corner_count = 1,
       side_count = 1,
@@ -75,7 +75,34 @@ local foundation_transitions =
       o_transition_count = 1
     }
   },
-  concrete_to_out_of_map_transition
+  {
+    to_tiles = lava_tile_type_names,
+    transition_group = lava_transition_group_id,
+    spritesheet = "__space-age__/graphics/terrain/lava-transitions/foundation-lava.png",
+    lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/foundation-lava-lightmap.png" },
+    layout = tile_spritesheet_layout.concrete_layout(false, false, false),
+    background_enabled = false,
+    effect_map_layout =
+    {
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
+    }
+  },
+  {
+    to_tiles = out_of_map_tile_type_names,
+    transition_group = out_of_map_transition_group_id,
+  
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+  
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/foundation-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.concrete_layout(false,true,false),
+  }
 }
 
 local foundation_transitions_between_transitions =
@@ -85,12 +112,16 @@ local foundation_transitions_between_transitions =
     transition_group2 = water_transition_group_id,
 
     spritesheet = "__space-age__/graphics/terrain/water-transitions/foundation-transitions.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
-    background_enabled = false,
+    layout = tile_spritesheet_layout.concrete_layout(false,false,true),
+    background_enabled = true,
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-land-mask.png",
-      o_transition_count = 0
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
     }
   },
   {
@@ -101,8 +132,8 @@ local foundation_transitions_between_transitions =
     background_layer_group = "zero",
     offset_background_layer_by_tile_layer = true,
 
-    spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition-b.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/foundation-out-of-map-transition-b.png",
+    layout = tile_spritesheet_layout.concrete_layout(false,true,true),
   },
   {
     transition_group1 = water_transition_group_id,
@@ -112,13 +143,55 @@ local foundation_transitions_between_transitions =
     background_layer_group = "zero",
     offset_background_layer_by_tile_layer = true,
 
-    spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-shore-out-of-map-transition.png",
-    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/foundation-shore-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.concrete_layout(false,true,true),
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-out-of-map-mask.png",
-      u_transition_count = 0,
-      o_transition_count = 0
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-out-of-map-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
+    }
+  },
+  {
+    transition_group1 = default_transition_group_id,
+    transition_group2 = lava_transition_group_id,
+
+    spritesheet = "__space-age__/graphics/terrain/lava-transitions/foundation-transitions-lava.png",
+    layout = tile_spritesheet_layout.concrete_layout(false,false,true),
+    background_enabled = false,
+    effect_map_layout =
+    {
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
+    }
+  },
+  {
+    transition_group1 = lava_transition_group_id,
+    transition_group2 = out_of_map_transition_group_id,
+  
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+    background_enabled = true,
+  
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/foundation-lava-shore-out-of-map.png",
+    lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/foundation-lava-shore-out-of-map-lightmap.png" },
+    layout = tile_spritesheet_layout.concrete_layout(false,true,true),
+    effect_map_layout =
+    {
+      spritesheet = "__base__/graphics/terrain/effect-maps/concrete-out-of-map-mask.png",
+      inner_corner_count = 1,
+      outer_corner_count = 1,
+      side_count = 1,
+      u_transition_count = 1,
+      o_transition_count = 1
     }
   }
 }
@@ -386,7 +459,6 @@ data:extend
     collision_mask = tile_collision_masks.ground(),
     layer = 9,
     layer_group = "ground-artificial",
-    transition_overlay_layer_offset = 2, -- need to render border overlay on top of hazard-concrete
     decorative_removal_probability = 0.25,
     variants =
     {
@@ -435,7 +507,7 @@ data:extend
           u_transition =
           {
             spritesheet = "__space-age__/graphics/terrain/foundation/foundation-u.png",
-            count = 8,
+            count = 4,
             scale = 0.5
           },
           o_transition =
@@ -468,7 +540,7 @@ data:extend
           u_transition =
           {
             spritesheet = "__space-age__/graphics/terrain/foundation/foundation-u-mask.png",
-            count = 8,
+            count = 4,
             scale = 0.5
           },
           o_transition =
@@ -499,4 +571,5 @@ data:extend
 
     trigger_effect = tile_trigger_effects.concrete_trigger_effect()
   }
+
 }

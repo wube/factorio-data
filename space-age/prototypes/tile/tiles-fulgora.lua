@@ -7,8 +7,12 @@ local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 
+
 table.insert(water_tile_type_names, "oil-ocean-shallow")
 table.insert(water_tile_type_names, "oil-ocean-deep")
+table.insert(water_tile_type_names, "oil-ocean-shallow-2")
+table.insert(water_tile_type_names, "oil-ocean-deep-2")
+
 
 --[[
 local fulgora_sand_transitions =
@@ -40,6 +44,7 @@ local fulgora_sand_transitions =
   ground_to_out_of_map_transition
 }
 ]]
+
 local fulgora_rock_sand_transitions =
 {
   {
@@ -66,9 +71,21 @@ local fulgora_rock_sand_transitions =
     },
     background_mask_layout = tile_spritesheet_layout.simple_white_mask
   },
-  ground_to_out_of_map_transition
+  {
+    to_tiles = out_of_map_tile_type_names,
+    transition_group = out_of_map_transition_group_id,
+
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/fulgora-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.transition_4_4_8_1_1,
+    overlay_enabled = false
+  }
 }
-local fulgora_oil_sand_transitions =
+
+local fulgora_oil_transitions =
 {
   {
     to_tiles = water_tile_type_names,
@@ -78,7 +95,7 @@ local fulgora_oil_sand_transitions =
     background_layer_offset = -5,
     masked_background_layer_offset = 1,
     offset_background_layer_by_tile_layer = false,
-    spritesheet = "__space-age__/graphics/terrain/water-transitions/fulgora-oil-sand-transition.png",
+    spritesheet = "__space-age__/graphics/terrain/water-transitions/fulgora-oil-sand.png",
     layout = tile_spritesheet_layout.transition_16_16_16_4_8_short,
     background_enabled = false,
     effect_map_layout =
@@ -93,8 +110,36 @@ local fulgora_oil_sand_transitions =
     },
     background_mask_layout = tile_spritesheet_layout.simple_white_mask
   },
-  ground_to_out_of_map_transition
+  {
+    to_tiles = out_of_map_tile_type_names,
+    transition_group = out_of_map_transition_group_id,
+
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/oil-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.transition_4_4_8_1_1,
+    overlay_enabled = false
+  }
 }
+local fulgora_oil_transitions_between_transitions =
+{
+  {
+    transition_group1 = water_transition_group_id,
+    transition_group2 = out_of_map_transition_group_id,
+
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/oil-out-of-map-transition-b.png",
+    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+    background_enabled = true,
+    background_mask_layout = tile_spritesheet_layout.simple_3_3_3_1_0_three_way_edge_mask,
+  }
+}
+
 local fulgora_sand_transitions_between_transitions =
 {
   {
@@ -122,7 +167,7 @@ local fulgora_sand_transitions_between_transitions =
     background_layer_group = "zero",
     offset_background_layer_by_tile_layer = true,
 
-    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/fulgora-sand-out-of-map-transition.png",
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/fulgora-out-of-map-transition-b.png",
     layout = tile_spritesheet_layout.transition_3_3_3_1_0,
     overlay_enabled = false
   },
@@ -135,7 +180,97 @@ local fulgora_sand_transitions_between_transitions =
     masked_background_layer_offset = 1,
     offset_background_layer_by_tile_layer = false,
 
-    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/fulgora-sand-shore-out-of-map-transition.png",
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/fulgora-shore-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+    effect_map_layout =
+    {
+      spritesheet = "__space-age__/graphics/terrain/effect-maps/water-fulgora-sand-to-out-of-map-mask.png",
+      o_transition_count = 0
+    },
+    background_mask_layout = tile_spritesheet_layout.simple_3_3_3_1_0_three_way_edge_mask,
+    water_patch = patch_for_inner_corner_of_transition_between_transition
+  }
+}
+
+local fulgora_oil_sand_transitions =
+{
+  {
+    to_tiles = water_tile_type_names,
+    transition_group = water_transition_group_id,
+
+    background_layer_group = "water",
+    background_layer_offset = -5,
+    masked_background_layer_offset = 1,
+    offset_background_layer_by_tile_layer = false,
+    spritesheet = "__space-age__/graphics/terrain/water-transitions/fulgora-oil-sand.png",
+    layout = tile_spritesheet_layout.transition_16_16_16_4_8_short,
+    background_enabled = false,
+    effect_map_layout =
+    {
+      spritesheet = "__space-age__/graphics/terrain/effect-maps/water-fulgora-sand-mask.png",
+      --tile_height = 2,
+      inner_corner_tile_height = 2,
+      outer_corner_tile_height = 2,
+      side_tile_height = 2,
+      u_transition_tile_height = 2,
+      o_transition_count = 1
+    },
+    background_mask_layout = tile_spritesheet_layout.simple_white_mask
+  },
+  {
+    to_tiles = out_of_map_tile_type_names,
+    transition_group = out_of_map_transition_group_id,
+
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/oil-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.transition_4_4_8_1_1,
+    overlay_enabled = false
+  }
+}
+local fulgora_oil_sand_transitions_between_transitions =
+{
+  {
+    transition_group1 = default_transition_group_id,
+    transition_group2 = water_transition_group_id,
+
+    spritesheet = "__space-age__/graphics/terrain/water-transitions/fulgora-oil-sand-transition.png",
+    layout = tile_spritesheet_layout.transition_3_3_3_1_0_only_u_tall,
+    background_enabled = false,
+    effect_map_layout =
+    {
+      spritesheet = "__space-age__/graphics/terrain/effect-maps/water-fulgora-sand-to-land-mask.png",
+      inner_corner_tile_height = 2,
+      outer_corner_tile_height = 2,
+      side_tile_height = 2,
+      o_transition_count = 0
+    },
+    water_patch = patch_for_inner_corner_of_transition_between_transition,
+  },
+  {
+    transition_group1 = default_transition_group_id,
+    transition_group2 = out_of_map_transition_group_id,
+
+    background_layer_offset = 1,
+    background_layer_group = "zero",
+    offset_background_layer_by_tile_layer = true,
+
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/fulgora-out-of-map-transition.png",
+    layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+    overlay_enabled = false
+  },
+  {
+    transition_group1 = water_transition_group_id,
+    transition_group2 = out_of_map_transition_group_id,
+
+    background_layer_group = "water",
+    background_layer_offset = -5,
+    masked_background_layer_offset = 1,
+    offset_background_layer_by_tile_layer = false,
+
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/fulgora-shore-out-of-map-transition.png",
     layout = tile_spritesheet_layout.transition_3_3_3_1_0,
     effect_map_layout =
     {
@@ -472,7 +607,7 @@ data:extend
     order = "a[oil]-b[shallow]",
     subgroup = "fulgora-tiles",
     collision_mask = tile_collision_masks.oil_ocean_shallow(),
-    autoplace = {probability_expression = "50 * fulgora_oil_mask * water_base(fulgora_coastline, 1000)"}, -- target coast at cliff elevation
+    autoplace = {probability_expression = "50 * fulgora_oil_mask * water_base(fulgora_coastline, 1000) * max(-(fulgora_scrap_medium + fulgora_dunes),0)"}, -- target coast at cliff elevation
     layer = 4,
     layer_group = "ground-natural",
     map_color = { 74, 42, 43},
@@ -487,7 +622,8 @@ data:extend
     sprite_usage_surface = "fulgora",
     variants =
     {
-      transition = transition_masks(),
+      empty_transitions = true,
+      --transition = transition_masks(),
       material_background =
       {
         picture = "__space-age__/graphics/terrain/oil-sand-8x.png",
@@ -501,7 +637,50 @@ data:extend
     --transitions = table.deepcopy(data.raw.tile["sand-1"].transitions),
     transitions = fulgora_oil_sand_transitions,
     --transitions_between_transitions = table.deepcopy(data.raw.tile["sand-1"].transitions_between_transitions),
-    transitions_between_transitions = fulgora_sand_transitions_between_transitions,
+    transitions_between_transitions = fulgora_oil_sand_transitions_between_transitions,
+    walking_sound = base_tile_sounds.walking.oil({volume = 1.0, modifiers = volume_multiplier("main-menu", 1.5)}),
+    landing_steps_sound = tile_sounds.landing.oil,
+    driving_sound = base_tile_sounds.driving.oil,
+    scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
+    trigger_effect = tile_trigger_effects.sand_trigger_effect()
+  },
+  {
+    name = "oil-ocean-shallow-2",
+    type = "tile",
+    order = "a[oil]-b[shallow]",
+    subgroup = "fulgora-tiles",
+    collision_mask = tile_collision_masks.oil_ocean_shallow(),
+    autoplace = {probability_expression = "50 * fulgora_oil_mask * water_base(fulgora_coastline, 1000) * max(fulgora_scrap_medium + fulgora_dunes,0)"}, -- target coast at cliff elevation
+    layer = 3,
+    layer_group = "ground-natural",
+    map_color = { 74, 42, 43},
+    vehicle_friction_modifier = 4,
+    walking_speed_modifier = 0.8,
+    default_cover_tile = "foundation",
+    absorptions_per_second = tile_pollution.fulgora,
+    fluid = "heavy-oil",
+    effect_color = { 74, 42, 43, 255 },
+    effect_color_secondary = { 60, 13, 5, 255 },
+    particle_tints = tile_graphics.fulgora_oil_ocean_particle_tints,
+    sprite_usage_surface = "fulgora",
+    factoriopedia_alternative =  "oil-ocean-shallow",
+    variants =
+    {
+      transition = transition_masks(),
+      material_background =
+      {
+        picture = "__space-age__/graphics/terrain/oil-sand-8x-2.png",
+        line_length = 8,
+        count = 16,
+        scale = 0.5
+      },
+      material_texture_width_in_tiles = 8,
+      material_texture_height_in_tiles = 8
+    },
+    --transitions = table.deepcopy(data.raw.tile["sand-1"].transitions),
+    transitions = fulgora_oil_sand_transitions,
+    --transitions_between_transitions = table.deepcopy(data.raw.tile["sand-1"].transitions_between_transitions),
+    transitions_between_transitions = fulgora_oil_sand_transitions_between_transitions,
     walking_sound = base_tile_sounds.walking.oil({volume = 1.0, modifiers = volume_multiplier("main-menu", 1.5)}),
     landing_steps_sound = tile_sounds.landing.oil,
     driving_sound = base_tile_sounds.driving.oil,
@@ -517,7 +696,7 @@ data:extend
     subgroup = "fulgora-tiles",
     collision_mask = tile_collision_masks.oil_ocean_deep(),
     autoplace = {probability_expression = "100 * fulgora_oil_mask * water_base(fulgora_coastline - 50 - fulgora_coastline_drop / 2, 2000)"},
-    layer = 3,
+    layer = 2,
     layer_group = "water",
     map_color = { 49*1.15, 31*1.15, 35*1.15},
     walking_speed_modifier = 0.5,
@@ -530,6 +709,44 @@ data:extend
     effect_color_secondary = { 76, 70, 79 },
     particle_tints = tile_graphics.fulgora_oil_ocean_particle_tints,
     sprite_usage_surface = "fulgora",
+    variants = tile_variations_template_with_transitions(
+      "__space-age__/graphics/terrain/oil-ocean-deep.png",
+      {
+        max_size = 4,
+        [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
+        [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
+        [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
+      }
+    ),
+    transitions = fulgora_oil_transitions,
+    transitions_between_transitions = fulgora_oil_transitions_between_transitions,
+    walking_sound = tile_sounds.walking.oil_deep,
+    landing_steps_sound = tile_sounds.landing.oil,
+    ambient_sounds = tile_sounds.ambient.oil_deep,
+    trigger_effect = tile_trigger_effects.water_trigger_effect(),
+  },
+
+  {
+    name = "oil-ocean-deep-2",
+    type = "tile",
+    order = "a[oil]-b[deep]",
+    subgroup = "fulgora-tiles",
+    collision_mask = tile_collision_masks.oil_ocean_deep(),
+    autoplace = {probability_expression = "(-min(0, fulgora_elevation - 60)/100 + max(0,fulgora_dunes-(max(0,fulgora_elevation/100) ))) * (100 * fulgora_oil_mask * water_base(fulgora_coastline - 50 - fulgora_coastline_drop / 2, 2000))" },
+    layer = 3,
+    layer_group = "water",
+    map_color = { 49*1.15, 31*1.15, 35*1.15},
+    walking_speed_modifier = 0.5,
+    vehicle_friction_modifier = 10,
+    default_cover_tile = "foundation",
+    absorptions_per_second = tile_pollution.water,
+    fluid = "heavy-oil",
+    effect = "oil-deep",
+    effect_color = { 157, 113, 99 },
+    effect_color_secondary = { 76, 70, 79 },
+    particle_tints = tile_graphics.fulgora_oil_ocean_particle_tints,
+    sprite_usage_surface = "fulgora",
+    factoriopedia_alternative =  "oil-ocean-deep",
     variants = tile_variations_template_with_transitions(
       "__space-age__/graphics/terrain/oil-ocean-deep.png",
       {
@@ -557,26 +774,18 @@ data:extend
       textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/oilNoise.png",
-          width = 512,
-          height = 512
+          filename = "__space-age__/graphics/terrain/oilNoise.png"
         },
         {
-          filename = "__space-age__/graphics/terrain/oil-ocean-deep-shader.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/oil-ocean-deep-shader.png"
         },
         --gradient map for thin film effect
         {
-          filename = "__space-age__/graphics/terrain/oilGradient.png",
-          width = 512,
-          height = 32
+          filename = "__space-age__/graphics/terrain/oilGradient.png"
         },
         --specular highligts
         {
-          filename = "__space-age__/graphics/terrain/oil-ocean-deep-spec.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/oil-ocean-deep-spec.png"
         },
       },
       texture_variations_columns = 1,
@@ -585,7 +794,7 @@ data:extend
       secondary_texture_variations_rows = 2,
 
       specular_lightness = { 3, 3, 3 },
-      foam_color = {140,60,60}, -- #4e3838ff,
+      foam_color = {140, 60, 60}, -- #4e3838ff,
       foam_color_multiplier = 0.1,
 
       animation_speed = 1.500,
@@ -599,4 +808,6 @@ data:extend
       near_zoom = 0.063,
       far_zoom = 0.063,
     }
-  }}
+  }
+}
+

@@ -7,3 +7,6 @@ data.raw.recipe["advanced-oil-processing"].allow_quality = false
 data.raw["mining-drill"]["pumpjack"].allowed_effects = {"consumption", "speed", "productivity", "pollution"}
 data.raw.technology["modules"].icon = "__quality__/graphics/technology/module.png"
 data.raw.technology["modules"].icon_size = 256
+data.raw["cargo-wagon"]["cargo-wagon"].quality_affects_inventory_size = true
+data.raw.locomotive.locomotive.quality_affects_max_speed = true
+data.raw["fluid-wagon"]["fluid-wagon"].quality_affects_capacity = true

@@ -295,6 +295,22 @@ return
         {},{},{},{},{}
       }
     },
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__space-age__/graphics/entity/fusion-generator/fusion-generator-reflection.png",
+        priority = "extra-high",
+        width = 40,
+        height = 36,
+        shift = util.by_pixel(0, 40),
+        variation_count = 4,
+        repeat_count = 1,
+        scale = 5
+      },
+      rotate = false,
+      orientation_to_variation = true
+    }
     --light = {intensity = 1.0, size = 7, shift = {0, 0}, color = {r = 1, g = 0.5, b = 0}}
   }
 }

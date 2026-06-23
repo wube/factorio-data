@@ -925,7 +925,7 @@ simulations.pipette =
     game.simulation.camera_player = player
     game.simulation.camera_position = {0, 0.5}
     game.simulation.camera_player_cursor_position = player.position
-    player.set_quick_bar_slot(1,'burner-inserter')
+    player.set_quick_bar_slot(1,1,'burner-inserter')
 
     game.surfaces[1].create_entities_from_blueprint_string
     {
@@ -4063,7 +4063,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-disable"})
+            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-if"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4162,7 +4162,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-disable"})
+            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-if"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4255,7 +4255,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-disable"})
+            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-if"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4382,7 +4382,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-disable"})
+            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-if"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },

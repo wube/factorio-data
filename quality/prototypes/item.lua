@@ -17,7 +17,7 @@ data:extend
     drop_sound = item_sounds.module_inventory_move,
     stack_size = 50,
     weight = 20 * kg,
-    effect = { quality = 0.1, speed = -0.05 }
+    effect = { quality = 0.01, speed = -0.05 }
   },
   {
     type = "module",
@@ -34,7 +34,7 @@ data:extend
     drop_sound = item_sounds.module_inventory_move,
     stack_size = 50,
     weight = 20 * kg,
-    effect = { quality = 0.2, speed = -0.05 }
+    effect = { quality = 0.02, speed = -0.05 }
   },
   {
     type = "module",
@@ -51,19 +51,6 @@ data:extend
     drop_sound = item_sounds.module_inventory_move,
     stack_size = 50,
     weight = 20 * kg,
-    effect = { quality = 0.25, speed = -0.05 }
-  },
-  {
-    type = "item",
-    name = "recycler",
-    icon = "__quality__/graphics/icons/recycler.png",
-    subgroup = "smelting-machine",
-    order = "d[recycler]",
-    inventory_move_sound = item_sounds.metal_large_inventory_move,
-    pick_sound = item_sounds.metal_large_inventory_pickup,
-    drop_sound = item_sounds.metal_large_inventory_move,
-    place_result = "recycler",
-    stack_size = 20,
-    weight = 100 * kg,
+    effect = { quality = 0.025, speed = -0.05 }
   },
 })

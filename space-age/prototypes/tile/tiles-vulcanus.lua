@@ -13,7 +13,7 @@ vulcanus_tile_offset = 40
 
 local lava_patch =
 {
-  filename = "__space-age__/graphics/terrain/water-transitions/lava-patch.png",
+  filename = "__space-age__/graphics/terrain/lava-transitions/lava-patch.png",
   scale = 0.5,
   width = 64,
   height = 64
@@ -40,11 +40,9 @@ local lava_stone_transitions =
   {
     to_tiles = lava_tile_type_names,
     transition_group = lava_transition_group_id,
-    spritesheet = "__space-age__/graphics/terrain/water-transitions/lava-stone.png",
-    lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/water-transitions/lava-stone-lightmap.png" },
-     -- this added the lightmap spritesheet
+    spritesheet = "__space-age__/graphics/terrain/lava-transitions/lava-stone.png",
     layout = tile_spritesheet_layout.transition_16_16_16_4_4,
-    lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/water-transitions/lava-stone-lightmap.png" },
+    lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/lava-stone-lightmap.png" },
      -- this added the lightmap spritesheet
     effect_map_layout =
     {
@@ -107,7 +105,7 @@ local lava_stone_transitions_between_transitions =
     transition_group1 = default_transition_group_id,
     transition_group2 = lava_transition_group_id,
 
-    spritesheet = "__space-age__/graphics/terrain/water-transitions/lava-stone-transition.png",
+    spritesheet = "__space-age__/graphics/terrain/lava-transitions/lava-stone-transition.png",
     layout = tile_spritesheet_layout.transition_3_3_3_1_0,
     effect_map_layout =
     {
@@ -153,20 +151,17 @@ local lava_to_out_of_map_transition =
   transition_group = out_of_map_transition_group_id,
 
   overlay_layer_group = "zero",
-  apply_effect_color_to_overlay = true,
+  apply_effect_color_to_overlay = false,
   background_layer_offset = 1,
   background_layer_group = "zero",
   offset_background_layer_by_tile_layer = true,
-
-  spritesheet = "__base__/graphics/terrain/out-of-map-transition/water-out-of-map-transition-tintable.png",
+  spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/lava-out-of-map-transition.png",
+  lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/lava-out-of-map-transition.png" },
   layout = tile_spritesheet_layout.transition_4_4_8_1_1,
   background_enabled = false,
-
-  apply_waving_effect_on_masks = true,
-  waving_effect_time_scale = 0.005,
   mask_layout =
   {
-    spritesheet = "__base__/graphics/terrain/masks/water-edge-transition.png",
+    spritesheet = "__space-age__/graphics/terrain/masks/lava-edge-transition.png",
     count = 1,
     double_side_count = 0,
     scale = 0.5,
@@ -193,9 +188,6 @@ local destroyed_item_trigger =
     }
   }
 }
-
-space_age_tiles_util.lava_to_out_of_map_transition = lava_to_out_of_map_transition
-space_age_tiles_util.lava_stone_transitions_between_transitions = lava_stone_transitions_between_transitions
 
 --define ranges for all tilesets. Having these as thier own expressions helps with debugging and also modifying things like decorative placement
 data:extend
@@ -449,7 +441,6 @@ data:extend
     ),
     allowed_neighbors={"lava-hot"},
     transitions = {lava_to_out_of_map_transition},
-    transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     map_color = {r = 150, g = 49, b = 30},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -494,7 +485,6 @@ data:extend
     },
     allowed_neighbors={"lava"},
     transitions = {lava_to_out_of_map_transition},
-    transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     map_color = {r = 255, g = 138, b = 57},
     absorptions_per_second = tile_pollution.lava,
     default_cover_tile = "foundation",
@@ -1045,14 +1035,10 @@ data:extend(
       textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/vulcanus/lava-textures/lava-noise-texture.png",
-          width = 512,
-          height = 512
+          filename = "__space-age__/graphics/terrain/vulcanus/lava-textures/lava-noise-texture.png"
         },
         {
-          filename = "__space-age__/graphics/terrain/vulcanus/lava-textures/lava.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/vulcanus/lava-textures/lava.png"
         }
       },
       texture_variations_columns = 1,
@@ -1086,14 +1072,10 @@ data:extend(
       textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/vulcanus/lava-textures/lava-noise-texture.png",
-          width = 512,
-          height = 512
+          filename = "__space-age__/graphics/terrain/vulcanus/lava-textures/lava-noise-texture.png"
         },
         {
-          filename = "__space-age__/graphics/terrain/vulcanus/lava-textures/coastal-lava.png",
-          width = 512 * 4,
-          height = 512 * 2
+          filename = "__space-age__/graphics/terrain/vulcanus/lava-textures/coastal-lava.png"
         }
       },
       texture_variations_columns = 1,

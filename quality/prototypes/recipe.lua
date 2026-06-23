@@ -38,18 +38,4 @@ data:extend
     energy_required = 60,
     results = {{type="item", name="quality-module-3", amount=1}}
   },
-  {
-    type = "recipe",
-    name = "recycler",
-    ingredients =
-    {
-      {type = "item", name = "processing-unit", amount = 6},
-      {type = "item", name = "steel-plate", amount = 20},
-      {type = "item", name = "iron-gear-wheel", amount = 40},
-      {type = "item", name = "concrete", amount = 20}
-    },
-    results = {{type="item", name="recycler", amount=1}},
-    energy_required = 3,
-    enabled = false
-  }
 })

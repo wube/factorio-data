@@ -625,6 +625,7 @@ data:extend(
     open_sound = sounds.drill_open,
     close_sound = sounds.drill_close,
 
+    use_mirroring = true, -- mirrored drills resolve drop onto belt ties opposite way. No flipped graphics needed
     graphics_set = graphical_set(false),
     wet_mining_graphics_set = graphical_set(true),
     integration_patch =
@@ -656,7 +657,22 @@ data:extend(
     monitor_visualization_tint = {r=78, g=173, b=255},
     fast_replaceable_group = "big-mining-drill",
     circuit_connector = table.deepcopy(circuit_connector_definitions["big-mining-drill"]),
-    circuit_wire_max_distance = default_circuit_wire_max_distance
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__space-age__/graphics/entity/big-mining-drill/big-mining-drill-reflection.png",
+        priority = "extra-high",
+        width = 48,
+        height = 48,
+        shift = util.by_pixel(0, 96),
+        variation_count = 4,
+        scale = 5
+      },
+      rotate = false,
+      orientation_to_variation = true
+    },
   },
   {
     type = "corpse",

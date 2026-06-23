@@ -1,3 +1,4 @@
+-- After hub launch, from pre planet atmosphere to planet landing
 local procession_style = require("__base__/prototypes/planet/procession-style")
 local procession_graphic_catalogue = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
 
@@ -5,9 +6,19 @@ local pvariables = require("__space-age__/prototypes/planet/general/general-vari
 local pfunctions = require("__space-age__/prototypes/planet/general/general-functions")
 
 local route_scale = 3
+local vct = procession_graphic_catalogue.vct_single
+
+local vectoring_single = pfunctions.concN(
+  -- vct1, layering, puff_start, reps, rot, dir
+  pfunctions.vectoring_single(vct, -1, 10, 1, 0.0, 'R'),
+  pfunctions.vectoring_single(vct, -1, 120, 1, 0.0, 'R'),
+  pfunctions.vectoring_single(vct, -1, 290, 3, 0.0, 'L'),
+  pfunctions.vectoring_single(vct, -1, 370, 1, 0.0, 'L'),
+  pfunctions.vectoring_single(vct, -1, 390, 1, 0.0, 'R')
+)
 
 local pod_layers_b = {}
-pod_layers_b.shared =
+pod_layers_b.shared = pfunctions.concN(
 {
   {
     type = "pod-movement",
@@ -27,22 +38,42 @@ pod_layers_b.shared =
   { "timestamp": 600, "offset": { "x":0, "y":0 }, "offset_t" : { "x":0, "y":3.999 }}
 ]
     ]]--
-    { timestamp=0, offset_rate = -0.42 , offset_rate_t = 0.42  },
-    { timestamp=25, offset_rate = 0.47 , offset_rate_t = -0.42  },
-    { timestamp=507, offset_rate = 1.04 , offset_rate_t = -0.06  },
-    { timestamp=600, offset_rate = 0.96 , offset_rate_t = 0.04  },
+    { timestamp=0, offset_rate = 0 , offset_rate_t = 0  },
+    { timestamp=237, offset_rate = 0.6761 , offset_rate_t = -0.0935  },
+    { timestamp=419, offset_rate = 0.9246 , offset_rate_t = -0.0219  },
+    { timestamp=512, offset_rate = 0.9902 , offset_rate_t = -0.0106  },
+    { timestamp=600, offset_rate = 1 , offset_rate_t = 0  },
   --[[
-      [
-  { "timestamp": 0, "offset_rate": { "x":-0.42 }, "offset_rate_t" : { "x":0.42 }},
-  { "timestamp": 25, "offset_rate": { "x":0.47 }, "offset_rate_t" : { "x":-0.42 }},
-  { "timestamp": 507, "offset_rate": { "x":1.04 }, "offset_rate_t" : { "x":-0.06 }},
-  { "timestamp": 600, "offset_rate": { "x":0.96 }, "offset_rate_t" : { "x":0.04 }}
-      ]
+[
+  { "timestamp": 0, "offset_rate": { "x":0 }, "offset_rate_t" : { "x":0 }},
+  { "timestamp": 237, "offset_rate": { "x":67.61 }, "offset_rate_t" : { "x":-9.35 }},
+  { "timestamp": 419, "offset_rate": { "x":92.46 }, "offset_rate_t" : { "x":-2.19 }},
+  { "timestamp": 512, "offset_rate": { "x":99.02 }, "offset_rate_t" : { "x":-1.06 }},
+  { "timestamp": 600, "offset_rate": { "x":100 }, "offset_rate_t" : { "x":0 }}
+]
     ]]--
-      { timestamp = 0   ,    tilt = 0.08      , tilt_t = 0 },
-      { timestamp = pvariables.platform_to_planet_duration_b * 0.4 ,    tilt = 0.07        , tilt_t = -0.02 },
-      { timestamp = pvariables.platform_to_planet_duration_b * 0.6 ,    tilt = 0          , tilt_t = 0 },
-      { timestamp = pvariables.platform_to_planet_duration_b ,    tilt = 0          , tilt_t = 0 }
+      { timestamp = 0,                                                        tilt = 0.08,              tilt_t = 0 },
+      { timestamp = pvariables.platform_to_planet_duration_b * 0.2,           tilt = 0.07963,           tilt_t = -0.007089 },
+      { timestamp = pvariables.platform_to_planet_duration_b * 0.375,         tilt = 0.05042,           tilt_t = -0.00947 },
+      { timestamp = pvariables.platform_to_planet_duration_b * 0.5,           tilt = 0.00093,           tilt_t = 0.01095 },
+      { timestamp = pvariables.platform_to_planet_duration_b * 0.635,         tilt = -0.01818,         tilt_t = 0.01023 },
+      { timestamp = pvariables.platform_to_planet_duration_b * 0.7,           tilt = 0.00054,         tilt_t = -0.00521 },
+      { timestamp = pvariables.platform_to_planet_duration_b,           tilt = 0,                 tilt_t = 0 }
+    --[[
+  { "timestamp": 273, "tilt": { "x":0.93 }, "tilt_t" : { "x":10.95 }},
+  { "timestamp": 349, "tilt": { "x":-18.18 }, "tilt_t" : { "x":10.23 }},
+  { "timestamp": 409, "tilt": { "x":0.54 }, "tilt_t" : { "x":-5.21 }},
+
+    [
+  { "timestamp": 0, "tilt": { "x":80 }, "tilt_t" : { "x":0 }},
+  { "timestamp": 120, "tilt": { "x":79.63 }, "tilt_t" : { "x":-7.089 }},
+  { "timestamp": 220, "tilt": { "x":50.42 }, "tilt_t" : { "x":-9.47 }},
+  { "timestamp": 300, "tilt": { "x":0.25 }, "tilt_t" : { "x":10.95 }},
+  { "timestamp": 380, "tilt": { "x":-3.069 }, "tilt_t" : { "x":1.489 }},
+  { "timestamp": 420, "tilt": { "x":-0.148 }, "tilt_t" : { "x":-0.81 }},
+  { "timestamp": 500, "tilt": { "x":0 }, "tilt_t" : { "x":0 }}
+]
+    ]]--
     }
   },
   {
@@ -129,7 +160,7 @@ pod_layers_b.shared =
     { timestamp = 400, opacity = 0 }
   }),
   -- short burst 1 end
-}
+},vectoring_single)
 pod_layers_b.hatch =
 {
   pfunctions.make_pod_animation("a_closing", procession_graphic_catalogue.pod_anim_opening, 0, 0,

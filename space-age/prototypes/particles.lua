@@ -509,7 +509,8 @@ local default_ended_in_water_trigger_effect = function()
     },
     {
       type = "play-sound",
-      sound = sounds.small_splash
+      sound = sounds.small_splash,
+      probability = 0.05,
     }
   }
 
@@ -839,6 +840,93 @@ local particles =
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     movement_modifier_when_on_ground = 0.85,
     render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "tesla-turret-metal-particle-small",
+    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = {0.490, 0.447, 0.416, 1}}),
+    shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "tesla-turret-metal-particle-medium",
+    pictures = particle_animations.get_metal_particle_medium_pictures  ({ tint = {0.800, 0.753, 0.694, 1}}),
+    shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ender_layer = "object"
+  },
+
+  make_particle
+  {
+    name = "tesla-turret-metal-particle-big",
+    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {0.541, 0.494, 0.459, 1}}),
+    shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
+  },
+
+  make_particle
+  {
+    name = "railgun-turret-metal-particle-small",
+    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = {0.490, 0.447, 0.416, 1}}),
+    shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "railgun-turret-metal-particle-medium",
+    pictures = particle_animations.get_metal_particle_medium_pictures  ({ tint = {0.800, 0.753, 0.694, 1}}),
+    shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ender_layer = "object"
+  },
+
+  make_particle
+  {
+    name = "railgun-turret-metal-particle-big",
+    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {0.541, 0.494, 0.459, 1}}),
+    shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
+  },
+
+  make_particle
+  {
+    name = "rocket-turret-metal-particle-small",
+    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = {0.490, 0.447, 0.416, 1}}),
+    shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "rocket-turret-metal-particle-medium",
+    pictures = particle_animations.get_metal_particle_medium_pictures  ({ tint = {0.800, 0.753, 0.694, 1}}),
+    shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ender_layer = "object"
+  },
+
+  make_particle
+  {
+    name = "rocket-turret-metal-particle-big",
+    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {0.541, 0.494, 0.459, 1}}),
+    shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   --asteroid-chunk-particle
@@ -1801,7 +1889,7 @@ local particles =
     life_time = 180,
     pictures = particle_animations.get_gleba_tree_leaf_particle_pictures({ tint = {0.651, 1.0, 0.9804, 1.0}, tint_as_overlay = true, scale = 1.2}),
     shadows = particle_animations.get_gleba_tree_leaf_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0), scale = 1.2}),
-    regular_trigger_effect = nil, 
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
     render_layer_when_on_ground = "lower-object-above-shadow",
     movement_modifier = 0.95,

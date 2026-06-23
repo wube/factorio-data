@@ -49,41 +49,45 @@ data:extend(
       -- Distance in chunks from the furthest base around.
       -- This prevents expansions from reaching too far into the
       -- player's territory
-      max_expansion_distance = 7,
+      max_expansion_distance = 5,
+      min_expansion_distance = 3,
 
-      friendly_base_influence_radius = 2,
-      enemy_building_influence_radius = 2,
+      friendly_base_influence_radius = 6,
+      enemy_building_influence_radius = 3,
 
       -- A candidate chunk's score is given as follows:
       --   player = 0
       --   for neighbour in all chunks within enemy_building_influence_radius from chunk:
-      --     player += number of player buildings on neighbour
-      --             * building_coefficient
-      --             * neighbouring_chunk_coefficient^distance(chunk, neighbour)
+      --     if neighbour has player buildings:
+      --       player += neighbouring_chunk_coefficient^distance(chunk, neighbour)
+      --               * building_coefficient
       --
       --   base = 0
-      --   for neighbour in all chunk within friendly_base_influence_radius from chunk:
-      --     base += num of enemy bases on neighbour
-      --           * other_base_coefficient
-      --           * neighbouring_base_chunk_coefficient^distance(chunk, neighbour)
+      --   for neighbour in all chunks within friendly_base_influence_radius from chunk:
+      --     if neighbour has enemy bases:
+      --       base += neighbouring_base_chunk_coefficient^distance(chunk, neighbour)
+      --             * other_base_coefficient
       --
       --   score(chunk) = 1 / (1 + player + base)
       --
       -- The iteration is over a square region centered around the chunk for which the calculation is done,
-      -- and includes the central chunk as well. distance is the Manhattan distance, and ^ signifies exponentiation.
-      building_coefficient = 0.1,
-      other_base_coefficient = 2.0,
+      -- and includes the central chunk as well. distance is the Euclidean distance, and ^ signifies exponentiation.
+      building_coefficient = 0.5,
+      other_base_coefficient = 3.0,
       neighbouring_chunk_coefficient = 0.5,
-      neighbouring_base_chunk_coefficient = 0.4,
+      neighbouring_base_chunk_coefficient = 0.5,
 
       -- A chunk has to have at most this much percent unbuildable tiles for it to be considered a candidate.
       -- This is to avoid chunks full of water to be marked as candidates.
-      max_colliding_tiles_coefficient = 0.9,
+      max_colliding_tiles_coefficient = 0.8,
 
-      -- Size of the group that goes to build new base (in game this is multiplied by the
-      -- evolution factor).
+      -- Size of the group that goes to build new base.
       settler_group_min_size = 5,
       settler_group_max_size = 20,
+      -- Exponential factor used to determine the size of the settler group based on the evolution factor.
+      -- The size is calculated as:
+      -- size = random(min_size, max_size) * (evolution_group_size_factor ^ evolution_factor)
+      evolution_group_size_factor = 4.0,
 
       -- Ticks to expand to a single
       -- position for a base is used.
@@ -91,8 +95,8 @@ data:extend(
       -- cooldown is calculated as follows:
       --   cooldown = lerp(max_expansion_cooldown, min_expansion_cooldown, -e^2 + 2 * e),
       -- where lerp is the linear interpolation function, and e is the current evolution factor.
-      min_expansion_cooldown = 4 * 3600,
-      max_expansion_cooldown = 60 * 3600
+      min_expansion_cooldown = 10 * 60 * 60,
+      max_expansion_cooldown = 60 * 60 * 60
     },
 
     unit_group=
@@ -124,26 +128,6 @@ data:extend(
       -- Maximum size of an attack unit group. This only affects automatically-created unit groups;
       -- manual groups created through the API are unaffected.
       max_unit_group_size = 200
-    },
-
-    steering=
-    {
-      default=
-      {
-        -- not including the radius of the unit
-        radius = 1.2,
-        separation_force = 0.005,
-        separation_factor = 1.2,
-        force_unit_fuzzy_goto_behavior = false
-      },
-      moving=
-      {
-        radius = 3,
-        separation_force = 0.01,
-        separation_factor = 3,
-        -- used only for special "to look good" purposes (like in trailer)
-        force_unit_fuzzy_goto_behavior = false
-      }
     },
 
     path_finder=

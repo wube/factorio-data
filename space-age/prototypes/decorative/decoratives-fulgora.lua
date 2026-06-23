@@ -16,6 +16,7 @@ local function fulgora_ruin(args)
   ruin.selection_box = args.selection_box or {{ruin.collision_box[1][1]-0.2, ruin.collision_box[1][2]-0.2}, {ruin.collision_box[2][1]+0.2, ruin.collision_box[2][2]+0.2}}
   ruin.damaged_trigger_effect = hit_effects.rock()
   ruin.dying_trigger_effect = decorative_trigger_effects.huge_rock()
+  ruin.shuffled_variation_on_chunk_generated = true
   local collision_area = (ruin.collision_box[2][1] - ruin.collision_box[1][1]) * (ruin.collision_box[2][2] - ruin.collision_box[1][2])
 
   ruin.minable =
@@ -78,7 +79,7 @@ data:extend(
     collision_box = {{-0.77, -0.68}, {0.77, 0.68}},
     map_color = {110, 110, 110, 128},
     pictures = {
-      {path = "fulgoran-ruin-small", frame_count = 26},
+      {path = "fulgoran-ruin-small", frame_count = 27},
       {path = "fulgoran-ruin-small-tall", frame_count = 7},
     },
     autoplace = {
@@ -94,7 +95,7 @@ data:extend(
     collision_box = {{-1.21, -0.86}, {1.21, 0.86}},
     map_color = {115, 115, 115, 128},
     pictures = {
-      {path = "fulgoran-ruin-medium", frame_count = 8},
+      {path = "fulgoran-ruin-medium", frame_count = 10},
       {path = "fulgoran-ruin-medium-tall", frame_count = 4},
     },
     autoplace = {
@@ -256,17 +257,432 @@ data:extend(
       orientation_to_variation = false
     }
   },
+
+  {
+    type = "simple-entity",
+    name = "fulgora-sunk-ruin-big",
+    flags = {"placeable-neutral", "placeable-off-grid"},
+    icon =  "__space-age__/graphics/icons/fulgoran-ruin-sunk.png",
+    subgroup = "grass",
+    order = "b[decorative]-l[rock]-j[ruin]",
+    collision_box = {{-2.5, -1.72}, {2.5, 1.72}},
+    selection_box = {{-2.5, -1.72}, {2.5, 1.72}},
+    drawing_box_vertical_extension = 2,
+    damaged_trigger_effect = hit_effects.rock(),
+    render_layer = "object",
+    collision_mask = {layers={item=true, object=true, player=true}},
+    max_health = 500,
+    autoplace =
+    {
+      order = "b[decorative]-l[rock]-j[ruin]-r[big]",
+      probability_expression = "min(0.008, fulgora_oil_mask * -min(0, fulgora_elevation - 10)/80 * max(fulgora_scrap_medium - 1, 0))\z
+       * (random_penalty_between(0, 1, 1) - 0.4)"
+    },
+    dying_trigger_effect = decorative_trigger_effects.big_rock(),
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 0.3 * 2.4 ^ 0.75,
+      results =
+      {
+        {type = "item", name = "scrap", amount_min = 3, amount_max = 5},
+        {type = "item", name = "steel-plate", amount_min = 1, amount_max = 5},
+        {type = "item", name = "iron-gear-wheel", amount_min = 1, amount_max = 5},
+        {type = "item", name = "iron-stick", amount_min = 1, amount_max = 5},
+        {type = "item", name = "copper-cable", amount_min = 1, amount_max = 5},
+        {type = "item", name = "stone", amount_min = 1, amount_max = 5}
+      }
+    },
+    resistances =
+    {
+      { type = "fire",  percent = 100 },
+      { type = "electric", percent = 100 }
+    },
+    map_color = {129, 105, 78},
+    count_as_rock_for_filtered_deconstruction = true,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    impact_category = "stone",
+    pictures =
+    {
+        layers = {
+          util.sprite_load( "__space-age__/graphics/decorative/fulgora-ruin-flooded/big/sunken-ruin-big",{
+            variation_count = 7,
+            scale = 0.5,
+          }),
+          util.sprite_load( "__space-age__/graphics/decorative/fulgora-ruin-flooded/big-shadow/sunken-ruin-big-shadow",{
+            variation_count = 7,
+            scale = 0.5,
+            draw_as_shadow = true,
+          })
+        },
+    },
+    shuffled_variation_on_chunk_generated  = true
+  },
+  {
+    type = "simple-entity",
+    name = "fulgora-sunk-ruin-medium-tall",
+    flags = {"placeable-neutral", "placeable-off-grid"},
+    icon =  "__space-age__/graphics/icons/fulgoran-ruin-sunk-medium.png",
+    subgroup = "grass",
+    order = "b[decorative]-l[rock]-j[ruin]",
+    collision_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-1, -1}, {1, 1}},
+    drawing_box_vertical_extension = 2,
+    damaged_trigger_effect = hit_effects.rock(),
+    render_layer = "object",
+    collision_mask = {layers={item=true, object=true, player=true}},
+    max_health = 100,
+    autoplace =
+    {
+      order = "b[decorative]-l[rock]-j[ruin]-r[bid]-b[medium]",
+      probability_expression = "min(0.008, fulgora_oil_mask * -min(0, fulgora_elevation - 10)/80 * max(fulgora_scrap_medium - 1, 0))\z
+       * (random_penalty_between(0, 1, 1) - 0.5)"
+    },
+    dying_trigger_effect = decorative_trigger_effects.big_rock(),
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 0.3,
+      results =
+      {
+        {type = "item", name = "scrap", amount_min = 1, amount_max = 3},
+        {type = "item", name = "steel-plate", amount_min = 1, amount_max = 2},
+        {type = "item", name = "iron-gear-wheel", amount_min = 1, amount_max = 2},
+        {type = "item", name = "iron-stick", amount_min = 1, amount_max = 2},
+        {type = "item", name = "copper-cable", amount_min = 1, amount_max = 2},
+        {type = "item", name = "stone", amount_min = 1, amount_max = 2}
+      }
+    },
+    resistances =
+    {
+      { type = "fire",  percent = 100 },
+      { type = "electric", percent = 100 }
+    },
+    map_color = {129, 105, 78},
+    count_as_rock_for_filtered_deconstruction = true,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    impact_category = "stone",
+    pictures =
+    {
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0004.png",
+        priority = base_decorative_sprite_priority,
+        width =  272,
+        height =  198,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.85, -0.4}
+      }
+    },
+    shuffled_variation_on_chunk_generated  = true
+  },
   {
     type = "optimized-decorative",
-    name = "fulgoran-gravewort",
+    name = "fulgora-sunk-ruin-big-decal",
+    order = "b[decorative]-l[rock]-j[ruin]",
+    collision_box = {{-2, -2}, {2, 2}},
+    collision_mask = {layers = {doodad = true, object = true}, not_colliding_with_itself = false},
+    render_layer = "decorative",
+    walking_sound = base_tile_sounds.walking.pebble,
+    autoplace =
+    {
+      order = "b[decorative]-l[rock]-j[ruin]-q[big]",
+      probability_expression = "min(0.06, fulgora_oil_mask * -min(0, fulgora_elevation - 10)/80 * max(fulgora_scrap_medium - 1, 0))\z
+       * (random_penalty_between(0, 1, 1) - 0.7)",
+    },
+    pictures =
+    {
+      { -- This one stands out, only include once
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/sunken-ruin-big-decal-0008.png",
+        priority = base_decorative_sprite_priority,
+        width =  458,
+        height =  293,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      { -- These two are repeated so that they appear more frequently
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/sunken-ruin-big-decal-0003.png",
+        priority = base_decorative_sprite_priority,
+        width =  412,
+        height =  328,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/sunken-ruin-big-decal-0006.png",
+        priority = base_decorative_sprite_priority,
+        width =  409,
+        height =  316,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/sunken-ruin-big-decal-0003.png",
+        priority = base_decorative_sprite_priority,
+        width =  412,
+        height =  328,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/sunken-ruin-big-decal-0006.png",
+        priority = base_decorative_sprite_priority,
+        width =  409,
+        height =  316,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+    },
+  },
+  {
+    type = "optimized-decorative",
+    name = "fulgora-sunk-ruin-medium",
+    order = "b[decorative]-l[rock]-j[ruin]",
+    collision_box = {{-1, -1}, {1, 1}},
+    collision_mask = {layers={doodad = true, object = true}},
+    render_layer = "object",
+    walking_sound = base_tile_sounds.walking.pebble,
+    autoplace =
+    {
+      order = "b[decorative]-l[rock]-j[ruin]-t[medium]",
+      probability_expression =  "min(0.2, fulgora_oil_mask * -min(0, fulgora_elevation - 10)/80 * max(fulgora_scrap_medium - 0.95, 0))\z
+       * (random_penalty_between(0, 1, 1) - 0.4)"
+    },
+    pictures =
+    {
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0001.png",
+        priority = base_decorative_sprite_priority,
+        width =  131,
+        height =  148,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0002.png",
+        priority = base_decorative_sprite_priority,
+        width =  143,
+        height =  137,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0003.png",
+        priority = base_decorative_sprite_priority,
+        width =  208,
+        height =  102,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0005.png",
+        priority = base_decorative_sprite_priority,
+        width =  147,
+        height =  115,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0006.png",
+        priority = base_decorative_sprite_priority,
+        width =  167,
+        height =  115,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0007.png",
+        priority = base_decorative_sprite_priority,
+        width =  173,
+        height =  104,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0008.png",
+        priority = base_decorative_sprite_priority,
+        width =  184,
+        height =  97,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0009.png",
+        priority = base_decorative_sprite_priority,
+        width =  117,
+        height =  176,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0010.png",
+        priority = base_decorative_sprite_priority,
+        width =  139,
+        height =  102,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/medium/sunken-ruin-medium-0011.png",
+        priority = base_decorative_sprite_priority,
+        width =  82,
+        height =  109,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+    }
+  },
+  {
+    type = "optimized-decorative",
+    name = "fulgora-sunk-ruin-small",
+    order = "b[decorative]-l[rock]-j[ruin]",
+    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    collision_mask = {layers={doodad=true}},
+    render_layer = "decorative",
+    walking_sound = base_tile_sounds.walking.pebble,
+    autoplace =
+    {
+      order = "b[decorative]-l[rock]-j[ruin]-z[small]",
+      placement_density = 1,
+      probability_expression = "min(0.2, fulgora_oil_mask * -min(0, fulgora_elevation - 10)/80 * max(fulgora_scrap_medium - 0.9, 0))\z
+       * (random_penalty_between(0, 1, 1) - 0.4)"
+    },
+    pictures =
+    {
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0000.png",
+        priority = base_decorative_sprite_priority,
+        width =  112,
+        height =  74,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0001.png",
+        priority = base_decorative_sprite_priority,
+        width =  84,
+        height =  58,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0002.png",
+        priority = base_decorative_sprite_priority,
+        width =  103,
+        height =  91,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0003.png",
+        priority = base_decorative_sprite_priority,
+        width =  75,
+        height =  60,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0004.png",
+        priority = base_decorative_sprite_priority,
+        width =  92,
+        height =  72,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0005.png",
+        priority = base_decorative_sprite_priority,
+        width =  97,
+        height =  53,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0006.png",
+        priority = base_decorative_sprite_priority,
+        width =  60,
+        height =  59,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0007.png",
+        priority = base_decorative_sprite_priority,
+        width =  82,
+        height =  55,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0008.png",
+        priority = base_decorative_sprite_priority,
+        width =  75,
+        height =  36,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+      {
+        filename =  "__space-age__/graphics/decorative/fulgora-ruin-flooded/small/sunken-ruin-small-0009.png",
+        priority = base_decorative_sprite_priority,
+        width =  61,
+        height =  52,
+        tint = {1,1,1},
+        scale = 0.5,
+        shift = {0.0, 0.0}
+      },
+    }
+  },
+
+  {
+    type = "optimized-decorative",
+    name = "small-fulgoran-gravewort",
     order = "a[fulgora]-b[decorative]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     walking_sound = base_tile_sounds.walking.grass,
     autoplace = {
-      probability_expression = "min(0.1, fulgora_natural_mask * max(0, fulgora_scrap_medium + fulgora_rock - fulgora_basis_oil - 2.5))",
+      order = "f-g-b",
+      placement_density = 2,
+      probability_expression = "min(0.05, fulgora_natural_mask * max(0, fulgora_scrap_medium + fulgora_rock - fulgora_basis_oil - 2.6))",
     },
-    pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/fulgoran-gravewort/fulgoran-gravewort", frame_count = 7}})
+    pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/fulgoran-gravewort/fulgoran-gravewort", frame_count = 16}})
+  },
+  {
+    type = "optimized-decorative",
+    name = "medium-fulgoran-gravewort",
+    order = "a[fulgora]-b[decorative]",
+    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
+    walking_sound = base_tile_sounds.walking.grass,
+    autoplace = {
+      order = "f-g-a",
+      probability_expression = "min(0.03, fulgora_natural_mask * max(0, fulgora_scrap_medium + fulgora_rock - fulgora_basis_oil - 2.7))",
+    },
+    pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/fulgoran-gravewort/fulgoran-gravewort-medium", frame_count = 8}})
   },
   {
     type = "optimized-decorative",
@@ -318,7 +734,8 @@ data:extend(
     {
       probability_expression = 0,
     },
-    pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/fulgurite/fulgurite-small", frame_count = 8}})
+    pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/fulgurite/fulgurite-small", frame_count = 8}}),
+    shuffled_variation_on_chunk_generated = true
   },
   {
     type = "simple-entity",
@@ -439,8 +856,9 @@ data:extend(
         }
       }
     },
-    pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/fulgurite/fulgurite", frame_count = 6}})
-  },
+    pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/fulgurite/fulgurite", frame_count = 6}}),
+    shuffled_variation_on_chunk_generated = true
+  }
 }
 )
 

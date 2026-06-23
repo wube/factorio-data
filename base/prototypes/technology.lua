@@ -2726,7 +2726,7 @@ data:extend
       },
       {
         type = "unlock-recipe",
-        recipe = "combat-shotgun"
+        recipe = "piercing-shotgun-shell"
       }
     },
     prerequisites = {"chemical-science-pack", "military-science-pack"},
@@ -2752,11 +2752,11 @@ data:extend
     {
       {
         type = "unlock-recipe",
-        recipe = "piercing-shotgun-shell"
+        recipe = "cluster-grenade"
       },
       {
         type = "unlock-recipe",
-        recipe = "cluster-grenade"
+        recipe = "combat-shotgun"
       }
     },
     prerequisites = {"military-3", "utility-science-pack", "explosives"},
@@ -3919,7 +3919,12 @@ data:extend
       {
         type = "create-ghost-on-entity-death",
         modifier = true
-      }
+      },
+      {
+        type = "unlock-logistic-network",
+        modifier = true,
+        hidden = true
+      },
     },
     prerequisites = {"robotics"},
     unit =
@@ -3964,7 +3969,12 @@ data:extend
       {
         type = "character-logistic-trash-slots",
         modifier = 30
-      }
+      },
+      {
+        type = "unlock-logistic-network",
+        modifier = true,
+        hidden = true
+      },
     },
     prerequisites = {"robotics"},
     unit =
@@ -4617,7 +4627,7 @@ data:extend
     research_trigger =
     {
       type = "mine-entity",
-      entity = "crude-oil"
+      entities = {"crude-oil"}
     }
   },
   {
@@ -5109,7 +5119,7 @@ data:extend
     research_trigger =
     {
       type = "mine-entity",
-      entity = "uranium-ore"
+      entities = {"uranium-ore"}
     }
   },
   {

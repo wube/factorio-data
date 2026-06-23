@@ -1,8 +1,17 @@
 local foundry_animation_speed = 0.16
 local frames = 128
 
-local function foundry_main_pictures()
-  return util.sprite_load("__space-age__/graphics/entity/foundry/foundry-main",
+local function foundry_base_pictures()
+  return util.sprite_load("__space-age__/graphics/entity/foundry/foundry-base",
+  {
+    animation_speed = foundry_animation_speed,
+    repeat_count = frames,
+    scale = 0.5
+  })
+end
+
+local function foundry_anim_pictures()
+  return util.sprite_load("__space-age__/graphics/entity/foundry/foundry-anim",
   {
     animation_speed = foundry_animation_speed,
     frame_count = frames,
@@ -10,11 +19,10 @@ local function foundry_main_pictures()
   })
 end
 
-local function foundry_main_shadow_pictures()
+local function foundry_shadow_pictures()
   return util.sprite_load("__space-age__/graphics/entity/foundry/foundry-shadow",
   {
-    animation_speed = foundry_animation_speed,
-    frame_count = frames,
+    repeat_count = frames,
     draw_as_shadow = true,
     scale = 0.5
   })
@@ -53,12 +61,42 @@ local function foundry_pipe_west_pictures()
   })
 end
 
-local function foundry_working_pictures()
+local function foundry_smoke_1_pictures()
   return
   {
     fadeout = true,
     animation =
-    util.sprite_load("__space-age__/graphics/entity/foundry/foundry-working",
+    util.sprite_load("__space-age__/graphics/entity/foundry/foundry-smoke_1",
+      {
+        animation_speed = foundry_animation_speed,
+        frame_count = frames,
+        scale = 0.5
+      }
+    )
+  }
+end
+
+local function foundry_smoke_2_pictures()
+  return
+  {
+    fadeout = true,
+    animation =
+    util.sprite_load("__space-age__/graphics/entity/foundry/foundry-smoke_2",
+      {
+        animation_speed = foundry_animation_speed,
+        frame_count = frames,
+        scale = 0.5
+      }
+    )
+  }
+end
+
+local function foundry_smoke_3_pictures()
+  return
+  {
+    fadeout = true,
+    animation =
+    util.sprite_load("__space-age__/graphics/entity/foundry/foundry-smoke_3",
       {
         animation_speed = foundry_animation_speed,
         frame_count = frames,
@@ -129,8 +167,9 @@ return {
     {
       layers =
       {
-        foundry_main_pictures(),
-        foundry_main_shadow_pictures()
+        foundry_base_pictures(),
+        foundry_anim_pictures(),
+        foundry_shadow_pictures()
       }
     },
     working_visualisations =
@@ -156,7 +195,9 @@ return {
         west_animation = foundry_pipe_east_pictures()
       },
 
-      foundry_working_pictures(),
+      foundry_smoke_1_pictures(),
+      foundry_smoke_2_pictures(),
+      foundry_smoke_3_pictures(),
       foundry_lights_pictures(),
       foundry_status_lamp_pictures(),
       foundry_chimney_smoke()

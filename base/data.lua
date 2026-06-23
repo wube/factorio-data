@@ -69,6 +69,7 @@ require("prototypes.planet.planet")
 require("prototypes.planet.surface-property")
 require("prototypes.planet.procession")
 require("prototypes.impact-deliver-category")
+require("require_test")
 
 if data.is_demo then
   require("prototypes.demo")

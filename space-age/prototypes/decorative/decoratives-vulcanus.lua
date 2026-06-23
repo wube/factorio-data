@@ -22,6 +22,8 @@ local brown_carpet_tint = {1,.9,1}
 local red_pita_tint = {.8,.75,.75}
 local tintable_rock_tint = {0.2588, 0.2588, 0.2588}
 local sulfur_rock_tint = {0.788, 0.627, 0.167} --{0.968, 0.807, 0.247}
+local tiny_sulfur_rock_tint = {0.988, 0.927, 0.467}
+local decal_rock_tint = {0.5,0.5,0.5}
 local tungsten_rock_tint = {.7,.7,.7}
 
 green_hairy_tint = combine_tint(vulcanus_base_tint, green_hairy_tint)
@@ -30,6 +32,31 @@ brown_carpet_tint = combine_tint(vulcanus_base_tint, brown_carpet_tint)
 red_pita_tint =  combine_tint(vulcanus_base_tint, red_pita_tint)
 tintable_rock_tint = combine_tint(vulcanus_base_tint, tintable_rock_tint)
 tungsten_rock_tint = combine_tint(vulcanus_base_tint, tungsten_rock_tint)
+
+local vulcanus_tiles_cold = 
+  {
+    "volcanic-soil-dark",
+    "volcanic-soil-light",
+    "volcanic-ash-soil",
+    "volcanic-ash-flats",
+    "volcanic-ash-light",
+    "volcanic-ash-dark",
+    "volcanic-cracks",
+    "volcanic-folds",
+    "volcanic-folds-flat",
+    "volcanic-pumice-stones",
+    "volcanic-jagged-ground",
+    "volcanic-smooth-stone",
+    "volcanic-ash-cracks"
+  } 
+
+local vulcanus_tiles_hot = 
+  {
+    "volcanic-cracks-hot",
+    "volcanic-cracks-warm",
+    "volcanic-smooth-stone-warm",
+    "volcanic-folds-warm"
+  }
 
 function chimney_sulfuric_stateless_visualisation(position)
   return
@@ -1712,138 +1739,65 @@ data:extend{
     },
     autoplace = {
       order = "a[landscape]-c[rock]-a[huge]",
-      probability_expression = "vulcanus_rock_huge"
+      probability_expression = "vulcanus_rock_huge",
+      tile_restriction = vulcanus_tiles_cold
     },
     pictures =
     {
+      layers =
+        {
+          util.sprite_load("__space-age__/graphics/decorative/vulcanus-rocks/vulcanus-rock-huge", { scale = 0.5, variation_count = 15,multiply_shift=0.5})
+        }
+    },
+  },
+    {
+    name = "huge-volcanic-rock-hot",
+    type = "simple-entity",
+    flags = {"placeable-neutral", "placeable-off-grid"},
+    icon = "__space-age__/graphics/icons/huge-volcanic-rock-hot.png",
+    subgroup = "grass",
+    order = "b[decorative]-l[rock]-f[huge-volcanic-rock]",
+    collision_box = {{-1.5, -1.1}, {1.5, 1.1}},
+    selection_box = {{-1.7, -1.3}, {1.7, 1.3}},
+    damaged_trigger_effect = hit_effects.rock(),
+    dying_trigger_effect = decorative_trigger_effects.huge_rock(),
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 3,
+      results =
       {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-05.png",
-        width = 201,
-        height = 179,
-        scale = 0.5,
-        shift = {0.25, 0.0625},
-        tint = tungsten_rock_tint
+        {type = "item", name = "stone", amount_min = 6, amount_max = 18},
+        {type = "item", name = "iron-ore", amount_min = 9, amount_max = 27},
+        {type = "item", name = "copper-ore", amount_min = 6, amount_max = 18},
+        {type = "item", name = "tungsten-ore", amount_min = 3, amount_max = 15}
       },
+    },
+    map_color = {129, 105, 78},
+    count_as_rock_for_filtered_deconstruction = true,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    impact_category = "stone",
+    render_layer = "object",
+    max_health = 2000,
+    resistances =
+    {
       {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-06.png",
-        width = 233,
-        height = 171,
-        scale = 0.5,
-        shift = {0.429688, 0.046875},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-07.png",
-        width = 240,
-        height = 192,
-        scale = 0.5,
-        shift = {0.398438, 0.03125},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-08.png",
-        width = 219,
-        height = 175,
-        scale = 0.5,
-        shift = {0.148438, 0.132812},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-09.png",
-        width = 240,
-        height = 208,
-        scale = 0.5,
-        shift = {0.3125, 0.0625},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-10.png",
-        width = 243,
-        height = 190,
-        scale = 0.5,
-        shift = {0.1875, 0.046875},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-11.png",
-        width = 249,
-        height = 185,
-        scale = 0.5,
-        shift = {0.398438, 0.0546875},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-12.png",
-        width = 273,
-        height = 163,
-        scale = 0.5,
-        shift = {0.34375, 0.0390625},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-13.png",
-        width = 275,
-        height = 175,
-        scale = 0.5,
-        shift = {0.273438, 0.0234375},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-14.png",
-        width = 241,
-        height = 215,
-        scale = 0.5,
-        shift = {0.195312, 0.0390625},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-15.png",
-        width = 318,
-        height = 181,
-        scale = 0.5,
-        shift = {0.523438, 0.03125},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-16.png",
-        width = 217,
-        height = 224,
-        scale = 0.5,
-        shift = {0.0546875, 0.0234375},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-17.png",
-        width = 332,
-        height = 228,
-        scale = 0.5,
-        shift = {0.226562, 0.046875},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-18.png",
-        width = 290,
-        height = 243,
-        scale = 0.5,
-        shift = {0.195312, 0.0390625},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-19.png",
-        width = 349,
-        height = 225,
-        scale = 0.5,
-        shift = {0.609375, 0.0234375},
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/huge-volcanic-rock/huge-volcanic-rock-20.png",
-        width = 287,
-        height = 250,
-        scale = 0.5,
-        shift = {0.132812, 0.03125},
-        tint = tungsten_rock_tint
+        type = "fire",
+        percent = 100
       }
+    },
+    autoplace = {
+      order = "a[landscape]-c[rock]-a[huge]",
+      probability_expression = "vulcanus_rock_huge",
+      tile_restriction = vulcanus_tiles_hot
+    },
+    pictures = 
+    {
+      layers =
+        {
+          util.sprite_load("__space-age__/graphics/decorative/vulcanus-rocks/vulcanus-rock-huge", { scale = 0.5, variation_count = 15,multiply_shift=0.5}),
+          util.sprite_load("__space-age__/graphics/decorative/vulcanus-rocks/vulcanus-rock-huge-emissive", { scale = 0.5, variation_count = 15,multiply_shift=0.5,draw_as_glow=true}),
+        }
     }
   },
   {
@@ -1860,7 +1814,8 @@ data:extend{
     max_health = 500,
     autoplace = {
       order = "a[landscape]-c[rock]-b[big]",
-      probability_expression = "vulcanus_rock_big"
+      probability_expression = "vulcanus_rock_big",
+      tile_restriction = vulcanus_tiles_cold
     },
     dying_trigger_effect = decorative_trigger_effects.big_rock(),
     minable =
@@ -1888,167 +1843,61 @@ data:extend{
     impact_category = "stone",
     pictures =
     {
+      layers =
+        {
+          util.sprite_load("__space-age__/graphics/decorative/vulcanus-rocks/vulcanus-rock-big", { scale = 0.5, variation_count = 16,multiply_shift=0.5})
+        }
+    },
+  },
+    {
+    name = "big-volcanic-rock-hot",
+    type = "simple-entity",
+    flags = {"placeable-neutral", "placeable-off-grid"},
+    icon = "__space-age__/graphics/icons/big-volcanic-rock-hot.png",
+    subgroup = "grass",
+    order = "b[decorative]-l[rock]-f[big-volcanic-rock]",
+    collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
+    selection_box = {{-1.0, -1.0}, {1.0, 0.75}},
+    damaged_trigger_effect = hit_effects.rock(),
+    render_layer = "object",
+    max_health = 500,
+    autoplace = {
+      order = "a[landscape]-c[rock]-b[big]",
+      probability_expression = "vulcanus_rock_big",
+      tile_restriction = vulcanus_tiles_hot
+    },
+    dying_trigger_effect = decorative_trigger_effects.big_rock(),
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 2,
+      results =
       {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-01.png",
-        width =  188 ,
-        height =  127 ,
-        shift = {0.304688, -0.4},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-02.png",
-        width =  195 ,
-        height =  135 ,
-        shift = {0.0, 0.0390625},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-03.png",
-        width =  205 ,
-        height =  132 ,
-        shift = {0.151562, 0.0},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-04.png",
-        width =  144 ,
-        height =  142 ,
-        shift = {0.151562, 0.0},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-05.png",
-        width =  130 ,
-        height =  107 ,
-        shift = {0.390625, 0.0},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-06.png",
-        width =  165 ,
-        height =  109 ,
-        shift = {0.328125, 0.0703125},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-07.png",
-        width =  150 ,
-        height =  133 ,
-        shift = {0.16875, -0.1},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-08.png",
-        width =  156 ,
-        height =  111 ,
-        shift = {0.3, -0.2},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-09.png",
-        width =  187 ,
-        height =  120 ,
-        shift = {0.0, 0.0},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-10.png",
-        width =  225 ,
-        height =  128 ,
-        shift = {0.1, 0.0},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-11.png",
-        width =  183 ,
-        height =  144 ,
-        shift = {0.325, -0.1},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-12.png",
-        width =  158 ,
-        height =  138 ,
-        shift = {0.453125, 0.0},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-13.png",
-        width =  188 ,
-        height =  150 ,
-        shift = {0.539062, -0.015625},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-14.png",
-        width =  186 ,
-        height =  160 ,
-        shift = {0.0703125, 0.179688},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-15.png",
-        width =  181 ,
-        height =  174 ,
-        shift = {0.160938, 0.0},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-16.png",
-        width =  212 ,
-        height =  150 ,
-        shift = {0.242188, -0.195312},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-17.png",
-        width =  155 ,
-        height =  117 ,
-        shift = {0.351562, -0.1},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-18.png",
-        width =  141 ,
-        height =  128 ,
-        shift = {0.351562, -0.1},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-19.png",
-        width =  176 ,
-        height =  114 ,
-        shift = {0.351562, -0.1},
-        scale = 0.5,
-        tint = tungsten_rock_tint
-      },
-      {
-        filename = "__space-age__/graphics/decorative/big-volcanic-rock/big-volcanic-rock-20.png",
-        width =  120 ,
-        height =  125 ,
-        shift = {0.351562, -0.1},
-        scale = 0.5,
-        tint = tungsten_rock_tint
+        {type = "item", name = "stone", amount_min = 2, amount_max = 12},
+        {type = "item", name = "iron-ore", amount_min = 5, amount_max = 9},
+        {type = "item", name = "copper-ore", amount_min = 3, amount_max = 7},
+        {type = "item", name = "tungsten-ore", amount_min = 2, amount_max = 8}
       }
-    }
+    },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
+    map_color = {129, 105, 78},
+    count_as_rock_for_filtered_deconstruction = true,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    impact_category = "stone",
+    pictures =
+    {
+      layers =
+        {
+          util.sprite_load("__space-age__/graphics/decorative/vulcanus-rocks/vulcanus-rock-big", { scale = 0.5, variation_count = 16,multiply_shift=0.5}),          
+          util.sprite_load("__space-age__/graphics/decorative/vulcanus-rocks/vulcanus-rock-big-emissive", { scale = 0.5, variation_count = 16,multiply_shift=0.5,draw_as_glow=true})
+        }
+    },
   },
   --- MEDIUM BLACK ROCKS
   {
@@ -2065,127 +1914,11 @@ data:extend{
     trigger_effect = decorative_trigger_effects.medium_rock(),
     pictures =
     {
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-01.png",
-        priority = base_decorative_sprite_priority,
-        width = 89,
-        height = 63,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.078125, 0.109375}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-02.png",
-        priority = base_decorative_sprite_priority,
-        width = 77,
-        height = 66,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.015625, 0.132812}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-03.png",
-        priority = base_decorative_sprite_priority,
-        width = 92,
-        height = 63,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.148438, 0.179688}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-04.png",
-        priority = base_decorative_sprite_priority,
-        width = 91,
-        height = 59,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {-0.0078125, 0.1875}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-05.png",
-        priority = base_decorative_sprite_priority,
-        width = 104,
-        height = 72,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.203125, 0.179688}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-06.png",
-        priority = base_decorative_sprite_priority,
-        width = 83,
-        height = 82,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.015625, 0.21875}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-07.png",
-        priority = base_decorative_sprite_priority,
-        width = 111,
-        height = 65,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.0625, 0.3125}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-08.png",
-        priority = base_decorative_sprite_priority,
-        width = 79,
-        height = 81,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.109375, 0.148438}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-09.png",
-        priority = base_decorative_sprite_priority,
-        width = 98,
-        height = 56,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.015625, 0.140625}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-10.png",
-        priority = base_decorative_sprite_priority,
-        width = 91,
-        height = 68,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0, 0.132812}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-11.png",
-        priority = base_decorative_sprite_priority,
-        width = 105,
-        height = 71,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {-0.0234375, 0.125}
-      },
-      {
-        filename = "__space-age__/graphics/decorative/medium-volcanic-rock/medium-volcanic-rock-12.png",
-        priority = base_decorative_sprite_priority,
-        width = 78,
-        height = 80,
-        tint_as_overlay = true,
-        tint = tintable_rock_tint,
-        scale = 0.5,
-        shift = {0.078125, -0.015625}
-      }
-    }
+      layers =
+        {
+          util.sprite_load("__space-age__/graphics/decorative/vulcanus-rocks/vulcanus-rock-medium", { scale = 0.5, variation_count = 14,multiply_shift=0.5})
+        }
+    },
   },
   --- SMALL BLACK ROCKS
   {
@@ -2551,7 +2284,8 @@ data:extend{
     order = "a[vulcanus]-b[decorative]-b[sand]",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     collision_mask = {layers={water_tile=true, doodad=true}, colliding_with_tiles_only=true},
-    render_layer = "decorative",
+    render_layer = "decals",
+    tile_layer = 256,
     walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
@@ -2559,7 +2293,7 @@ data:extend{
       placement_density = 2,
       probability_expression = "vulcanus_rock_cluster"
     },
-    pictures = get_decal_pictures("__space-age__/graphics/decorative/tiny-volcanic-rock-cluster/tiny-volcanic-rock-cluster-", "", 128, 8,tintable_rock_tint,true)
+    pictures = get_decal_pictures("__space-age__/graphics/decorative/tiny-volcanic-rock-cluster/tiny-volcanic-rock-cluster-", "", 128, 8,{0.5,0.5,0.5})
   },
   --- SULFUR ROCKS
   --- SMALL ROCKS
@@ -2747,7 +2481,8 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
-    render_layer = "decorative",
+    render_layer = "decals",
+    tile_layer = 257,
     walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
@@ -2764,7 +2499,7 @@ data:extend{
         width =  29,
         height =  21,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2774,7 +2509,7 @@ data:extend{
         width =  30,
         height =  19,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2784,7 +2519,7 @@ data:extend{
         width =  29,
         height =  24,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2794,7 +2529,7 @@ data:extend{
         width =  32,
         height =  20,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2804,7 +2539,7 @@ data:extend{
         width =  29,
         height =  25,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2814,7 +2549,7 @@ data:extend{
         width =  36,
         height =  24,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2824,7 +2559,7 @@ data:extend{
         width =  78,
         height =  34,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2834,7 +2569,7 @@ data:extend{
         width =  35,
         height =  19,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2844,7 +2579,7 @@ data:extend{
         width =  28,
         height =  20,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2854,7 +2589,7 @@ data:extend{
         width =  29,
         height =  20,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2864,7 +2599,7 @@ data:extend{
         width =  29,
         height =  20,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2874,7 +2609,7 @@ data:extend{
         width =  29,
         height =  22,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2884,7 +2619,7 @@ data:extend{
         width =  27,
         height =  19,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2894,7 +2629,7 @@ data:extend{
         width =  27,
         height =  19,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2904,7 +2639,7 @@ data:extend{
         width =  26,
         height =  22,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       },
@@ -2914,7 +2649,7 @@ data:extend{
         width =  27,
         height =  20,
         tint_as_overlay = true,
-        tint = sulfur_rock_tint,
+        tint = tiny_sulfur_rock_tint,
         scale = 0.5,
         shift = {0.0, 0.0}
       }
@@ -2927,7 +2662,8 @@ data:extend{
     order = "a[vulcanus]-b[decorative]-b[sand]",
     collision_box = {{-1, -1}, {1, 1}},
     collision_mask = {layers={water_tile=true, doodad=true}, colliding_with_tiles_only=true},
-    render_layer = "decorative",
+    render_layer = "decals",
+    tile_layer = 256,
     walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
@@ -2935,7 +2671,7 @@ data:extend{
       placement_density = 2,
       probability_expression = "vulcanus_sulfur_rock_cluster"
     },
-    pictures = get_decal_pictures("__space-age__/graphics/decorative/tiny-volcanic-rock-cluster/tiny-volcanic-rock-cluster-", "", 128, 8,sulfur_rock_tint,true)
+    pictures = get_decal_pictures("__space-age__/graphics/decorative/tiny-volcanic-rock-cluster/tiny-volcanic-rock-cluster-", "", 128, 8,tiny_sulfur_rock_tint)
   },
   {
     type = "optimized-decorative",

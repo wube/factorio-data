@@ -1,5 +1,6 @@
 local procession_graphic_catalogue_types = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
-
+local thruster_opacity = 0.65
+local thruster_tint = {thruster_opacity, thruster_opacity, thruster_opacity, thruster_opacity}
 local cargo_pod_catalogue =
 {
   -- POD
@@ -85,44 +86,6 @@ local cargo_pod_catalogue =
         frame_count = 13
       })
   },
-  {
-    index = procession_graphic_catalogue_types.pod_anim_rotation_closed,
-    animation = util.sprite_load("__base__/graphics/entity/cargo-pod/pod-closed-rotation",
-       {
-         priority = "medium",
-         scale = 0.5,
-         frame_count = 59
-       })
-   },
-   {
-    index = procession_graphic_catalogue_types.pod_anim_rotation_closed_emission,
-    animation = util.sprite_load("__base__/graphics/entity/cargo-pod/pod-closed-rotation-emission",
-       {
-         priority = "medium",
-         scale = 0.5,
-         blend_mode = "additive",
-         frame_count = 59
-       })
-   },
-   {
-    index = procession_graphic_catalogue_types.pod_anim_rotation_open,
-    animation = util.sprite_load("__base__/graphics/entity/cargo-pod/pod-open-rotation",
-       {
-         priority = "medium",
-         scale = 0.5,
-         frame_count = 60
-       })
-   },
-   {
-    index = procession_graphic_catalogue_types.pod_anim_rotation_open_emission,
-    animation = util.sprite_load("__base__/graphics/entity/cargo-pod/pod-open-rotation-emission",
-       {
-         priority = "medium",
-         scale = 0.5,
-         blend_mode = "additive",
-         frame_count = 60
-       })
-   },
   -- POD Thrusters
   {
     index = procession_graphic_catalogue_types.thruster_flames_loop,
@@ -135,8 +98,8 @@ local cargo_pod_catalogue =
       draw_as_glow = true,
       shift = util.by_pixel(0, 64),
       blend_mode = "additive",
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "group=procession", "linear-minification", "linear-magnification" }
     })
   },
   {
@@ -150,21 +113,11 @@ local cargo_pod_catalogue =
       draw_as_glow = true,
       shift = util.by_pixel(0, 64),
       blend_mode = "additive",
-      priority = "no-atlas",
-      flags = { "group=effect-texture", "linear-minification", "linear-magnification" },
+      priority = "medium",
+      flags = { "group=procession", "linear-minification", "linear-magnification" }
     })
   },
-  {
-    index = procession_graphic_catalogue_types.reentry_flames,
-    animation = util.sprite_load("__base__/graphics/entity/cargo-pod/pod-open-reentry-flame",
-    {
-      priority = "medium",
-      scale = 0.5,
-      animation_speed = 0.5,
-      draw_as_glow = true,
-      blend_mode = "additive",
-      frame_count = 30
-    })
-  }
+    -- POD Vectoring Thrusters
+
 }
 return cargo_pod_catalogue

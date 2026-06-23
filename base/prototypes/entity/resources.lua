@@ -1,4 +1,5 @@
 local resource_autoplace = require("resource-autoplace")
+local sounds = require("__base__.prototypes.entity.sounds")
 local tile_sounds = require("prototypes.tile.tile-sounds")
 local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
@@ -30,6 +31,7 @@ local function resource(resource_parameters, autoplace_parameters)
     subgroup = resource_parameters.subgroup,
     walking_sound = resource_parameters.walking_sound,
     driving_sound = resource_parameters.driving_sound,
+    mining_sound = resource_parameters.mining_sound,
     collision_mask = resource_parameters.collision_mask,
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -133,6 +135,7 @@ data:extend({
       mining_time = 1,
       walking_sound = tile_sounds.walking.ore,
       driving_sound = tile_sounds.driving.stone,
+      mining_sound = sounds.mining_stone,
       mining_visualisation_tint = {r = 0.984, g = 0.883, b = 0.646, a = 1.000}, -- #fae1a4ff
       factoriopedia_simulation = simulations.factoriopedia_stone,
     },
@@ -236,11 +239,24 @@ data:extend({
         {
           type = "fluid",
           name = "crude-oil",
-          amount_min = 10,
-          amount_max = 10,
-          probability = 1
+          amount = 10
         }
       }
+    },
+    working_sound =
+    {
+      sound =
+      {
+        category = "world-ambient",
+        filename = "__base__/sound/world/resources/crude-oil-1.ogg",
+        volume = 0.3,
+        advanced_volume_control =
+        {
+          fades = {fade_in = {curve_type = "S-curve", from = {control = 0.3, volume_percentage = 0.0}, to = {2.0, 100.0}}}
+        },
+        audible_distance_modifier = 0.25,
+      },
+      max_sounds_per_prototype = 3,
     },
     walking_sound = tile_sounds.walking.oil({}),
     driving_sound = tile_sounds.driving.oil,

@@ -1,0 +1,7 @@
+{
+  "recipe":
+  [
+    ["molten-iron", "iron-ore-melting"],
+    ["molten-copper", "copper-ore-melting"]
+  ]
+}

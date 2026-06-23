@@ -63,13 +63,13 @@ local shared_resistances =
   }
 }
 local shared_health = {0, 100, 400, 2000, 5000}
-local shared_mass = {0, 200000, 500000, 5000000, 100000000}
+local shared_damage_per_hp = {0, 5, 8, 12, 15}
 local asteroids_data =
 {
   metallic =
   {
     order = "a",
-    mass = shared_mass,
+    damage_per_hp = shared_damage_per_hp,
     max_health = shared_health,
     resistances = shared_resistances,
     shading_data =
@@ -93,7 +93,7 @@ local asteroids_data =
   carbonic =
   {
     order = "b",
-    mass = shared_mass,
+    damage_per_hp = shared_damage_per_hp,
     max_health = shared_health,
     resistances = shared_resistances,
     shading_data =
@@ -116,7 +116,7 @@ local asteroids_data =
   oxide =
   {
     order = "c",
-    mass = shared_mass,
+    damage_per_hp = shared_damage_per_hp,
     max_health = shared_health,
     resistances = shared_resistances,
     shading_data =
@@ -140,7 +140,7 @@ local asteroids_data =
   promethium =
   {
     order = "d",
-    mass = {shared_mass[1] * 2, shared_mass[2] * 2, shared_mass[3] * 2, shared_mass[4] * 2, shared_mass[5] * 2},
+    damage_per_hp = {shared_damage_per_hp[1] * 2, shared_damage_per_hp[2] * 2, shared_damage_per_hp[3] * 2, shared_damage_per_hp[4] * 2, shared_damage_per_hp[5] * 2},
     max_health = {shared_health[1] * 2, shared_health[2] * 2, shared_health[3] * 2, shared_health[4] * 2, shared_health[5] * 2},
     resistances = shared_resistances,
     shading_data =
@@ -504,7 +504,7 @@ for asteroid_size, asteroid_size_name in pairs(asteroid_sizes) do
         -- asteroid properties
         flags = asteroid_size_name ~= "chunk" and {"placeable-enemy", "placeable-off-grid", "not-repairable", "not-on-map"} or nil,
         max_health = asteroid_size_name ~= "chunk" and asteroid_data.max_health[asteroid_size] or nil,
-        mass = asteroid_size_name ~= "chunk" and asteroid_data.mass[asteroid_size] or nil,
+        damage_per_hp = asteroid_size_name ~= "chunk" and asteroid_data.damage_per_hp[asteroid_size] or nil,
         resistances = resistances,
       }
     }

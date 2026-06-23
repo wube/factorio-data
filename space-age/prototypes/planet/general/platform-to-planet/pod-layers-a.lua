@@ -1,9 +1,13 @@
+-- From hub launch to pre planet atmosphere
 local procession_style = require("__base__/prototypes/planet/procession-style")
 local procession_graphic_catalogue = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
 
 local pfunctions = require("__space-age__/prototypes/planet/general/general-functions")
 
-local jets = pfunctions.conc3(pfunctions.jet_burst(0, 80, procession_graphic_catalogue.thruster_flames_start, procession_graphic_catalogue.thruster_flames_loop),
+local vct = procession_graphic_catalogue.vct_single
+local vct_s = procession_graphic_catalogue.vct_small
+
+local jets = pfunctions.concN(pfunctions.jet_burst(0, 80, procession_graphic_catalogue.thruster_flames_start, procession_graphic_catalogue.thruster_flames_loop),
                               pfunctions.jet_burst(170, 70, procession_graphic_catalogue.thruster_flames_start, procession_graphic_catalogue.thruster_flames_loop),
                               pfunctions.jet_burst(320, 30, procession_graphic_catalogue.thruster_flames_start, procession_graphic_catalogue.thruster_flames_loop))
 
@@ -34,7 +38,20 @@ local jets_emission =
   }),
 }
 
-local pod_layers = pfunctions.conc3(
+local vectoring_single = pfunctions.concN(
+  -- vct1, layering, puff_start, reps, rot, dir
+  pfunctions.vectoring_single(vct, -1, 145, 2, 0.0, 'R'), -- Clashes with wandering, choose one or the other
+  pfunctions.vectoring_single(vct, -1, 210, 4, 0.0, 'L'),
+  pfunctions.vectoring_single(vct, -1, 340, 1, 0.0, 'R') -- slight conflict with wandering but not as bad.
+)
+
+local vectoring_wandering = pfunctions.concN(
+  -- vct1, puff_start, reps, rot, wander_start, wander_time, wander_offset, wander_distance, z_adjustment
+  --pfunctions.vectoring_wander(vct_s, 155, 1, 0, 10, 40, 0.33, 0.2, -0.75),
+  pfunctions.vectoring_wander(vct_s, 330, 1, 0.5, 0, 45, -0.28, 0.54, -0.73)
+)
+
+local pod_layers = pfunctions.concN(
 {
   {
     type = "pod-movement",
@@ -53,23 +70,30 @@ local pod_layers = pfunctions.conc3(
       { timestamp=0,   offset_rate = 0, offset_rate_t = 0 },
       { timestamp=400, offset_rate = 0, offset_rate_t = 1 },
 
-      { timestamp=150, tilt = 0, tilt_t = 0.0 },
-      { timestamp=180, tilt = 0, tilt_t = -0.03  },
-      { timestamp=200, tilt = -0.09 , tilt_t = 0.04  },
-      { timestamp=263, tilt = -0.02 , tilt_t = -0.03  },
-      { timestamp=302, tilt = -0.02 , tilt_t = 0.02  },
-      { timestamp=336, tilt = 0.06 , tilt_t = -0.02  },
-      { timestamp=382, tilt = 0.08 , tilt_t = 0.0  }
+      { timestamp=145, tilt = 0  },
+      { timestamp=170, tilt = -0.00116 , tilt_t = -0.01315  },
+      { timestamp=199, tilt = -0.0564 , tilt_t = 0.01048  },
+      { timestamp=223, tilt = -0.05208 , tilt_t = -0.00272  },
+      { timestamp=250, tilt = -0.05884 , tilt_t = 0.00384  },
+      { timestamp=279, tilt = -0.05262 , tilt_t = 0.00854  },
+      { timestamp=308, tilt = -0.00752 , tilt_t = 0.0068  },
+      { timestamp=333, tilt = 0.05358 , tilt_t = -0.00609  },
+      { timestamp=359, tilt = 0.080 , tilt_t = -0.00577  },
+      { timestamp=379, tilt = 0.080  }
+
     --[[
-        [
-          { "timestamp": 150, "tilt": { "x":0 }, "tilt_t" : { "x":0 }},
-          { "timestamp": 180, "tilt": { "x":0 }, "tilt_t" : { "x":-0.03 }},
-          { "timestamp": 200, "tilt": { "x":-0.09 }, "tilt_t" : { "x":0.04 }},
-          { "timestamp": 263, "tilt": { "x":-0.02 }, "tilt_t" : { "x":-0.03 }},
-          { "timestamp": 302, "tilt": { "x":-0.02 }, "tilt_t" : { "x":0.02 }},
-          { "timestamp": 336, "tilt": { "x":0.06 }, "tilt_t" : { "x":-0.02 }},
-          { "timestamp": 382, "tilt": { "x":0.08 }, "tilt_t" : { "x":0.01 }}
-        ]
+[
+  { "timestamp": 149, "tilt": { "x":0 }, "tilt_t" : { "x":0 }},
+  { "timestamp": 170, "tilt": { "x":-1.16 }, "tilt_t" : { "x":-13.15 }},
+  { "timestamp": 199, "tilt": { "x":-56.4 }, "tilt_t" : { "x":10.48 }},
+  { "timestamp": 223, "tilt": { "x":-52.08 }, "tilt_t" : { "x":-2.72 }},
+  { "timestamp": 250, "tilt": { "x":-58.84 }, "tilt_t" : { "x":3.84 }},
+  { "timestamp": 279, "tilt": { "x":-52.62 }, "tilt_t" : { "x":8.54 }},
+  { "timestamp": 308, "tilt": { "x":-7.52 }, "tilt_t" : { "x":6.8 }},
+  { "timestamp": 333, "tilt": { "x":53.58 }, "tilt_t" : { "x":-6.09 }},
+  { "timestamp": 358, "tilt": { "x":80 }, "tilt_t" : { "x":-5.77 }},
+  { "timestamp": 376, "tilt": { "x":80 }, "tilt_t" : { "x":0 }}
+]
      ]]--
     }
   },
@@ -114,5 +138,5 @@ local pod_layers = pfunctions.conc3(
       { timestamp = 90, opacity = 0.0 }
     }
   },
-}, jets, jets_emission)
+}, jets, jets_emission, vectoring_single, vectoring_wandering)
 return pod_layers
