@@ -1335,6 +1335,7 @@ function make_demolisher_corpse(base_name, order, scale, damage_multiplier, heal
       },
       map_color = {129, 105, 78},
       count_as_rock_for_filtered_deconstruction = true,
+      mining_sound = base_sounds.mining_stone,
       mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
       impact_category = "stone",
       render_layer = "object",

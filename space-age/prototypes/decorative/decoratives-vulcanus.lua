@@ -1,6 +1,7 @@
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local base_tile_sounds = require("__base__.prototypes.tile.tile-sounds")
 local space_age_tile_sounds = require ("__space-age__.prototypes.tile.tile-sounds")
+local base_sounds = require("__base__.prototypes.entity.sounds")
 local decorative_trigger_effects = require("__base__.prototypes.decorative.decorative-trigger-effects")
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
 
@@ -1726,6 +1727,7 @@ data:extend{
     },
     map_color = {129, 105, 78},
     count_as_rock_for_filtered_deconstruction = true,
+    mining_sound = base_sounds.mining_stone,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     impact_category = "stone",
     render_layer = "object",
@@ -1775,6 +1777,7 @@ data:extend{
     },
     map_color = {129, 105, 78},
     count_as_rock_for_filtered_deconstruction = true,
+    mining_sound = base_sounds.mining_stone,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     impact_category = "stone",
     render_layer = "object",
@@ -1839,6 +1842,7 @@ data:extend{
     },
     map_color = {129, 105, 78},
     count_as_rock_for_filtered_deconstruction = true,
+    mining_sound = base_sounds.mining_stone,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     impact_category = "stone",
     pictures =
@@ -1888,6 +1892,7 @@ data:extend{
     },
     map_color = {129, 105, 78},
     count_as_rock_for_filtered_deconstruction = true,
+    mining_sound = base_sounds.mining_stone,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     impact_category = "stone",
     pictures =

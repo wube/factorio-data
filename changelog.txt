@@ -1,4 +1,36 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.8
+Date: 25. 06. 2026
+  Changes:
+    - Changed the technology price multiplier limit from 1000 to 100000.
+    - Changed spoil result tooltips to show the result entities as the quality of the item-to-spoil. (https://forums.factorio.com/133602)
+  Minor Features:
+    - Added per-entity timings to the benchmark-verbose command line option when using "all" or "entities".
+  Gui:
+    - Hovering fixed item slot highlights items in inventory. (https://forums.factorio.com/134199)
+  Bugfixes:
+    - Fixed Orbital request slot tooltip would show items available on platforms that are not unloading at the current location. (https://forums.factorio.com/134119)
+    - Fixed several rock types playing incorrect mining_sound. (https://forums.factorio.com/134103)
+    - Fixed that labs setting research could block changing research manually when the lab was disconnected from the circuit network. (https://forums.factorio.com/134126)
+    - Fixed that LuaGuiElement::scroll methods did not work on scroll-panes. (https://forums.factorio.com/134132)
+    - Fixed Gun turrets with target priorities not shooting asteroids in some cases. (https://forums.factorio.com/134141)
+    - Fixed inconsistent inserter throughput based on direction. (https://forums.factorio.com/134117)
+    - Fixed that remote view auto switching didn't cancel cut/copy/deconstruct operations. (https://forums.factorio.com/133829)
+    - Removed confusing "low fluid" entity status from the boiler.
+    - Fixed that upgrading rolling stocks around elevated rails did not always work correctly. (https://forums.factorio.com/134143)
+    - Fixed a crash when rendering train status for trains with only temporary stops. (https://forums.factorio.com/134163)
+    - Fixed that LuaGuiElement::handle_send_stacks_to_trash was named wrong.
+    - Fixed that LuaGuiElement::slots_per_row did not work. (https://forums.factorio.com/134168)
+    - Fixed that map editor instant building would put modules incompatible with the current recipe into crafting machines. (https://forums.factorio.com/134176)
+    - Fixed that selection tools did not work in remote view/map view with rebound controls. (https://forums.factorio.com/134181)
+    - Fixed missing keys in map-settings.example.json. (https://forums.factorio.com/134130)
+    - Fixed small logistic group multiplier values were inconsistently applied and displayed. (https://forums.factorio.com/134202)
+    - Fixed that 'hide tall entities' did not hide elevated rail signals. (https://forums.factorio.com/134166)
+    - Fixed that set-recipe on assembling machines could void fluids of connected pipes/tanks. (https://forums.factorio.com/134172)
+    - Fixed that the missing materials for construction alert could show the wrong amounts. (https://forums.factorio.com/134249)
+    - Fixed train could fail to connect to a rolling stock that was built or upgraded when rails merged between stocks. (https://forums.factorio.com/134195)
+    - Fixed Fulgora would generate too much land when migrated from 2.0 save games. (https://forums.factorio.com/134161)
+---------------------------------------------------------------------------------------------------
 Version: 2.1.7
 Date: 23. 06. 2026
   Features:
@@ -382,7 +414,7 @@ Date: 23. 06. 2026
     - Added allow_in_replay parameter to LuaGameScript::take_technology_screenshot and auto_save.
     - Added LuaGameScript::delete_blueprint_library(). (https://forums.factorio.com/132357)
     - Removed LuaGameScript::create_profiler(). Use LuaHelpers::create_profiler() instead.
-    - Added LuaGuiElement type "inventory". Added LuaGuiElement::inventory, slots_per_row, empty_slot_info, handle_cursor_transfer, handle_cursor_split, handle_open_item, handle_open_mod_item, handle_send_stack_to_trash, hand_send_stacks_to_trash read/writes. Added on_gui_inventory_action event.
+    - Added LuaGuiElement type "inventory". Added LuaGuiElement::inventory, slots_per_row, empty_slot_info, handle_cursor_transfer, handle_cursor_split, handle_open_item, handle_open_mod_item, handle_send_stack_to_trash, handle_send_stacks_to_trash read/writes. Added on_gui_inventory_action event.
     - Added airborne-pollutant, ammo-category, quality, shortcut, space-connection, surface, and virtual-signal to "choose-elem-button" types.
     - Added LuaHelpers::is_valid_ambient_sound(), LuaHelpers::is_valid_animation_path().
     - Added LuaHelpers::stage read.
@@ -416,7 +448,7 @@ Date: 23. 06. 2026
     - Removed LuaRecipe::category, additional_categories reads. Use LuaRecipe::categories instead.
     - Added LuaRecipePrototype::get_ingredient_quality(), get_product_quality(), get_product_amount().
     - Added LuaRecipePrototype::can_set_quality read.
-    - Removed LuaRecipePrototype::category, additional_categories reads. Use LuaRecipe::categories instead.
+    - Removed LuaRecipePrototype::category, additional_categories reads. Use LuaRecipePrototype::categories instead.
     - Removed LuaRecipePrototype::is_parameter read. Use LuaPrototypeBase::parameter instead.
     - Removed LuaRecipePrototype::show_amount_in_title, result_is_always_fresh, reset_freshness_on_craft, always_show_products reads.
     - Added LuaRecord::label, planner_description read/writes.

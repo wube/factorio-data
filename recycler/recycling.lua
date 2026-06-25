@@ -72,6 +72,8 @@ function generate_recycling_recipe_icons_from_item(item)
   return icons
 end
 
+local table_string = "table"
+
 function add_recipe_values(structure, input, result)
   local recipe_to_reverse = input.recycle_to_ingredients_of and data.raw.recipe[input.recycle_to_ingredients_of] or input
 
@@ -106,7 +108,7 @@ function add_recipe_values(structure, input, result)
   local result_crafting_tint = {primary = {0.5,0.5,0.5,0.5}, secondary = {0.5,0.5,0.5,0.5}, tertiary = {0.5,0.5,0.5,0.5}, quaternary = {0.5,0.5,0.5,0.5}}
 
   for k, ingredient in pairs(recipe_to_reverse.ingredients) do
-    if type(ingredient) ~= "table" then
+    if type(ingredient) ~= table_string then
       error("Recipe "..recipe_to_reverse.name.." has malformed ingredients: it should only contain tables (one per ingredient) but "..type(ingredient).." was found")
     end
 
@@ -157,8 +159,12 @@ function add_recipe_values(structure, input, result)
   return next(structure.results)
 end
 
+
 local default_can_recycle = function(recipe)
   if recipe.categories ~= nil then
+    if type(recipe.categories) ~= table_string then
+      error("Recipe "..recipe.name.." has malformed categories: it should be an array of strings but "..type(recipe.categories).." was found")
+    end
     for _,category in pairs(recipe.categories) do
       if category == "recycling" then
         return

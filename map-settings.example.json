@@ -31,16 +31,18 @@
   "enemy_expansion":
   {
     "enabled": true,
-    "max_expansion_distance": 7,
-    "friendly_base_influence_radius": 2,
-    "enemy_building_influence_radius": 2,
-    "building_coefficient": 0.1,
-    "other_base_coefficient": 2.0,
+    "max_expansion_distance": 5,
+    "min_expansion_distance": 3,
+    "friendly_base_influence_radius": 6,
+    "enemy_building_influence_radius": 3,
+    "building_coefficient": 0.5,
+    "other_base_coefficient": 3.0,
     "neighbouring_chunk_coefficient": 0.5,
-    "neighbouring_base_chunk_coefficient": 0.4,
-    "max_colliding_tiles_coefficient": 0.9,
+    "neighbouring_base_chunk_coefficient": 0.5,
+    "max_colliding_tiles_coefficient": 0.8,
     "settler_group_min_size": 5,
     "settler_group_max_size": 20,
+    "evolution_group_size_factor": 4.0,
     "min_expansion_cooldown": 14400,
     "max_expansion_cooldown": 216000
   },
@@ -59,23 +61,6 @@
     "tick_tolerance_when_member_arrives": 60,
     "max_gathering_unit_groups": 30,
     "max_unit_group_size": 200
-  },
-  "steering":
-  {
-    "default":
-    {
-      "radius": 1.2,
-      "separation_force": 0.005,
-      "separation_factor": 1.2,
-      "force_unit_fuzzy_goto_behavior": false
-    },
-    "moving":
-    {
-      "radius": 3,
-      "separation_force": 0.01,
-      "separation_factor": 3,
-      "force_unit_fuzzy_goto_behavior": false
-    }
   },
   "path_finder":
   {

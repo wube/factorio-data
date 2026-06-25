@@ -568,7 +568,6 @@ data:extend(
       threatening_asteroid_penalty = -20, -- negative penalty to prefer threatening asteroids over other targets
       sound = sounds.gun_turret_gunshot
     },
-    prepare_range = 18 + 2, -- A smidgen more than range
     call_for_help_radius = 40,
     water_reflection =
     {
