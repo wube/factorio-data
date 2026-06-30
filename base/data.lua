@@ -103,4 +103,3 @@ main_menu_simulations.nauvis_big_defense = menu_simulations.nauvis_big_defense
 main_menu_simulations.nauvis_brutal_defeat = menu_simulations.nauvis_brutal_defeat
 main_menu_simulations.nauvis_spider_ponds = menu_simulations.nauvis_spider_ponds
 main_menu_simulations.nauvis_uranium_processing = menu_simulations.nauvis_uranium_processing
-

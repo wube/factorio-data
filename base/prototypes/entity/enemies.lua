@@ -101,7 +101,7 @@ data:extend(
     movement_speed = 0.2,
     distance_per_frame = 0.125,
     absorptions_to_join_attack = { pollution = 4 },
-    buildable_entities = {"biter-spawner", "spitter-spawner"},
+    buildable_entities = {"biter-spawner", "spitter-spawner", "small-worm-turret"},
     distraction_cooldown = 300,
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,

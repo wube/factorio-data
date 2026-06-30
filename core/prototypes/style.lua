@@ -55,6 +55,7 @@ gui_color =
   red = {255, 142, 142},
   orange = {0.98, 0.66, 0.22},
   light_orange = {1, 0.74, 0.40},
+  purple = {0.821, 0.440, 0.998},
   caption = {255, 230, 192},
   achievement_green = {210, 253, 145},
   achievement_tan = {255, 230, 192},
@@ -1020,6 +1021,13 @@ data:extend(
       type = "label_style",
       parent = "orange_label",
       font = "default-bold"
+    },
+
+    purple_label =
+    {
+      type = "label_style",
+      font = "default",
+      font_color = gui_color.purple
     },
 
     button =
@@ -9606,6 +9614,17 @@ data:extend(
       type = "frame_style",
       parent = "decider_combinator_frame",
       width = 292
+    },
+
+    decider_combinator_fulfilled_frame =
+    {
+      type = "frame_style",
+      parent = "decider_combinator_frame",
+      graphical_set =
+      {
+        base = {position = {412, 86}, corner_size = 8},
+        shadow = default_shadow
+      }
     },
 
     decider_combinator_fulfilled_condition_frame =
