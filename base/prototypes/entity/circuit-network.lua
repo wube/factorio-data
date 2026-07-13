@@ -283,7 +283,16 @@ data:extend
           { name = "inventory-move",  sound = { filename = "__core__/sound/inventory-move.ogg" }},
           { name = "new-objective",  sound = { filename = "__core__/sound/new-objective.ogg" }},
           { name = "research-completed",  sound = { filename = "__core__/sound/research-completed.ogg" }},
-          { name = "scenario-message",  sound = { filename = "__core__/sound/scenario-message.ogg" }}
+          { name = "scenario-message",  sound = { filename = "__core__/sound/scenario-message.ogg" }},
+          { name = "console-player-joined",  sound = { filename = "__core__/sound/console-player-joined.ogg" }},
+          { name = "console-player-left",  sound = { filename = "__core__/sound/console-player-left.ogg" }},
+          { name = "console-player-paused-game",  sound = { filename = "__core__/sound/console-player-paused-game.ogg" }},
+          { name = "console-player-resumed-game",  sound = { filename = "__core__/sound/console-player-resumed-game.ogg" }},
+          { name = "console-player-died",  sound = { filename = "__core__/sound/console-player-died.ogg" }},
+          { name = "console-player-research",  sound = { filename = "__core__/sound/console-player-research.ogg" }},
+          { name = "console-platform-created",  sound = { filename = "__core__/sound/console-platform-created.ogg" }},
+          { name = "console-platform-destroyed",  sound = { filename = "__core__/sound/console-platform-destroyed.ogg" }},
+          { name = "console-player-changed-logistic-group",  sound = { filename = "__core__/sound/console-player-changed-logistic-group.ogg" }},
         }
       },
       {

@@ -25,12 +25,12 @@ function data.extend(self, otherdata)
 
   for _, e in ipairs(otherdata) do
 
-    if not e.type then
-      error("Missing type in the following prototype definition:\n" .. serpent.block(e))
+    if type(e.type) ~= "string" then
+      error("Invalid type in the following prototype definition:\n" .. serpent.block(e))
     end
 
-    if not e.name then
-      error("Missing name in the following prototype definition:\n" .. serpent.block(e))
+    if type(e.name) ~= "string" then
+      error("Invalid name in the following prototype definition:\n" .. serpent.block(e))
     end
 
     local t = data.raw[e.type]

@@ -12,8 +12,8 @@ local function make_circuit_connector_sprites(template, index, main_offset, shad
       width = animation.width,
       height = animation.height,
       scale = animation.scale,
-      x = animation.width * (frame % (animation.line_length or animation.frame_count)),
-      y = animation.height * (math.floor(frame / (animation.line_length or animation.frame_count))),
+      x = animation.width * (frame % (animation.line_length or animation.frame_count or 1)),
+      y = animation.height * (math.floor(frame / (animation.line_length or animation.frame_count or 1))),
       shift = util.add_shift(animation.shift, extra_shift)
     }
   end
@@ -43,10 +43,14 @@ local function make_circuit_connector_sprites(template, index, main_offset, shad
     size = 0.9
   }
 
-  local light_offset = util.add_shift(main_offset, template.light_offset_hotfix)
-  result.blue_led_light_offset = template.light_offsets[index + 1] and util.add_shift(light_offset, template.light_offsets[index + 1].b)
-  result.red_green_led_light_offset = template.light_offsets[index + 1] and util.add_shift(light_offset, template.light_offsets[index + 1].rg)
-
+  if template.light_offsets then
+    local light_offset = util.add_shift(main_offset, template.light_offset_hotfix)
+    result.blue_led_light_offset = template.light_offsets[index + 1] and util.add_shift(light_offset, template.light_offsets[index + 1].b)
+    result.red_green_led_light_offset = template.light_offsets[index + 1] and util.add_shift(light_offset, template.light_offsets[index + 1].rg)
+  else
+    result.blue_led_light_offset = nil
+    result.red_green_led_light_offset = nil
+  end
   return result
 end
 
@@ -77,8 +81,8 @@ end
 local function make_single_circuit_connector_definition(template, definition)
   return
   {
-    sprites = make_circuit_connector_sprites(template, definition.variation, definition.main_offset, definition.shadow_offset, definition.show_shadow),
-    points = make_circuit_connector_points(template, definition.variation, definition.main_offset, definition.shadow_offset)
+    sprites = make_circuit_connector_sprites(template, definition.variation, definition.main_offset or {0,0}, definition.shadow_offset or {0,0}, definition.show_shadow or false),
+    points = make_circuit_connector_points(template, definition.variation, definition.main_offset or {0,0}, definition.shadow_offset or {0,0})
   }
 end
 

@@ -121,9 +121,7 @@ data:extend({
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 22,
     searchable = true,
-
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
-
     sprite_usage_surface = "gleba",
     variants = tile_variations_template_with_transitions_and_effect_map(
       "__space-age__/graphics/terrain/artificial-yumako-soil.png",
@@ -135,7 +133,6 @@ data:extend({
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
       }
     ),
-
     walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
     driving_sound = tile_sounds.driving.wetland,
@@ -168,7 +165,6 @@ data:extend({
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
       }
     ),
-
     walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
     driving_sound = tile_sounds.driving.wetland,
@@ -187,10 +183,7 @@ data:extend({
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 23,
     searchable = true,
-
-
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
-
     sprite_usage_surface = "gleba",
     variants = tile_variations_template_with_transitions(
       "__space-age__/graphics/terrain/artificial-jellynut-soil.png",
@@ -201,7 +194,6 @@ data:extend({
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
       }
     ),
-
     walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
     driving_sound = tile_sounds.driving.wetland,
@@ -220,9 +212,7 @@ data:extend({
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 25,
     searchable = true,
-
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
-
     sprite_usage_surface = "gleba",
     variants = tile_variations_template_with_transitions(
       "__space-age__/graphics/terrain/overgrowth-jellynut-soil.png",
@@ -233,7 +223,6 @@ data:extend({
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
       }
     ),
-
     walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
     driving_sound = tile_sounds.driving.wetland,
@@ -251,9 +240,7 @@ data:extend({
     layer_group = "ground-natural",
     layer = gleba_tile_offset + 20,
     searchable = true,
-
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
-
     sprite_usage_surface = "gleba",
     variants = tile_variations_template_with_transitions_and_effect_map(
       "__space-age__/graphics/terrain/natural-yumako-soil.png",
@@ -265,7 +252,6 @@ data:extend({
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
       }
     ),
-
     walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
     build_sound = base_tile_sounds.building.landfill,
@@ -282,20 +268,7 @@ data:extend({
     layer_group = "ground-natural",
     layer = gleba_tile_offset + 21,
     searchable = true,
-
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
-
-    --[[variants =
-    {
-      transition = tile_graphics.generic_masked_tile_transitions1,
-
-      material_background =
-      {
-        picture = "__space-age__/graphics/terrain/natural-jellynut-soil.png",
-        count = 8,
-        scale = 0.5
-      }
-    },]]
     sprite_usage_surface = "gleba",
     variants = tile_variations_template_with_transitions_and_effect_map(
       "__space-age__/graphics/terrain/natural-jellynut-soil.png",
@@ -307,7 +280,6 @@ data:extend({
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
       }
     ),
-
     walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
     build_sound = base_tile_sounds.building.landfill,
@@ -322,8 +294,8 @@ data:extend({
       ----------- Olive Blubber
       {
         type = "tile",
-        name = "lowland-olive-blubber",
-        order = "c[gleba-land-tiles]-a[lowland-olive-blubber]",
+        name = "lowland-olive-blubber", -- Olive blubber lichen
+        order = "c[land-tiles]-a[lowland]-a[olive-blubber]-a",
         subgroup = "gleba-tiles",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
@@ -341,7 +313,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.4, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0.3, 0.8, 0.005, 0, 1)"},
@@ -355,9 +326,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-olive-blubber-2", -- weird
-        order = "c[gleba-land-tiles]-a[lowland-olive-blubber]",
+        name = "lowland-olive-blubber-2", -- Olive blubber
+        order = "c[land-tiles]-a[lowland]-a[olive-blubber]-b",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-olive-blubber",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
         layer = gleba_lowland_tile_offset+3,
@@ -374,7 +346,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.2, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0, 0.4, 0.005, 0, 1)"},
@@ -388,9 +359,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-olive-blubber-3", -- bright
-        order = "c[gleba-land-tiles]-a[lowland-olive-blubber]",
+        name = "lowland-olive-blubber-3", -- Olive blubber bright
+        order = "c[land-tiles]-a[lowland]-a[olive-blubber]-c",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-olive-blubber",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
         layer = gleba_lowland_tile_offset+8,
@@ -407,7 +379,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.4, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0.8, 1, 0.005, 0, 1)"},
@@ -421,9 +392,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-brown-blubber",
-        order = "c[gleba-land-tiles]-a[lowland-brown-blubber]",
+        name = "lowland-brown-blubber", -- Brown blubber
+        order = "c[land-tiles]-a[lowland]-a[olive-blubber]-d",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-olive-blubber",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
         layer = gleba_lowland_tile_offset+1,
@@ -440,7 +412,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.4, 0.005, 0, 1) + 0.1 * (gleba_plants_noise_b - 0.8)"},
@@ -454,9 +425,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-pale-green",
-        order = "c[gleba-land-tiles]-a[lowland-olive-blubber]",
+        name = "lowland-pale-green", -- Sickly blubber
+        order = "c[land-tiles]-a[lowland]-a[olive-blubber]-e",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-olive-blubber",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
         layer = gleba_lowland_tile_offset+2,
@@ -473,7 +445,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.2, 0.4, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0, 0.3, 0.005, 0, 1)"},
@@ -488,9 +459,10 @@ data:extend({
       ----------- Cauliflower
       {
         type = "tile",
-        name = "lowland-cream-cauliflower-2",
-        order = "c[gleba-land-tiles]-a[lowland-cream-cauliflower]",
+        name = "lowland-cream-cauliflower-2", -- Cauliflower mold
+        order = "c[land-tiles]-a[lowland]-b[cauliflower]-b",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-cream-cauliflower",
         collision_mask = tile_collision_masks.ground(),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.3, 0.45, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, -0.2, 1, 0.005, 0, 1)"},
         layer_group = "water-overlay",
@@ -508,7 +480,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.semi_wet,
@@ -521,8 +492,8 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-cream-cauliflower",
-        order = "c[gleba-land-tiles]-a[lowland-cream-cauliflower]",
+        name = "lowland-cream-cauliflower", -- Cauliflower lichen
+        order = "c[land-tiles]-a[lowland]-b[cauliflower]-a",
         subgroup = "gleba-tiles",
         collision_mask = tile_collision_masks.ground(),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.45, 0.65, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, -0.2, 1, 0.005, 0, 1)"},
@@ -541,7 +512,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.semi_wet,
@@ -554,9 +524,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-dead-skin",
-        order = "c[gleba-land-tiles]-a[lowland-cream-cauliflower]",
+        name = "lowland-dead-skin", -- Deadskin mold
+        order = "c[land-tiles]-a[lowland]-b[cauliflower]-c",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-cream-cauliflower",
         collision_mask = tile_collision_masks.ground(),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.45, 0.65, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, -1, -0.2, 0.005, 0, 1)"},
         layer_group = "water-overlay",
@@ -574,7 +545,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.semi_wet,
@@ -587,9 +557,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-dead-skin-2",
-        order = "c[gleba-land-tiles]-a[lowland-cream-cauliflower]",
+        name = "lowland-dead-skin-2", -- Deadskin mold bright
+        order = "c[land-tiles]-a[lowland]-b[cauliflower]-d",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-cream-cauliflower",
         collision_mask = tile_collision_masks.ground(),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.3, 0.45, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, -1, -0.2, 0.005, 0, 1)"},
         layer_group = "water-overlay",
@@ -607,7 +578,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.semi_wet,
@@ -620,9 +590,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-cream-red",
-        order = "c[gleba-land-tiles]-a[lowland-cream-red]",
+        name = "lowland-cream-red", -- Cauliflower red mold
+        order = "c[land-tiles]-a[lowland]-b[cauliflower]-e",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-red-vein-4",
         collision_mask = tile_collision_masks.ground(),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.62, 0.77, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.25, 1, 0.005, 0, 1)"},
         layer_group = "water-overlay",
@@ -640,7 +611,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.semi_wet,
@@ -654,9 +624,10 @@ data:extend({
       ----------- Red vein
       {
         type = "tile",
-        name = "lowland-red-vein-2", -- bulges
-        order = "c[gleba-land-tiles]-a[lowland-red-vein]",
+        name = "lowland-red-vein-2", -- Red vein bulges
+        order = "c[land-tiles]-a[lowland]-c[red-vein]-b",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-red-vein-4",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
         layer = gleba_lowland_tile_offset+12,
@@ -673,7 +644,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.75, 1, 0.005, 0, 1) + 0.1 * (gleba_plants_noise_b - 1)"},
@@ -687,9 +657,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-red-vein", -- sanguine
-        order = "c[gleba-land-tiles]-a[lowland-red-vein]",
+        name = "lowland-red-vein", -- Sanguine lichen
+        order = "c[land-tiles]-a[lowland]-c[red-vein]-a",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-red-vein-4",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
         layer = gleba_lowland_tile_offset+13,
@@ -706,7 +677,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.45, 0.75, 0.005, 0, 1)"},
@@ -720,9 +690,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-red-vein-3", -- dull
-        order = "c[gleba-land-tiles]-a[lowland-red-vein]",
+        name = "lowland-red-vein-3", -- Red vein dull
+        order = "c[land-tiles]-a[lowland]-c[red-vein]-c",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-red-vein-4",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
         layer = gleba_lowland_tile_offset+14,
@@ -738,7 +709,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.25, 0.45, 0.005, 0, 1)"},
@@ -751,8 +721,8 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-red-vein-4", -- bright
-        order = "c[gleba-land-tiles]-a[lowland-red-vein]",
+        name = "lowland-red-vein-4", -- Red vein bright
+        order = "c[land-tiles]-a[lowland]-c[red-vein]-d",
         subgroup = "gleba-tiles",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
@@ -769,7 +739,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.75, 1, 0.005, 0, 1)"},
@@ -782,9 +751,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-red-vein-dead",
-        order = "c[gleba-land-tiles]-a[lowland-red-vein]",
+        name = "lowland-red-vein-dead", -- Red vein dead
+        order = "c[land-tiles]-a[lowland]-c[red-vein]-e",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-red-vein-4",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
         layer = gleba_lowland_tile_offset+7,
@@ -801,7 +771,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.6, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0, 0.25, 0.005, 0, 1)"},
@@ -815,9 +784,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "lowland-red-infection",
-        order = "c[gleba-land-tiles]-a[lowland-red-vein]",
+        name = "lowland-red-infection", -- Red infection
+        order = "c[land-tiles]-a[lowland]-c[red-vein]-f",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "lowland-red-vein-4",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "water-overlay",
         layer = gleba_lowland_tile_offset+16,
@@ -833,7 +803,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.05, 0, 1) + 0.1 * (gleba_plants_noise - 1)"},
@@ -848,8 +817,8 @@ data:extend({
       ----------- Cracked
       {
         type = "tile",
-        name = "midland-cracked-lichen",
-        order = "c[gleba-land-tiles]-a[midland-yellow-crust]",
+        name = "midland-cracked-lichen", -- Cracked lichen
+        order = "c[land-tiles]-b[midland]-a[cracked]-a",
         subgroup = "gleba-tiles",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "ground-natural",
@@ -864,7 +833,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.soft_bark,
@@ -877,9 +845,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "midland-cracked-lichen-dull",
-        order = "c[gleba-land-tiles]-a[midland-yellow-crust]",
+        name = "midland-cracked-lichen-dull", -- Cracked lichen dull
+        order = "c[land-tiles]-b[midland]-a[cracked]-b",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "midland-cracked-lichen",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "ground-natural",
         layer = gleba_tile_offset + 9,
@@ -893,7 +862,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.soft_bark,
@@ -906,9 +874,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "midland-cracked-lichen-dark",
-        order = "c[gleba-land-tiles]-a[midland-yellow-crust]",
+        name = "midland-cracked-lichen-dark", -- Cracked lichen dark
+        order = "c[land-tiles]-b[midland]-a[cracked]-c",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "midland-cracked-lichen",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "ground-natural",
         layer = gleba_tile_offset,
@@ -922,7 +891,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.soft_bark,
@@ -936,9 +904,10 @@ data:extend({
       ----------- Turqoise Bark
       {
         type = "tile",
-        name = "midland-turquoise-bark-2",
-        order = "c[gleba-land-tiles]-a[midland-turquoise-bark]",
+        name = "midland-turquoise-bark-2", -- Turquoise bark
+        order = "c[land-tiles]-b[midland]-b[turquoise-bark]-a",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "midland-cracked-lichen",
         collision_mask = tile_collision_masks.ground(),
         layer = gleba_tile_offset + 10,
         sprite_usage_surface = "gleba",
@@ -950,7 +919,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0.05, 0.4, 0.2, 0, 1) - 0.2 * gleba_temperature_normalised"},
@@ -964,9 +932,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "midland-turquoise-bark",
-        order = "c[gleba-land-tiles]-a[midland-turquoise-bark]",
+        name = "midland-turquoise-bark", -- Turquoise bark lichen
+        order = "c[land-tiles]-b[midland]-b[turquoise-bark]-b",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = "midland-cracked-lichen",
         collision_mask = tile_collision_masks.ground(),
         layer = gleba_tile_offset + 11,
         sprite_usage_surface = "gleba",
@@ -978,7 +947,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0, 0.35, 0.2, 0, 1) + 0.2 * gleba_temperature_normalised"},
@@ -993,9 +961,10 @@ data:extend({
       ----------- Starburst
       {
         type = "tile",
-        name = "midland-yellow-crust-3", -- beige
-        order = "c[gleba-land-tiles]-a[midland-yellow-crust]",
+        name = "midland-yellow-crust-3", -- Beige crust lichen
+        order = "c[land-tiles]-b[midland]-c[starburst]-c",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = 'midland-yellow-crust',
         collision_mask = tile_collision_masks.ground(),
         layer_group = "ground-natural",
         layer = gleba_tile_offset + 12,
@@ -1009,7 +978,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.dry_rock,
@@ -1022,9 +990,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "midland-yellow-crust-2", -- red
-        order = "c[gleba-land-tiles]-a[midland-yellow-crust]",
+        name = "midland-yellow-crust-2", -- Red crust lichen
+        order = "c[land-tiles]-b[midland]-c[starburst]-b",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = 'midland-yellow-crust',
         collision_mask = tile_collision_masks.ground(),
         layer_group = "ground-natural",
         layer = gleba_tile_offset + 13,
@@ -1038,7 +1007,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.dry_rock,
@@ -1051,8 +1019,8 @@ data:extend({
       },
       {
         type = "tile",
-        name = "midland-yellow-crust", -- main
-        order = "c[gleba-land-tiles]-a[midland-yellow-crust]",
+        name = "midland-yellow-crust", -- Orange crust lichen
+        order = "c[land-tiles]-b[midland]-c[starburst]-a",
         subgroup = "gleba-tiles",
         collision_mask = tile_collision_masks.ground(),
         layer_group = "ground-natural",
@@ -1067,7 +1035,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.dry_rock,
@@ -1080,9 +1047,10 @@ data:extend({
       },
       {
         type = "tile",
-        name = "midland-yellow-crust-4", -- yellow
-        order = "c[gleba-land-tiles]-a[midland-yellow-crust]",
+        name = "midland-yellow-crust-4", -- Yellow crust lichen
+        order = "c[land-tiles]-b[midland]-c[starburst]-d",
         subgroup = "gleba-tiles",
+        factoriopedia_alternative = 'midland-yellow-crust',
         collision_mask = tile_collision_masks.ground(),
         layer_group = "ground-natural",
         layer = gleba_tile_offset + 15,
@@ -1096,7 +1064,6 @@ data:extend({
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
             [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
             [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-            --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
           }
         ),
         walking_sound = tile_sounds.walking.dry_rock,
@@ -1107,15 +1074,14 @@ data:extend({
         absorptions_per_second = tile_pollution.gleba,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
-
-
     ---- Highland
      ----------- Grey Rock
     {
       type = "tile",
-      name = "highland-dark-rock",
-      order = "c[gleba-land-tiles]-a[highland-dark-rock]",
+      name = "highland-dark-rock", -- Dark dry lichen
+      order = "c[land-tiles]-c[highland]-a[grey-rock]-a",
       subgroup = "gleba-tiles",
+      factoriopedia_alternative = "highland-dark-rock-2",
       collision_mask = tile_collision_masks.ground(),
       layer = gleba_tile_offset + 16,
       sprite_usage_surface = "gleba",
@@ -1127,7 +1093,6 @@ data:extend({
           [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
           [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
           [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-          --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
         }
       ),
       autoplace = {probability_expression = "gleba_highland * max(0, 1.05 + 0.1 * (1 - gleba_aux) + 0.2 * gleba_temperature_normalised)"},
@@ -1141,8 +1106,8 @@ data:extend({
     },
     {
       type = "tile",
-      name = "highland-dark-rock-2",
-      order = "c[gleba-land-tiles]-a[highland-dark-rock]",
+      name = "highland-dark-rock-2", -- Highland rock
+      order = "c[land-tiles]-c[highland]-a[grey-rock]-b",
       subgroup = "gleba-tiles",
       collision_mask = tile_collision_masks.ground(),
       layer = gleba_tile_offset + 17,
@@ -1155,7 +1120,6 @@ data:extend({
           [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
           [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
           [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-          --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
         }
       ),
       autoplace = {probability_expression = "gleba_highland * max(0, 1.13 + 0.1 * (min(gleba_aux + 0.1, 1-gleba_aux)))"},
@@ -1169,9 +1133,10 @@ data:extend({
     },
     {
       type = "tile",
-      name = "highland-yellow-rock",
-      order = "c[gleba-land-tiles]-a[highland-yellow-rock]",
+      name = "highland-yellow-rock", -- Highland yellow rock
+      order = "c[land-tiles]-c[highland]-a[grey-rock]-c",
       subgroup = "gleba-tiles",
+      factoriopedia_alternative = "highland-dark-rock-2",
       collision_mask = tile_collision_masks.ground(),
       layer = gleba_tile_offset + 18,
       sprite_usage_surface = "gleba",
@@ -1183,7 +1148,6 @@ data:extend({
           [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
           [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
           [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-          --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
         }
       ),
       autoplace = {probability_expression = "gleba_highland * max(0, 1 + 0.1 * gleba_aux - 0.2 * gleba_temperature_normalised)"},
@@ -1197,9 +1161,10 @@ data:extend({
     },
     {
       type = "tile",
-      name = "pit-rock",
-      order = "c[gleba-land-tiles]-a[highland-dark-rock]",
+      name = "pit-rock", -- Pit rock
+      order = "c[land-tiles]-c[highland]-a[grey-rock]-d",
       subgroup = "gleba-tiles",
+      factoriopedia_alternative = "highland-dark-rock-2",
       collision_mask = tile_collision_masks.ground(),
       layer = gleba_tile_offset - 1,
       sprite_usage_surface = "gleba",
@@ -1211,13 +1176,9 @@ data:extend({
           [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
           [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
           [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-          --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
         }
       ),
-      autoplace =
-      {
-        probability_expression = "2 * gleba_rockpools_pitrock"
-      },
+      autoplace = {probability_expression = "2 * gleba_rockpools_pitrock"},
       walking_sound = tile_sounds.walking.dry_rock,
       landing_steps_sound = tile_sounds.landing.rock,
       map_color = {r = tile_lightening+22, g = tile_lightening+22, b = tile_lightening+30},
@@ -1238,7 +1199,6 @@ table.insert(water_tile_type_names, "wetland-blue-slime")
 table.insert(water_tile_type_names, "wetland-yumako")
 table.insert(water_tile_type_names, "wetland-jellynut")
 table.insert(water_tile_type_names, "gleba-deep-lake")
-
 
 data:extend({
   {
@@ -1276,15 +1236,12 @@ data:extend({
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     map_color={132, 119, 7},
     absorptions_per_second = tile_pollution.gleba_water,
-
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
-
     walking_sound = base_tile_sounds.walking.shallow_water,
     landing_steps_sound = tile_sounds.landing.semi_wet,
     driving_sound = tile_sounds.driving.wetland,
     ambient_sounds = tile_sounds.ambient.insects_deep_mud({max_entity_count = 30, average_pause_seconds = 8}),
-
     trigger_effect = tile_trigger_effects.water_mud_trigger_effect(),
   },
   {
@@ -1323,19 +1280,12 @@ data:extend({
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     map_color={132, 7, 119},
     absorptions_per_second = tile_pollution.gleba_water,
-
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
-
     walking_sound = base_tile_sounds.walking.shallow_water,
     landing_steps_sound = tile_sounds.landing.wet,
     driving_sound = tile_sounds.driving.wetland,
-    ambient_sounds =
-    {
-      tile_sounds.ambient.insects_deep_mud({max_entity_count = 30, average_pause_seconds = 8}),
-      tile_sounds.ambient.night_frogs,
-    },
-
+    ambient_sounds = {tile_sounds.ambient.insects_deep_mud({max_entity_count = 30, average_pause_seconds = 8}), tile_sounds.ambient.night_frogs,},
     trigger_effect = tile_trigger_effects.water_mud_trigger_effect(),
   },
   {
@@ -1347,8 +1297,6 @@ data:extend({
     autoplace = {probability_expression = "gleba_shallows_aux_2 + 2 * min(gleba_select(gleba_aux, 0.3, 0.7, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
     effect = "wetland-grey",
-    --effect_color = { 76, 70, 79 },
-    --effect_color_secondary = { 76, 70, 79 },
     effect_color = { 57, 58, 73 },
     effect_color_secondary = { 76, 70, 79 },
     map_color = {r = 46, g = 45, b = 51},
@@ -1374,11 +1322,7 @@ data:extend({
     walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.wet,
     driving_sound = tile_sounds.driving.wetland,
-    ambient_sounds =
-    {
-      tile_sounds.ambient.insects_deep_mud({}),
-      tile_sounds.ambient.night_insects,
-    },
+    ambient_sounds = {tile_sounds.ambient.insects_deep_mud({}), tile_sounds.ambient.night_insects,},
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
@@ -1391,6 +1335,7 @@ data:extend({
     name = "wetland-light-dead-skin",
     order = "b[wetland]-c[wetland-light-dead-skin]",
     subgroup = "gleba-water-tiles",
+    factoriopedia_alternative = "wetland-dead-skin",
     collision_mask = tile_collision_masks.shallow_water(),
     autoplace = {probability_expression = "gleba_shallows_edge_aux_2 + 2 * min(gleba_select(gleba_aux, 0.3, 0.7, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
@@ -1420,11 +1365,7 @@ data:extend({
     walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.semi_wet,
     driving_sound = tile_sounds.driving.wetland,
-    ambient_sounds =
-    {
-      tile_sounds.ambient.insects_deep_mud({}),
-      tile_sounds.ambient.night_insects,
-    },
+    ambient_sounds = {tile_sounds.ambient.insects_deep_mud({}), tile_sounds.ambient.night_insects,},
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
@@ -1441,8 +1382,6 @@ data:extend({
     autoplace = {probability_expression = "gleba_shallows_aux_1 + 2 * min(gleba_select(gleba_aux, 0, 0.3, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
     effect = "wetland-green",
-    --effect_color = {50,66,66},
-    --effect_color_secondary = { 49, 80, 14 },
     effect_color = {40,56,71},
     effect_color_secondary = { 39, 70, 24 },
     map_color = {25, 53, 25},
@@ -1485,6 +1424,7 @@ data:extend({
     name = "wetland-light-green-slime",
     order = "b[wetland]-a[wetland-light-green-slime]",
     subgroup = "gleba-water-tiles",
+    factoriopedia_alternative = "wetland-green-slime",
     collision_mask = tile_collision_masks.shallow_water(),
     autoplace = {probability_expression = "gleba_shallows_edge_aux_1 + 2 * min(gleba_select(gleba_aux, 0, 0.3, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
@@ -1573,6 +1513,7 @@ data:extend({
     name = "wetland-pink-tentacle",
     order = "b[wetland]-e[wetland-pink-tentacle]",
     subgroup = "gleba-water-tiles",
+    factoriopedia_alternative = "wetland-red-tentacle",
     collision_mask = tile_collision_masks.shallow_water(),
     autoplace = {probability_expression = "gleba_shallows_edge_aux_3"},
     lowland_fog = true,
@@ -1685,15 +1626,10 @@ data:extend({
       empty_transitions=true,
    },
     transitions = data.raw.tile["water"].transitions,
-
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = sound_variations("__base__/sound/walking/shallow-water", 7, 1),
     landing_steps_sound = tile_sounds.landing.wet,
-    ambient_sounds =
-    {
-      tile_sounds.ambient.waterlap,
-      tile_sounds.ambient.rain_on_water,
-    },
+    ambient_sounds = {tile_sounds.ambient.waterlap, tile_sounds.ambient.rain_on_water,},
     map_color = {18,37,51},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,

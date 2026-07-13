@@ -7,43 +7,11 @@ local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 
-
 table.insert(water_tile_type_names, "oil-ocean-shallow")
 table.insert(water_tile_type_names, "oil-ocean-deep")
 table.insert(water_tile_type_names, "oil-ocean-shallow-2")
 table.insert(water_tile_type_names, "oil-ocean-deep-2")
 
-
---[[
-local fulgora_sand_transitions =
-{
-  {
-    to_tiles = water_tile_type_names,
-    transition_group = water_transition_group_id,
-
-    background_layer_group = "water",
-    background_layer_offset = -5,
-    masked_background_layer_offset = 1,
-    offset_background_layer_by_tile_layer = false,
-
-    spritesheet = "__space-age__/graphics/terrain/water-transitions/fulgora-sand.png",
-    layout = tile_spritesheet_layout.transition_16_16_16_4_8_short,
-    background_enabled = false,
-    effect_map_layout =
-    {
-      spritesheet = "__space-age__/graphics/terrain/effect-maps/water-fulgora-sand-mask.png",
-      --tile_height = 2,
-      inner_corner_tile_height = 2,
-      outer_corner_tile_height = 2,
-      side_tile_height = 2,
-      u_transition_tile_height = 2,
-      o_transition_count = 1
-    },
-    background_mask_layout = tile_spritesheet_layout.simple_white_mask
-  },
-  ground_to_out_of_map_transition
-}
-]]
 
 local fulgora_rock_sand_transitions =
 {
@@ -62,7 +30,6 @@ local fulgora_rock_sand_transitions =
     effect_map_layout =
     {
       spritesheet = "__space-age__/graphics/terrain/effect-maps/water-fulgora-sand-mask.png",
-      --tile_height = 2,
       inner_corner_tile_height = 2,
       outer_corner_tile_height = 2,
       side_tile_height = 2,
@@ -101,7 +68,6 @@ local fulgora_oil_transitions =
     effect_map_layout =
     {
       spritesheet = "__space-age__/graphics/terrain/effect-maps/water-fulgora-sand-mask.png",
-      --tile_height = 2,
       inner_corner_tile_height = 2,
       outer_corner_tile_height = 2,
       side_tile_height = 2,
@@ -208,7 +174,6 @@ local fulgora_oil_sand_transitions =
     effect_map_layout =
     {
       spritesheet = "__space-age__/graphics/terrain/effect-maps/water-fulgora-sand-mask.png",
-      --tile_height = 2,
       inner_corner_tile_height = 2,
       outer_corner_tile_height = 2,
       side_tile_height = 2,
@@ -359,6 +324,7 @@ data:extend
     type = "tile",
     order = "b[natural]-b[dunes]",
     subgroup = "fulgora-tiles",
+    factoriopedia_alternative = "fulgoran-dust",
     collision_mask = tile_collision_masks.ground(),
     autoplace = {
       probability_expression = "1 + fulgora_dunes"
@@ -395,6 +361,7 @@ data:extend
     type = "tile",
     order = "b[natural]-c[sand]",
     subgroup = "fulgora-tiles",
+    factoriopedia_alternative = "fulgoran-dust",
     collision_mask = tile_collision_masks.ground(),
     autoplace = {
       probability_expression = "1 - fulgora_dunes"
@@ -431,6 +398,7 @@ data:extend
     type = "tile",
     order = "b[natural]-d[rock]",
     subgroup = "fulgora-tiles",
+    factoriopedia_alternative = "fulgoran-dust",
     collision_mask = tile_collision_masks.ground(),
     autoplace = {
       probability_expression = "0.8 + fulgora_rock * 2 - max(0, fulgora_mix_oil) * 6"
@@ -470,8 +438,6 @@ data:extend
     autoplace = { probability_expression = "fulgora_tile_ruin_paving" },
     layer = 5,
     map_color={120, 94, 67},
-    --map_color={125, 99, 72}, -- too close to rock
-    --map_color={255, 255, 0},
     walking_speed_modifier = 1.3, -- same as stone path
     vehicle_friction_modifier = 1.1,
     absorptions_per_second = tile_pollution.fulgora,
@@ -502,11 +468,11 @@ data:extend
     type = "tile",
     order = "c[artificial]-a[walls]",
     subgroup = "fulgora-tiles",
+    factoriopedia_alternative = "fulgoran-machinery",
     collision_mask = tile_collision_masks.ground(),
     autoplace = { probability_expression = "fulgora_tile_ruin_walls" },
     layer = 10,
     map_color={114, 75, 65},
-    --map_color={255, 0, 0},
     vehicle_friction_modifier = 4,
     absorptions_per_second = tile_pollution.fulgora,
     sprite_usage_surface = "fulgora",
@@ -536,11 +502,11 @@ data:extend
     type = "tile",
     order = "c[artificial]-c[conduit]",
     subgroup = "fulgora-tiles",
+    factoriopedia_alternative = "fulgoran-machinery",
     collision_mask = tile_collision_masks.ground(),
     autoplace = { probability_expression = "fulgora_tile_ruin_conduit" },
     layer = 11,
     map_color={100, 79, 68},
-    --map_color={255, 0, 255},
     vehicle_friction_modifier = 4,
     absorptions_per_second = tile_pollution.fulgora,
     sprite_usage_surface = "fulgora",
@@ -574,7 +540,6 @@ data:extend
     autoplace = { probability_expression = "fulgora_tile_ruin_machinery" },
     layer = 12,
     map_color={89, 79, 68},
-    --map_color={0, 0, 255},
     vehicle_friction_modifier = 4,
     absorptions_per_second = tile_pollution.fulgora,
     sprite_usage_surface = "fulgora",
@@ -623,7 +588,6 @@ data:extend
     variants =
     {
       empty_transitions = true,
-      --transition = transition_masks(),
       material_background =
       {
         picture = "__space-age__/graphics/terrain/oil-sand-8x.png",
@@ -634,9 +598,7 @@ data:extend
       material_texture_width_in_tiles = 8,
       material_texture_height_in_tiles = 8
     },
-    --transitions = table.deepcopy(data.raw.tile["sand-1"].transitions),
     transitions = fulgora_oil_sand_transitions,
-    --transitions_between_transitions = table.deepcopy(data.raw.tile["sand-1"].transitions_between_transitions),
     transitions_between_transitions = fulgora_oil_sand_transitions_between_transitions,
     walking_sound = base_tile_sounds.walking.oil({volume = 1.0, modifiers = volume_multiplier("main-menu", 1.5)}),
     landing_steps_sound = tile_sounds.landing.oil,
@@ -677,9 +639,7 @@ data:extend
       material_texture_width_in_tiles = 8,
       material_texture_height_in_tiles = 8
     },
-    --transitions = table.deepcopy(data.raw.tile["sand-1"].transitions),
     transitions = fulgora_oil_sand_transitions,
-    --transitions_between_transitions = table.deepcopy(data.raw.tile["sand-1"].transitions_between_transitions),
     transitions_between_transitions = fulgora_oil_sand_transitions_between_transitions,
     walking_sound = base_tile_sounds.walking.oil({volume = 1.0, modifiers = volume_multiplier("main-menu", 1.5)}),
     landing_steps_sound = tile_sounds.landing.oil,
@@ -810,4 +770,3 @@ data:extend
     }
   }
 }
-

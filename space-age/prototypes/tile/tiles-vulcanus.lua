@@ -455,6 +455,7 @@ data:extend
     name = "lava-hot",
     order = "a-a",
     subgroup = "vulcanus-tiles",
+    factoriopedia_alternative = "lava",
     collision_mask = tile_collision_masks.lava(),
     autoplace =
     {
@@ -529,6 +530,7 @@ data:extend
     name = "volcanic-cracks-warm",
     subgroup = "vulcanus-tiles",
     order = "a-d",
+    factoriopedia_alternative = "volcanic-cracks",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
@@ -594,6 +596,7 @@ data:extend
     name = "volcanic-folds-flat",
     subgroup = "vulcanus-tiles",
     order = "a-j",
+    factoriopedia_alternative = "volcanic-folds",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
@@ -661,6 +664,7 @@ data:extend
     name = "volcanic-ash-dark",
     subgroup = "vulcanus-tiles",
     order = "a-p",
+    factoriopedia_alternative = "volcanic-ash-light",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
@@ -696,6 +700,7 @@ data:extend
     name = "volcanic-ash-flats",
     subgroup = "vulcanus-tiles",
     order = "a-o",
+    factoriopedia_alternative = "volcanic-ash-light",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
@@ -796,6 +801,7 @@ data:extend
     name = "volcanic-smooth-stone-warm",
     subgroup = "vulcanus-tiles",
     order = "a-f",
+    factoriopedia_alternative = "volcanic-smooth-stone",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
@@ -830,6 +836,7 @@ data:extend
     name = "volcanic-ash-cracks",
     subgroup = "vulcanus-tiles",
     order = "a-r",
+    factoriopedia_alternative = "volcanic-ash-light",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
@@ -892,6 +899,7 @@ data:extend
     name = "volcanic-folds-warm",
     subgroup = "vulcanus-tiles",
     order = "a-h",
+    factoriopedia_alternative = "volcanic-folds",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
@@ -956,6 +964,7 @@ data:extend
     name = "volcanic-soil-light",
     subgroup = "vulcanus-tiles",
     order = "a-m",
+    factoriopedia_alternative = "volcanic-soil-dark",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
@@ -988,6 +997,7 @@ data:extend
     name = "volcanic-ash-soil",
     subgroup = "vulcanus-tiles",
     order = "a-q",
+    factoriopedia_alternative = "volcanic-soil-dark",
     collision_mask = tile_collision_masks.ground(),
     autoplace =
     {

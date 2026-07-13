@@ -280,6 +280,76 @@ inserter_connector_template =
   }
 }
 
+heat_pipe_connector_template =
+{
+  connector_main = util.sprite_load("__base__/graphics/entity/heat-pipe/heat-pipe-circuit-connection",
+  {
+    priority = "low",
+    scale = 0.5,
+  }),
+  connector_shadow = util.sprite_load("__base__/graphics/entity/heat-pipe/heat-pipe-circuit-connection-shadow",
+  {
+    draw_as_shadow = true,
+    priority = "low",
+    scale = 0.5,
+  }),
+  led_blue = util.sprite_load("__base__/graphics/entity/heat-pipe/heat-pipe-circuit-connection-blue-led",
+  {
+    priority = "low",
+    scale = 0.5,
+    draw_as_glow = true,
+  }),
+  wire_pins = util.empty_sprite(),
+  wire_pins_shadow = util.empty_sprite(),
+  led_blue_off = util.empty_sprite(),
+  led_green = util.empty_sprite(),
+  led_red = util.empty_sprite(),
+  wire_offsets =
+  {
+    {red = util.by_pixel(10.5, -9), green = util.by_pixel(10.5, -3.5)}, -- [    ] single
+    {red = util.by_pixel(10.5, -12), green = util.by_pixel(10.5, -6.5)}, -- [   N] endingUp
+    {red = util.by_pixel(8, 3), green = util.by_pixel(0, 3)}, -- [  E ] endingRight
+    {red = util.by_pixel(0.5, -3), green = util.by_pixel(-6.0, -8)}, -- [  EN] cornerRightUp
+
+    {red = util.by_pixel(10.5, 1.5), green = util.by_pixel(10.5, 7.5)}, -- [ S  ] endingDown
+    {red = util.by_pixel(11, -6), green = util.by_pixel(11, -0.5)}, -- [ S N] straightVertical
+    {red = util.by_pixel(-5, 0.5), green = util.by_pixel(1, -5.5)}, -- [ SE ] cornerRightDown
+    {red = util.by_pixel(-10, -1), green = util.by_pixel(-10.5, -7)}, -- [ SEN] tRight
+
+    {red = util.by_pixel(-1, 3), green = util.by_pixel(-9.5, 3)}, -- [W   ] endingLeft
+    {red = util.by_pixel(5, -6.5), green = util.by_pixel(-1, -2.5)}, -- [W  N] cornerLeftUp
+    {red = util.by_pixel(4, 3.5), green = util.by_pixel(-3.5, 3.5)}, -- [W E ] straightHorizontal
+    {red = util.by_pixel(4, 3.5), green = util.by_pixel(-3.5, 3.5)}, -- [W EN] tUp
+
+    {red = util.by_pixel(-1.5, -6), green = util.by_pixel(4.5, -1.5)}, -- [WS  ] cornerLeftDown
+    {red = util.by_pixel(10, -8), green = util.by_pixel(11, -2)}, -- [WS N] tLeft
+    {red = util.by_pixel(-5, -12.5), green = util.by_pixel(3, -12.5)}, -- [WSE ] tDown
+    {red = util.by_pixel(10, -8), green = util.by_pixel(10.5, -1.5)}, -- [WSEN] cross
+  },
+  wire_shadow_offsets =
+  {
+    {red = util.by_pixel(16, -2.5), green = util.by_pixel(16, 3)}, -- [    ] single
+    {red = util.by_pixel(16, -5), green = util.by_pixel(16, 0)}, -- [   N] endingUp
+    {red = util.by_pixel(14.5, 8.5), green = util.by_pixel(6, 8.5)}, -- [  E ] endingRight
+    {red = util.by_pixel(6.5, 2), green = util.by_pixel(5, 0)}, -- [  EN] cornerRightUp
+
+    {red = util.by_pixel(16, 7.5), green = util.by_pixel(16, 12.5)}, -- [ S  ] endingDown
+    {red = util.by_pixel(16, 0), green = util.by_pixel(16, 5.5)}, -- [ S N] straightVertical
+    {red = util.by_pixel(1, 7.5), green = util.by_pixel(7, 2.5)}, -- [ SE ] cornerRightDown
+    {red = util.by_pixel(-4, 6), green = util.by_pixel(-4.5, 0)}, -- [ SEN] tRight
+
+    {red = util.by_pixel(5, 8.5), green = util.by_pixel(-3.5, 8.5)}, -- [W   ] endingLeft
+    {red = util.by_pixel(11, -1), green = util.by_pixel(5, 3)}, -- [W  N] cornerLeftUp
+    {red = util.by_pixel(10.5, 9), green = util.by_pixel(3, 9)}, -- [W E ] straightHorizontal
+    {red = util.by_pixel(10.5, 9), green = util.by_pixel(3, 9)}, -- [W EN] tUp
+
+    {red = util.by_pixel(4.5, 1), green = util.by_pixel(9.5, 5.5)}, -- [WS  ] cornerLeftDown
+    {red = util.by_pixel(16, -1), green = util.by_pixel(16, 4)}, -- [WS N] tLeft
+    {red = util.by_pixel(1, -5.5), green = util.by_pixel(9, -5.5)}, -- [WSE ] tDown
+    {red = util.by_pixel(16, -1), green = util.by_pixel(16, 4)}, -- [WSEN] cross
+  }
+}
+
 universal_connector_template =
 {
   connector_main =
@@ -1030,23 +1100,23 @@ circuit_connector_definitions["boiler"] = circuit_connector_definitions.create_v
 
 circuit_connector_definitions["heat-pipe"] = circuit_connector_definitions.create_vector
 (
-  universal_connector_template,
+  heat_pipe_connector_template,
   {
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [    ] single
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [   N] endingUp
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [  E ] endingRight
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [  EN] cornerRightUp
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [ S  ] endingDown
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [ S N] straightVertical
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [ SE ] cornerRightDown
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [ SEN] tRight
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [W   ] endingLeft
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [W  N] cornerLeftUp
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [W E ] straightHorizontal
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [W EN] tUp
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [WS  ] cornerLeftDown
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [WS N] tLeft
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [WSE ] tDown
-    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- [WSEN] cross
-  } -- TODO: to be refined
+    { variation =  0, show_shadow = true }, -- [    ] single
+    { variation =  1, show_shadow = true }, -- [   N] endingUp
+    { variation =  2, show_shadow = true }, -- [  E ] endingRight
+    { variation =  3, show_shadow = true }, -- [  EN] cornerRightUp
+    { variation =  4, show_shadow = true }, -- [ S  ] endingDown
+    { variation =  5, show_shadow = true }, -- [ S N] straightVertical
+    { variation =  6, show_shadow = true }, -- [ SE ] cornerRightDown
+    { variation =  7, show_shadow = false}, -- [ SEN] tRight
+    { variation =  8, show_shadow = true }, -- [W   ] endingLeft
+    { variation =  9, show_shadow = true }, -- [W  N] cornerLeftUp
+    { variation = 10, show_shadow = true }, -- [W E ] straightHorizontal
+    { variation = 11, show_shadow = true }, -- [W EN] tUp
+    { variation = 12, show_shadow = true }, -- [WS  ] cornerLeftDown
+    { variation = 13, show_shadow = true }, -- [WS N] tLeft
+    { variation = 14, show_shadow = true }, -- [WSE ] tDown
+    { variation = 15, show_shadow = false}, -- [WSEN] cross
+  }
 )

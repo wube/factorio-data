@@ -133,9 +133,6 @@ ammoniacal_ocean.order = "a[aquilo-water]-a[ammoniacal-ocean]"
 ammoniacal_ocean.subgroup = "aquilo-tiles"
 ammoniacal_ocean.fluid = "ammoniacal-solution"
 ammoniacal_ocean.collision_mask = tile_collision_masks.ammoniacal_ocean()
---ammoniacal_ocean.effect_color = {15, 30, 40}
---ammoniacal_ocean.effect_color_secondary = { 5, 40, 65 }
---ammoniacal_ocean.map_color={5, 15, 25 }
 ammoniacal_ocean.effect_color = {23, 21, 49}
 ammoniacal_ocean.effect_color_secondary = { 15, 30, 65 }
 ammoniacal_ocean.map_color={15, 13, 25 }
@@ -148,16 +145,12 @@ ammoniacal_ocean_2.order = "a[aquilo-water]-b[ammoniacal-ocean-2]"
 ammoniacal_ocean_2.subgroup = "aquilo-tiles"
 ammoniacal_ocean_2.fluid = "ammoniacal-solution"
 ammoniacal_ocean_2.collision_mask = tile_collision_masks.ammoniacal_ocean()
---ammoniacal_ocean_2.effect_color = {20, 32, 50}
---ammoniacal_ocean_2.effect_color_secondary = { 10, 42, 75 }
---ammoniacal_ocean_2.map_color={10, 17, 35 }
 ammoniacal_ocean_2.effect_color = {26, 26, 57}
 ammoniacal_ocean_2.effect_color_secondary = { 20, 28, 65 }
 ammoniacal_ocean_2.map_color={17, 15, 30 }
 ammoniacal_ocean_2.default_cover_tile = "ice-platform"
 ammoniacal_ocean_2.autoplace = {probability_expression = "ammoniacal_ocean_2"}
-
-
+ammoniacal_ocean_2.factoriopedia_alternative = "ammoniacal-ocean"
 
 data:extend({
   ammoniacal_ocean,
@@ -177,14 +170,11 @@ data:extend({
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
     subgroup = "aquilo-tiles",
-
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
-
     walking_sound = tile_sounds.walking.icy_snow,
     landing_steps_sound = tile_sounds.landing.snow,
     driving_sound = tile_sounds.driving.snow,
@@ -210,7 +200,6 @@ data:extend({
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
     subgroup = "aquilo-tiles",
@@ -234,6 +223,7 @@ data:extend({
     name = "snow-crests",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
+    factoriopedia_alternative = "snow-flat",
     collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_crests"},
     layer = aquilo_tile_offset_frozen + 3,
@@ -245,7 +235,6 @@ data:extend({
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -268,6 +257,7 @@ data:extend({
     name = "dust-crests",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
+    factoriopedia_alternative = "dust-flat",
     collision_mask = tile_collision_masks.ground(),
     layer = aquilo_tile_offset_thawed + 1,
     sprite_usage_surface = "aquilo",
@@ -278,7 +268,6 @@ data:extend({
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -301,6 +290,7 @@ data:extend({
     name = "snow-lumpy",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
+    factoriopedia_alternative = "snow-flat",
     collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_lumpy"},
     layer = aquilo_tile_offset_frozen + 4,
@@ -312,7 +302,6 @@ data:extend({
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -335,6 +324,7 @@ data:extend({
     name = "dust-lumpy",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
+    factoriopedia_alternative = "dust-flat",
     collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "10 * aquilo_snow_ice + 10 * aquilo_tile_variant"},
     layer = aquilo_tile_offset_thawed + 2,
@@ -346,7 +336,6 @@ data:extend({
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -369,6 +358,7 @@ data:extend({
     name = "snow-patchy",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
+    factoriopedia_alternative = "snow-flat",
     collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_patchy"},
     layer = aquilo_tile_offset_frozen + 5,
@@ -394,6 +384,7 @@ data:extend({
     name = "dust-patchy",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
+    factoriopedia_alternative = "dust-flat",
     collision_mask = tile_collision_masks.ground(),
     layer = aquilo_tile_offset_thawed + 3,
     sprite_usage_surface = "aquilo",
@@ -404,7 +395,6 @@ data:extend({
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -437,7 +427,6 @@ data:extend({
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
     subgroup = "aquilo-tiles",
@@ -459,13 +448,12 @@ data:extend({
     name = "ice-smooth",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-c[smooth]",
-    --minable = {mining_time = 0.1, result = "iceblock"},
+    factoriopedia_alternative = "ice-rough",
     collision_mask = tile_collision_masks.meltable_tile(),
     autoplace = {probability_expression = "ice_smooth"},
     layer = aquilo_tile_offset_frozen,
     sprite_usage_surface = "aquilo",
     variants = material_background("__space-age__/graphics/terrain/aquilo/ice-smooth.png", 4),
-
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
