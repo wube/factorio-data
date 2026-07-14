@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.11
+Date: 14. 07. 2026
+  Changes:
+    - Assembling machines with passthrough ports will consider the entire fluid segment as available for crafting. (https://forums.factorio.com/134309)
+  Optimizations:
+    - Stop drawing in-GUI simulations when the window is hidden or occluded.
+  Bugfixes:
+    - Fixed a crash when enabling pollution through the map editor 'force editor' - 'edit map settings' option. (https://forums.factorio.com/134994)
+    - Fixed that upgrading single-locomotive trains with interrupts didn't work correctly. (https://forums.factorio.com/134997)
+    - Fixed agricultural tower's harvesting and planting conditions were checked even when circuit wire was disconnected. (https://forums.factorio.com/135023)
+    - Fixed graphical issues on macOS. (https://forums.factorio.com/135019)
+    - Fixed memory usage spiking dramatically on macOS when window is hidden or occluded and in-GUI simulations are present.
+    - Fixed that logistic cell connections would not render when off screen. (https://forums.factorio.com/134929)
+    - Fixed that open-prototype-gui didn't work for things in the blueprint library. (https://forums.factorio.com/134927)
+    - Fixed a crash due to incorrectly migrated automatic rocket silo requests. (https://forums.factorio.com/134716)
+---------------------------------------------------------------------------------------------------
 Version: 2.1.10
 Date: 13. 07. 2026
   Changes:

@@ -10220,6 +10220,7 @@ infinity_chest.picture =
   }
 }
 infinity_chest.logistic_mode = nil
+infinity_chest.max_logistic_slots = nil
 infinity_chest.minable = {mining_time = 0.1, result = "infinity-chest"}
 infinity_chest.resistances = full_resistances()
 data:extend({infinity_chest})
