@@ -707,6 +707,8 @@ data:extend(
     type = "space-location",
     name = "solar-system-edge",
     icon = "__space-age__/graphics/icons/solar-system-edge.png",
+    starmap_icon = "__space-age__/graphics/icons/starmap-solar-system-edge.png",
+    starmap_icon_size = 512,
     order = "f[solar-system-edge]",
     subgroup = "planets",
     gravity_pull = -10,

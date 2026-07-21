@@ -1,4 +1,47 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.12
+Date: 21. 07. 2026
+  Changes:
+    - Changed rocket silo circuit 'Read orbital requests' to not include platform only requests.
+    - Changed platform requests importing from platforms to allow providing the item to cargo landing pads.
+  Bugfixes:
+    - Fixed that the browse games GUI wouldn't show the vertical scroll bar in some cases. (https://forums.factorio.com/134607)
+    - Fixed that ghost fuel requests could exceed the fuel stack size. (https://forums.factorio.com/134841)
+    - Fixed music and wind sounds being affected by low pass filter. (https://forums.factorio.com/134791)
+    - Fixed playing incorrect item sound in some cases with blueprint library. (https://forums.factorio.com/134925, https://forums.factorio.com/134926)
+    - Fixed that expansion groups would wait indefinitely for all members to arrive. (https://forums.factorio.com/134848)
+    - Fixed that expansion groups could get stuck in a passive semi-autonomous state, preventing normal pollution attacks. (https://forums.factorio.com/134761)
+    - Fixed that select-all and other text shortcuts didn't work on non-QWERTY keyboard layouts. (https://forums.factorio.com/134235)
+    - Fixed a desync when LuaSurface::override_pollution_type was used.
+    - Fixed burner generators were not producing pollution. (https://forums.factorio.com/135050)
+    - Fixed that upgrading trains on junctions didn't always work correctly. (https://forums.factorio.com/135057)
+    - Fixed that roboports would not turn off when out of energy if not configured to passively consume energy. (https://forums.factorio.com/135062)
+    - Fixed a crash when opening factoriopedia page on a land mine which has ammo category not set. (https://forums.factorio.com/135085)
+    - Fixed that map editor instant blueprint building didn't work for equipment grid ghosts. (https://forums.factorio.com/135084)
+    - Fixed that reverse rotate did not work nicely with things that rotation-snapped. (https://forums.factorio.com/134968)
+    - Fixed that LuaEntity::set_filter() did not work for logistic storage chests. (https://forums.factorio.com/134758)
+    - Fixed a layout issue related to tooltips and wrapped lines. (https://forums.factorio.com/132598)
+    - Fixed a second layout issue related to tooltips and wrapped lines. (https://forums.factorio.com/131923)
+    - Fixed a crash when queued construction robot orders are invalidated. (https://forums.factorio.com/135108)
+    - Fixed that the electric energy interface equipment showed energy usage strangely. (https://forums.factorio.com/135127)
+    - Fixed pumpjack frozen patches. (https://forums.factorio.com/134652)
+    - Fixed cropped animation on assembling machine 2. (https://forums.factorio.com/134636)
+    - Fixed some images failing to load on Macs with 8GB of unified memory. (https://forums.factorio.com/135055)
+    - Fixed that enabling native resolution rendering on Mac required a restart.
+    - Fixed that number input fields may not be focused depending on the GUI size. (https://forums.factorio.com/132924)
+    - Fixed enemy spawners unable to spawn defensive units under certain configurations. (https://forums.factorio.com/135148)
+    - Fixed that you could not set items too heavy for the base rocket silo in platform hub requests. (https://forums.factorio.com/134328)
+    - Fixed that the bonus GUI could show some crafting machines even if they had the not-in-bonus-gui flag set. (https://forums.factorio.com/135197)
+    - Fixed that dragging a decompressed blueprint string spanning multiple lines did not work. (https://forums.factorio.com/134510)
+    - Fixed that simulation clamping was a little too strict. (https://forums.factorio.com/134811)
+  Modding:
+    - Added ScriptTriggerEffectItem::custom_event.
+    - Added RecipePrototype::raise_on_crafted.
+  Scripting:
+    - Added LuaQualityPrototype::roll_quality().
+    - Added LuaBootstrap::get_event_name().
+    - Added LuaPlayer::editor_settings read/write.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.11
 Date: 14. 07. 2026
   Changes:
@@ -65,6 +108,7 @@ Date: 13. 07. 2026
     - Fixed a crash when mods change construction robot inventory contents while they're deconstructing things. (https://forums.factorio.com/134865)
     - Fixed assembler's set recipe would not select recipe with a product quality control when provided item signal. (https://forums.factorio.com/134977)
     - Fixed that on_gui_closed was not called when canceling new blueprints. (https://forums.factorio.com/134970)
+    - Fixed editing wires in remote view, and other control binding issues related to map dragging (https://forums.factorio.com/134393)
   Scripting:
     - Added LuaPlayer::toggle_menu_leaves_remote_view read/write.
     - Changed LuaEntity::apply_upgrade() to allow direct upgrading an entity without first needing to mark it for upgrade.
@@ -120,7 +164,6 @@ Date: 30. 06. 2026
     - Fixed that automatic rocket silos with mixed requests could get stuck when the platform didn't want any of the requests anymore. (https://forums.factorio.com/134256 and https://forums.factorio.com/134411)
     - Fixed that script-created trains could be created colliding with each other which would crash the game. (https://forums.factorio.com/134189)
     - Fixed that fast-replacing combinators would not copy the description. (https://forums.factorio.com/133804)
-    - Fixed editing wires in remote view, and other control binding issues related to map dragging (https://forums.factorio.com/134393)
   Scripting:
     - Added LuaPlayer::hide_locked_prototypes_in_factoriopedia read/write.
 ---------------------------------------------------------------------------------------------------

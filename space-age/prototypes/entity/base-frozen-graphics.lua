@@ -287,18 +287,27 @@ for _, inserter in pairs(data.raw.inserter) do
   end
 end
 
-data.raw["mining-drill"]["pumpjack"].graphics_set.reset_animation_when_frozen = true
-data.raw["mining-drill"]["pumpjack"].graphics_set.frozen_patch =
-{
-  sheet =
+local function set_pumpjack_frozen_patch(graphics_set, filename)
+  graphics_set.reset_animation_when_frozen = true
+  graphics_set.frozen_patch =
   {
-    filename = "__space-age__/graphics/entity/frozen/pumpjack/pumpjack.png",
-    priority = "extra-high",
-    width = 256,
-    height = 256,
-    scale = 0.5
+    sheet =
+    {
+      filename = filename,
+      priority = "extra-high",
+      width = 261,
+      height = 273,
+      scale = 0.5,
+      shift = util.by_pixel(-2.25, -4.75)
+    }
   }
-}
+end
+
+local pumpjack = data.raw["mining-drill"]["pumpjack"]
+set_pumpjack_frozen_patch(pumpjack.graphics_set, "__space-age__/graphics/entity/frozen/pumpjack/pumpjack.png")
+if pumpjack.graphics_set_flipped then
+  set_pumpjack_frozen_patch(pumpjack.graphics_set_flipped, "__space-age__/graphics/entity/frozen/pumpjack/pumpjack-flipped.png")
+end
 
 local pipe_pictures = data.raw["pipe"]["pipe"].pictures
 for _, property in pairs({"straight_vertical_single", "straight_vertical", "straight_vertical_window", "straight_horizontal",
