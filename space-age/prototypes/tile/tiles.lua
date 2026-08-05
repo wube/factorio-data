@@ -160,6 +160,7 @@ local foundation_transitions_between_transitions =
     transition_group2 = lava_transition_group_id,
 
     spritesheet = "__space-age__/graphics/terrain/lava-transitions/foundation-transitions-lava.png",
+    lightmap_layout = { spritesheet = "__space-age__/graphics/terrain/lava-transitions/foundation-transitions-lightmap.png" },
     layout = tile_spritesheet_layout.concrete_layout(false,false,true),
     background_enabled = false,
     effect_map_layout =
@@ -202,7 +203,10 @@ data:extend
     type = "tile-effect",
     name = "space",
     shader = "space",
-    space = {}
+    space =
+    {
+      scroll_factor = 0.15
+    }
   },
   {
     name = "empty-space",

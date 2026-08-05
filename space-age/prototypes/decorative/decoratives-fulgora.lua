@@ -17,6 +17,8 @@ local function fulgora_ruin(args)
   ruin.damaged_trigger_effect = hit_effects.rock()
   ruin.dying_trigger_effect = decorative_trigger_effects.huge_rock()
   ruin.shuffled_variation_on_chunk_generated = true
+  ruin.count_as_rock_for_filtered_deconstruction = args.count_as_rock_for_filtered_deconstruction or true
+  ruin.mined_sound = args.mined_sound or { filename = "__base__/sound/deconstruct-bricks.ogg" }
   local collision_area = (ruin.collision_box[2][1] - ruin.collision_box[1][1]) * (ruin.collision_box[2][2] - ruin.collision_box[1][2])
 
   ruin.minable =
@@ -48,6 +50,7 @@ local function fulgora_ruin(args)
     spritesheet.dice_y = args.dice_y
   end
   ruin.pictures = util.spritesheets_to_pictures(spritesheets)
+
 
   return ruin
 end
@@ -159,6 +162,7 @@ data:extend(
     order = "b[decorative]-l[rock]-d[fulgora]-e[ruin]-g[vault]",
     frame_count = 1,
     dice_y = 2,
+    count_as_rock_for_filtered_deconstruction = false, -- so it feels more important
     collision_box = {{-6.88, -4}, {6.88, 4}},
     map_color = {255, 255, 255, 128},
     autoplace = {

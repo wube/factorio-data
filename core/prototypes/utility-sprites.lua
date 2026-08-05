@@ -857,6 +857,14 @@ data:extend(
       height = 64,
       flags = {"icon"}
     },
+    expansion_base_built_icon =
+    {
+      filename = "__core__/graphics/icons/alerts/biter-base-icon.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
     destroyed_icon =
     {
       filename = "__core__/graphics/icons/alerts/destroyed-icon.png",

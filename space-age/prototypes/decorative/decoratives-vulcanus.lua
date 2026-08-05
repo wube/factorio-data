@@ -1921,7 +1921,7 @@ data:extend{
     {
       layers =
         {
-          util.sprite_load("__space-age__/graphics/decorative/vulcanus-rocks/vulcanus-rock-medium", { scale = 0.5, variation_count = 14,multiply_shift=0.5})
+          util.sprite_load("__space-age__/graphics/decorative/vulcanus-rocks/vulcanus-rock-medium", { scale = 0.5, variation_count = 16,multiply_shift=0.5})
         }
     },
   },

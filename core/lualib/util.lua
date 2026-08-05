@@ -190,7 +190,7 @@ function util.add_shift(a, b)
   if not (a and b) then
     return a or b
   end
-  return { a[1] + b[1], a[2] + b[2] }
+  return { (a[1] or a.x) + (b[1] or b.x), (a[2] or a.y) + (b[2] or b.y) }
 end
 
 function util.add_shift_offset(offset_, table_)

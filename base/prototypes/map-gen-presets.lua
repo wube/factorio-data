@@ -64,6 +64,10 @@ data:extend(
         {
           ageing = 0.5,
           enemy_attack_pollution_consumption_modifier = 0.5
+        },
+        enemy_expansion =
+        {
+          build_base_unit_dispatch_cooldown = 10 * 60
         }
       }
     },
@@ -90,6 +94,10 @@ data:extend(
         {
           ageing = 0.5,
           enemy_attack_pollution_consumption_modifier = 0.8
+        },
+        enemy_expansion =
+        {
+          build_base_unit_dispatch_cooldown = 10 * 60
         },
         difficulty_settings =
         {

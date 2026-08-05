@@ -2863,6 +2863,8 @@ data:extend(
       max_sounds_per_prototype = 3,
       use_doppler_shift = false
     },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     radius_minimap_visualisation_color = {0.059, 0.092, 0.235, 0.275},
     rotation_speed = 0.01,
     water_reflection =

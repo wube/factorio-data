@@ -8,7 +8,7 @@ data:extend(
     name = "vulcanus-3-hero",
     title = "Vulcanus 3 - Forging a New World - Hero",
     track_type = "hero-track",
-    planet = "vulcanus",
+    planets = {"vulcanus"},
     sound = {filename = "__space-age__/sound/ambient/vulcanus/vulcanus-3-hero.ogg", volume = 0.7,},
   },
   {
@@ -16,7 +16,7 @@ data:extend(
     name = "vulcanus-1",
     title = "Vulcanus 1 - Hot Spot",
     track_type = "main-track",
-    planet = "vulcanus",
+    planets = {"vulcanus"},
     sound = {filename = "__space-age__/sound/ambient/vulcanus/vulcanus-1.ogg", volume = 0.7,},
     weight = 8
   },
@@ -25,7 +25,7 @@ data:extend(
     name = "vulcanus-2",
     title = "Vulcanus 2 - Scorched Colossus",
     track_type = "main-track",
-    planet = "vulcanus",
+    planets = {"vulcanus"},
     sound = {filename = "__space-age__/sound/ambient/vulcanus/vulcanus-2.ogg", volume = 0.7,},
     weight = 7
   },
@@ -34,7 +34,7 @@ data:extend(
     name = "vulcanus-3",
     title = "Vulcanus 3 - Forging a New World",
     track_type = "main-track",
-    planet = "vulcanus",
+    planets = {"vulcanus"},
     sound = {filename = "__space-age__/sound/ambient/vulcanus/vulcanus-3.ogg", volume = 0.7,},
     weight = 8
   },
@@ -43,7 +43,7 @@ data:extend(
     name = "vulcanus-4",
     title = "Vulcanus 4 - The Hunting of a Demolisher",
     track_type = "main-track",
-    planet = "vulcanus",
+    planets = {"vulcanus"},
     sound = {filename = "__space-age__/sound/ambient/vulcanus/vulcanus-4.ogg", volume = 0.7,},
     weight = 10
   },
@@ -52,7 +52,7 @@ data:extend(
     name = "vulcanus-5",
     title = "Vulcanus 5 - Requiem for Vulcanus",
     track_type = "main-track",
-    planet = "vulcanus",
+    planets = {"vulcanus"},
     sound = {filename = "__space-age__/sound/ambient/vulcanus/vulcanus-5.ogg", volume = 0.7,},
     weight = 8
   },
@@ -61,7 +61,7 @@ data:extend(
     name = "vulcanus-6",
     title = "Vulcanus 6 - Puny Progress",
     track_type = "main-track",
-    planet = "vulcanus",
+    planets = {"vulcanus"},
     sound = {filename = "__space-age__/sound/ambient/vulcanus/vulcanus-6.ogg", volume = 0.7,},
     weight = 10
   },
@@ -70,7 +70,7 @@ data:extend(
     name = "vulcanus-7",
     title = "Vulcanus 7 - Sulphuric Breath",
     track_type = "main-track",
-    planet = "vulcanus",
+    planets = {"vulcanus"},
     sound = {filename = "__space-age__/sound/ambient/vulcanus/vulcanus-7.ogg", volume = 0.7,},
     weight = 8
   },
@@ -79,7 +79,7 @@ data:extend(
     name = "vulcanus-8",
     title = "Vulcanus 8 - Metallurgy",
     track_type = "main-track",
-    planet = "vulcanus",
+    planets = {"vulcanus"},
     sound = {filename = "__space-age__/sound/ambient/vulcanus/vulcanus-8.ogg", volume = 0.7,},
     weight = 10
   },
@@ -95,7 +95,7 @@ data:extend(
     name = "gleba-1-hero",
     title = "Gleba 1 - Bioengineering - Hero",
     track_type = "hero-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound = {filename = "__space-age__/sound/ambient/gleba/gleba-1-hero.ogg", volume = 0.7,},
   },
   {
@@ -103,7 +103,7 @@ data:extend(
     name = "gleba-1",
     title = "Gleba 1 - Bioengineering",
     track_type = "main-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound = {filename = "__space-age__/sound/ambient/gleba/gleba-1.ogg", volume = 0.7,},
     weight = 10
   },
@@ -112,7 +112,7 @@ data:extend(
     name = "gleba-2",
     title = "Gleba 2 - Germination",
     track_type = "main-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound = {filename = "__space-age__/sound/ambient/gleba/gleba-2.ogg", volume = 0.7,},
     weight = 10
   },
@@ -121,7 +121,7 @@ data:extend(
     name = "gleba-3",
     title = "Gleba 3 - Biochamber",
     track_type = "main-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound = {filename = "__space-age__/sound/ambient/gleba/gleba-3.ogg", volume = 0.7,},
     weight = 10
   },
@@ -130,7 +130,7 @@ data:extend(
     name = "gleba-4",
     title = "Gleba 4 - Self Replication",
     track_type = "main-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound = {filename = "__space-age__/sound/ambient/gleba/gleba-4.ogg", volume = 0.7,},
     weight = 8
   },
@@ -139,7 +139,7 @@ data:extend(
     name = "gleba-5",
     title = "Gleba 5 - Hatched Larvae",
     track_type = "main-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound = {filename = "__space-age__/sound/ambient/gleba/gleba-5.ogg", volume = 0.7,},
     weight = 10
   },
@@ -148,7 +148,7 @@ data:extend(
     name = "gleba-6",
     title = "Gleba 6 - Mycelium Dawn",
     track_type = "main-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound = {filename = "__space-age__/sound/ambient/gleba/gleba-6.ogg", volume = 0.7,},
     weight = 8
   },
@@ -157,7 +157,7 @@ data:extend(
     name = "gleba-8",
     title = "Gleba 8 - The Harvest",
     track_type = "main-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound = {filename = "__space-age__/sound/ambient/gleba/gleba-8.ogg", volume = 0.7,},
     weight = 10
   },
@@ -166,7 +166,7 @@ data:extend(
     name = "gleba-9",
     title = "Gleba 9 - Altered DNA",
     track_type = "main-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound = {filename = "__space-age__/sound/ambient/gleba/gleba-9.ogg", volume = 0.7,},
     weight = 8
   },
@@ -175,7 +175,7 @@ data:extend(
     name = "gleba-10",
     title = "Gleba 10 - Stingfrond Song",
     track_type = "main-track",
-    planet = "gleba",
+    planets = {"gleba"},
     sound =
     {
       variations =
@@ -198,7 +198,7 @@ data:extend(
     name = "fulgora-hero",
     title = "Fulgora 4 - Ion Storm - Hero",
     track_type = "hero-track",
-    planet = "fulgora",
+    planets = {"fulgora"},
     sound = {filename = "__space-age__/sound/ambient/fulgora/fulgora-hero.ogg", volume = 0.7,},
   },
   {
@@ -206,7 +206,7 @@ data:extend(
     name = "fulgora-1",
     title = "Fulgora 1 - Final Signal",
     track_type = "main-track",
-    planet = "fulgora",
+    planets = {"fulgora"},
     sound = {filename = "__space-age__/sound/ambient/fulgora/fulgora-1.ogg", volume = 0.7,},
     weight = 10
   },
@@ -215,7 +215,7 @@ data:extend(
     name = "fulgora-2",
     title = "Fulgora 2 - Fulgorite",
     track_type = "main-track",
-    planet = "fulgora",
+    planets = {"fulgora"},
     sound = {filename = "__space-age__/sound/ambient/fulgora/fulgora-2.ogg", volume = 0.7,},
     weight = 10
   },
@@ -224,7 +224,7 @@ data:extend(
     name = "fulgora-3",
     title = "Fulgora 3 - Nested Functions",
     track_type = "main-track",
-    planet = "fulgora",
+    planets = {"fulgora"},
     sound = {filename = "__space-age__/sound/ambient/fulgora/fulgora-3.ogg", volume = 0.7,},
     weight = 10
   },
@@ -233,7 +233,7 @@ data:extend(
     name = "fulgora-4",
     title = "Fulgora 4 - Ion Storm",
     track_type = "main-track",
-    planet = "fulgora",
+    planets = {"fulgora"},
     sound = {filename = "__space-age__/sound/ambient/fulgora/fulgora-4.ogg", volume = 0.7,},
     weight = 10
   },
@@ -243,7 +243,7 @@ data:extend(
     name = "fulgora-6",
     title = "Fulgora 6 - Slow Engine Crank",
     track_type = "main-track",
-    planet = "fulgora",
+    planets = {"fulgora"},
     sound = {filename = "__space-age__/sound/ambient/fulgora/fulgora-6.ogg", volume = 0.7,},
     weight = 10
   },
@@ -252,7 +252,7 @@ data:extend(
     name = "fulgora-7",
     title = "Fulgora 7 - Resonant Frequency",
     track_type = "main-track",
-    planet = "fulgora",
+    planets = {"fulgora"},
     sound = {filename = "__space-age__/sound/ambient/fulgora/fulgora-7.ogg", volume = 0.7,},
     weight = 10
   },
@@ -261,7 +261,7 @@ data:extend(
     name = "fulgora-8",
     title = "Fulgora 8 - Radiation Anomaly",
     track_type = "main-track",
-    planet = "fulgora",
+    planets = {"fulgora"},
     sound = {filename = "__space-age__/sound/ambient/fulgora/fulgora-8.ogg", volume = 0.7,},
     weight = 10
   },
@@ -270,7 +270,7 @@ data:extend(
     name = "fulgora-9",
     title = "Fulgora 9 - Charging Networks",
     track_type = "main-track",
-    planet = "fulgora",
+    planets = {"fulgora"},
     sound = {filename = "__space-age__/sound/ambient/fulgora/fulgora-9.ogg", volume = 0.7,},
     weight = 10
   },
@@ -288,7 +288,7 @@ data:extend(
     name = "aquilo-3-hero",
     title = "Aquilo 3 - Ammonia - Hero",
     track_type = "hero-track",
-    planet = "aquilo",
+    planets = {"aquilo"},
     sound = {filename = "__space-age__/sound/ambient/aquilo/aquilo-3-hero.ogg", volume = 0.7,},
   },
   require("__space-age__/sound/ambient/aquilo/aquilo-1/aquilo-1"),
@@ -297,7 +297,7 @@ data:extend(
     name = "aquilo-2",
     title = "Aquilo 2 - Frozen Hope",
     track_type = "main-track",
-    planet = "aquilo",
+    planets = {"aquilo"},
     sound = {filename = "__space-age__/sound/ambient/aquilo/aquilo-2.ogg", volume = 0.7,},
     weight = 10
   },
@@ -306,7 +306,7 @@ data:extend(
     name = "aquilo-3",
     title = "Aquilo 3 - Ammonia",
     track_type = "main-track",
-    planet = "aquilo",
+    planets = {"aquilo"},
     sound = {filename = "__space-age__/sound/ambient/aquilo/aquilo-3.ogg", volume = 0.7,},
     weight = 10
   },
@@ -315,7 +315,7 @@ data:extend(
     name = "aquilo-4",
     title = "Aquilo 4 - Cryogenics",
     track_type = "main-track",
-    planet = "aquilo",
+    planets = {"aquilo"},
     sound = {filename = "__space-age__/sound/ambient/aquilo/aquilo-4.ogg", volume = 0.7,},
     weight = 10
   },
@@ -325,7 +325,7 @@ data:extend(
     name = "aquilo-6",
     title = "Aquilo 6 - Pelagic Zone",
     track_type = "main-track",
-    planet = "aquilo",
+    planets = {"aquilo"},
     sound = {filename = "__space-age__/sound/ambient/aquilo/aquilo-6.ogg", volume = 0.7,},
     weight = 10
   },
@@ -335,7 +335,7 @@ data:extend(
     name = "aquilo-8",
     title = "Aquilo 8 - Irukandji",
     track_type = "main-track",
-    planet = "aquilo",
+    planets = {"aquilo"},
     sound = {filename = "__space-age__/sound/ambient/aquilo/aquilo-8.ogg", volume = 0.7,},
     weight = 10
   },
@@ -344,7 +344,7 @@ data:extend(
     name = "aquilo-9",
     title = "Aquilo 9 - Resupply from the Sky",
     track_type = "main-track",
-    planet = "aquilo",
+    planets = {"aquilo"},
     sound = {filename = "__space-age__/sound/ambient/aquilo/aquilo-9.ogg", volume = 0.7,},
     weight = 10
   },

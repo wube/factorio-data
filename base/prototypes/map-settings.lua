@@ -83,11 +83,11 @@ data:extend(
 
       -- Size of the group that goes to build new base.
       settler_group_min_size = 5,
-      settler_group_max_size = 20,
+      settler_group_max_size = 10,
       -- Exponential factor used to determine the size of the settler group based on the evolution factor.
       -- The size is calculated as:
       -- size = random(min_size, max_size) * (evolution_group_size_factor ^ evolution_factor)
-      evolution_group_size_factor = 4.0,
+      evolution_group_size_factor = 8.0,
 
       -- Ticks to expand to a single
       -- position for a base is used.
@@ -96,7 +96,10 @@ data:extend(
       --   cooldown = lerp(max_expansion_cooldown, min_expansion_cooldown, -e^2 + 2 * e),
       -- where lerp is the linear interpolation function, and e is the current evolution factor.
       min_expansion_cooldown = 10 * 60 * 60,
-      max_expansion_cooldown = 60 * 60 * 60
+      max_expansion_cooldown = 60 * 60 * 60,
+
+      -- Cooldown in ticks for dispatching units when building bases.
+      build_base_unit_dispatch_cooldown = 30 * 60
     },
 
     unit_group=

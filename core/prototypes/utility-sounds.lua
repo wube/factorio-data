@@ -174,12 +174,14 @@ data:extend(
     default_driving_sound =
     {
       sound =
-        {
-          filename = "__core__/sound/vehicle-surface-default.ogg", volume = 0.6,
-          advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}}
-        },
-        fade_ticks = 6
-    }
+      {
+        filename = "__core__/sound/vehicle-surface-default.ogg", volume = 0.6,
+        advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}}
+      },
+      fade_ticks = 6
+    },
+    machine_gui_open = {filename = "__core__/sound/machine-gui-open.ogg", volume = 0.5},
+    machine_gui_close = {filename = "__core__/sound/machine-gui-close.ogg", volume = 0.29},
   }
 })
 add_utility_sound_with_vibration("build_small", "__core__/sound/build-small.ogg", 0.7, 64, {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)}, "__core__/sound/build-small.bnvib", 0.2)
@@ -206,6 +208,7 @@ add_utility_sound("rotated_medium", "__core__/sound/rotate-medium.ogg", 1.0, 64)
 add_utility_sound("rotated_large", "__core__/sound/rotate-big.ogg", 1.0, 64)
 add_utility_sound("rotated_huge", "__core__/sound/rotate-big.ogg", 1.0, 64)
 add_utility_sound("alert_destroyed", "__core__/sound/alert-destroyed.ogg", 0.5)
+add_utility_sound("alert_expansion_base_built", "__core__/sound/alert-expansion-base-built.ogg", 0.5)
 add_utility_sound("console_message", "__core__/sound/console-message.ogg")
 add_utility_sound("console_player_joined", "__core__/sound/console-player-joined.ogg")
 add_utility_sound("console_player_respawned", "__core__/sound/console-player-joined.ogg")

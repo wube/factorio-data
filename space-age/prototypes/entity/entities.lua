@@ -606,6 +606,13 @@ data:extend({
         east =
         {
           {
+            render_layer = "lower-object-overlay",
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-e-2",{scale=0.5})
+            }
+          },
+          {
             render_layer = "object-under",
             layers =
             {
@@ -638,7 +645,7 @@ data:extend({
             },
           },
           {
-            render_layer = "cargo-hatch", -- boosted to draw above S walls
+            render_layer = "object",
             layers =
             {
               util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-s-4",{scale=0.5})
@@ -647,6 +654,13 @@ data:extend({
         },
         west =
         {
+		  {
+            render_layer = "lower-object-above-shadow",
+            layers =
+            {
+              util.sprite_load("__space-age__/graphics/entity/cargo-hubs/extractor/extractor-w-1",{scale=0.5})
+            }
+          },
           {
             render_layer = "object-under",
             layers =

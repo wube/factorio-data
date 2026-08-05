@@ -513,6 +513,7 @@ data:extend(
 
     asteroid_spawning_offset = {{-48, -72}, {48, 48}},
     asteroid_fading_range = 16,
+    asteroid_min_damage_modifier = 0.1,
     asteroid_spawning_with_random_orientation_max_speed = 0.02,
     asteroid_position_offset_to_speed_coefficient = 1 / 120,
 

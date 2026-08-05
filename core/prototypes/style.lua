@@ -284,8 +284,8 @@ end
 
 offset_by_4_rounded_corners_shallow_inset =
 {
-  position = {345, 103},
-  corner_size = 16,
+  position = {353, 111},
+  corner_size = 8,
   draw_type = "outer",
   top_outer_border_shift = 4,
   bottom_outer_border_shift = -4,

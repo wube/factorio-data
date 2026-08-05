@@ -32,25 +32,6 @@ simulations.quality_probabilities =
       end
     end
 
-    local function compute_quality_chances(base_quality, quality_effect)
-      local result = {}
-      local jumps = prototypes.utility_constants.maximum_quality_jump
-      local quality = base_quality
-      local threshold = quality_effect * quality.next_probability
-      local p = 1
-      while quality.next and jumps >= 1 do
-        if p >= threshold then
-          result[quality.name] = p - threshold
-          p = threshold
-        end
-        jumps = jumps - 1
-        quality = quality.next
-        threshold = threshold * quality.chain_probability
-      end
-      result[quality.name] = p
-      return result
-    end
-
     show_probabilities = function()
       local frame = game.players[1].gui.screen.add{type = "frame", caption = {"tips-and-tricks-simulation.quality-calculation"}, direction = "vertical"}
       frame.auto_center = true
@@ -67,7 +48,7 @@ simulations.quality_probabilities =
       for k, base_quality in pairs (quality_levels) do
         quality_table.add{type = "label", caption = row_header.. " [item=iron-plate,quality="..base_quality.name.."]"}
 
-        local chances = compute_quality_chances(base_quality, quality_effect)
+        local chances = base_quality.get_roll_chances(quality_effect)
         for j, output_quality in pairs(quality_levels) do
           if chances[output_quality.name] and chances[output_quality.name] > 0 then
             quality_table.add{type = "label", caption = string.format("%.2f%%", chances[output_quality.name] * 100)}

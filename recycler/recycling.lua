@@ -102,8 +102,7 @@ function add_recipe_values(structure, input, result)
   structure.results = {}
   structure.ingredients = {{type = "item", name = input_result, amount = 1}}
 
-  local multiplier = result_count
-  structure.energy_required = (recipe_to_reverse.energy_required or 0.5) / 16
+  structure.energy_required = math.max((recipe_to_reverse.energy_required or 0.5) / 16 / result_count, 0.0011)
 
   local result_crafting_tint = {primary = {0.5,0.5,0.5,0.5}, secondary = {0.5,0.5,0.5,0.5}, tertiary = {0.5,0.5,0.5,0.5}, quaternary = {0.5,0.5,0.5,0.5}}
 
@@ -115,7 +114,7 @@ function add_recipe_values(structure, input, result)
     if ingredient.type == "item" then
       local final_name = ingredient[1] or ingredient.name
       local final_amount = ingredient[2] or ingredient.amount
-      local final_probability = 4 * multiplier * (ingredient.result_count or 1)
+      local final_probability = 4 * result_count * (ingredient.result_count or 1)
 
       local remainder = final_amount % final_probability
       final_amount = math.floor(final_amount / final_probability)

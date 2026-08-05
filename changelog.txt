@@ -1,4 +1,77 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.13
+Date: 05. 08. 2026
+  Features:
+    - Added interface setting for zooming towards the cursor in contexts that support it.
+    - Added an alert when an expansion base is built in a chunk with active radar coverage.
+    - [space-age] Added support for platform transfers at non-planet space locations (e.g solar system edge). (https://forums.factorio.com/134216)
+  Changes:
+    - [space-age] Adjusted space parallax such that stars move less than planet.
+    - [space-age] Fulfilled platform construction requests will no longer block platform to platform transfers. (https://forums.factorio.com/135042)
+    - [space-age] Asteroids will do significantly less damage when platforms are stationary or moving at very low speeds.
+    - [space-age] Recycling recipe generation will scale recycle time with item result count. In general things will recycle faster (e.g concrete recycling will be 10x faster).
+    - [space-age] Fulgoran ruins will be selectable by deconstruction planners with 'Trees/rocks only' enabled.
+    - Increased expansion group build base cooldown from 5 seconds to 30 seconds.
+    - Reduced early game max enemy expansion group size from 20 to 10.
+  Bugfixes:
+    - Fixed captive biter spawners and burner mining drills would show potential beacons when not affected by them. (https://forums.factorio.com/135240)
+    - Fixed that migrating container entity inventory types would not preserve the bar limit when in blueprints. (https://forums.factorio.com/134866)
+    - Fixed a layering issue with the cargo landing pad unloader. (https://forums.factorio.com/134158)
+    - Fixed a tooltip layout issue related to multiline text. (https://forums.factorio.com/132592)
+    - Fixed recipe tooltip showing incorrect value when custom tooltip fields were used. (https://forums.factorio.com/135249)
+    - Fixed factoriopedia was not showing some tiles as possible source of fluid. (https://forums.factorio.com/135239)
+    - Fixed some buttons in factoriopedia related to spoil results would not open related entity page. (https://forums.factorio.com/135238)
+    - Fixed a crash when clearing assembler trash slots in some cases. (https://forums.factorio.com/135224)
+    - Fixed inserter arrow would point at incorrect spot of underground belt when rendering a blueprint preview. (https://forums.factorio.com/135220)
+    - Fixed capitalisation of locale for station related conditions. (https://forums.factorio.com/135236)
+    - Fixed potential effects were not accounting for beacon quality upgrades. (https://forums.factorio.com/134337)
+    - Fixed building parametrised blueprint with train stops could fail to copy color of existing train stop. (https://forums.factorio.com/135106)
+    - Fixed some miniscule problems with medium volcanic rock decorative. (https://forums.factorio.com/134892)
+    - Fixed ProductionHealthEffect::damage_type was not loaded properly.
+    - Fixed auto trash was not working with car burner. (https://forums.factorio.com/135303)
+    - Fixed that multi-level technologies would let you set a trigger although it never worked. (https://forums.factorio.com/135304)
+    - Fixed numpad text entry on macOS. (https://forums.factorio.com/135195)
+    - Fixed a crash when hidden shortcuts are clicked through other means. (https://forums.factorio.com/135273)
+    - Fixed that manual fast-replacing rolling stocks would not snap with different prototypes. (https://forums.factorio.com/134694)
+    - Fixed a crash when rolling stock tries to connect to another rolling stock over an occupied rail connection. (https://forums.factorio.com/135302)
+    - Fixed misleading quality control tooltip when quality change and min quality are used at the same time. (https://forums.factorio.com/135319)
+    - Fixed inconsistend turning direction when reversing a train while not in a locomotive, in steering driving mode.
+    - Fixed incorrect and inconsistent movement when driving a train while not in a locomotive, in heading driving mode. (https://forums.factorio.com/134814)
+    - Fixed foundation glow in the dark transition between lava and default (https://forums.factorio.com/134300)
+    - Fixed an issue with switching between remote view and normal view when holding items in trains. (https://forums.factorio.com/132586)
+    - Fixed a crash when a script would modify unit group or group commands during the `on_build_base_arrived` event. (https://forums.factorio.com/135356)
+    - Fixed expansion groups would try to build too close to player buildings. (https://forums.factorio.com/135335)
+    - Fixed an issue with parameters and removing entities from blueprints. (https://forums.factorio.com/135301)
+    - Fixed construction robots from a stationary network could sometimes build roboports without consuming roboport item. (https://forums.factorio.com/135379)
+    - Fixed inserter could get stuck when trying to insert wrong item when assembler has different wrong item in dump inventory. (https://forums.factorio.com/135345)
+    - Fixed that train stop lengths were using the wrong limits. (https://forums.factorio.com/126764)
+    - Fixed rocket rush scenario lobby not placing out-of-map tiles when playing base only. (https://forums.factorio.com/135343)
+    - Fixed an issue with drag building buildable-off-grid entities. (https://forums.factorio.com/135191)
+    - Fixed that the game menu would be behind the technology GUI if opened while the game was paused. (https://forums.factorio.com/134173)
+    - Fixed that fluid input scaling didn't scale enough. (https://forums.factorio.com/135436)
+    - Fixed that space platform request tooltips would show irrelevant information in some cases. (https://forums.factorio.com/135219)
+    - Fixed a migration crash related to roboport charge spots. (https://forums.factorio.com/134933)
+    - Improved fuel top speed modifies with cars/tanks. (https://forums.factorio.com/134551)
+    - Fixed upgrading undergrounds was flipping the cursor. (https://forums.factorio.com/116547)
+    - Fixed failing to build undergrounds could flip the cursor. (https://forums.factorio.com/133833)
+    - Fixed that clicked_sprite and hovered_sprite overwrote each other. (https://forums.factorio.com/135446)
+    - Fixed that super-force-building did not respect the map editor ignore tile conditions setting. (https://forums.factorio.com/133632)
+    - Fixed that clicking outside of the combinator description edit would close the GUI. (https://forums.factorio.com/134455)
+    - Fixed a fluid burning boiler not playing its working sound. (https://forums.factorio.com/133741)
+    - Fixed Nauvis planted tree not being as effective for absorbing polution because it had less "damaged leaves" stages compared to 2.0. (https://forums.factorio.com/134307)
+    - Fixed that equipment in vehicle grids was not preserved through undo/redo when mining the vehicle. (https://forums.factorio.com/134505)
+  Modding:
+    - Added UtilitySounds::machine_gui_open and machine_gui_close.
+    - Added FluidEnergySourcePrototype::hide_from_stats.
+    - Added BurnerPrototype::hide_from_stats.
+    - Added EffectReceiver::uses_local_effect.
+  Scripting:
+    - Added on_player_super_forced_selected_area event. (https://forums.factorio.com/127217)
+    - Added LuaQualityPrototype::get_roll_chances().
+    - Added LuaBurnerPrototype::burner_usage read.
+    - Added LuaForce::get_space_platforms().
+    - Added LuaEntity::local_effect read/write.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.12
 Date: 21. 07. 2026
   Changes:

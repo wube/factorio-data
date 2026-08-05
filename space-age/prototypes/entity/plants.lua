@@ -160,10 +160,35 @@ local gleba_tree_particle_effects =
                       }
 }
 
-local function gleba_tree_variations(name, variation_count, per_row, scale_multiplier, width, height, shift, reflection_shift)
+local function gleba_tree_variation_progression_frames(name, suffix, progression_frames, width, height, x, y, shift, scale_multiplier, surface, flags)
+  local partial_path = "__space-age__/graphics/entity/plant/" .. name .. "/" .. name .. "-" .. suffix
+  local filenames = {}
+  for i=1,progression_frames do
+    filenames[i] = (i == 1 and partial_path or partial_path .. "-" .. i) .. ".png"
+  end
+  return
+  {
+    filenames = filenames,
+    frame_count = progression_frames,
+    lines_per_file = 1,
+    line_length = 1,
+    flags = flags,
+    surface = surface,
+    width = width,
+    height = height,
+    x = x,
+    y = y,
+    shift = shift,
+    scale = 0.33 * scale_multiplier
+  }
+end
+
+local function gleba_tree_variations(name, variation_count, per_row, scale_multiplier, width, height, shift, reflection_shift, surface, progression_frames)
   variation_count = variation_count or 5
   per_row = per_row or 5
   scale_multiplier = scale_multiplier or 1
+  surface = surface or "gleba"
+  progression_frames = progression_frames or 1
   local width = width or 640
   local height = height or 560
   local variations = {}
@@ -205,47 +230,9 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         shift = shift,
         scale = 0.33 * scale_multiplier
       },
-      leaves = {
-        filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-harvest.png",
-        flags = { "mipmap" },
-        surface = "gleba",
-        width = width,
-        height = height,
-        x = x,
-        y = y,
-        frame_count = 1,
-        shift = shift,
-        scale = 0.33 * scale_multiplier
-      },
-      normal = {
-        filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-normal.png",
-        surface = "gleba",
-        width = width,
-        height = height,
-        x = x,
-        y = y,
-        frame_count = 1,
-        shift = shift,
-        scale = 0.33 * scale_multiplier
-      },
-      shadow = {
-        frame_count = 2,
-        lines_per_file = 1,
-        line_length = 1,
-        flags = { "mipmap", "shadow" },
-        surface = "gleba",
-        filenames =
-        {
-          "__space-age__/graphics/entity/plant/"..name.."/"..name.."-harvest-shadow.png",
-          "__space-age__/graphics/entity/plant/"..name.."/"..name.."-shadow.png"
-        },
-        width = width,
-        height = height,
-        x = x,
-        y = y,
-        shift = shift,
-        scale = 0.33 * scale_multiplier
-      },
+      leaves = gleba_tree_variation_progression_frames(name, "harvest", progression_frames, width, height, x, y, shift, scale_multiplier, surface, {"mipmap"}),
+      normal = gleba_tree_variation_progression_frames(name, "normal", progression_frames, width, height, x, y, shift, scale_multiplier, surface),
+      shadow = gleba_tree_variation_progression_frames(name, "harvest-shadow", progression_frames, width, height, x, y, shift, scale_multiplier, surface, {"mipmap", "shadow"}),
 
       underwater       = gleba_tree_underwater_things[name] and gleba_tree_underwater_things[name].underwater or nil,
       --water_reflection = gleba_tree_underwater_things[name] and gleba_tree_underwater_things[name].water_reflection or nil,
@@ -254,7 +241,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         pictures = {
         filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-effect-map.png",
         --flags = { "mipmap" },
-        surface = "gleba",
+        surface = surface,
         width = width,
         height = height,
         x = x,
@@ -277,6 +264,8 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
       branches_when_mined_manually = 15,
       branches_when_mined_automatically = 8
     }
+    table.insert(variation.shadow.filenames, "__space-age__/graphics/entity/plant/"..name.."/"..name.."-shadow.png")
+    variation.shadow.frame_count = variation.shadow.frame_count + 1
 
     if sap_particle then -- jellystem
       variation.leaf_generation = {
@@ -766,7 +755,7 @@ data:extend(
       }
     },
     surface_conditions = {{property = "pressure", min = 1000, max = 1000}},
-    variations = gleba_tree_variations("planted-tree", 8, 4, 1.3, 640, 560, util.by_pixel(70, -40), util.by_pixel(50, 0)),
+    variations = gleba_tree_variations("planted-tree", 8, 4, 1.3, 640, 560, util.by_pixel(70, -40), util.by_pixel(50, 0), "nauvis", 3),
     growth_variations = gleba_tree_growth_variations("planted-tree", 8, 4, 1.3, 640, 560, util.by_pixel(70, -40)),
     growth_mounds = gleba_tree_growth_mounds("planted-tree", 8, 1.3),
     colors = minor_tints(),
