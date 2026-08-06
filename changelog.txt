@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.14
+Date: 06. 08. 2026
+  Bugfixes:
+    - Fixed a space platform consistency error when loading saves games with platforms at non-planet space locations. (https://forums.factorio.com/135464)
+    - Fixed achievements being failed on update due to expansion setting changes. (https://forums.factorio.com/135462)
+    - Fixed a crash when upgrading entities in some cases. (https://forums.factorio.com/135470)
+    - Fixed biter expansion bases could sometimes be all worms or all spawners. (https://forums.factorio.com/134800)
+    - Fixed underground belt building over belt was not rotating cursor. (https://forums.factorio.com/135468)
+    - Fixed a crash when loading save file with "no storage" alert pinned.
+    - Fixed substation red and green circuit connectors were swapped in some orientations. (https://forums.factorio.com/135474)
+    - Fixed mod explore pane scroll bars were not appearing. (https://forums.factorio.com/135477)
+---------------------------------------------------------------------------------------------------
 Version: 2.1.13
 Date: 05. 08. 2026
   Features:
