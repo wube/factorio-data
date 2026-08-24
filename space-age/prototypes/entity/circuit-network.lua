@@ -58,10 +58,10 @@ circuit_connector_definitions["asteroid-collector"] = circuit_connector_definiti
 (
   universal_connector_template,
   {
-    { variation = 0, main_offset = util.by_pixel(  4.0, -36.5), shadow_offset = util.by_pixel(27,-10), show_shadow = false },
-    { variation = 6, main_offset = util.by_pixel( 18.5, -19.0), shadow_offset = util.by_pixel(49,  4), show_shadow = false },
-    { variation = 4, main_offset = util.by_pixel( -4.0, -10.0), shadow_offset = util.by_pixel(20, 13), show_shadow = false },
-    { variation = 2, main_offset = util.by_pixel(-19.0, -25.5), shadow_offset = util.by_pixel( 4,  0), show_shadow = false }
+    { variation = 0, main_offset = util.by_pixel(  4.0, -36.5), shadow_offset = util.by_pixel(27,-10), show_shadow = false, render_layer = "higher-object-under" },
+    { variation = 6, main_offset = util.by_pixel( 18.5, -19.0), shadow_offset = util.by_pixel(49,  4), show_shadow = false, render_layer = "higher-object-under" },
+    { variation = 4, main_offset = util.by_pixel( -4.0, -10.0), shadow_offset = util.by_pixel(20, 13), show_shadow = false, render_layer = "higher-object-under" },
+    { variation = 2, main_offset = util.by_pixel(-19.0, -25.5), shadow_offset = util.by_pixel( 4,  0), show_shadow = false, render_layer = "higher-object-under" }
   }
 )
 
@@ -69,10 +69,10 @@ circuit_connector_definitions["big-mining-drill"] = circuit_connector_definition
 (
   universal_connector_template,
   {
-    { variation = 0, main_offset = util.by_pixel( 73, -58), shadow_offset = util.by_pixel(112, -23), show_shadow = true },
-    { variation = 6, main_offset = util.by_pixel( 50.5, 19.5), shadow_offset = util.by_pixel( 77.5, 52.5), show_shadow = false },
-    { variation = 4, main_offset = util.by_pixel(-72, 8), shadow_offset = util.by_pixel(-33, 52), show_shadow = false },
-    { variation = 2, main_offset = util.by_pixel(-50.5, 12), shadow_offset = util.by_pixel(-33.5, 42), show_shadow = false }
+    { variation = 0, main_offset = util.by_pixel( 73, -58), shadow_offset = util.by_pixel(112, -23), show_shadow = true, secondary_draw_order = 40 },
+    { variation = 6, main_offset = util.by_pixel( 50.5, 19.5), shadow_offset = util.by_pixel( 77.5, 52.5), show_shadow = false, secondary_draw_order = 40 },
+    { variation = 4, main_offset = util.by_pixel(-72, 8), shadow_offset = util.by_pixel(-33, 52), show_shadow = false, secondary_draw_order = 40 },
+    { variation = 2, main_offset = util.by_pixel(-50.5, 12), shadow_offset = util.by_pixel(-33.5, 42), show_shadow = false, secondary_draw_order = 40 }
   }
 )
 

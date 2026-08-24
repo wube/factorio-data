@@ -41,8 +41,9 @@
     "neighbouring_base_chunk_coefficient": 0.5,
     "max_colliding_tiles_coefficient": 0.8,
     "settler_group_min_size": 5,
-    "settler_group_max_size": 20,
-    "evolution_group_size_factor": 4.0,
+    "settler_group_max_size": 10,
+    "evolution_group_size_factor": 8.0,
+    "build_base_unit_dispatch_cooldown": 1800,
     "min_expansion_cooldown": 14400,
     "max_expansion_cooldown": 216000
   },

@@ -241,7 +241,7 @@ simulations.quality_of_ingredients =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "item-group-tab", data = "intermediate-products"})
+            local target = game.simulation.get_widget_position({type = "item-group-tab", group = "intermediate-products"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end,
           action = function() first_simulation = false end
@@ -257,7 +257,7 @@ simulations.quality_of_ingredients =
         {
           name = "setElectronicCircuit",
           condition = function()
-            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "electronic-circuit"})
+            local target = game.simulation.get_widget_position({type = "recipe-slot", recipe = "electronic-circuit"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -286,7 +286,7 @@ simulations.quality_of_ingredients =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "electronic-circuit"})
+            local target = game.simulation.get_widget_position({type = "recipe-slot", recipe = "electronic-circuit"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -306,7 +306,7 @@ simulations.quality_of_ingredients =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", data = "gui.any"})
+            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", text = {"gui.any"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -333,7 +333,7 @@ simulations.quality_of_ingredients =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "electronic-circuit"})
+            local target = game.simulation.get_widget_position({type = "recipe-slot", recipe = "electronic-circuit"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -353,7 +353,7 @@ simulations.quality_of_ingredients =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", data = "quality-name.uncommon"})
+            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", text = {"quality-name.uncommon"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -422,7 +422,7 @@ simulations.quality_factoriopedia =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "label", data = "1.25"})
+            local target = game.simulation.get_widget_position({type = "label", text = "1.25"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },

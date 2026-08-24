@@ -1,5 +1,5 @@
 
-local function make_circuit_connector_sprites(template, index, main_offset, shadow_offset, show_shadow)
+local function make_circuit_connector_sprites(template, definition)
   local function get_frame(animation, extra_shift, frame)
     return
     {
@@ -17,6 +17,11 @@ local function make_circuit_connector_sprites(template, index, main_offset, shad
       shift = util.add_shift(animation.shift, extra_shift)
     }
   end
+
+  local index = definition.variation
+  local main_offset = definition.main_offset or {0,0}
+  local shadow_offset = definition.shadow_offset or {0,0}
+  local show_shadow = definition.show_shadow or false
 
   local result = {}
   for k,t in pairs(template) do
@@ -51,6 +56,8 @@ local function make_circuit_connector_sprites(template, index, main_offset, shad
     result.blue_led_light_offset = nil
     result.red_green_led_light_offset = nil
   end
+  result.render_layer = definition.render_layer
+  result.secondary_draw_order = definition.secondary_draw_order
   return result
 end
 
@@ -81,7 +88,7 @@ end
 local function make_single_circuit_connector_definition(template, definition)
   return
   {
-    sprites = make_circuit_connector_sprites(template, definition.variation, definition.main_offset or {0,0}, definition.shadow_offset or {0,0}, definition.show_shadow or false),
+    sprites = make_circuit_connector_sprites(template, definition),
     points = make_circuit_connector_points(template, definition.variation, definition.main_offset or {0,0}, definition.shadow_offset or {0,0})
   }
 end

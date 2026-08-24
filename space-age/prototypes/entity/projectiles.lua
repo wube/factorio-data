@@ -6,7 +6,7 @@ data:extend(
   {
     type = "projectile",
     name = "capture-robot-rocket",
-    flags = {"not-on-map"},
+    flags = {"not-on-map", "not-in-bonus-gui"},
     hidden = true,
     acceleration = 0.005,
     action =

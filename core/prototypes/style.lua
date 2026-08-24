@@ -794,7 +794,7 @@ data:extend(
     {
       type = "label_style",
       parent = "label",
-      maximal_width = 420,
+      maximal_width = 484,
       single_line = false
     },
 
@@ -6051,7 +6051,13 @@ data:extend(
     {
       type = "frame_style",
       parent = "deep_frame_in_shallow_frame_for_description",
-      width = 500
+      width = 500,
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 4,
+        width = 484 -- outer width minus padding on both sides
+      }
     },
 
     tab_deep_frame_in_entity_frame =

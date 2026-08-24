@@ -229,12 +229,12 @@ data:extend(
     takeoff_sound = {filename = "__space-age__/sound/entity/mech-armor/mech-armor-takeoff.ogg", volume = 0.2, aggregation = {max_count = 2, remove = true, count_already_playing = true}},
     landing_sound = {filename = "__space-age__/sound/entity/mech-armor/mech-armor-land.ogg", volume = 0.3, aggregation = {max_count = 2, remove = true, count_already_playing = true}},
     flight_sound = {sound={filename = "__space-age__/sound/entity/mech-armor/mech-armor-flight.ogg", volume = 0.2}},
-    steps_sound = 
+    steps_sound =
     {
       variations = sound_variations("__space-age__/sound/entity/mech-armor/mech-armor-steps-metallic", 5, 0.2),
       advanced_volume_control = default_tile_sounds_advanced_volume_control(),
     },
-    moving_sound = 
+    moving_sound =
     {
       variations = sound_variations("__space-age__/sound/entity/mech-armor/mech-armor-moves", 10, 0.4),
       advanced_volume_control = default_tile_sounds_advanced_volume_control(),
@@ -991,6 +991,7 @@ data:extend(
     type = "ammo",
     name = "capture-robot-rocket",
     icon = "__space-age__/graphics/icons/capture-bot.png",
+    flags = {"hide-from-bonus-gui"},
     ammo_category = "rocket",
     ammo_type =
     {

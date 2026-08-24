@@ -561,6 +561,7 @@ data:extend(
     max_health = 2000,
     collision_box = {{-1.7, -1.7 }, {1.7, 1.7}},
     selection_box = {{-2, -2 }, {2, 2}},
+    drawing_box_vertical_extension = 1,
     collision_mask = {layers={item=true, object=true, player=true, water_tile=true, is_object=true, is_lower_object=true}},
     damaged_trigger_effect = hit_effects.entity(),
     start_attacking_only_when_can_shoot = true,

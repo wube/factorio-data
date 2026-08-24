@@ -173,7 +173,7 @@ simulations.orbital_logistics =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "logistics-button-space", data = "0", data2 = "1"})
+            local target = game.simulation.get_widget_position({type = "logistics-button-space", request_index = 1, section_index = 2})
             return game.simulation.move_cursor({position = target, speed = 0.3})
           end
         },
@@ -183,7 +183,7 @@ simulations.orbital_logistics =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "signal-id-base", data = "transport-belt"})
+            local target = game.simulation.get_widget_position({type = "signal-id-base", id = {name = "transport-belt"}})
             return game.simulation.move_cursor({position = target, speed = 0.3})
           end
         },
@@ -216,7 +216,7 @@ simulations.orbital_logistics =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui.controlled-by-transitional-requests"})
+            local target = game.simulation.get_widget_position({type = "check-box", text = {"gui.controlled-by-transitional-requests"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -255,7 +255,7 @@ simulations.orbital_logistics =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", data = "gui-train.add-station"})
+            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", text = {"gui-train.add-station"}})
             return game.simulation.move_cursor({position = target, speed = 0.3})
           end
         },
@@ -268,7 +268,7 @@ simulations.orbital_logistics =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button-substring", data = "[planet=vulcanus]"})
+            local target = game.simulation.get_widget_position({type = "text-button-substring", text = "[planet=vulcanus]"})
             return game.simulation.move_cursor({position = target, speed = 0.3})
           end
         },
@@ -315,7 +315,7 @@ simulations.orbital_logistics =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "logistics-button", data = "0"})
+            local target = game.simulation.get_widget_position({type = "logistics-button", request_index = 1})
             return game.simulation.move_cursor({position = target, speed = 0.3})
           end
         },
@@ -325,7 +325,7 @@ simulations.orbital_logistics =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "signal-id-base", data = "transport-belt"})
+            local target = game.simulation.get_widget_position({type = "signal-id-base", id = {name = "transport-belt"}})
             return game.simulation.move_cursor({position = target, speed = 0.3})
           end
         },

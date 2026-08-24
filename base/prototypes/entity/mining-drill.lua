@@ -505,9 +505,6 @@ data:extend(
 
       status_colors = electric_mining_drill_status_colors(),
 
-      circuit_connector_layer = "object",
-      circuit_connector_secondary_draw_order = {north = 14, east = 30, south = 30, west = 30},
-
       animation =
       {
         north =
@@ -910,9 +907,6 @@ data:extend(
       animation_progress = 1,
 
       status_colors = electric_mining_drill_status_colors(),
-
-      circuit_connector_layer = "object",
-      circuit_connector_secondary_draw_order = {north = 14, east = 48, south = 48, west = 48},
 
       animation =
       {

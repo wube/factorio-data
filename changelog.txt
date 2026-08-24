@@ -1,4 +1,64 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.15
+Date: 24. 08. 2026
+  Changes:
+    - [space-age] Added technology prerequisite to "Transport belt capacity 2": it now requires "Inserter capacity bonus 7" to be researched.
+  Bugfixes:
+    - Fixed that go-to-mod didn't work when searching hid the mod-to-go-to in the manage mods GUI. (https://forums.factorio.com/134687)
+    - Fixed that many machines with passthrough ports would continue to produce and consume fluid from overextended pipelines.
+    - Fixed upgrading lamps would not preserve color. (https://forums.factorio.com/135519)
+    - Fixed a crash when rendering linked belt without structure sprites.
+    - Fixed technology effect tooltips were showing incorrect values. (https://forums.factorio.com/116018)
+    - Fixed that equipping armor with the shift-click shortcut would also send the next item in your inventory to a logistic trash slot. (https://forums.factorio.com/135497)
+    - Fixed that nuclear ground was not counted as unlocked in Factoriopedia when unlocking atomic bombs. (https://forums.factorio.com/135604)
+    - Fixed that the map preview GUI did not scale with GUI scale. (https://forums.factorio.com/135623)
+    - Fixed that shift-click to select-and-confirm in the lab technology selection GUI did not work correctly. (https://forums.factorio.com/135527)
+    - Fixed that rich-text recipe-with-quality tooltips did not work correctly. (https://forums.factorio.com/135450)
+    - Fixed that changing fluid prototype temperature limits would not apply the new temperature limits to existing in-game fluids.
+    - Fixed asteroid collectors with filters set by control behavior could fail to track asteroid chunks when signals changed during tracking update cooldown. (https://forums.factorio.com/135678)
+    - Fixed character legs were moving wrong way when walking and shooting. (https://forums.factorio.com/132780)
+    - Fixed issues with the surface list GUI and scrolling. (https://forums.factorio.com/135683)
+    - Fixed that space platform trash could over-fill landing pads. (https://forums.factorio.com/135336)
+    - Fixed that the entity preview for the tesla turret was too small. (https://forums.factorio.com/135570)
+    - Fixed that the capture robot rocket was shown in the technology bonus tooltip. (https://forums.factorio.com/135628)
+    - Fixed that reordering shortcuts did not work correctly when some were hidden. (https://forums.factorio.com/135658)
+    - Fixed tile buildability rules would not check all rules for rule overlaps when building entities in some cases. (https://forums.factorio.com/135178)
+    - Fixed blueprint library quickbar interaction when the player inventory is 100% full. (https://forums.factorio.com/131285)
+    - Fixed that confirming the maximum value field in orbital requests did not always work. (https://forums.factorio.com/132071)
+    - Fixed that Factoriopedia wouldn't show fluid recycling recipes if not merged with a recipe. (https://forums.factorio.com/135491)
+    - Fixed that chart rendering did not render all layers. (https://forums.factorio.com/135368)
+    - Fixed that underground belt contents would get counted twice in deconstruction planner tooltips. (https://forums.factorio.com/135587)
+    - Fixed a crash when mods replace cargo bays during cargo bay fast-replace. (https://forums.factorio.com/135586)
+    - Fixed a soft-lock when dying while the undo-confirmation GUI is open. (https://forums.factorio.com/135665)
+    - Fixed that multiplayer latency would think your main inventory had items from your ammo/weapons/armor. (https://forums.factorio.com/134278)
+    - Fixed a crash when crafting machine with burner energy source is deactivated by script during update. (https://forums.factorio.com/135736)
+    - Fixed recipe crafting speed prediction was not accounting for quality upgrades. (https://forums.factorio.com/135764)
+    - Fixed that the graph widget did not handle negative values. (https://forums.factorio.com/135583)
+    - Fixed remotely driven car in latency colliding with character with mecharmer causing a crash. (https://forums.factorio.com/134544)
+    - Fixed a crash when super force building modded enemy spawners using blueprints. (https://forums.factorio.com/135804)
+  Modding:
+    - Added EntityPrototype::ghost_build_sound.
+    - RocketSiloPrototype::rocket_parts_storage_cap accepts all values down to 0. This can be used to disable crafting of second rocket.
+    - Added CircuitConnectorSprites::render_layer and secondary_draw_order.
+    - Circuit connector for inserter no longer defaults to drawing on "floor" render layer.
+    - Circuit connector for train stops no longer defaults to drawing on "train-stop-top" render layer.
+    - Circuit connector for asteroid collector no longer defaults to drawing on "higher-object-under" render layer.
+    - Circuit connector for rocket silo no longer defaults to drawing with secondary draw order of 70.
+    - Removed LoaderPrototype::circuit_connector_layer. Use CircuitConnectorSprites::render_layer instead.
+    - Removed RailSignalPictureSet::circuit_connector_render_layer. Use CircuitConnectorSprites::render_layer instead.
+    - Removed CraftingMachineGraphicsSet::circuit_connector_layer and circuit_connector_secondary_draw_order. Use CircuitConnectorSprites::render_layer and secondary_draw_order instead.
+    - Removed MiningDrillGraphicsSet::circuit_connector_layer and circuit_connector_secondary_draw_order. Use CircuitConnectorSprites::render_layer and secondary_draw_order instead.
+  Scripting:
+    - Changed LuaControl::opened to support reading/writing the opened tile when in the map editor.
+    - Changed LuaControl::opened to support opening the permissions GUI, and server config GUI, and player management GUI when allowed.
+    - Changed LuaControl::opened to support opening the alerts GUI.
+    - Added LuaEntity::potential_effects read.
+    - Added LuaSpacePlatform::completed_trips read/write.
+    - Reworked LuaSimulation::get_widget_position() - it no longer accepts data/data2 strings and now uses 1-based indexing.
+    - Added "simple-item-with-quality-slot" to SimulationWidgetType.
+    - Replaced LuaGroup with LuaItemGroup and LuaItemSubGroup.
+    - Added on_next_day_started event.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.14
 Date: 06. 08. 2026
   Bugfixes:

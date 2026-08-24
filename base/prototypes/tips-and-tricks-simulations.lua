@@ -230,7 +230,7 @@ simulations.bulk_crafting =
         {
           name = "start",
           condition = function()
-            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "transport-belt"})
+            local target = game.simulation.get_widget_position({type = "recipe-slot", recipe = "transport-belt"})
             return game.simulation.move_cursor({position = target})
           end
         },
@@ -247,7 +247,7 @@ simulations.bulk_crafting =
 
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "burner-inserter"})
+            local target = game.simulation.get_widget_position({type = "recipe-slot", recipe = "burner-inserter"})
             return game.simulation.move_cursor({position = target})
           end,
           action = function() player.clear_inventory_highlights() end
@@ -265,7 +265,7 @@ simulations.bulk_crafting =
 
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "iron-chest"})
+            local target = game.simulation.get_widget_position({type = "recipe-slot", recipe = "iron-chest"})
             return game.simulation.move_cursor({position = target})
           end,
           action = function() player.clear_inventory_highlights() end
@@ -322,7 +322,7 @@ simulations.e_confirm =
     game.forces.player.technologies["logistics"].researched = true -- for splitters to be selectable
 
     chest = game.surfaces[1].find_entities_filtered{name = "requester-chest"}[1]
-    button = ""
+    button = 1
     slot_data = ""
 
     local story_table =
@@ -331,7 +331,7 @@ simulations.e_confirm =
         {
           name = "start",
           init = function()
-            button = "0"
+            button = 1
             slot_data = "transport-belt"
           end,
           condition = function() return game.simulation.move_cursor({position = chest.position, speed = 0.75}) end
@@ -344,7 +344,7 @@ simulations.e_confirm =
         {
           name = "continue",
           condition = function()
-            local target = game.simulation.get_widget_position({type = "logistics-button", data = button})
+            local target = game.simulation.get_widget_position({type = "logistics-button", request_index = button})
             return game.simulation.move_cursor({position = target, speed = 0.45})
           end
         },
@@ -354,7 +354,7 @@ simulations.e_confirm =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "signal-id-base", data = slot_data})
+            local target = game.simulation.get_widget_position({type = "signal-id-base", id = {name = slot_data}})
             return game.simulation.move_cursor({position = target, speed = 0.45})
           end
         },
@@ -371,28 +371,28 @@ simulations.e_confirm =
         {
           condition = story_elapsed_check(0.25),
           action = function()
-            if button == "5" then button = "6" end
-            if button == "4" then
-              button = "5"
+            if button == 6 then button = 7 end
+            if button == 5 then
+              button = 6
               slot_data = "storage-chest"
             end
-            if button == "3" then
-              button = "4"
+            if button == 4 then
+              button = 5
               slot_data = "small-electric-pole"
             end
-            if button == "2" then
-              button = "3"
+            if button == 3 then
+              button = 4
               slot_data = "inserter"
             end
-            if button == "1" then
-              button = "2"
+            if button == 2 then
+              button = 3
               slot_data = "splitter"
             end
-            if button == "0" then
-              button = "1"
+            if button == 1 then
+              button = 2
               slot_data = "underground-belt"
             end
-            if button < "6" then story_jump_to(storage.story, "continue") end
+            if button < 7 then story_jump_to(storage.story, "continue") end
           end
         },
         {
@@ -975,7 +975,7 @@ simulations.pipette =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "burner-inserter"})
+            local target = game.simulation.get_widget_position({type = "recipe-slot", recipe = "burner-inserter"})
             return game.simulation.move_cursor({position = target})
           end
         },
@@ -989,7 +989,7 @@ simulations.pipette =
         {
           name = "inserter-mouse-branch",
           condition = function()
-            local target = game.simulation.get_widget_position({type = "quickbar-slot", data = "burner-inserter"})
+            local target = game.simulation.get_widget_position({type = "quickbar-slot", filter = {name="burner-inserter", quality="normal"}})
             return game.simulation.move_cursor({position = target})
           end
         },
@@ -1028,7 +1028,7 @@ simulations.pipette =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "transport-belt"})
+            local target = game.simulation.get_widget_position({type = "recipe-slot", recipe = "transport-belt"})
             return game.simulation.move_cursor({position = target})
           end
         },
@@ -1511,7 +1511,7 @@ simulations.splitters =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-splitter.input-priority"})
+            local target = game.simulation.get_widget_position({type = "check-box", text = {"gui-splitter.input-priority"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -1548,7 +1548,7 @@ simulations.splitters =
 
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "item-group-tab", data = "intermediate-products"})
+            local target = game.simulation.get_widget_position({type = "item-group-tab", group = "intermediate-products"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -1564,7 +1564,7 @@ simulations.splitters =
         {
           name = "setElectronicCircuit",
           condition = function()
-            local target = game.simulation.get_widget_position({type = "simple-item-slot", data = "electronic-circuit"})
+            local target = game.simulation.get_widget_position({type = "simple-item-slot", item = "electronic-circuit"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4063,7 +4063,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-if"})
+            local target = game.simulation.get_widget_position({type = "check-box", text = {"gui-control-behavior-modes.enable-if"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4086,7 +4086,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "item-group-tab", data = "intermediate-products"})
+            local target = game.simulation.get_widget_position({type = "item-group-tab", group = "intermediate-products"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4101,7 +4101,7 @@ simulations.circuit_network =
         {
           name = "setIronPlate",
           condition = function()
-            local target = game.simulation.get_widget_position({type = "simple-slot", data = "iron-plate"})
+            local target = game.simulation.get_widget_position({type = "simple-slot", item = "iron-plate"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4122,7 +4122,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button", data = ">"})
+            local target = game.simulation.get_widget_position({type = "text-button", text = ">"})
             return game.simulation.move_cursor({position = target, speed = 0.1})
           end
         },
@@ -4162,7 +4162,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-if"})
+            local target = game.simulation.get_widget_position({type = "check-box", text = {"gui-control-behavior-modes.enable-if"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4182,7 +4182,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "simple-slot", data = "iron-plate"})
+            local target = game.simulation.get_widget_position({type = "simple-slot", item = "iron-plate"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4202,7 +4202,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button", data = ">"})
+            local target = game.simulation.get_widget_position({type = "text-button", text = ">"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4222,7 +4222,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "textfield", data = "0"})
+            local target = game.simulation.get_widget_position({type = "textfield", text = "0"})
             return game.simulation.move_cursor({position = target, speed = 0.1})
           end
         },
@@ -4236,7 +4236,7 @@ simulations.circuit_network =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", data = "gui.set-constant"})
+            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", text = {"gui.set-constant"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4255,7 +4255,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-if"})
+            local target = game.simulation.get_widget_position({type = "check-box", text = {"gui-control-behavior-modes.enable-if"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4275,7 +4275,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "simple-slot", data = "iron-plate"})
+            local target = game.simulation.get_widget_position({type = "simple-slot", item = "iron-plate"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4295,7 +4295,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button", data = ">"})
+            local target = game.simulation.get_widget_position({type = "text-button", text = ">"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4315,7 +4315,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "textfield", data = "0"})
+            local target = game.simulation.get_widget_position({type = "textfield", text = "0"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4330,7 +4330,7 @@ simulations.circuit_network =
         {
           init = function() chest1.insert({name = "iron-plate", count = 2}) end,
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", data = "gui.set-constant"})
+            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", text = {"gui.set-constant"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4382,7 +4382,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-if"})
+            local target = game.simulation.get_widget_position({type = "check-box", text = {"gui-control-behavior-modes.enable-if"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4402,7 +4402,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "simple-slot", data = "iron-plate"})
+            local target = game.simulation.get_widget_position({type = "simple-slot", item = "iron-plate"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4422,7 +4422,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button", data = ">"})
+            local target = game.simulation.get_widget_position({type = "text-button", text = ">"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4442,7 +4442,7 @@ simulations.circuit_network =
         },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "textfield", data = "0"})
+            local target = game.simulation.get_widget_position({type = "textfield", text = "0"})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },
@@ -4456,7 +4456,7 @@ simulations.circuit_network =
         { condition = story_elapsed_check(0.25) },
         {
           condition = function()
-            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", data = "gui.set-constant"})
+            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", text = {"gui.set-constant"}})
             return game.simulation.move_cursor({position = target, speed = 0.15})
           end
         },

@@ -1272,7 +1272,7 @@ data:extend(
         modifier = 1
       }
     },
-    prerequisites = {"transport-belt-capacity-1"},
+    prerequisites = {"transport-belt-capacity-1", "inserter-capacity-bonus-7"},
     unit =
     {
       count = 3000,

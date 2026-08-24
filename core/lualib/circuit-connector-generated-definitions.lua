@@ -652,10 +652,10 @@ circuit_connector_definitions["electric-mining-drill"] = circuit_connector_defin
 (
   universal_connector_template,
   {
-    { variation = 4, main_offset = util.by_pixel(-44, -41), shadow_offset = util.by_pixel(-34, -36), show_shadow = false },
-    { variation = 2, main_offset = util.by_pixel(34, 30), shadow_offset = util.by_pixel(36, 35), show_shadow = false },
-    { variation = 0, main_offset = util.by_pixel(-35, 24), shadow_offset = util.by_pixel(-34, 31), show_shadow = false },
-    { variation = 6, main_offset = util.by_pixel(-34, 37), shadow_offset = util.by_pixel(-40, 49), show_shadow = false }
+    { variation = 4, main_offset = util.by_pixel(-44, -41), shadow_offset = util.by_pixel(-34, -36), show_shadow = false, secondary_draw_order = 14 },
+    { variation = 2, main_offset = util.by_pixel( 34,  30), shadow_offset = util.by_pixel( 36,  35), show_shadow = false, secondary_draw_order = 48 },
+    { variation = 0, main_offset = util.by_pixel(-35,  24), shadow_offset = util.by_pixel(-34,  31), show_shadow = false, secondary_draw_order = 48 },
+    { variation = 6, main_offset = util.by_pixel(-34,  37), shadow_offset = util.by_pixel(-40,  49), show_shadow = false, secondary_draw_order = 48 }
   }
 )
 
@@ -669,10 +669,10 @@ circuit_connector_definitions["inserter"] = circuit_connector_definitions.create
 (
   inserter_connector_template,
   {
-    { variation = 2, main_offset = util.by_pixel(0, 0), shadow_offset = util.by_pixel(0, 0), show_shadow = true },
-    { variation = 3, main_offset = util.by_pixel(0, 0), shadow_offset = util.by_pixel(0, 0), show_shadow = true },
-    { variation = 0, main_offset = util.by_pixel(0, 0), shadow_offset = util.by_pixel(0, 0), show_shadow = true },
-    { variation = 1, main_offset = util.by_pixel(0, 0), shadow_offset = util.by_pixel(0, 0), show_shadow = true }
+    { variation = 2, main_offset = util.by_pixel(0, 0), shadow_offset = util.by_pixel(0, 0), show_shadow = true, render_layer = "floor" },
+    { variation = 3, main_offset = util.by_pixel(0, 0), shadow_offset = util.by_pixel(0, 0), show_shadow = true, render_layer = "floor" },
+    { variation = 0, main_offset = util.by_pixel(0, 0), shadow_offset = util.by_pixel(0, 0), show_shadow = true, render_layer = "floor" },
+    { variation = 1, main_offset = util.by_pixel(0, 0), shadow_offset = util.by_pixel(0, 0), show_shadow = true, render_layer = "floor" }
   }
 )
 
@@ -746,7 +746,8 @@ local function get_elevated_variation_with_shifting(variation, offset_x, offset_
     variation = variation,
     main_offset = util.by_pixel(offset_x, offset_y),
     shadow_offset = util.by_pixel(offset_x + 160 - 4, offset_y + 96 + 8),
-    show_shadow = true
+    show_shadow = true,
+    render_layer = "elevated-rail-stone-path-lower"
   }
 end
 
@@ -873,7 +874,7 @@ circuit_connector_definitions["rocket-silo"] = circuit_connector_definitions.cre
 (
   universal_connector_template,
   {
-    { variation = 1, main_offset = util.by_pixel(139.5, 60), shadow_offset = util.by_pixel(175.5, 104), show_shadow = true },
+    { variation = 1, main_offset = util.by_pixel(139.5, 60), shadow_offset = util.by_pixel(175.5, 104), show_shadow = true, secondary_draw_order = 70 },
     { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true }, -- unused but RocketSilo derives from AssemblingMachine which requires 4 connectors
     { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true }, -- also unused
     { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true }  -- also unused
@@ -895,10 +896,10 @@ circuit_connector_definitions["train-station"] = circuit_connector_definitions.c
 (
   universal_connector_template,
   {
-    { variation = 28, main_offset = util.by_pixel(4.5, -54.5), shadow_offset = util.by_pixel(100, 10.5), show_shadow = true },
-    { variation = 26, main_offset = util.by_pixel(-21.5, -56.5), shadow_offset = util.by_pixel(62.5, 2), show_shadow = true },
-    { variation = 24, main_offset = util.by_pixel(-5, -89), shadow_offset = util.by_pixel(112, -18.5), show_shadow = true },
-    { variation = 13, main_offset = util.by_pixel(10.5, -38), shadow_offset = util.by_pixel(62.5, 28.5), show_shadow = true }
+    { variation = 28, main_offset = util.by_pixel(4.5, -54.5), shadow_offset = util.by_pixel(100, 10.5), show_shadow = true, render_layer = "train-stop-top" },
+    { variation = 26, main_offset = util.by_pixel(-21.5, -56.5), shadow_offset = util.by_pixel(62.5, 2), show_shadow = true, render_layer = "train-stop-top" },
+    { variation = 24, main_offset = util.by_pixel(-5, -89), shadow_offset = util.by_pixel(112, -18.5), show_shadow = true, render_layer = "train-stop-top" },
+    { variation = 13, main_offset = util.by_pixel(10.5, -38), shadow_offset = util.by_pixel(62.5, 28.5), show_shadow = true, render_layer = "train-stop-top" }
   }
 )
 

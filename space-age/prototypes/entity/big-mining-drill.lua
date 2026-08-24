@@ -181,8 +181,6 @@ local function graphical_set(with_fluid)
     shift_animation_transition_duration = transition_frames / animation_speed,
     animation_progress = 1,
     status_colors = electric_mining_drill_status_colors(),
-    circuit_connector_layer = "object",
-    circuit_connector_secondary_draw_order = { north = 40, east = 40, south = 40, west = 40 },
 
     animation =
     {
