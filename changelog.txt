@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.16
+Date: 24. 08. 2026
+  Bugfixes:
+    - Fixed a crash when opening the production statistics GUI when the previous selected tab was the "all" tab. (https://forums.factorio.com/135843)
+    - Potentially fixed an issue with trackpad scrolling on macOS. (https://forums.factorio.com/135842)
+---------------------------------------------------------------------------------------------------
 Version: 2.1.15
 Date: 24. 08. 2026
   Changes:
