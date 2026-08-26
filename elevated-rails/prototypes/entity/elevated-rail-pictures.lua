@@ -14,7 +14,9 @@ local elevated_rail_render_layers =
   stone_path = "elevated-rail-stone-path",
   tie = "elevated-rail-tie",
   screw = "elevated-rail-screw",
-  metal = "elevated-rail-metal"
+  metal = "elevated-rail-metal",
+  front_end = "elevated-rail-above-metal",
+  back_end = "elevated-rail-above-metal"
 }
 local ramp_render_layers =
 {

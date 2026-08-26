@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.17
+Date: 26. 08. 2026
+  Bugfixes:
+    - Fixed that in some cases labs "set research" wouldn't mark the active research as set-by-lab-behavior. (https://forums.factorio.com/135855)
+    - Fixed that some some tooltips were too hard to show in graph widgets. (https://forums.factorio.com/135859)
+    - Fixed cannot build sound playing twice for underground belts and pipes. (https://forums.factorio.com/135851)
+    - Fixed that Steam achievements did not unlock due to updating the Steamworks SDK. (https://forums.factorio.com/135856)
+    - Fixed issue with autofilling tiles for blueprints where entities share a tile. (https://forums.factorio.com/135667)
+    - Fixed some artifacts with some transition images. (https://forums.factorio.com/134507)
+    - Fixed that the disabled-achievements-confirmation message wouldn't show when using the peaceful mode or no enemies options. (https://forums.factorio.com/135162)
+    - Fixed unreliable performance of control behavior update. (https://forums.factorio.com/134218)
+    - Fixed that elevated rail ends didn't render correctly. (https://forums.factorio.com/135809)
+    - Fixed that non-neutral robots would attempt to build neutral ghosts. (https://forums.factorio.com/135740)
+---------------------------------------------------------------------------------------------------
 Version: 2.1.16
 Date: 24. 08. 2026
   Bugfixes:
