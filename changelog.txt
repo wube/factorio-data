@@ -1,4 +1,58 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.18
+Date: 16. 09. 2026
+  Changes:
+    - [space-age] Custom minimum payload of a platform request is now respected by rockets carrying multiple different items. (https://forums.factorio.com/134654)
+    - [space-age] Removed "Military science pack" technology prerequisite from the "Health" technology.
+    - Updated working sounds for assembling machines.
+    - Updated Steamworks SDK to v1.65.
+    - Changed chat coloring so only player names are colored.
+  Optimizations:
+    - [space-age] Improved performance of inserters with spoil priority.
+    - Improved performance of pollution update when all trees on a chunk no longer accept pollution damage.
+  Bugfixes:
+    - Fixed that map-preview-planet would silently ignore invalid planets. (https://forums.factorio.com/135896)
+    - Fixed furnaces could void fluid product when output fluid box is occupied by another fluid. (https://forums.factorio.com/135912)
+    - Fixed that go-to-mod was off by one when searching in some cases. (https://forums.factorio.com/135939)
+    - Fixed LuaPlayer::drag_wire return value. (https://forums.factorio.com/135292)
+    - Fixed that upgrading locomotives didn't preserve colors. (https://forums.factorio.com/135962)
+    - Fixed a rare crash when removing platform requests already assigned to rocket silos. (https://forums.factorio.com/135958)
+    - Fixed electric network bars in electric pole tooltip did not match behavior of bars in network statistics gui. (https://forums.factorio.com/135966)
+    - Fixed that items would be auto-looted while flying in rockets/cargo pods. (https://forums.factorio.com/135791)
+    - Fixed offshore pump ghost being revivable before required tile ghost is revived. (https://forums.factorio.com/119110)
+    - Fixed incorrect agricultural tower tile visualisations in some modded cases. (https://forums.factorio.com/135865)
+    - Fixed debug adapter not showing correct information when tailcall is involved. (https://forums.factorio.com/136016)
+    - Fixed a crash when using swap-players while one of them had the technology GUI open. (https://forums.factorio.com/136007)
+    - Fixed that the fluid GUI would stretch vertically when it didn't need to. (https://forums.factorio.com/136000)
+    - Fixed that GPS pings would persist after using player.clear_console(). (https://forums.factorio.com/136052)
+    - Fixed that biters could fail to attack diagonal entities. (https://forums.factorio.com/135783)
+    - Fixed that the on_rocket_launch_ordered event did not contain player_index. (https://forums.factorio.com/136077)
+    - Fixed a crash when clicking the active-technology button when saving in multiplayer. (https://forums.factorio.com/136067)
+    - Fixed a crash when using LuaSimulation::control_press(). (https://forums.factorio.com/136043)
+    - Fixed that platform asteroid impacts didn't work correctly when hitting platforms from the sides. (https://forums.factorio.com/136047)
+    - Fixed a crash when segmented unit node count is small. (https://forums.factorio.com/136081)
+    - Fixed that LuaEntity::set_fluid and add_fluid would put fluid into ghosts. (https://forums.factorio.com/136066)
+    - Fixed a desync related to setting tree progress using LuaEntity::tree_stage_index.
+    - Fixed automatic rocket requests not ordering extra items when custom minimum payload was equal to the requested amount.
+    - Fixed a desync when spidertrons are killed and rebuilt in some cases. (https://forums.factorio.com/136114)
+    - Fixed that construction robots in a network with full storage chests and holding items rocket silos used for crafting were blocking automated rocket silos which wanted items held by the robots. (https://forums.factorio.com/135478)
+    - Fixed color signal order in GUI to match order in color signal mapping. (https://forums.factorio.com/136095)
+    - Fixed that remote-removal requests didn't show properly in the inserter GUI. (https://forums.factorio.com/136126)
+    - Fixed that blueprint selection counts didn't account for entities to be upgraded. (https://forums.factorio.com/136106)
+    - Fixed that upgrade planners let entities bypass surface conditions. (https://forums.factorio.com/136102)
+    - Fixed that LuaRendering::dash_offset did not work nicely for short lines. (https://forums.factorio.com/136006)
+    - Fixed that hidden technologies still made some visible noise when researched. (https://forums.factorio.com/135997)
+  Modding:
+    - Added "migrates_from" to info.json, allows mod to take ownership of storage, script inventories, gui elements and render objects of removed mod.
+    - Added ItemPrototype::science_capacity.
+    - Added QualityPrototype::science_capacity_multiplier.
+    - Added ItemPrototype::quality_affects_spoil_ticks.
+    - Removed PollutionSettings::max_pollution_to_restore_trees.
+  Scripting:
+    - Added LuaGuiElement::secondary_number read/write.
+    - Added LuaTransportLine::get_item_position().
+    - Added LuaRenderObject::tall read/write.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.17
 Date: 26. 08. 2026
   Bugfixes:

@@ -44,10 +44,10 @@ data:extend(
   },
   {
     type = "virtual-signal",
-    name = "signal-cyan",
-    icon = "__base__/graphics/icons/signal/signal_cyan.png",
+    name = "signal-yellow",
+    icon = "__base__/graphics/icons/signal/signal_yellow.png",
     subgroup = "virtual-signal-color",
-    order = "d[colors]-[4cyan]"
+    order = "d[colors]-[4yellow]"
   },
   {
     type = "virtual-signal",
@@ -58,10 +58,10 @@ data:extend(
   },
   {
     type = "virtual-signal",
-    name = "signal-yellow",
-    icon = "__base__/graphics/icons/signal/signal_yellow.png",
+    name = "signal-cyan",
+    icon = "__base__/graphics/icons/signal/signal_cyan.png",
     subgroup = "virtual-signal-color",
-    order = "d[colors]-[6yellow]"
+    order = "d[colors]-[6cyan]"
   },
   {
     type = "virtual-signal",

@@ -65,15 +65,6 @@ local fulgora_oil_transitions =
     spritesheet = "__space-age__/graphics/terrain/water-transitions/fulgora-oil-sand.png",
     layout = tile_spritesheet_layout.transition_16_16_16_4_8_short,
     background_enabled = false,
-    effect_map_layout =
-    {
-      spritesheet = "__space-age__/graphics/terrain/effect-maps/water-fulgora-sand-mask.png",
-      inner_corner_tile_height = 2,
-      outer_corner_tile_height = 2,
-      side_tile_height = 2,
-      u_transition_tile_height = 2,
-      o_transition_count = 1
-    },
     background_mask_layout = tile_spritesheet_layout.simple_white_mask
   },
   {
@@ -235,14 +226,13 @@ local fulgora_oil_sand_transitions_between_transitions =
     masked_background_layer_offset = 1,
     offset_background_layer_by_tile_layer = false,
 
-    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/fulgora-shore-out-of-map-transition.png",
+    spritesheet = "__space-age__/graphics/terrain/out-of-map-transition/oil-out-of-map-transition.png",
     layout = tile_spritesheet_layout.transition_3_3_3_1_0,
     effect_map_layout =
     {
       spritesheet = "__space-age__/graphics/terrain/effect-maps/water-fulgora-sand-to-out-of-map-mask.png",
       o_transition_count = 0
     },
-    background_mask_layout = tile_spritesheet_layout.simple_white_mask,
     water_patch = patch_for_inner_corner_of_transition_between_transition
   }
 }
@@ -716,8 +706,8 @@ data:extend
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
       }
     ),
-    transitions = table.deepcopy(data.raw.tile["water-shallow"].transitions),
-    transitions_between_transitions = table.deepcopy(data.raw.tile["water-shallow"].transitions_between_transitions),
+    transitions = fulgora_oil_transitions,
+    transitions_between_transitions = fulgora_oil_transitions_between_transitions,
     walking_sound = tile_sounds.walking.oil_deep,
     landing_steps_sound = tile_sounds.landing.oil,
     ambient_sounds = tile_sounds.ambient.oil_deep,

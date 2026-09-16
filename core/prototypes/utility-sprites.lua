@@ -1936,7 +1936,7 @@ data:extend(
     side_menu_factoriopedia_icon = make_side_menu_button(10),
     side_menu_technology_icon = make_side_menu_button(11), -- for quick panel
     side_menu_players_icon = make_side_menu_button(12),
-
+    side_menu_alerts_config_icon = make_side_menu_button(13),
     circuit_network_panel =
     {
       filename = "__core__/graphics/icons/mip/circuit-connection.png",

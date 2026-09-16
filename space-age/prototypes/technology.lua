@@ -1446,7 +1446,7 @@ data:extend(
     {
       {type = "character-health-bonus", modifier = 50}
     },
-    prerequisites = {"agricultural-science-pack", "utility-science-pack", "military-science-pack"},
+    prerequisites = {"agricultural-science-pack", "utility-science-pack"},
     unit =
     {
       count_formula = "2^L*50",
