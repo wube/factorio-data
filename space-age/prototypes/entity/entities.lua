@@ -654,7 +654,7 @@ data:extend({
         },
         west =
         {
-		  {
+          {
             render_layer = "lower-object-above-shadow",
             layers =
             {
@@ -1034,16 +1034,16 @@ data:extend({
 
         {
           -- effect = "flicker",
-			    fadeout = true,
-			    animation = util.sprite_load("__space-age__/graphics/entity/thruster/thruster-light",
-				              {
-				                animation_speed = 0.5,
-				                frame_count = 64,
-				                blend_mode = "additive",
-				                draw_as_glow = true,
-				                scale = 0.5,
-				                shift = {0,3}
-				              }),
+          fadeout = true,
+          animation = util.sprite_load("__space-age__/graphics/entity/thruster/thruster-light",
+          {
+            animation_speed = 0.5,
+            frame_count = 64,
+            blend_mode = "additive",
+            draw_as_glow = true,
+            scale = 0.5,
+            shift = {0,3}
+          }),
         },
       },
       flame_effect =
@@ -1094,7 +1094,7 @@ data:extend({
           {
             width = 253,
             height = 210,
-	          scale = 0.5,
+            scale = 0.5,
             line_length = 8,
             frame_count = 60,
             shift = {0, 0},

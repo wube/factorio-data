@@ -252,8 +252,6 @@ data:extend(
     lightning_attractor_collection_range_color = {0.0, 0.1, 0.0, 0.1},
     lightning_attractor_protection_range_color = {0.0, 0.2, 0.2, 0.2},
 
-    zoom_to_world_can_use_nightvision = false,
-    zoom_to_world_effect_strength = 1.0,
     max_logistic_filter_count = 1000,
     max_terrain_building_size = 255, -- the min of this or the player build reach is used
     small_area_size = 1.5, -- less than this plays the 'small' sound variants
@@ -482,13 +480,6 @@ data:extend(
       {0.85, "identity"}
     },
 
-    zoom_to_world_daytime_color_lookup =
-    {
-      {0.25, "identity"},
-      {0.45, "__core__/graphics/color_luts/night.png"},
-      {0.55, "__core__/graphics/color_luts/night.png"},
-      {0.75, "identity"}
-    },
     frozen_color_lookup = "__core__/graphics/color_luts/frozen.png",
     default_platform_surface_render_parameters = {},
 

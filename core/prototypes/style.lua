@@ -5674,6 +5674,7 @@ data:extend(
         base = {corner_size = 19, position = {242, 584}, draw_type = "inner", scale = 1},
         shadow = default_inner_shadow,
       },
+      vertically_stretchable = "off",
       width = slot_table_width,
       padding = -8
     },

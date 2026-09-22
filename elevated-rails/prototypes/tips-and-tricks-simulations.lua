@@ -12,7 +12,7 @@ simulations.elevated_rails =
     game.simulation.camera_zoom = 1
     storage.character = player.character
 
-	  game.surfaces[1].build_checkerboard{{-24, -13}, {22, 13}}
+    game.surfaces[1].build_checkerboard{{-24, -13}, {22, 13}}
 
     for y = -13, 12 do
       game.surfaces[1].set_tiles{{name = "grass-4", position = {6, y}}}

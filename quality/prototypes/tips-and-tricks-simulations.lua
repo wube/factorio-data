@@ -205,7 +205,7 @@ simulations.quality_of_ingredients =
     game.simulation.camera_player = player
     game.simulation.camera_position = {0, 0.5}
     game.simulation.camera_alt_info = true
-	  game.simulation.camera_player_cursor_position = player.position
+    game.simulation.camera_player_cursor_position = player.position
     player.character.direction = defines.direction.south
     game.forces.player.unlock_quality("uncommon")
     game.forces.player.recipes["electronic-circuit"].enabled = true

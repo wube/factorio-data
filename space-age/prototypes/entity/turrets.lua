@@ -480,28 +480,27 @@ data:extend(
           layers =
           {
             util.sprite_load("__space-age__/graphics/entity/rocket-turret/rocket-turret-base",
-		    		              {
-		    		                priority = "high",
-                            frame_count = 1,
-		    		                scale = 0.5,
-		    		                shift = util.by_pixel( 0.0, 0.0+rocket_turret_shift),
-		    		              }),
+            {
+              priority = "high",
+              frame_count = 1,
+              scale = 0.5,
+              shift = util.by_pixel( 0.0, 0.0+rocket_turret_shift),
+            }),
             util.sprite_load("__space-age__/graphics/entity/rocket-turret/rocket-turret-base-mask",
-		    		              {
-		    		                flags = {"mask", "low-object"},
-                            frame_count = 1,
-                            apply_runtime_tint = true,
-		    		                scale = 0.5,
-		    		                shift = util.by_pixel( 0.0, 0.0+rocket_turret_shift),
-		    		              }),
+            {
+              flags = {"mask", "low-object"},
+              frame_count = 1,
+              apply_runtime_tint = true,
+              scale = 0.5,
+              shift = util.by_pixel( 0.0, 0.0+rocket_turret_shift),
+            }),
             util.sprite_load("__space-age__/graphics/entity/rocket-turret/rocket-turret-base-shadow",
-		    		              {
-		    		                frame_count = 1,
-                            scale = 0.5,
-		    		                shift = util.by_pixel( 0.0, 0.0+rocket_turret_shift),
-                            draw_as_shadow = true,
-		    		              }),
-
+            {
+              frame_count = 1,
+              scale = 0.5,
+              shift = util.by_pixel( 0.0, 0.0+rocket_turret_shift),
+              draw_as_shadow = true,
+            }),
           }
         }
       },

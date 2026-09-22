@@ -1,4 +1,42 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.20
+Date: 22. 09. 2026
+  Bugfixes:
+    - Fixed that un-checking the 'parameter' checkbox would forget the quality of the parameter. (https://forums.factorio.com/135937)
+    - Fixed improperly scaled technology sub-icons being drawn outside of widget bounds in research progress button. (https://forums.factorio.com/129378)
+    - Fixed main menu background simulation vignette not being visible. (https://forums.factorio.com/133955)
+    - Fixed '--report-quantities' command line parameter ignoring non-ore entities. (https://forums.factorio.com/133592)
+    - Fixed that hovering space connection lines didn't work nicely for some angled connections. (https://forums.factorio.com/134992)
+    - Fixed warning caused by icc profile on greyscale PNGs. (https://forums.factorio.com/136038)
+    - Fixed that undo/redo around fuel in entities did not work nicely. (https://forums.factorio.com/132089)
+    - Fixed that script changes to platform hub settings didn't show in the GUI until re-opened. (https://forums.factorio.com/136163)
+    - Fixed that it was no longer possible to walk between rocket silos that are horizontally next to each other. (https://forums.factorio.com/136182)
+    - Fixed that the vanilla binary would attempt to install space-age only mods. (https://forums.factorio.com/136178)
+    - Fixed rocket silo was launching too fast causing circuit network to miss something happened. (https://forums.factorio.com/136185)
+    - Fixed inventory slot filter menu showing on inventories that don't support filters. (https://forums.factorio.com/136205)
+    - Fixed unable to change building modes while dragging. (https://forums.factorio.com/136180)
+    - Fixed performance problems related to artillery reaction unit groups. (https://forums.factorio.com/136211)
+    - Fixed scripts for transport belt madness campaign were not updated when loading an old save file. (https://forums.factorio.com/136206)
+    - Fixed power switch gui did not disable toggle when entity is controlled by circuit network or frozen. (https://forums.factorio.com/136136)
+    - Fixed hub inventory sorting would not wake up inserters causing genuine stuck situations to appear as a deadlock. (https://forums.factorio.com/136232)
+    - Fixed transport belts marked as tall would not render as tall when hide tall entities is enabled. (https://forums.factorio.com/136237)
+    - Fixed science production was not reported to production statistics of corresponding surfaces. (https://forums.factorio.com/136236)
+    - Fixed a crash when construction robot brings empty stack of items to a tank in some cases. (https://forums.factorio.com/136222)
+    - Fixed that enabling light occlusion disabled light rendering for all blend modes except "normal" (premultiplied alpha) blending. (https://forums.factorio.com/132555 and https://forums.factorio.com/135903)
+    - Fixed a game freeze when mods kill tiles under entities actively dying on space platforms. (https://forums.factorio.com/136245)
+    - Fixed a crash when mods invalidate turrets while they kill things using beams. (https://forums.factorio.com/136224)
+    - Fixed that several environmental entities did not show in the signals list. (https://forums.factorio.com/136240)
+    - Fixed a crash when a space platform which didn't have enough inventory space requested more items which didn't fit into the rocket and the item had custom minimum payload equal to wanted count. (https://forums.factorio.com/136213)
+  Modding:
+    - Removed utility constants zoom_to_world_can_use_nightvision, zoom_to_world_effect_strength and zoom_to_world_daytime_color_lookup.
+    - Added SpaceConnectionPrototype::shape.
+    - Added SpaceConnectionPrototype::origin.
+    - Added SpaceLocationPrototype::origin.
+    - Replaced ItemPrototype::fuel_category with ItemPrototype::fuel_categories.
+  Scripting:
+    - Removed LuaPlayer::spectator because it did nothing.
+    - Replaced LuaItemPrototype::fuel_category read with fuel_categories read.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.19
 Date: 16. 09. 2026
   Bugfixes:
@@ -12,6 +50,7 @@ Date: 16. 09. 2026
     - Updated working sounds for assembling machines.
     - Updated Steamworks SDK to v1.65.
     - Changed chat coloring so only player names are colored.
+    - Added side button for opening alerts configuration GUI.
   Optimizations:
     - [space-age] Improved performance of inserters with spoil priority.
     - Improved performance of pollution update when all trees on a chunk no longer accept pollution damage.
