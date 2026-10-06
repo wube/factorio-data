@@ -45,6 +45,7 @@ local cargo_pod_catalogue =
       {
         priority = "medium",
         scale = 0.5,
+        draw_as_shadow = true,
       })
   },
   -- POD Animated

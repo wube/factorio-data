@@ -211,10 +211,6 @@ data.raw["elevated-curved-rail-a"]["elevated-curved-rail-a"].surface_conditions 
 data.raw["elevated-curved-rail-b"]["elevated-curved-rail-b"].surface_conditions = one_gravity_condition()
 data.raw["rail-support"]["rail-support"].surface_conditions = one_gravity_condition()
 
--- TODO: AssemblingMachinePrototype demands 4 directions, circuit_connector_definitions provides only 1 so far
-data.raw["rocket-silo"]["rocket-silo"].circuit_connector = circuit_connector_definitions["rocket-silo"]
-data.raw["rocket-silo"]["rocket-silo"].circuit_wire_max_distance = default_circuit_wire_max_distance
-
 local containers = -- prototype type -> list[prototype name]
 {
   container = { "wooden-chest", "iron-chest", "steel-chest", --[[ "red-chest", "blue-chest" ]] },

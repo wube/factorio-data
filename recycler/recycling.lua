@@ -232,10 +232,21 @@ local generate_recycling_recipe = function(recipe, can_recycle)
   end
 end
 
+local function get_self_result_count(recipe, item_name)
+  if not recipe or not recipe.results then return 1 end
+  for _, product in pairs(util.normalize_recipe_products(recipe)) do
+    if product.type == "item" and product.name == item_name and product.amount_min == product.amount_max and product.amount_min > 0 then
+      return product.amount_min
+    end
+  end
+  return 1
+end
+
 local function generate_self_recycling_recipe(item)
   local icons = generate_recycling_recipe_icons_from_item(item)
   local default_machine_tints = {primary = {0.125,0.125,0.125,0.125}, secondary = {0.125,0.125,0.125,0.125}, tertiary = {0.125,0.125,0.125,0.125}, quaternary = {0.125,0.125,0.125,0.125}}
-  local crafting_machine_tint = data.raw.recipe[item.name] and data.raw.recipe[item.name].crafting_machine_tint or default_machine_tints
+  local item_recipe = data.raw.recipe[item.name]
+  local crafting_machine_tint = item_recipe and item_recipe.crafting_machine_tint or default_machine_tints
   local recipe =
   {
     type = "recipe",
@@ -250,7 +261,7 @@ local function generate_self_recycling_recipe(item)
     unlock_results = false,
     ingredients = {{type = "item", name = item.name, amount = 1, ignored_by_stats = 1}},
     results = {{type = "item", name = item.name, amount = 1, independent_probability = 0.25, ignored_by_stats = 1}}, -- Will show as consumed when item is destroyed
-    energy_required = (data.raw.recipe[item.name] and data.raw.recipe[item.name].energy_required or 0.5 )/16,
+    energy_required = math.max((item_recipe and item_recipe.energy_required or 0.5) / 16 / get_self_result_count(item_recipe, item.name), 0.0011),
     crafting_machine_tint = crafting_machine_tint
   }
   add_recipe_unlock(recipe)

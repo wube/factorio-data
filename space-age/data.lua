@@ -79,7 +79,7 @@ main_menu_simulations.platform_moving = space_age_menu_simulations.platform_movi
 main_menu_simulations.platform_messy_nuclear = space_age_menu_simulations.platform_messy_nuclear
 main_menu_simulations.vulcanus_lava_forge = space_age_menu_simulations.vulcanus_lava_forge
 main_menu_simulations.vulcanus_crossing = space_age_menu_simulations.vulcanus_crossing
-main_menu_simulations.vulcanus_punishmnent = space_age_menu_simulations.vulcanus_punishmnent
+main_menu_simulations.vulcanus_punishment = space_age_menu_simulations.vulcanus_punishment
 main_menu_simulations.vulcanus_sulfur_drop = space_age_menu_simulations.vulcanus_sulfur_drop
 main_menu_simulations.gleba_agri_towers = space_age_menu_simulations.gleba_agri_towers
 main_menu_simulations.gleba_pentapod_ponds = space_age_menu_simulations.gleba_pentapod_ponds
@@ -96,7 +96,7 @@ main_menu_simulations.nauvis_rocket_factory = space_age_menu_simulations.nauvis_
 
 -- data.raw["utility-constants"]["default"].main_menu_simulations = {}
 -- local main_menu_simulations = data.raw["utility-constants"]["default"].main_menu_simulations
--- main_menu_simulations.current_simulation_to_test = space_age_menu_simulations.vulcanus_punishmnent
+-- main_menu_simulations.current_simulation_to_test = space_age_menu_simulations.vulcanus_punishment
 
 -- Test to make sure all gleba tiles are part of the land or water set for tile restriction.
 -- This can for example prevent decoratives from spawning in water, but they are still allowed to overlap water.

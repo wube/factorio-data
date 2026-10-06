@@ -504,7 +504,7 @@ data:extend(
 
     asteroid_spawning_offset = {{-48, -72}, {48, 48}},
     asteroid_fading_range = 16,
-    asteroid_min_damage_modifier = 0.1,
+    asteroid_min_damage_modifier = 0.05,
     asteroid_spawning_with_random_orientation_max_speed = 0.02,
     asteroid_position_offset_to_speed_coefficient = 1 / 120,
 
@@ -514,11 +514,11 @@ data:extend(
     asteroid_collector_static_head_swing_strength_scale = 1.0;
     asteroid_collector_static_head_swing_segment_count = 12;
 
-    -- drag_coefficient = width * 0.5
-    -- drag = ((1500 * speed * speed + 1500 * abs(speed)) * drag_coefficient + 10000) * sign(speed)
+    -- drag_coefficient = (weight / 200) ^ 0.8
+    -- drag = ((90 * speed * speed) * drag_coefficient + 10000) * sign(speed)
     -- final_thrust = thrust / (1 + weight / 10000000)
     -- acceleration = (final_thrust - drag) / weight / 60
-    space_platform_acceleration_expression = "(thrust / (1 + weight / 10000000) - ((1500 * speed * speed + 1500 * abs(speed)) * (width * 0.5) + 10000) * sign(speed)) / weight / 60",
+    space_platform_acceleration_expression = "(thrust / (1 + weight / 10000000) - ((90 * speed * speed) * ((weight / 200) ^ 0.80) + 10000) * sign(speed)) / weight / 60",
     space_platform_relative_speed_factor = 0.035,
     space_platform_starfield_movement_vector = { 0, -0.02 },
     space_platform_max_size = {{-1000000, -200}, {1000000, 1000000}},

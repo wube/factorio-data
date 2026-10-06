@@ -21,7 +21,7 @@ sounds.mining_stone =
   {
     filename = "__core__/sound/axe-mining-stone.bnvib"
   },
-  variations = sound_variations("__core__/sound/axe-mining-stone", 7, 0.4),
+  variations = sound_variations("__core__/sound/axe-mining-stone", 7, 0.55),
   priority = 64
 }
 sounds.mine_fish = sound_variations("__core__/sound/mine-fish", 5, 0.8)
@@ -494,7 +494,7 @@ sounds.heavy_gunshot =
 sounds.gun_turret_gunshot =
 {
   variations = sound_variations("__base__/sound/fight/gun-turret-gunshot", 4, 0.4, {volume_multiplier("main-menu", 0.9), volume_multiplier("space-platform", 0.5)}),
-  aggregation = {max_count = 8, remove = true, count_already_playing = true, priority = "newest"}
+  aggregation = {max_count = 8, remove = true, count_already_playing = true, progress_threshold = 0.175}
 }
 sounds.light_gunshot =
 {

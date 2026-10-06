@@ -119,8 +119,8 @@ gleba_tree_underwater_things["yumako-tree"] = gleba_tree_underwater_things["hair
 
 local gleba_tree_particle_effects =
 {
-  ["planted-tree"] =    { crop_2 = "yumako-leaf-particle",
-                        trunk_2 = "yumako-branch-particle"
+  ["planted-tree"] =    { crop_2 = "leaf-particle",
+                        trunk_2 = "branch-particle"
                       },
   ["yumako-tree"] =   { crop_2 = "yumako-leaf-particle",
                         trunk_2 = "yumako-branch-particle"

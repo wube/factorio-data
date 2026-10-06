@@ -226,6 +226,7 @@ data:extend({
     circuit_connector = circuit_connector_definitions["space-platform-hub"],
     default_speed_signal = {type = "virtual", name = "signal-V"},
     default_damage_taken_signal = {type = "virtual", name = "signal-D"},
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     platform_repair_speed_modifier = 0.1,
     open_sound = sounds.metal_large_open,
     close_sound = sounds.metal_large_close,

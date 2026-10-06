@@ -1578,6 +1578,7 @@ data:extend(
     },
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     water_reflection = chest_reflection()
   },
   {
@@ -1634,6 +1635,7 @@ data:extend(
     },
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     water_reflection = chest_reflection()
   },
   {
@@ -3182,6 +3184,7 @@ data:extend(
     circuit_connector = require("prototypes.entity.assembler-pictures").circuit_connector,
     alert_icon_shift = util.by_pixel(0, -12),
     graphics_set = require("prototypes.entity.assembler-pictures").assembler1_graphics_set,
+    animation_random_start_frame = true,
     perceived_performance = {minimum = 0.125, maximum = 2.5},
     crafting_categories = {"crafting", "advanced-crafting"},
     crafting_speed = 0.5,
@@ -3199,59 +3202,51 @@ data:extend(
     impact_category = "metal",
     working_sound =
     {
-      sound = 
+      sound =
       {
-        filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.7, audible_distance_modifier = 0.5,
+        filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.7,
         advanced_volume_control = assembling_machine_advanced_volume_control()
       },
+      max_sounds_per_prototype = 7,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
       sound_accents =
       {
         {
-          sound = 
+          sound =
           {
-            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-t1-mech-movement", 3, 0.5), 
+            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-t1-mech-movement", 3, 0.3),
             audible_distance_modifier = 0.5,
             advanced_volume_control = assembling_machine_advanced_volume_control()
           },
             frame = 4,
         },
         {
-          sound = 
+          sound =
           {
-            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.3), 
+            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.15),
             audible_distance_modifier = 0.5,
             advanced_volume_control = assembling_machine_advanced_volume_control()
           },
             frame = 13,
         },
         {
-          sound = 
+          sound =
           {
-            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-t1-mech-movement", 3, 0.5), 
+            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-t1-mech-movement", 3, 0.3),
             audible_distance_modifier = 0.5,
             advanced_volume_control = assembling_machine_advanced_volume_control()
           },
             frame = 38,
         },
         {
-          sound = 
+          sound =
           {
-            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.3), 
+            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.15),
             audible_distance_modifier = 0.5,
             advanced_volume_control = assembling_machine_advanced_volume_control()
           },
             frame = 43,
-        },
-        {
-          sound = 
-          {
-            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-t1-mech-movement", 3, 0.5), 
-            audible_distance_modifier = 0.5,
-            advanced_volume_control = assembling_machine_advanced_volume_control()
-          }, 
-            frame = 62,
         },
       },
     },
@@ -3303,34 +3298,36 @@ data:extend(
     fast_replaceable_group = "assembling-machine",
     next_upgrade = "assembling-machine-3",
     graphics_set = require("prototypes.entity.assembler-pictures").assembler2_graphics_set,
+    animation_random_start_frame = true,
     perceived_performance = {minimum = 0.1875, maximum = 3.75},
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
     impact_category = "metal",
     working_sound =
     {
-      sound = 
+      sound =
       {
-        filename = "__base__/sound/assembling-machine-t2-1.ogg", volume = 0.45, audible_distance_modifier = 0.5,
+        filename = "__base__/sound/assembling-machine-t2-1.ogg", volume = 0.45,
         advanced_volume_control = assembling_machine_advanced_volume_control()
       },
+      max_sounds_per_prototype = 7,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
       sound_accents =
       {
         {
-          sound = 
+          sound =
           {
-            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.45), 
+            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.15),
             audible_distance_modifier = 0.5,
             advanced_volume_control = assembling_machine_advanced_volume_control()
           },
           frame = 15,
         },
         {
-          sound = 
+          sound =
           {
-            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.45), 
+            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.15),
             audible_distance_modifier = 0.5,
             advanced_volume_control = assembling_machine_advanced_volume_control()
           },
@@ -5297,6 +5294,7 @@ data:extend(
     },
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     water_reflection = chest_reflection()
   },
   {
@@ -5528,28 +5526,29 @@ data:extend(
     impact_category = "metal",
     working_sound =
     {
-      sound = 
-        {
-          filename = "__base__/sound/assembling-machine-t3-1.ogg", volume = 0.45, audible_distance_modifier = 0.5,
-          advanced_volume_control = assembling_machine_advanced_volume_control()
-        },
+      sound =
+      {
+        filename = "__base__/sound/assembling-machine-t3-1.ogg", volume = 0.45,
+        advanced_volume_control = assembling_machine_advanced_volume_control()
+      },
+      max_sounds_per_prototype = 7,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
       sound_accents =
       {
         {
-          sound = 
+          sound =
           {
-            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.45), 
+            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.15),
             audible_distance_modifier = 0.5,
             advanced_volume_control = assembling_machine_advanced_volume_control()
           },
             frame = 15,
         },
         {
-          sound = 
+          sound =
           {
-            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.45), 
+            variations = sound_variations("__base__/sound/entity/assembling-machine/assembling-machine-mech-impact", 7, 0.15),
             audible_distance_modifier = 0.5,
             advanced_volume_control = assembling_machine_advanced_volume_control()
           },
@@ -5563,7 +5562,8 @@ data:extend(
     drawing_box_vertical_extension = 0.2,
     fast_replaceable_group = "assembling-machine",
     graphics_set = require("prototypes.entity.assembler-pictures").assembler3_graphics_set,
-    perceived_performance = {minimum = 0.25, maximum = 5},
+    animation_random_start_frame = true,
+    perceived_performance = {minimum = 0.25, maximum = 4},
     crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
     crafting_speed = 1.25,
     energy_source =
@@ -5838,6 +5838,7 @@ data:extend(
     },
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     water_reflection = chest_reflection()
   },
   {
@@ -5902,6 +5903,7 @@ data:extend(
     },
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     water_reflection = chest_reflection()
   },
   {
@@ -5967,6 +5969,7 @@ data:extend(
     },
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     water_reflection = chest_reflection()
   },
   {
@@ -6032,6 +6035,7 @@ data:extend(
     },
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     water_reflection = chest_reflection()
   },
   {
@@ -6097,6 +6101,7 @@ data:extend(
     },
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     water_reflection = chest_reflection()
   },
   {
@@ -6486,6 +6491,9 @@ data:extend(
         },
       }
     },
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["rocket-silo"],
+    default_launched_signal = {type = "virtual", name = "signal-R"},
   },
   {
     type = "rocket-silo-rocket",
@@ -6902,6 +6910,7 @@ data:extend(
     },
     circuit_wire_max_distance = default_circuit_wire_max_distance,
     circuit_connector = circuit_connector_definitions["cargo-landing-pad"],
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
   },
   {
     type = "roboport",
@@ -8412,6 +8421,7 @@ data:extend(
     close_sound = sounds.metal_large_close,
     working_sound =
     {
+      max_sounds_per_prototype = 3,
       main_sounds =
       {
         {
@@ -8561,11 +8571,11 @@ data:extend(
     use_mirroring = true,
     graphics_set =
     {
-      animation = 
+      animation =
       {
-        north = 
+        north =
         {
-          layers = 
+          layers =
           {
             util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-north-base", {
               scale = 0.5,
@@ -8596,9 +8606,9 @@ data:extend(
             }
           }
         },
-        east = 
+        east =
         {
-          layers = 
+          layers =
           {
             util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-east-base", {
               scale = 0.5,
@@ -8629,9 +8639,9 @@ data:extend(
             }
           }
         },
-        south = 
+        south =
         {
-          layers = 
+          layers =
           {
             util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-south-base", {
               scale = 0.5,
@@ -8662,9 +8672,9 @@ data:extend(
             }
           }
         },
-        west = 
+        west =
         {
-          layers = 
+          layers =
           {
             util.sprite_load("__base__/graphics/entity/chemical-plant/chemical-plant-west-base", {
               scale = 0.5,
@@ -10506,8 +10516,9 @@ data:extend{
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.6 },
     impact_category = "wood",
     icon_draw_specification = {scale = 0.7},
-    circuit_connector = circuit_connector_definitions["chest-single"],
+    circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
     picture =
     {
       layers =
@@ -10593,6 +10604,7 @@ data:extend{
     },
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    default_empty_slots_signal = { type = "virtual", name = "signal-E" },
   }
 }
 

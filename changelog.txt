@@ -1,4 +1,80 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.21
+Date: 06. 10. 2026
+  Minor Features:
+    - Added index comparator to selector combinator. Allows for selection of N highest or N lowest signals.
+    - [space-age] Added "quality select" mode to selector combinator.
+    - Added "Read launched" option to rocket silo's control behavior.
+    - Added "Read empty slots" option to container's, logistic container's and cargo landing pad's control behavior.
+    - [space-age] Added "Read empty slots" option to space platform hub's control behavior.
+    - Added quick pipette: pressing key related to empty quickbar slot will invoke pipette and set the slot with the pipette result.
+  Balancing:
+    - [space-age] Retuned asteroid damage.
+    - [space-age] Adjusted space platform drag to be based on weight rather than width.
+  Changes:
+    - Adjusted working sounds for assembling machines.
+  Bugfixes:
+    - Fixed music resuming when it shouldn't while in game menu. (https://forums.factorio.com/136151)
+    - Fixed a crash when using async saving and closing the game. (https://forums.factorio.com/135003)
+    - Fixed a deadlock when using async saving and quitting to the main menu. (https://forums.factorio.com/135423)
+    - Fixed a crash when using async saving and leaving a multiplayer game. (https://forums.factorio.com/136246)
+    - Fixed a crash related to fusion reactors removed due to migration.
+    - Fixed combinator description was not updated in open gui when changed by script. (https://forums.factorio.com/136267)
+    - Fixed that logistic networks with no logistic robots accepted automated rocket requests from space platforms. (https://forums.factorio.com/136150)
+    - Fixed requests satisfied refused pipetted items when space platform has requests set by circuit network. (https://forums.factorio.com/136286)
+    - Fixed possible furnace input tooltip could list same item multiple times. (https://forums.factorio.com/136275)
+    - Fixed decider combinator gui would highlight conditions and outputs when hovered signal was not a valid signal-each substitute due to all instances of signal-each in conditions being 0. (https://forums.factorio.com/136104)
+    - Fixed excessive doppler effect being applied when leaving remote view. (https://forums.factorio.com/115407)
+    - Fixed that space platforms requested only one repair pack which slowed down repairs when delivered from other platforms. (https://forums.factorio.com/136048)
+    - Fixed that space platforms where an entity deconstruction was cancelled requested an incorrect count of items. (https://forums.factorio.com/135763)
+    - Improved Factoriopedia <> Technology GUI interaction when closing with escape. (https://forums.factorio.com/136283)
+    - Fixed more cases of rocket silo launching too fast causing circuit network to miss something happened. (https://forums.factorio.com/136341)
+    - Fixed that the roboport robot request selection GUI title mentioned signals. (https://forums.factorio.com/136343)
+    - Fixed selector combinators quality selection flickering. (https://forums.factorio.com/136330)
+    - Fixed that blueprints would count fuel in machines as fuel in vehicles. (https://forums.factorio.com/136342)
+    - Fixed that setting parameter names could cause drag building grid-set blueprints to not be grid-aligned. (https://forums.factorio.com/135567)
+    - Fixed fusion reactor being incorrectly considered active for working sound purposes in some cases. (https://forums.factorio.com/136313)
+    - Fixed tips and tricks for heating mechanic could show before researching aquilo when skip trigger conditions were met. (https://forums.factorio.com/135269)
+    - Fixed menu simulation for nauvis tank building where tank would stop where blueprint was placed. (https://forums.factorio.com/135884)
+    - Fixed base built notifications were raised for chunks without active coverage if they happened to be charted by other means. (https://forums.factorio.com/135689)
+    - Fixed that planted Nauvis trees created yumako particles when damaged, mined or destroyed. (https://forums.factorio.com/135377)
+    - Fixed turrets prioritising targets in prepare range but outside of attack range. (https://forums.factorio.com/131848)
+    - Fixed fluid energy sources would show status as 'Low power' when working nominally. (https://forums.factorio.com/136304)
+    - Fixed electric turrets could consume energy even if they failed to shoot due to range condition. (https://forums.factorio.com/136349)
+    - Fixed that large numbers of mods would cause https trafic to fail on MacOS. (https://forums.factorio.com/136326)
+    - Fixed that GUI elements with negative margins wouldn't stretch to fill their parent. (https://forums.factorio.com/118119)
+    - Fixed that boilers with no output fluid filter could generate a fluid with a temperature outside of the fluid's limits, causing a crash.
+    - Fixed that unit groups set to 'wandering' could ignore new commands. (https://forums.factorio.com/135511)
+    - Fixed logistic section multiplier floating point math caused numbers to be 1 smaller in some cases. (https://forums.factorio.com/136355)
+    - Fixed issues with 'drop item' hotkey and dynamic inventories. (https://forums.factorio.com/135951)
+    - Fixed that rocket silos launched to orbit automatically when they still had inventory space. (https://forums.factorio.com/129708)
+    - Fixed a crash when character is in vehicle when forces are merged. (https://forums.factorio.com/136351)
+    - Fixed cargo pod shadows were misaligned when landing in cargo bays. (https://forums.factorio.com/121648)
+    - Fixed some signals with quality had no corresponding chat icon. (https://forums.factorio.com/120044)
+    - Fixed colored lines in water transitions of Gleba deadskin tiles. (https://forums.factorio.com/134963)
+    - Fixed Technology GUI "Research is being set by a lab" showing when no technologies are shown. (https://forums.factorio.com/135886)
+    - [space-age] Fixed recycle time of items that recycle into themselves did not scale with item result count. (https://forums.factorio.com/135548)
+    - Fixed cursor item stack swap when an inventory with weight limit (like Space Age rocket silo) was full. (https://forums.factorio.com/134169)
+    - Fixed anti-aliased screenshots of space platforms having wrong scale of shader effects. (https://forums.factorio.com/132320)
+    - Fixed electric energy source's buffer_capacity was not affecting buffer size for crafting machines, agricultural towers, labs and mining drills. (https://forums.factorio.com/136107)
+    - Fixed that nightvision with a darkness_to_turn_on of 0 was not always on. (https://forums.factorio.com/134908)
+    - Fixed that "Not enough to fill one rocket" message was visible in the tooltip of space platform requests when the platform was full. (https://forums.factorio.com/134733)
+    - Fixed that "Waiting on a higher priority request" message was visible when it shouldn't and reworded it to match slot reservation behavior. (https://forums.factorio.com/135641)
+    - Fixed that pending automated rocket requests were counted towards to-be-delivered items on all space platforms instead of just the target. (https://forums.factorio.com/135820)
+  Modding:
+    - Added checks for FluidWagonPrototype's offset_when members to not produce unwanted behaviour. (https://forums.factorio.com/135580)
+    - Added CraftingMachinePrototype::animation_random_start_frame.
+    - Added ProxyContainerPrototype::direction_count. Changed ProxyContainerPrototype::circuit_connector into an array.
+    - Added NightVisionEquipmentPrototype::sunglasses.
+    - Specifying a BoilerPrototype::target_temperature which is outside of the allowed temperature range of the output fluid will cause a prototype error.
+  Scripting:
+    - Added TechnologyModifier::hidden read.
+    - LuaPlanet::associate_surface now works for planets that require heating.
+    - Boiler fluid filters can no longer be adjusted at runtime.
+    - Renamed LuaEntityPrototype::building_grid_bit_shift to build_grid_size to match the prototype stage name.
+    - Added LuaGameScript::player_death_notifications_enabled and space_platform_death_notifications_enabled.
+    - Added LuaEntity::get_signals_changed().
+---------------------------------------------------------------------------------------------------
 Version: 2.1.20
 Date: 22. 09. 2026
   Bugfixes:

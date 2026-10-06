@@ -53,7 +53,7 @@ function shared_bay_hatch(hatch_offset, hatch_illumination_index)
     slice_height = 0.5,
     sky_slice_height = -0.5,
     travel_height = 3,
-    pod_shadow_offset = hub_pod_shadow_offset();
+    pod_shadow_offset = bay_pod_shadow_offset();
     illumination_graphic_index = hatch_illumination_index,
     cargo_unit_entity_to_spawn = "cargo-pod",
     receiving_cargo_units = {"cargo-pod"},

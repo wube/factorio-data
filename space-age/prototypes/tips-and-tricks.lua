@@ -160,6 +160,10 @@ data:extend(
       triggers =
       {
         {
+          type = "change-surface",
+          surface = "aquilo"
+        },
+        {
           type = "build-entity",
           entity = "heating-tower",
           count = 1,

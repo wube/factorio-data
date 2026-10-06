@@ -63,7 +63,7 @@ local shared_resistances =
   }
 }
 local shared_health = {0, 100, 400, 2000, 5000}
-local shared_damage_per_hp = {0, 5, 8, 12, 15}
+local shared_damage_per_hp = {0, 3, 5, 12, 50}
 local asteroids_data =
 {
   metallic =
