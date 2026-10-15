@@ -3485,7 +3485,7 @@ simulations.copy_paste =
         },
         {
           condition = story_elapsed_check(0.5),
-          action = function() player.build_from_cursor({position = {4.5, -0.5}, direction = defines.direction.east}) end
+          action = function() game.simulation.control_press{control = "build", notify = false} end
         },
         { condition = function() return game.simulation.move_cursor({position = {4, 0}}) end },
         {
@@ -3498,7 +3498,7 @@ simulations.copy_paste =
         },
         {
           condition = story_elapsed_check(1),
-          action = function() player.build_from_cursor({position = {4, 0}, direction = defines.direction.east}) end
+          action = function() game.simulation.control_press{control = "build", notify = false} end
         },
         {
           condition = story_elapsed_check(0.5),

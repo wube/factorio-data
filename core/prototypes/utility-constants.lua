@@ -13,10 +13,35 @@ data:extend(
 
     clipboard_history_size = 20,
     entity_button_background_color = {0.6, 0.6, 0.6, 0.6},
-    building_buildable_too_far_tint = {0.6, 0.6, 0.3, 0.1},
-    building_buildable_tint = {0.4, 1, 0.4, 1},
-    building_not_buildable_tint = {1, 0.4, 0.4, 1},
-    building_ignorable_tint = {0.4, 0.4, 1, 1},
+    build_preview_tints =
+    {
+      entity =
+      {
+        buildable = {0.4, 1, 0.4, 1},
+        buildable_too_far = {0.6, 0.6, 0.3, 0.1},
+        ignorable = {0.4, 0.4, 1, 1},
+        not_buildable = {1, 0.4, 0.4, 1}
+      },
+      tile =
+      {
+        buildable = {0.5, 1, 0.5, 0.5},
+        buildable_too_far = {1, 1, 0.5, 0.5},
+        ignorable = {0.4, 0.5, 1, 0.5},
+        not_buildable = {1, 0.5, 0.5, 0.5}
+      },
+      entity_chart =
+      {
+        buildable = {0, 1, 0},
+        ignorable = {0, 0, 1},
+        not_buildable = {1, 0, 0}
+      },
+      tile_chart =
+      {
+        buildable = {0, 0, 1},
+        ignorable = {0, 0, 0, 0},
+        not_buildable = {1, 0, 0}
+      }
+    },
     building_no_tint = {1, 1, 1, 1},
     tall_entity_tint = {0.2, 0.2, 0.1, 0.2},
     tall_entity_smoke_tint = {0.3, 0.3, 0.3, 0.3},

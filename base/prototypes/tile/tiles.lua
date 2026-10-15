@@ -2639,9 +2639,11 @@ data:extend(
     shader = "water",
     water =
     {
-      textures =
+      noise_textures =
       {{
-        filename = "__base__/graphics/terrain/effects/water-noise.png"
+        filename = "__base__/graphics/terrain/effects/water-noise.png",
+        size = 512,
+        color_channels = 1
       }},
       specular_lightness = { 1, 1, 1 },
       foam_color = { 230, 255, 252 },

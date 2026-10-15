@@ -1804,8 +1804,8 @@ data:extend(
       },
       production_type = "input",
       filter = "steam",
-      minimum_temperature = 100.0
     },
+    minimum_input_temperature = 100.0,
     energy_source =
     {
       type = "electric",
@@ -9684,8 +9684,8 @@ data:extend(
       },
       production_type = "input",
       filter = "steam",
-      minimum_temperature = 100.0
     },
+    minimum_input_temperature = 100.0,
     energy_source =
     {
       type = "electric",

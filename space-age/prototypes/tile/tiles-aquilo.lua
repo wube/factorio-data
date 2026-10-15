@@ -535,19 +535,19 @@ data:extend({
     shader = "water",
     water = {
       shader_variation = "wetland-water",
-      textures =
+      noise_textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
-        },
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
+          size = 512
+        }
+      },
+      image_textures =
+      {
         {
           filename = "__space-age__/graphics/terrain/aquilo/brash-ice.png"
         }
       },
-      texture_variations_columns = 1,
-      texture_variations_rows = 1,
-      secondary_texture_variations_columns = 4,
-      secondary_texture_variations_rows = 2,
 
 
       animation_speed = 0.8,

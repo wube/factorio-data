@@ -1,4 +1,41 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.22
+Date: 15. 10. 2026
+  Optimizations:
+    - Improved turret range overlay performance on high-resolution displays. (https://forums.factorio.com/136090)
+  Bugfixes:
+    - Fixed cargo pods spilling items on ground even though they would fit into space platform hub inventory after sorting. (https://forums.factorio.com/135765)
+    - Fixed selector combinator's quality select switch wrong initial state. (https://forums.factorio.com/136435)
+    - Fixed equipment sprite not having default GUI flags applied. (https://forums.factorio.com/133854)
+    - Fixed table sorting clickable area. (https://forums.factorio.com/136441)
+    - Fixed tutorial level 1 not detecting quickbar was set. (https://forums.factorio.com/136463)
+    - Fixed a crash when migration removal removes all roboport equipment while personal robots are active. (https://forums.factorio.com/136461)
+    - Fixed square compression artifacts in lava shader.
+    - Fixed a crash when drawing mining drill in illegal direction. (https://forums.factorio.com/136531)
+    - Fixed that heat-fluid-inside boilers would continue to work even if their input pipeline was overextended.
+  Modding:
+    - Split WaterTileEffectParameters::textures to noise_textures and image_textures.
+    - Removed WaterTileEffectParameters::texture_variations_rows/columns and secondary_texture_variations_rows/columns. The numbers are now derived from image_textures dimensions.
+    - Added selection tool preselection events: on_player_start_selected_area, on_player_change_selected_area, and on_player_cancel_selected_area.
+    - Added SelectionToolPrototype::send_pre_selection_events bool to enable preselection events for that specific tool.
+    - Added `selection_mode`, `position`, and `cursor_position` properties to area selection and preselection events.
+    - Added BoilerPrototype::minimum_input_temperature and maximum_input_temperature.
+    - Added FluidEnergySource::minimum_input_temperature and maximum_input_temperature.
+    - Added FusionGeneratorPrototype::minimum_input_temperature and maximum_input_temperature.
+    - Added FusionReactorPrototype::minimum_input_temperature and maximum_input_temperature.
+    - Added GeneratorPrototype::minimum_input_temperature and maximum_input_temperature.
+    - Added MiningDrillPrototype::minimum_input_temperature and maximum_input_temperature.
+    - Added ThrusterPrototype::minimum_fuel_temperature, maximum_fuel_temperature, minimum_oxidizer_temperature, and maximum_oxidizer_temperature.
+    - Changed FluidEnergySource::maximum_temperature behavior: "unlimited" is now specified as nil instead of zero.
+    - Removed FluidBox::minimum_temperature and maximum_temperature.
+    - Replaced UtilityConstants::building_buildable_tint, building_buildable_too_far_tint, building_ignorable_tint and building_not_buildable_tint with build_preview_tints, which also covers tile and map view build previews.
+    - Added BlueprintItemPrototype::build_preview_tints.
+  Scripting:
+    - Added LuaEntityPrototype::minimum_input_temperature, maximum_input_temperature, minimum_fuel_temperature, maximum_fuel_temperature, minimum_oxidizer_temperature, and maximum_oxidizer_temperature reads.
+    - Added LuaFluidEnergySourcePrototype::minimum_input_temperature and maximum_input_temperature reads.
+    - LuaFluidEnergySourcePrototype::maximum_temperature read will return nil instead of zero when the maximum temperature is unspecified.
+    - LuaEntity::set_fluid_filter, get_fluid_filter, and get_fluid_segment_filter now return/take a FluidID instead of a FluidFilter.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.21
 Date: 06. 10. 2026
   Minor Features:

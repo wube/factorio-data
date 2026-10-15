@@ -1649,20 +1649,19 @@ data:extend({
     {
       shader_variation = "wetland-water",
       lightmap_alpha = 0, -- needed for water mask
-      textures =
+      noise_textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
-        },
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
+          size = 512
+        }
+      },
+      image_textures =
+      {
         {
           filename = "__space-age__/graphics/terrain/gleba/wetland-dead-skin-shader.png"
         }
       },
-      texture_variations_columns = 1,
-      texture_variations_rows = 1,
-      secondary_texture_variations_columns = 4,
-      secondary_texture_variations_rows = 2,
-
 
       animation_speed = 1.5,
       animation_scale = { 0.8, 0.8 },
@@ -1688,20 +1687,19 @@ data:extend({
     {
       shader_variation = "wetland-water",
       lightmap_alpha = 0, -- needed for water mask
-      textures =
+      noise_textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
-        },
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
+          size = 512
+        }
+      },
+      image_textures =
+      {
         {
           filename = "__space-age__/graphics/terrain/gleba/wetland-green-slime-shader.png"
         }
       },
-      texture_variations_columns = 1,
-      texture_variations_rows = 1,
-      secondary_texture_variations_columns = 4,
-      secondary_texture_variations_rows = 2,
-
 
       animation_speed = 1.5,
       animation_scale = { 0.8, 0.8 },
@@ -1727,20 +1725,19 @@ data:extend({
     {
       shader_variation = "wetland-water",
       lightmap_alpha = 0, -- needed for water mask
-      textures =
+      noise_textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
-        },
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
+          size = 512
+        }
+      },
+      image_textures =
+      {
         {
           filename = "__space-age__/graphics/terrain/gleba/wetland-pink-tentacle-shader.png"
         }
       },
-      texture_variations_columns = 1,
-      texture_variations_rows = 1,
-      secondary_texture_variations_columns = 4,
-      secondary_texture_variations_rows = 2,
-
 
       animation_speed = 1.5,
       animation_scale = { 0.75, 0.75 },
@@ -1766,20 +1763,19 @@ data:extend({
     {
       shader_variation = "wetland-water",
       lightmap_alpha = 0, -- needed for water mask
-      textures =
+      noise_textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
-        },
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
+          size = 512
+        }
+      },
+      image_textures =
+      {
         {
           filename = "__space-age__/graphics/terrain/gleba/wetland-purple-tentacle-shader.png"
         }
       },
-      texture_variations_columns = 1,
-      texture_variations_rows = 1,
-      secondary_texture_variations_columns = 4,
-      secondary_texture_variations_rows = 2,
-
 
       animation_speed = 1.5,
       animation_scale = { 0.75, 0.75 },
@@ -1805,19 +1801,19 @@ data:extend({
     {
       shader_variation = "wetland-water",
       lightmap_alpha = 0, -- needed for water mask
-      textures =
+      noise_textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png"
-        },
+          filename = "__space-age__/graphics/terrain/gleba/watercaustics.png",
+          size = 512
+        }
+      },
+      image_textures =
+      {
         {
           filename = "__space-age__/graphics/terrain/gleba/wetland-dead-skin-shader.png"
         }
       },
-      texture_variations_columns = 1,
-      texture_variations_rows = 1,
-      secondary_texture_variations_columns = 4,
-      secondary_texture_variations_rows = 2,
 
       animation_speed = 1.5,
       animation_scale = { 1.5, 1.5 },

@@ -721,27 +721,31 @@ data:extend
     water =
     {
       shader_variation = "oil",
-      textures =
+      noise_textures =
       {
         {
-          filename = "__space-age__/graphics/terrain/oilNoise.png"
-        },
-        {
-          filename = "__space-age__/graphics/terrain/oil-ocean-deep-shader.png"
+          filename = "__space-age__/graphics/terrain/oilNoise.png",
+          size = 512,
+          color_channels = 3
         },
         --gradient map for thin film effect
         {
-          filename = "__space-age__/graphics/terrain/oilGradient.png"
+          filename = "__space-age__/graphics/terrain/oilGradient.png",
+          width = 512,
+          height = 32,
+          color_channels = 3
+        }
+      },
+      image_textures =
+      {
+        {
+          filename = "__space-age__/graphics/terrain/oil-ocean-deep-shader.png"
         },
         --specular highligts
         {
           filename = "__space-age__/graphics/terrain/oil-ocean-deep-spec.png"
         },
       },
-      texture_variations_columns = 1,
-      texture_variations_rows = 1,
-      secondary_texture_variations_columns = 4,
-      secondary_texture_variations_rows = 2,
 
       specular_lightness = { 3, 3, 3 },
       foam_color = {140, 60, 60}, -- #4e3838ff,
