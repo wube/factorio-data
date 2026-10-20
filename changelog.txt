@@ -1,4 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.23
+Date: 20. 10. 2026
+  Bugfixes:
+    - Fixed that mobile roboports would not generate no-storage-space alerts. (https://forums.factorio.com/136510)
+    - Fixed a crash in RGBA-to-RG texture conversion logic when texture compression was disabled. (https://forums.factorio.com/136564)
+    - Fixed a desync caused by enemy spawners initilisation order and attached units with varying collision masks. (https://forums.factorio.com/136571)
+    - Fixed a crash when an agricultural tower with void energy source used working visualisation states. (https://forums.factorio.com/136559)
+    - Fixed that radars and LuaForce::chart() would chart one chunk too far east and south on maps with limited size. (https://forums.factorio.com/136587)
+    - Fixed that space platform was using the default LUT when it was traveling. (https://forums.factorio.com/136569)
+    - Fixed that remote view following an entity would not fire the player changed position Lua event. (https://forums.factorio.com/136573)
+    - Fixed that mining drill status didn't always match the visual status. (https://forums.factorio.com/136475)
+    - Fixed that inserters could get stuck inserting fuel when using set-recipe with filtered fuel slots. (https://forums.factorio.com/136478)
+    - Fixed that select from cursor signal did not work in the selector combinator quality transfer GUI. (https://forums.factorio.com/136431)
+    - Fixed that util.combine_icons was creating global variables. (https://forums.factorio.com/136598)
+  Scripting:
+    - Added hide_health_bars parameter to LuaGameScript::take_screenshot.
+  Modding:
+    - Added ItemPrototypeFlag "disable-logistic-overlay".
+---------------------------------------------------------------------------------------------------
 Version: 2.1.22
 Date: 15. 10. 2026
   Optimizations:

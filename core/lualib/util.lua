@@ -350,9 +350,9 @@ end
 -- This function takes 2 icons tables, and adds the second to the first, but applies scale, shift and tint to the entire second set.
 -- This allows you to manipulate the entire second icons table in the same way as you would manipulate a single icon when adding to the icons table.
 function util.combine_icons(icons1, icons2, inputs, default_icon_size)
-  scale = inputs.scale or 1
-  shift = inputs.shift or {0, 0}
-  tint = inputs.tint or {r = 1, g = 1, b = 1, a = 1}
+  local scale = inputs.scale or 1
+  local shift = inputs.shift or {0, 0}
+  local tint = inputs.tint or {r = 1, g = 1, b = 1, a = 1}
 
   local icons = table.deepcopy(icons1)
   for _,icon_to_add in pairs(icons2) do
