@@ -1,4 +1,40 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.24
+Date: 27. 10. 2026
+  Minor Features:
+    - Restored the fluid pipeline visualization when selecting an entity.
+    - Added "show fluid pipeline visualization when selected" interface setting, enabled by default.
+    - Added --test-save, --test-scenario, --test-ticks and --test-arg command line options.
+  Graphics:
+    - Tweaked icons of simple coal liquefaction and acid neutralization recipes. (https://forums.factorio.com/118946)
+  Changes:
+    - When holding a wire, only entities connectable with it are selectable. (https://forums.factorio.com/136637)
+    - Added Quickbar section to interface settings.
+  Bugfixes:
+    - Fixed that tiles which changed slightly outside of the screen could draw their old state when they become visible. (https://forums.factorio.com/136503)
+    - Fixed that some prototype errors would not show the manage mods button. (https://forums.factorio.com/136606)
+    - Fixed that input and output cargo hatch counts were reversed in tooltips.
+    - Fixed that clicking the current research button didn't always open the technology GUI to the current research. (https://forums.factorio.com/136595)
+    - Fixed a crash during sprite loading when a sprite path was invalid and some tile-effect prototypes were partially loaded. (https://forums.factorio.com/136620)
+    - Fixed that robots would try to insert modules before the machine was able to hold them. (https://forums.factorio.com/134514)
+    - Fixed that space platforms could get stuck trying to insert modules before the machine was able to hold them. (https://forums.factorio.com/132457)
+    - Fixed a crash when destroying a locomotive in a simulation while train GUI was open. (https://forums.factorio.com/133935)
+    - Fixed tips-and-tricks image loading when opening the tip from chat. (https://forums.factorio.com/135555)
+    - Fixed a crash in map view related to entity invalidation while searching. (https://forums.factorio.com/136641)
+    - Fixed space platform not dropping trash on arrival when all its requests were restricted to the same planet. (https://forums.factorio.com/136368)
+    - Fixed a crash related to raising events for units added to unit group or removed from unit group. (https://forums.factorio.com/136670)
+    - Fixed a crash when a unit tried to go around another unit whose target died in the same tick. (https://forums.factorio.com/136608)
+    - Fixed out of map tile was missing absorption of other pollutants. (https://forums.factorio.com/136690)
+    - Fixed tight spots level 4 had some resources too rich. (https://forums.factorio.com/136682)
+    - Fixed that opening search via the hotkey in multiplayer and then quickly typing didn't work well. (https://forums.factorio.com/136687)
+    - Fixed that the joining/loading/catching up GUI did not size correctly when mods were involved and multiple players were joining at the same time. (https://forums.factorio.com/136698)
+    - Fixed that crushers had emissions and heating energy defined when they never used them. (https://forums.factorio.com/136691)
+    - Fixed a crash when using request-to-save-and-quit in headless mode. (https://forums.factorio.com/135796)
+    - Fixed that migrations could mix fluids of different temperatures within crafting machines. (https://forums.factorio.com/136678)
+    - Fixed a performance regression with fluid flow on certain save files. (https://forums.factorio.com/136679)
+  Scripting:
+    - Added LuaBootstrap::finish_test() and LuaBootstrap::test_arg.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.23
 Date: 20. 10. 2026
   Bugfixes:

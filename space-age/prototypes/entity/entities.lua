@@ -859,12 +859,10 @@ data:extend({
     crafting_categories = {"crushing"},
     crafting_speed = 1,
     energy_usage = "540kW",
-    heating_energy = "200kW",
     energy_source =
     {
       type = "electric",
-      usage_priority = "secondary-input",
-      emissions_per_minute = { pollution = 1 }
+      usage_priority = "secondary-input"
     },
     open_sound = sounds.mech_small_open,
     close_sound = sounds.mech_small_close,

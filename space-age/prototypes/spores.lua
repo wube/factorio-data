@@ -18,3 +18,5 @@ data:extend(
     damages_trees = false,
   }
 })
+
+data.raw.tile["out-of-map"].absorptions_per_second.spores = 0.0001 -- ref https://forums.factorio.com/136690

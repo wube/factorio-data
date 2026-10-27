@@ -1,0 +1,1 @@
+-- This file was removed in 2.1 but does not reliably get removed when updating from 2.0. This forces the old file to be overwritten with this empty dummy.
