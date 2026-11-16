@@ -103,26 +103,68 @@ return
   },
   assembler2pipepictures =
   {
-    north = util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-N",
+    north =
     {
-      priority = "extra-high",
-      scale = 0.5,
-    }),
-    east = util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-E",
+      layers =
+      {
+        util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-N",
+        {
+          priority = "extra-high",
+          scale = 0.5,
+        }),
+        util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-N-shadow",
+        {
+          priority = "extra-high",
+          draw_as_shadow = true,
+          scale = 0.5,
+        }),
+      }
+    },
+    east =
     {
-      priority = "extra-high",
-      scale = 0.5,
-    }),
-    south = util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-S",
+      layers =
+      {
+        util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-E",
+        {
+          priority = "extra-high",
+          scale = 0.5,
+        }),
+        util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-E-shadow",
+        {
+          priority = "extra-high",
+          draw_as_shadow = true,
+          scale = 0.5,
+        }),
+      }
+    },
+    south =
     {
-      priority = "extra-high",
-      scale = 0.5,
-    }),
-    west = util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-W",
+      layers =
+      {
+        util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-S",
+        {
+          priority = "extra-high",
+          scale = 0.5,
+        }),
+        util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-S-shadow",
+        {
+          priority = "extra-high",
+          draw_as_shadow = true,
+          scale = 0.5,
+        }),
+      }
+    },
+    west =
     {
-      priority = "extra-high",
-      scale = 0.5,
-    }),
+      layers =
+      {
+        util.sprite_load("__base__/graphics/entity/assembling-machine-2/assembling-machine-2-pipe-W",
+        {
+          priority = "extra-high",
+          scale = 0.5,
+        }),
+      }
+    },
   },
   assembler3_graphics_set =
   {
@@ -168,26 +210,68 @@ return
   },
   assembler3pipepictures =
   {
-    north = util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-N",
+    north =
     {
-      priority = "extra-high",
-      scale = 0.5,
-    }),
-    east = util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-E",
+      layers =
+      {
+        util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-N",
+        {
+          priority = "extra-high",
+          scale = 0.5,
+        }),
+        util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-N-shadow",
+        {
+          priority = "extra-high",
+          draw_as_shadow = true,
+          scale = 0.5,
+        }),
+      }
+    },
+    east =
     {
-      priority = "extra-high",
-      scale = 0.5,
-    }),
-    south = util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-S",
+      layers =
+      {
+        util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-E",
+        {
+          priority = "extra-high",
+          scale = 0.5,
+        }),
+        util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-E-shadow",
+        {
+          priority = "extra-high",
+          draw_as_shadow = true,
+          scale = 0.5,
+        }),
+      }
+    },
+    south =
     {
-      priority = "extra-high",
-      scale = 0.5,
-    }),
-    west = util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-W",
+      layers =
+      {
+        util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-S",
+        {
+          priority = "extra-high",
+          scale = 0.5,
+        }),
+        util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-S-shadow",
+        {
+          priority = "extra-high",
+          draw_as_shadow = true,
+          scale = 0.5,
+        }),
+      }
+    },
+    west =
     {
-      priority = "extra-high",
-      scale = 0.5,
-    }),
+      layers =
+      {
+        util.sprite_load("__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-W",
+        {
+          priority = "extra-high",
+          scale = 0.5,
+        }),
+      }
+    },
   },
   circuit_connector = circuit_connector_definitions.create_vector
   (

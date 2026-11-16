@@ -43,7 +43,7 @@
     "settler_group_max_size": 10,
     "evolution_group_size_factor": 8.0,
     "build_base_unit_dispatch_cooldown": 1800,
-    "min_expansion_cooldown": 14400,
+    "min_expansion_cooldown": 36000,
     "max_expansion_cooldown": 216000
   },
   "unit_group":

@@ -2727,6 +2727,7 @@ data:extend(
   {
     type = "item-entity",
     name = "item-on-ground",
+    order = "b",
     icon = "__core__/graphics/item-on-ground.png",
     factoriopedia_simulation = simulations.factoriopedia_item_on_ground,
     flags = {"placeable-off-grid", "not-on-map"},
@@ -3353,6 +3354,7 @@ data:extend(
   {
     type = "entity-ghost",
     name = "entity-ghost",
+    order = "a",
     icon =  "__core__/graphics/icons/mip/ghost-entity.png",
     factoriopedia_simulation = simulations.factoriopedia_entity_ghost,
     build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-small.ogg", volume = 0.6, aggregation = {max_count = 3, remove = true}},
@@ -3368,6 +3370,7 @@ data:extend(
   {
     type = "tile-ghost",
     name = "tile-ghost",
+    order = "d",
     icon = "__core__/graphics/icons/mip/ghost-tile.png",
     factoriopedia_simulation = simulations.factoriopedia_tile_ghost,
     minable = {mining_time = 0, results={}},
@@ -3390,6 +3393,7 @@ data:extend(
   {
     type = "item-request-proxy",
     name = "item-request-proxy",
+    order = "c",
     icon = "__core__/graphics/icons/mip/item-request-slot.png",
     factoriopedia_simulation = simulations.factoriopedia_item_request_proxy,
     use_target_entity_alert_icon_shift = true,
@@ -4046,6 +4050,14 @@ data:extend(
       }
     },
     hidden = true
+  },
+  {
+    type = "entity-ghost",
+    name = "depleted-mining-drill-proxy",
+    icon = "__core__/graphics/icons/alerts/resources-depleted-icon.png",
+    icon_size = 64,
+    factoriopedia_simulation = simulations.factoriopedia_depleted_mining_drill,
+    order = "e"
   },
   {
     type = "entity-ghost",

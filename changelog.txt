@@ -1,4 +1,97 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.25
+Date: 16. 11. 2026
+  Minor Features:
+    - Added depleted mining drill filter to deconstruction planner.
+    - Added fluid system contents and flushing functionality to the pipe GUI.
+    - Added search to the 'Select planet to drop to' GUI.
+    - [space-age] Added build sounds and growth sounds for Yumako, Jellystem and Nauvis tree.
+    - Joining a public game hosted on your own local network now works even on routers without NAT loopback.
+  Graphics:
+    - Changed GUI parametrise icon. (https://forums.factorio.com/126659)
+  Changes:
+    - Trying to open the GUI of the already-opened entity in map view no longer makes a 'rejected' noise. (https://forums.factorio.com/136751)
+    - Updated to SDL 3.4.18.
+    - Change Mine control to be a little less eager to activate, especially when bound to another conflicting control.
+    - Rail building when using ghosts (e.g. in remote view or with ghost cursor) defaults to manual rail planning again. Rail planner pathfinding can be toggled with shift. (https://forums.factorio.com/136459)
+    - The "Starting RCON interface" log line now shows the port that was actually bound, so --rcon-port 0 or --rcon-bind ADDRESS:0 can be used to let the system pick a free port.
+    - Bound UDP sockets now log the address and port they were bound to, so --port 0, --bind ADDRESS:0 and --enable-lua-udp 0 can be used to let the system pick a free port.
+  Bugfixes:
+    - Fixed remote item removal marker not being removed from invalid spaces until robots tried to interact with the inventory. (https://forums.factorio.com/129117)
+    - Fixed entities marked for upgrade losing module requests from future slots when players interacted with them. (https://forums.factorio.com/136565)
+    - Fixed that some module requests were ignored when super-force-building an assembling machine 3 with 4 modules over an assembling machine 2 with 2 module requests and no recipe. (https://forums.factorio.com/132411)
+    - Fixed that remote item removal requests of blueprints and other openable items couldn't be cancelled when "Open item GUI" and "Cursor split" controls shared the same keybind.
+    - Fixed that undoing a blueprint placement didn't restore module requests of overlapping entities. (https://forums.factorio.com/132446)
+    - Fixed texture seams in space platform background planet shader which were visible on some graphics driver configurations. (https://forums.factorio.com/134253)
+    - Fixed space dust and background asteroids rendering seams when graphics driver forced anisotropic filtering. (https://forums.factorio.com/135690)
+    - Fixed that undoing deconstruction of an entity marked for upgrade didn't restore the ordered upgrade. (https://forums.factorio.com/131475)
+    - Fixed that pipette didn't use the quality of things marked for upgrade. (https://forums.factorio.com/135263)
+    - Fixed that upgrading elevated trains above ground level trains could fail. (https://forums.factorio.com/136738)
+    - Fixed that space platforms never dropped items from orbital drop slots when the same item was regularly sent to the cargo landing pad in small amounts. (https://forums.factorio.com/136719)
+    - Fixed that "tall" property didn't work properly for trees and plants when tree animations were enabled in graphics settings. (https://forums.factorio.com/136734)
+    - Fixed a crash when a spider unit with too large leg placement reach tried to pathfind. (https://forums.factorio.com/136764)
+    - Fixed a crash when closing the game while Technology GUI and Factoriopedia were both open. (https://forums.factorio.com/136754)
+    - Fixed negative LuaRenderObject::animation_speed and animation_offset values not behaving as expected.
+    - Fixed inactive entities using up working sound resources. (https://forums.factorio.com/136623)
+    - Fixed Confirm message control not working when bound to mouse buttons.
+    - Fixed that some mipmaps were being generated on the CPU instead of the GPU on Mac.
+    - Fixed that backer names were not preserved when upgrading entities. (https://forums.factorio.com/136798)
+    - Fixed that the /reply command wasn't colored correctly. (https://forums.factorio.com/136812)
+    - Fixed styling of red buttons in Factoriopedia.
+    - Fixed that pin arrows would vibrate when moving in some situations. (https://forums.factorio.com/136725)
+    - Fixed that deconstruction planner counts didn't handle variable results well. (https://forums.factorio.com/136782)
+    - Fixed that ghost crafting speed previews didn't handle modules-in-non-module-slot requests correctly. (https://forums.factorio.com/136825)
+    - Fixed that diced SpriteVariations with more than one variation used wrong data for all variations except the first one. (https://forums.factorio.com/136805)
+    - Fixed that a platform could become stuck in orbit without accepting deliveries when its schedule changed unexpectedly after manually ordering it to go to a different planet. (https://forums.factorio.com/136229)
+    - Fixed that furnaces would report an unhelpful status when the output was full but there were no more ingredients to smelt. (https://forums.factorio.com/136839)
+    - Fixed script pausing tick during tick handler could cause entity tick to be repeated. (https://forums.factorio.com/136842)
+    - Fixed that drag building blueprints with relative snapping didn't anchor correctly in all cases. (https://forums.factorio.com/131873)
+    - Fixed that ghost building over tiles marked for deconstruction didn't work correctly on Aquilo. (https://forums.factorio.com/136600)
+    - Fixed that biters continued to attack a player character which entered a cargo pod.
+    - Fixed game freeze when game speed was set above 16666666. (https://forums.factorio.com/136861)
+    - Fixed a desync related to radar destroyed by script during sector scanned event if radar was also about to finish nearby scan in the same tick.
+    - Fixed a crash when player sends malformed input action for recipe change. (https://forums.factorio.com/136890)
+    - Fixed frozen power switch could not be opened. (https://forums.factorio.com/136889)
+    - Fixed rocket rush scenario gave one too many solar panel equipment that would not fit into the grid. (https://forums.factorio.com/136895)
+    - Fixed a desync related to editor changing technology price multiplier in a multiplayer game. (https://forums.factorio.com/136845)
+    - Fixed that LAN games hosted with --port 0 advertised port 0.
+    - Fixed a crash when trying to read LuaEquipmentGrid details in some cases. (https://forums.factorio.com/136876)
+    - Fixed that Factoriopedia didn't show energy generation for electric energy interfaces. (https://forums.factorio.com/128490)
+    - Fixed that spent fluids did not show as unlocked in Factoriopedia. (https://forums.factorio.com/136891)
+    - Fixed a crash when mods interrupt blueprint building logic. (https://forums.factorio.com/136917)
+    - Fixed that paused space platforms didn't unload items when their next stop didn't match the current planet. (https://forums.factorio.com/136887)
+    - Fixed that space platforms with only one stop which was different from current location accepted new deliveries. (https://forums.factorio.com/136905)
+    - Fixed that moving space platforms didn't keep their travel direction after turning around and removing all stops from the schedule. (https://forums.factorio.com/135916)
+    - Fixed inserter pickup target not being highlighted when the inserter was unable to drop items. (https://forums.factorio.com/136669)
+    - Fixed that head of the substation in some sprites had red and green wires swapped. (https://forums.factorio.com/136675)
+    - Fixed broken shadows of pipe connections in assembling machines. (https://forums.factorio.com/136664)
+    - Fixed cropped sprites of frozen storage tank. (https://forums.factorio.com/131946)
+    - Fixed inconsistency in east sprite of underground belts with sideloading. (https://forums.factorio.com/105042)
+    - Fixed wrong sprites in the turbo belt spritesheet. (https://forums.factorio.com/117762)
+    - Fixed a visual bug with teflilly sprites. (https://forums.factorio.com/135536)
+    - Fixed capped variation count on iron and copper stromatolites. (https://forums.factorio.com/134880)
+  Modding:
+    - Changed hidden space connections to be hidden on the space map.
+    - PipePrototype supports sprite variations: Changed main sprite and frozen sprite into SpriteVariations. Added PipePrototype::random_variation_on_create.
+    - Added PipePrototype::draw_window.
+    - Added SplitterPrototype::exchange_input_lines and exchange_output_lines.
+    - Added draw_selection_counts to SelectionModeData.
+    - Added BlueprintItemPrototype::draw_collision_indicators.
+    - Increased tile-effect prototype limit from 32 to 255.
+  Scripting:
+    - LuaPlayer::opened supports LuaRecord. on_gui_opened and on_gui_closed provide record when opening records.
+    - Added LuaGuiElement::opacity read/write for sprite and sprite-button elements.
+    - Added LuaRecord::prototype, name, shelf_index and record_id read.
+    - Added LuaRenderObject::sprite_width and sprite_height read/write and the same parameters to LuaRendering::draw_sprite and LuaRendering::draw_animation.
+    - Changed LuaRenderObject::x_scale and y_scale to return nil when fixed size is given.
+    - Added LuaRenderObject::animation_frame read/write and the animation_frame parameter to LuaRendering::draw_animation.
+    - Changed LuaRenderObject::animation_speed writes to keep the animation on its current frame by recalculating animation_offset, allowing animations to be paused and resumed. (https://forums.factorio.com/127355)
+    - Added LuaSimulation::camera_show_alerts write.
+    - Added LuaItemPrototype::get_draw_selection_counts().
+    - Added LuaTransportLine::index read.
+    - Added LuaGuiElement::zoom_limits read/write for camera elements. (https://forums.factorio.com/134516)
+    - Added "hidden", "hidden-in-factoriopedia" and "is-parameter" filters to all LuaPrototypeFilters types which were missing them.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.24
 Date: 27. 10. 2026
   Minor Features:

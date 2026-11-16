@@ -3290,12 +3290,11 @@ data:extend(
     parametrise =
     {
       type = "sprite",
-      filename = "__core__/graphics/icons/parametrise.png",
+      filename = "__core__/graphics/icons/mip/parametrise.png",
       priority = "extra-high-no-scale",
-      size = 64,
+      size = 32,
       flags = {"gui-icon"},
-      mipmap_count = 4,
-      scale = 0.5
+      mipmap_count = 2,
     },
     starmap_platform_moving =
     {

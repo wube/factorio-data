@@ -3671,7 +3671,7 @@ data:extend(
     {
       type = "scroll_pane_style",
       parent = "shallow_scroll_pane",
-      minimal_height = slot_size * 2,
+      minimal_height = slot_size,
       background_graphical_set =
       {
         position = {256, 136},
@@ -6971,6 +6971,28 @@ data:extend(
         shadow = default_dirt
       }
       -- selected is default
+    },
+
+    red_slot_button_in_shallow_frame =
+    {
+      type = "button_style",
+      parent = "slot_button_in_shallow_frame",
+      default_graphical_set =
+      {
+        base = {border = 4, position = {240, 656}, size = 80},
+        shadow = offset_by_4_rounded_corners_shallow_inset
+      },
+      hovered_graphical_set =
+      {
+        base = {border = 4, position = {320, 656}, size = 80},
+        shadow = offset_by_4_rounded_corners_shallow_inset
+      },
+      clicked_graphical_set =
+      {
+        base = {border = 4, position = {400, 656}, size = 80},
+        shadow = offset_by_4_rounded_corners_shallow_inset
+      },
+      -- selected and disabled are default
     },
 
     slot_sized_button =

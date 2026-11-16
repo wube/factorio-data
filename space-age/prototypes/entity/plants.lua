@@ -768,6 +768,35 @@ data:extend(
     mining_sound = nauvis_tree and table.deepcopy(nauvis_tree.mining_sound) or nil,
     mined_sound = nauvis_tree and table.deepcopy(nauvis_tree.mined_sound) or nil,
     ambient_sounds = nauvis_tree and table.deepcopy(nauvis_tree.ambient_sounds) or nil,
+    build_sound =
+    {
+      filename = "__core__/sound/build-organic.ogg",
+      volume = 0.7,
+      aggregation = {max_count = 3, remove = true},
+      priority = 64,
+      modifiers = {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)},
+      switch_vibration_data =
+      {
+    	gain = 0.2,
+    	filename = "__core__/sound/build-small.bnvib"
+      },
+    },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__space-age__/sound/world/plants/tree-growth-loop.ogg",
+        volume = 0.25,
+        audible_distance_modifier = 0.3,
+        advanced_volume_control =
+        {
+          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
+        },
+      },
+      max_sounds_per_prototype = 1,
+      match_volume_to_activity = true,
+      activity_to_volume_modifiers = {multiplier = 2.0},
+    },
   },
   {
     type = "plant",
@@ -792,6 +821,19 @@ data:extend(
           }
         }
       }
+    },
+    build_sound =
+    {
+      filename = "__core__/sound/build-organic.ogg",
+      volume = 0.7,
+      aggregation = {max_count = 3, remove = true},
+      priority = 64,
+      modifiers = {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)},
+      switch_vibration_data =
+      {
+        gain = 0.2,
+        filename = "__core__/sound/build-small.bnvib"
+      },
     },
     mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-yumako-tree", 5, 0.6),
     mined_sound = sound_variations("__space-age__/sound/mining/mined-yumako-tree", 6, 0.3),
@@ -825,6 +867,22 @@ data:extend(
       secondary = {r = 0.561, g = 0.613, b = 0.308, a = 1.000}, -- #8f4f4eff
     },
     -- tile_buildability_rules = { {area = {{-0.55, -0.55}, {0.55, 0.55}}, required_tiles = {"natural-yumako-soil", "artificial-yumako-soil"}, remove_on_collision = true} },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__space-age__/sound/world/plants/yumako-growth-loop.ogg",
+        volume = 0.25,
+        audible_distance_modifier = 0.3,
+        advanced_volume_control =
+        {
+          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
+        },
+      },
+      max_sounds_per_prototype = 1,
+      match_volume_to_activity = true,
+      activity_to_volume_modifiers = {multiplier = 2.0},
+    },
     ambient_sounds =
     {
       sound =
@@ -853,6 +911,19 @@ data:extend(
       mining_particle = "jellystem-mining-particle",
       mining_time = 0.5,
       results = {{type = "item", name = "jellynut", amount = 50}},
+    },
+    build_sound =
+    {
+      filename = "__core__/sound/build-organic.ogg",
+      volume = 0.7,
+      aggregation = {max_count = 3, remove = true},
+      priority = 64,
+      modifiers = {volume_multiplier("main-menu", 0.64), volume_multiplier("tips-and-tricks", 0.8)},
+      switch_vibration_data =
+      {
+        gain = 0.2,
+        filename = "__core__/sound/build-small.bnvib"
+      },
     },
     mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-jellystem", 5, 0.4),
     mined_sound = sound_variations("__space-age__/sound/mining/mined-jellystem", 6, 0.35),
@@ -897,6 +968,22 @@ data:extend(
       primary = {r = 0.620, g = 0.307, b = 0.461, a = 1.000}, -- #eac1f5ff
       secondary = {r = 0.336, g = 0.624, b = 0.340, a = 1.000}, -- #885289ff
     },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__space-age__/sound/world/plants/jellystem-growth-loop.ogg",
+        volume = 0.25,
+        audible_distance_modifier = 0.3,
+        advanced_volume_control =
+        {
+          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
+        },
+      },
+      max_sounds_per_prototype = 1,
+      match_volume_to_activity = true,
+      activity_to_volume_modifiers = {multiplier = 2.0},
+    },
     ambient_sounds =
     {
       sound =
@@ -910,8 +997,8 @@ data:extend(
       radius = 7.5,
       min_entity_count = 2,
       max_entity_count = 10,
-      entity_to_sound_ratio = 0.5,
-      average_pause_seconds = 7
+      entity_to_sound_ratio = 0.2,
+      average_pause_seconds = 8
     },
     map_color = {255, 255, 255},
     -- tile_buildability_rules = { {area = {{-0.55, -0.55}, {0.55, 0.55}}, required_tiles = {"natural-jellynut-soil", "artificial-jellynut-soil"}, remove_on_collision = true} },
@@ -1316,7 +1403,7 @@ data:extend(
       probability_expression = "gleba_teflilly_region",
       richness_expression = "random_penalty_at(3, 1)"
     },
-    variations = gleba_tree_variations("teflilly", 10, 5, nil, 640, 560, util.by_pixel(52, -60), util.by_pixel(52, 60)),
+    variations = gleba_tree_variations("teflilly", 10, 5, nil, 640, 560, util.by_pixel(52 - 64 * 0.33, -60), util.by_pixel(52 - 64 * 0.33, 60)),
     colors = {
       {r = 255, g = 255, b =  255},
       {r = 220, g = 255, b =  255},

@@ -419,4 +419,16 @@ simulations.factoriopedia_tile_ghost =
   ]]
 }
 
+simulations.factoriopedia_depleted_mining_drill =
+{
+  init =
+  [[
+    game.simulation.camera_position = {0.5, 0}
+    game.surfaces[1].create_entity{name = "electric-energy-interface", position = {10, 0}}
+    game.surfaces[1].create_global_electric_network()
+    game.simulation.camera_show_alerts = true
+    game.surfaces[1].create_entity{name = "electric-mining-drill", position = {0, 0}, direction = defines.direction.east}
+  ]]
+}
+
 return simulations

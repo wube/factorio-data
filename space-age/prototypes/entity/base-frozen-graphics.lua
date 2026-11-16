@@ -437,7 +437,7 @@ data.raw["storage-tank"]["storage-tank"].pictures.frozen_patch =
       priority = "extra-high",
       frames = 2,
       width = 219,
-      height = 215,
+      height = 245,
       shift = util.by_pixel(-0.25, 3.75),
       scale = 0.5
     }
